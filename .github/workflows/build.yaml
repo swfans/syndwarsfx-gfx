@@ -1,0 +1,80 @@
+name: Build
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      refToBuild:
+        description: 'Branch, tag or commit SHA1 to build'
+        required: true
+        type: string
+
+jobs:
+  ubuntu-build:
+    runs-on: ubuntu-20.04
+    name: "Linux Ubuntu"
+    container:
+      image: ubuntu:20.04
+    env:
+      DEBIAN_FRONTEND: noninteractive
+      TZ: Etc/UTC
+    steps:
+      - name: Install GIT
+        run: |
+          # install GIT, as without it checkout would use REST API
+          apt update
+          apt install -y \
+            git
+
+      - name: Checkout code at latest head
+        if: "${{ inputs.refToBuild == '' }}"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Checkout code at requested ref
+        if: "${{ inputs.refToBuild != '' }}"
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.refToBuild }}
+          fetch-depth: 0
+
+      - name: Set ownership
+        run: |
+          # this is to fix GIT not liking owner of the checkout dir
+          chown -R $(id -u):$(id -g) $PWD
+
+      - name: Install dependencies
+        run: |
+          apt install -y \
+            build-essential autoconf libtool make
+
+      - name: Autoreconf
+        run: autoreconf -ivf
+
+      - name: Configure
+        run: |
+          mkdir -p release; cd release
+          ../configure --prefix="/"
+
+      - name: Build data files
+        run: |
+          cd release
+          make V=1
+
+      - name: Copy for package
+        run: |
+          cd release
+          # Get version marking from C header
+          PKG_VERSION=$(sed -n 's/^#define[ ]\+PACKAGE_VERSION "\([^"]\+\)"$/\1/p' gfx_config.h | head -n 1 | tr '.' '_')
+          make V=1 DESTDIR=$PWD/pkg install
+          echo "PKG_NAME=swars-gfx-$PKG_VERSION" >> $GITHUB_ENV
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.PKG_NAME }}
+          path: release/pkg/**

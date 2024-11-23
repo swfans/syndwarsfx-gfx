@@ -3,7 +3,16 @@ ACLOCAL_AMFLAGS = --install -I m4
 gfxani_DATA = $(wildcard $(top_srcdir)/data/*.ani)
 gfxanidir = $(prefix)/$(PARENT_PACKAGE)/data
 
+mouse0_DATA = data/mouse0-0.dat
+mouse0dir = $(prefix)/$(PARENT_PACKAGE)/data
+
+data/mouse0-0.dat: $(top_srcdir)/femouse-32/filelist-mouse0-0.txt $(top_srcdir)/data/feproj-std.pal
+
 docs_DATA = gfx_config.h
 docsdir = $(prefix)/$(PARENT_PACKAGE)
 
-EXTRA_DIST = gfxani docs
+EXTRA_DIST = gfxani docs mouse0
+
+data/%.dat:
+	$(MKDIR_P) "$(@D)"
+	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"

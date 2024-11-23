@@ -11,7 +11,7 @@ m4_define([ver_build], m4_if(m4_esyscmd_s([ls -1 -d ".git" 2>&1]),.git,[m4_esysc
 m4_define([swars_gfx_version],
       [ver_major.ver_minor.ver_release.ver_build])
 
-AC_INIT([Syndicate Wars GFX], [swars_gfx_version], [listom@gmail.com], [swars_gfx])
+AC_INIT([Syndicate Wars GFX], [swars_gfx_version], [mefistotelis@gmail.com], [swars_gfx])
 
 m4_define([parent_package], [swars])
 AC_DEFINE([PARENT_PACKAGE], [parent_package], [Name of the parent package, for which this one provides data files])
@@ -29,6 +29,11 @@ ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 # Checks for programs
 PKG_PROG_PKG_CONFIG
+AC_PROG_MKDIR_P
+
+AC_PATH_PROG([PNGTORAW], [pngpal2raw], [notfound],
+  [${PATH}${PATH_SEPARATOR}/usr/local/bin${PATH_SEPARATOR}${srcdir}/bin])
+AS_VAR_IF([PNGTORAW], [notfound], [AC_MSG_ERROR([Tool pngpal2raw not found in bin dir or PATH dirs.])], [])
 
 # Default install dir
 #AC_PREFIX_DEFAULT(/usr/local)

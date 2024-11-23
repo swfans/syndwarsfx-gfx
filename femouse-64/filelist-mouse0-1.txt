@@ -1,4 +1,4 @@
-frontend_mouse_pointers_standard_detail0 0 0 0 0
+frontend_mouse_pointers_standard_detail1 0 0 0 0
 arrow_anim_two_tetrahdrn_frm01.png
 arrow_anim_two_tetrahdrn_frm02.png
 arrow_anim_two_tetrahdrn_frm03.png

@@ -14,10 +14,10 @@ on:
 
 jobs:
   ubuntu-build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     name: "Linux Ubuntu"
     container:
-      image: ubuntu:20.04
+      image: ubuntu:latest
     env:
       DEBIAN_FRONTEND: noninteractive
       TZ: Etc/UTC
@@ -51,6 +51,11 @@ jobs:
         run: |
           apt install -y \
             build-essential autoconf libtool make
+
+      - name: Download extra tools
+        run: |
+          wget https://github.com/swfans/pngpal2raw/releases/download/1.0.2.47/pngpal2raw-1_0_2_47-x86_64-ubuntu.zip
+          unzip -o -j -d /usr/local/bin/ pngpal2raw-1_0_2_47-x86_64-ubuntu.zip
 
       - name: Autoreconf
         run: autoreconf -ivf

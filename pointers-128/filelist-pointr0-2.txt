@@ -1,0 +1,11 @@
+ingame_mouse_pointers_standard_detail2 0 0 0 0
+pointer_shaded_bonecolor_std.png
+target_rect_thin_grey_26.png
+target_rect_thin_red_14.png
+arrows_ltgreen-twoside_updown.png
+claw_dkgreen.png
+arrow_futuregrey_down.png
+pointer_futuregrey_onpoly.png
+pointer_futuregrey_std.png
+target_rect_thin_blue_26.png
+target_rect_thin_blue_14.png

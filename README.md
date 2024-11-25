@@ -22,19 +22,15 @@ replacing the existing files.
 
 To build **Syndicate Wars GFX**, use the following steps:
 
-1. go into the directory with `swars-gfx` source release
-2. do `autoreconf -if` to create build scripts from templates
-3. do `./configure` to make the build scripts find required dependencies
-4. do `make` to build release versions of data files
-5. do `make install` to copy the files into `swars` installation folder
+1. download [pngpal2raw](https://github.com/swfans/pngpal2raw/releases/),
+   place the binary in `swars-gfx/bin` or any folder included in `PATH` env var.
+2. go into the directory with `swars-gfx` source release
+3. do `autoreconf -if` to create build scripts from templates
+4. do `./configure` to make the build scripts find required dependencies
+5. do `make` to build release versions of data files
+6. do `make install` to copy the files into `swars` installation folder
 
 You should now have the latest DAT/TAB/ANI files in your installation folder.
-
-### Building not really required
-
-Note that at the moment no files are really built, they are just copied.
-So while this will change at some point, currently just copying the files
-from source release would work as well.
 
 #### Build example - Ubuntu 20.04 64-bit
 

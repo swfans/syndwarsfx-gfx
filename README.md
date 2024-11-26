@@ -37,7 +37,17 @@ You should now have the latest DAT/TAB/ANI files in your installation folder.
 Here are specific commands required to build the gfx on Ubuntu linux.
 
 Download the `swars-gfx` source release, and extract it somewhere.
-Go to that folder, and generate build scripts from templates using autotools:
+
+Also download latest release of the [pngpal2raw](https://github.com/swfans/pngpal2raw/releases/),
+and extract the binary into `bin` sub-folder of the place with `swars-gfx`.
+If you've downloaded the `.zip` to `swars-sfx` folder, you can just go there and run:
+
+```
+unzip -j -d ./bin/ pngpal2raw-*-ubuntu.zip
+```
+
+Being still in the `swars-gfx` folder, generate build scripts from templates using
+autotools:
 
 ```
 autoreconf -ivf
@@ -69,4 +79,4 @@ That's it, now you have the DAT/TAB/ANI files ready.
 
 ## Done
 
-That's all. See more documentation in [Syndicate Wars Port repo](https://github.com/mefistotelis/swars).
+That's all. See more documentation in [Syndicate Wars Port repo](https://github.com/swfans/swars).

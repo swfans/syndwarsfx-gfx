@@ -25,7 +25,7 @@ data/pointr0-0.tab: data/pointr0-0.dat
 
 data/pointr0-0.dat: $(top_srcdir)/pointers-32/filelist-pointr0-0.txt $(top_srcdir)/data/engine-std.pal
 
-docs_DATA = gfx_config.h
+docs_DATA = README.md gfx_config.h
 docsdir = $(prefix)/$(PARENT_PACKAGE)
 
 EXTRA_DIST = gfxani docs mouse0 pointr0
@@ -33,3 +33,7 @@ EXTRA_DIST = gfxani docs mouse0 pointr0
 data/%.dat:
 	$(MKDIR_P) "$(@D)"
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
+
+install-data-hook:
+	cd "$(DESTDIR)${prefix}/$(PARENT_PACKAGE)"; \
+	mv README.md gfx_readme.md

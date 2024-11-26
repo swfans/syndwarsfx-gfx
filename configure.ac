@@ -18,7 +18,8 @@ AC_DEFINE([PARENT_PACKAGE], [parent_package], [Name of the parent package, for w
 
 AC_CONFIG_SRCDIR([data/nfra-0.ani])
 # We use header file as means to transfer properties to automation scripts
-AC_CONFIG_HEADERS([gfx_config.h])
+AC_CONFIG_HEADERS([gfxprivconfig.h])
+AX_PREFIX_CONFIG_H([gfx_config.h], [GFX])
 AC_CONFIG_MACRO_DIRS([m4])
 
 AC_CANONICAL_HOST

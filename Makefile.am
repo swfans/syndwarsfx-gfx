@@ -53,11 +53,6 @@ font0_sharp_cult-23-ltblue/filelist-font0-2.txt: $(top_srcdir)/font0_sharp_cult-
 	cp -p -t "$(@D)" $(font0_sprites_cp)
 	cp -p "$<" "$@"
 
-docs_DATA = README.md gfx_config.h
-docsdir = $(prefix)/$(PARENT_PACKAGE)
-
-EXTRA_DIST = gfxani docs mouse0 pointr0 font0
-
 # Use ImageMagick to generate light blue sprites from the white ones
 font0_sharp_cult-23-ltblue/%.png: $(top_srcdir)/font0_sharp_cult-23-white/%.png
 	$(MKDIR_P) "$(@D)"
@@ -67,9 +62,57 @@ font0_sharp_cult-23-ltblue/%.png: $(top_srcdir)/font0_sharp_cult-23-white/%.png
         -channel B -evaluate multiply 0.99 \
         +channel -colorspace RGB "$@"
 
+# Use ImageMagick to generate light teal sprites from the white ones
+font0_sharp_cult-20-ltteal/%.png: $(top_srcdir)/font0_sharp_cult-20-white/%.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK) "$<" -colorspace RGB \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel -colorspace RGB "$@"
+
+pop0_chars_text_detail = \
+  0044 0045 0054 0041 0049 004c
+
+pop0_chars_text_uplink = \
+  0055 0050 004c 0049 004e 004b 0020
+
+pop0_chars_text_paused = \
+  0050 0041 0055 0053 0045 0044
+
+pop0_sprites_text_detail = \
+  $(foreach num,$(pop0_chars_text_detail),font0_sharp_cult-20-ltteal/char_u$(num).png)
+
+pop0_sprites_text_uplink = \
+  $(foreach num,$(pop0_chars_text_uplink),font0_sharp_cult-20-ltteal/char_u$(num).png)
+
+pop0_sprites_text_paused = \
+  $(foreach num,$(pop0_chars_text_paused),font0_sharp_cult-20-ltteal/char_u$(num).png)
+
+data/pop0-1.tab: data/pop0-1.dat
+
+data/pop0-1.dat: font0_sharp_cult-23-ltblue/filelist-font0-2.txt $(top_srcdir)/data/engine-std.pal panel_lblue_plain-64-baked/text_detail.png panel_lblue_plain-64-baked/text_uplink.png panel_lblue_plain-64-baked/text_paused.png
+
+panel_lblue_plain-64-baked/text_detail.png: $(pop0_sprites_text_detail)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK) montage $+ -background none -tile 9x1 -geometry +0+0 miff:- | $(MAGICK) - -crop 106x20+0+3 +repage "$@"
+
+panel_lblue_plain-64-baked/text_uplink.png: $(pop0_sprites_text_uplink)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK) montage $+ -background none -tile 9x1 -geometry +0+0 miff:- | $(MAGICK) - -crop 142x20+0+3 +repage "$@"
+
+panel_lblue_plain-64-baked/text_paused.png: $(pop0_sprites_text_paused)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK) montage $+ -background none -tile 9x1 -geometry +0+0 miff:- | $(MAGICK) - -crop 128x20+0+3 +repage "$@"
+
 data/%.dat:
 	$(MKDIR_P) "$(@D)"
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
+
+docs_DATA = README.md gfx_config.h
+docsdir = $(prefix)/$(PARENT_PACKAGE)
+
+EXTRA_DIST = gfxani docs mouse0 pointr0 font0
 
 install-data-hook:
 	cd "$(DESTDIR)${prefix}/$(PARENT_PACKAGE)"; \

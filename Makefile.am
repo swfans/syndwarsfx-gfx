@@ -71,6 +71,9 @@ font0_sharp_cult-20-ltteal/%.png: $(top_srcdir)/font0_sharp_cult-20-white/%.png
         -channel B -evaluate multiply 0.99 \
         +channel -colorspace RGB "$@"
 
+pop0_DATA = data/pop0-1.dat data/pop0-1.tab
+pop0dir = $(prefix)/$(PARENT_PACKAGE)/data
+
 pop0_chars_text_detail = \
   0044 0045 0054 0041 0049 004c
 
@@ -79,6 +82,10 @@ pop0_chars_text_uplink = \
 
 pop0_chars_text_paused = \
   0050 0041 0055 0053 0045 0044
+
+weapons_outline = \
+  uzi minigun laser ellaser rap nuclgren persuader flamer h2htaser crazygas kogas elemine explmine longrange airstrike beam razorwire \
+  qdevastator persuader2 stasisfld soulgun time cerberusiff medi1 medi2 explwire cloneshld item_cybmod item_suitcase
 
 pop0_sprites_text_detail = \
   $(foreach num,$(pop0_chars_text_detail),font0_sharp_cult-20-ltteal/char_u$(num).png)
@@ -89,9 +96,41 @@ pop0_sprites_text_uplink = \
 pop0_sprites_text_paused = \
   $(foreach num,$(pop0_chars_text_paused),font0_sharp_cult-20-ltteal/char_u$(num).png)
 
+pop0_sprites_text = \
+  panel_lblue_plain-64-baked/text_detail.png \
+  panel_lblue_plain-64-baked/text_uplink.png \
+  panel_lblue_plain-64-baked/text_paused.png
+
+pop0_sprites_wep_oln = \
+  $(foreach name,$(weapons_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).lgt.png)
+pop0_sprites_wep_pnl = \
+  $(foreach name,$(weapons_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).nrm.png)
+
+pop0_sprites_agents_panel = \
+  $(foreach num,1 2 3 4,panel_lblue_plain-64-baked/panel_peragent_main_number_$(num).png) \
+  $(foreach name,nrm lgt,panel_lblue_plain-64-baked/panel_peragent_supl_medi.$(name).png)
+
+# List of sprites to pass without alterations
+pop0_sprnames_nomod = \
+  frame1_med_lgt_bl frame1_med_lgt_br frame1_med_lgt_tl frame1_med_lgt_tr frame1_med_nrm_bl frame1_med_nrm_br frame1_med_nrm_tl frame1_med_nrm_tr \
+  empty kicked_arrow_left kicked_arrow_right \
+  ingame_agent_number_1 ingame_agent_number_2 ingame_agent_number_3 ingame_agent_number_4 \
+  panel_agent_number_1 panel_agent_number_2 panel_agent_number_3 panel_agent_number_4 \
+  panel_grouping panel_grouping_bar_grp panel_grouping_bar_th \
+  panel_peragent_supl_empty panel_peragent_supl_symbol_medi \
+  panel_sshield_ena_btm panel_sshield_ena_top panel_sshield_nrm_btm panel_sshield_nrm_top panel_weapon_frame \
+  panel_weapon_list_frst_frame panel_weapon_list_next_frame weapon_bk_empty
+pop0_sprites_cp = \
+  $(foreach name,$(pop0_sprnames_nomod),$(top_srcdir)/panel_lblue_plain-64/$(name).png)
+
 data/pop0-1.tab: data/pop0-1.dat
 
-data/pop0-1.dat: font0_sharp_cult-23-ltblue/filelist-font0-2.txt $(top_srcdir)/data/engine-std.pal panel_lblue_plain-64-baked/text_detail.png panel_lblue_plain-64-baked/text_uplink.png panel_lblue_plain-64-baked/text_paused.png
+data/pop0-1.dat: panel_lblue_plain-64-baked/filelist-pop0-1.txt $(top_srcdir)/data/engine-std.pal $(pop0_sprites_text) $(pop0_sprites_agents_panel) $(pop0_sprites_wep_oln) $(pop0_sprites_wep_pnl)
+
+panel_lblue_plain-64-baked/filelist-pop0-1.txt: $(top_srcdir)/panel_lblue_plain-64/filelist-pop0-1.txt
+	$(MKDIR_P) "$(@D)"
+	cp -p -t "$(@D)" $(pop0_sprites_cp)
+	cp -p "$<" "$@"
 
 panel_lblue_plain-64-baked/text_detail.png: $(pop0_sprites_text_detail)
 	$(MKDIR_P) "$(@D)"
@@ -105,6 +144,43 @@ panel_lblue_plain-64-baked/text_paused.png: $(pop0_sprites_text_paused)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK) montage $+ -background none -tile 9x1 -geometry +0+0 miff:- | $(MAGICK) - -crop 128x20+0+3 +repage "$@"
 
+# Use ImageMagick to generate light teal sprites from the white ones
+panel_lblue_plain-64-baked/%.lgt.png: $(top_srcdir)/weapons-outline-18/%.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK) "$<" -colorspace RGB \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel -colorspace RGB "$@"
+
+panel_lblue_plain-64-baked/panel_peragent_main_number_1.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_frst_empty.png panel_lblue_plain-64-baked/panel_agent_number_1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK) convert $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -60-6 -composite "$@"
+
+panel_lblue_plain-64-baked/panel_peragent_main_number_2.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_next_empty.png panel_lblue_plain-64-baked/panel_agent_number_2.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK) convert $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+
+panel_lblue_plain-64-baked/panel_peragent_main_number_3.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_next_empty.png panel_lblue_plain-64-baked/panel_agent_number_3.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK) convert $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+
+panel_lblue_plain-64-baked/panel_peragent_main_number_4.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_next_empty.png panel_lblue_plain-64-baked/panel_agent_number_4.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK) convert $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -57-2 -composite "$@"
+
+panel_lblue_plain-64-baked/panel_peragent_supl_medi.nrm.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_supl_empty.png panel_lblue_plain-64/panel_peragent_supl_symbol_medi.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK) convert $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
+
+panel_lblue_plain-64-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_supl_empty.png panel_lblue_plain-64/panel_peragent_supl_symbol_medi.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK) convert $+ -gravity Center -geometry +0+0 -composite "$@"
+
+panel_lblue_plain-64-baked/%.nrm.png: panel_lblue_plain-64-baked/weapon_bk_empty.png panel_lblue_plain-64-baked/%.lgt.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK) convert $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
+
 data/%.dat:
 	$(MKDIR_P) "$(@D)"
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
@@ -112,7 +188,7 @@ data/%.dat:
 docs_DATA = README.md gfx_config.h
 docsdir = $(prefix)/$(PARENT_PACKAGE)
 
-EXTRA_DIST = gfxani docs mouse0 pointr0 font0
+EXTRA_DIST = gfxani docs mouse0 pointr0 font0 pop0
 
 install-data-hook:
 	cd "$(DESTDIR)${prefix}/$(PARENT_PACKAGE)"; \

@@ -56,7 +56,7 @@ font0_sharp_cult-23-ltblue/filelist-font0-2.txt: $(top_srcdir)/font0_sharp_cult-
 # Use ImageMagick to generate light blue sprites from the white ones
 font0_sharp_cult-23-ltblue/%.png: $(top_srcdir)/font0_sharp_cult-23-white/%.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK) "$<" -colorspace RGB \
+	$(MAGICK_CONVERT) "$<" -colorspace RGB \
         -channel R -evaluate multiply 0.66 \
         -channel G -evaluate multiply 0.53 \
         -channel B -evaluate multiply 0.99 \
@@ -65,7 +65,7 @@ font0_sharp_cult-23-ltblue/%.png: $(top_srcdir)/font0_sharp_cult-23-white/%.png
 # Use ImageMagick to generate light teal sprites from the white ones
 font0_sharp_cult-20-ltteal/%.png: $(top_srcdir)/font0_sharp_cult-20-white/%.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK) "$<" -colorspace RGB \
+	$(MAGICK_CONVERT) "$<" -colorspace RGB \
         -channel R -evaluate multiply 0.00 \
         -channel G -evaluate multiply 0.99 \
         -channel B -evaluate multiply 0.99 \
@@ -121,33 +121,36 @@ pop0_sprnames_nomod = \
   panel_sshield_ena_btm panel_sshield_ena_top panel_sshield_nrm_btm panel_sshield_nrm_top panel_weapon_frame \
   panel_weapon_list_frst_frame panel_weapon_list_next_frame weapon_bk_empty
 pop0_sprites_cp = \
-  $(foreach name,$(pop0_sprnames_nomod),$(top_srcdir)/panel_lblue_plain-64/$(name).png)
+  $(foreach name,$(pop0_sprnames_nomod),panel_lblue_plain-64-baked/$(name).png)
 
 data/pop0-1.tab: data/pop0-1.dat
 
-data/pop0-1.dat: panel_lblue_plain-64-baked/filelist-pop0-1.txt $(top_srcdir)/data/engine-std.pal $(pop0_sprites_text) $(pop0_sprites_agents_panel) $(pop0_sprites_wep_oln) $(pop0_sprites_wep_pnl)
+data/pop0-1.dat: panel_lblue_plain-64-baked/filelist-pop0-1.txt $(top_srcdir)/data/engine-std.pal ${pop0_sprites_cp} $(pop0_sprites_text) $(pop0_sprites_agents_panel) $(pop0_sprites_wep_oln) $(pop0_sprites_wep_pnl)
 
-panel_lblue_plain-64-baked/filelist-pop0-1.txt: $(top_srcdir)/panel_lblue_plain-64/filelist-pop0-1.txt
+panel_lblue_plain-64-baked/%.txt: $(top_srcdir)/panel_lblue_plain-64/%.txt
 	$(MKDIR_P) "$(@D)"
-	cp -p -t "$(@D)" $(pop0_sprites_cp)
+	cp -p "$<" "$@"
+
+panel_lblue_plain-64-baked/%.png: $(top_srcdir)/panel_lblue_plain-64/%.png
+	$(MKDIR_P) "$(@D)"
 	cp -p "$<" "$@"
 
 panel_lblue_plain-64-baked/text_detail.png: $(pop0_sprites_text_detail)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK) montage $+ -background none -tile 9x1 -geometry +0+0 miff:- | $(MAGICK) - -crop 106x20+0+3 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 9x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 106x20+0+3 +repage "$@"
 
 panel_lblue_plain-64-baked/text_uplink.png: $(pop0_sprites_text_uplink)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK) montage $+ -background none -tile 9x1 -geometry +0+0 miff:- | $(MAGICK) - -crop 142x20+0+3 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 9x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 142x20+0+3 +repage "$@"
 
 panel_lblue_plain-64-baked/text_paused.png: $(pop0_sprites_text_paused)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK) montage $+ -background none -tile 9x1 -geometry +0+0 miff:- | $(MAGICK) - -crop 128x20+0+3 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 9x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 128x20+0+3 +repage "$@"
 
 # Use ImageMagick to generate light teal sprites from the white ones
 panel_lblue_plain-64-baked/%.lgt.png: $(top_srcdir)/weapons-outline-18/%.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK) "$<" -colorspace RGB \
+	$(MAGICK_CONVERT) "$<" -colorspace RGB \
         -channel R -evaluate multiply 0.00 \
         -channel G -evaluate multiply 0.99 \
         -channel B -evaluate multiply 0.99 \
@@ -155,31 +158,31 @@ panel_lblue_plain-64-baked/%.lgt.png: $(top_srcdir)/weapons-outline-18/%.png
 
 panel_lblue_plain-64-baked/panel_peragent_main_number_1.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_frst_empty.png panel_lblue_plain-64-baked/panel_agent_number_1.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK) convert $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -60-6 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -60-6 -composite "$@"
 
 panel_lblue_plain-64-baked/panel_peragent_main_number_2.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_next_empty.png panel_lblue_plain-64-baked/panel_agent_number_2.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK) convert $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
 
 panel_lblue_plain-64-baked/panel_peragent_main_number_3.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_next_empty.png panel_lblue_plain-64-baked/panel_agent_number_3.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK) convert $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
 
 panel_lblue_plain-64-baked/panel_peragent_main_number_4.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_next_empty.png panel_lblue_plain-64-baked/panel_agent_number_4.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK) convert $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -57-2 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -57-2 -composite "$@"
 
 panel_lblue_plain-64-baked/panel_peragent_supl_medi.nrm.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_supl_empty.png panel_lblue_plain-64/panel_peragent_supl_symbol_medi.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK) convert $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
 
 panel_lblue_plain-64-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_supl_empty.png panel_lblue_plain-64/panel_peragent_supl_symbol_medi.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK) convert $+ -gravity Center -geometry +0+0 -composite "$@"
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +0+0 -composite "$@"
 
 panel_lblue_plain-64-baked/%.nrm.png: panel_lblue_plain-64-baked/weapon_bk_empty.png panel_lblue_plain-64-baked/%.lgt.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK) convert $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
 
 data/%.dat:
 	$(MKDIR_P) "$(@D)"

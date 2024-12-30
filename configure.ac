@@ -32,8 +32,8 @@ ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 PKG_PROG_PKG_CONFIG
 AC_PROG_MKDIR_P
 
-AC_CHECK_PROG(HAS_MAGICK,magick,yes)
-AS_IF([test x"$HAS_MAGICK" != x"yes"], [AC_MSG_ERROR([Please install imagemagick before configuring.])])
+AC_CHECK_PROGS(MAGICK, $MAGICK "magick" "convert", "magick-notfound")
+AS_IF([test x"$MAGICK" == x"magick-notfound"], [AC_MSG_ERROR([Please install imagemagick before configuring.])])
 
 AC_PATH_PROG([PNGTORAW], [pngpal2raw], [notfound],
   [${PATH}${PATH_SEPARATOR}/usr/local/bin${PATH_SEPARATOR}${srcdir}/bin])

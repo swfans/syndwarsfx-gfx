@@ -28,7 +28,7 @@ data/pointr0-0.dat: $(top_srcdir)/pointers-32/filelist-pointr0-0.txt $(top_srcdi
 font0_DATA = data/font0-2.dat data/font0-2.tab
 font0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
-#font0_sprites = $(wildcard $(top_srcdir)/font0_sharp_cult-23-white/*.png)
+# List of font letters which can be colorized
 font0_chars = \
   0021 0022 0023 0024 0025 0026 0027 0028 0029 002a 002b 002c 002d 002e 002f \
   0030 0031 0032 0033 0034 0035 0036 0037 0038 0039 003a 003b 003c 003d 003e 003f \
@@ -36,6 +36,7 @@ font0_chars = \
   0050 0051 0052 0053 0054 0055 0056 0057 0058 0059 005a 005b 005c 005d 005e 005f \
   00a1 00aa 00b0 00bf 00c0 00c1 00c4 00c5 00c7 00c8 00c9 00cc 00cd \
   00d1 00d2 00d3 00d6 00d9 00da 00dc 00df
+# List of non-letters or other sprites to pass without colorization
 font0_charnames_nomod = \
   empty char_u0020
 font0_sprites_gen = \
@@ -57,9 +58,10 @@ docsdir = $(prefix)/$(PARENT_PACKAGE)
 
 EXTRA_DIST = gfxani docs mouse0 pointr0 font0
 
+# Use ImageMagick to generate light blue sprites from the white ones
 font0_sharp_cult-23-ltblue/%.png: $(top_srcdir)/font0_sharp_cult-23-white/%.png
 	$(MKDIR_P) "$(@D)"
-	magick "$<" -colorspace RGB \
+	$(MAGICK) "$<" -colorspace RGB \
         -channel R -evaluate multiply 0.66 \
         -channel G -evaluate multiply 0.53 \
         -channel B -evaluate multiply 0.99 \

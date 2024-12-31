@@ -83,9 +83,11 @@ pop0_chars_text_uplink = \
 pop0_chars_text_paused = \
   0050 0041 0055 0053 0045 0044
 
-weapons_outline = \
-  uzi minigun laser ellaser rap nuclgren persuader flamer h2htaser crazygas kogas elemine explmine longrange airstrike beam razorwire \
+weapons_singl_outline = \
+  uzi minigun laser ellaser rap persuader flamer h2htaser longrange airstrike beam razorwire \
   qdevastator persuader2 stasisfld soulgun time cerberusiff medi1 medi2 explwire cloneshld item_cybmod item_suitcase
+weapons_fourp_outline = \
+  nuclgren crazygas kogas elemine explmine
 
 pop0_sprites_text_detail = \
   $(foreach num,$(pop0_chars_text_detail),font0_sharp_cult-20-ltteal/char_u$(num).png)
@@ -102,9 +104,11 @@ pop0_sprites_text = \
   panel_lblue_plain-64-baked/text_paused.png
 
 pop0_sprites_wep_oln = \
-  $(foreach name,$(weapons_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).lgt.png)
+  $(foreach name,$(weapons_singl_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).sngl.lgt.png) \
+  $(foreach name,$(weapons_fourp_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).foup.lgt.png)
 pop0_sprites_wep_pnl = \
-  $(foreach name,$(weapons_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).nrm.png)
+  $(foreach name,$(weapons_singl_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).sngl.nrm.png) \
+  $(foreach name,$(weapons_fourp_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).foup.nrm.png)
 
 pop0_sprites_agents_panel = \
   $(foreach num,1 2 3 4,panel_lblue_plain-64-baked/panel_peragent_main_number_$(num).png) \
@@ -152,7 +156,8 @@ panel_lblue_plain-64-baked/text_paused.png: $(pop0_sprites_text_paused)
 	$(MAGICK_MONTAGE) $+ -background none -tile 9x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 128x20+0+3 +repage "$@"
 
 # Use ImageMagick to generate light teal sprites from the white ones
-panel_lblue_plain-64-baked/%.lgt.png: $(top_srcdir)/weapons-outline-18/%.png
+# rule with multiple targets is automatically divided into multiple rules with single target
+panel_lblue_plain-64-baked/%.sngl.lgt.png panel_lblue_plain-64-baked/%.foup.lgt.png: $(top_srcdir)/weapons-outline-18/%.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$<" -colorspace RGB \
         -channel R -evaluate multiply 0.00 \
@@ -184,7 +189,11 @@ panel_lblue_plain-64-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $+ -gravity Center -geometry +0+0 -composite "$@"
 
-panel_lblue_plain-64-baked/%.nrm.png: panel_lblue_plain-64-baked/weapon_bk_empty.png panel_lblue_plain-64-baked/%.lgt.png
+panel_lblue_plain-64-baked/%.sngl.nrm.png: panel_lblue_plain-64-baked/weapon_bk_empty.png panel_lblue_plain-64-baked/%.sngl.lgt.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
+
+panel_lblue_plain-64-baked/%.foup.nrm.png: panel_lblue_plain-64-baked/weapon_bk_empty.png panel_lblue_plain-64-baked/%.foup.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
 

@@ -197,7 +197,7 @@ panel_lblue_plain-64-baked/%.foup.nrm.png: panel_lblue_plain-64-baked/weapon_bk_
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
 
-# Use ImageMagick to generate light teal highlight border sprites
+# Use ImageMagick to generate light teal highlight border sprites around medikit box
 # 1. convert non-transparent areas to white, transparent to black
 # 2. remove the transparency; add extra 4px black border (to make border detection work at edges)
 # 3. detect borders using Laplacian filter convolution
@@ -214,9 +214,13 @@ panel_lblue_plain-64-baked/panel_peragent_supl_hlight.png: $(top_srcdir)/panel_l
         -channel B -evaluate multiply 0.99 \
         +channel -colorspace RGB "$@"
 
-panel_lblue_plain-64-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_lblue_plain-64/panel_weapon_frame.png
+# Use ImageMagick to generate light teal highlight border sprites around weapon boxes
+# The algorithm goes as explained before, but here the hole in the sprite is firs patched with empty weapon
+# For each sprite, a shift required to fully patch the hole is a bit different
+panel_lblue_plain-64-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_lblue_plain-64/panel_weapon_frame.png $(top_srcdir)/panel_lblue_plain-64/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) "$<" -channel RGB -fuzz 100% -fill white -opaque black \
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry -6+0 -composite \
+	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
         -define convolve:scale='!' -morphology Convolve Laplacian:1 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
@@ -225,9 +229,10 @@ panel_lblue_plain-64-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_lb
         -channel B -evaluate multiply 0.99 \
         +channel -colorspace RGB "$@"
 
-panel_lblue_plain-64-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/panel_lblue_plain-64/panel_weapon_list_frst_frame.png
+panel_lblue_plain-64-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/panel_lblue_plain-64/panel_weapon_list_frst_frame.png $(top_srcdir)/panel_lblue_plain-64/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) "$<" -channel RGB -fuzz 100% -fill white -opaque black \
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +6+4 -composite \
+	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
         -define convolve:scale='!' -morphology Convolve Laplacian:1 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
@@ -236,9 +241,10 @@ panel_lblue_plain-64-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/pane
         -channel B -evaluate multiply 0.99 \
         +channel -colorspace RGB "$@"
 
-panel_lblue_plain-64-baked/panel_weapon_list_next_hlight.png: $(top_srcdir)/panel_lblue_plain-64/panel_weapon_list_next_frame.png
+panel_lblue_plain-64-baked/panel_weapon_list_next_hlight.png: $(top_srcdir)/panel_lblue_plain-64/panel_weapon_list_next_frame.png $(top_srcdir)/panel_lblue_plain-64/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) "$<" -channel RGB -fuzz 100% -fill white -opaque black \
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +1+2 -composite \
+	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
         -define convolve:scale='!' -morphology Convolve Laplacian:1 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \

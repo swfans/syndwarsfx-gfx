@@ -108,7 +108,11 @@ pop0_sprites_wep_pnl = \
 
 pop0_sprites_agents_panel = \
   $(foreach num,1 2 3 4,panel_lblue_plain-64-baked/panel_peragent_main_number_$(num).png) \
-  $(foreach name,nrm lgt,panel_lblue_plain-64-baked/panel_peragent_supl_medi.$(name).png)
+  $(foreach name,nrm lgt,panel_lblue_plain-64-baked/panel_peragent_supl_medi.$(name).png) \
+  panel_lblue_plain-64-baked/panel_peragent_supl_hlight.png \
+  panel_lblue_plain-64-baked/panel_weapon_frame_hlight.png \
+  panel_lblue_plain-64-baked/panel_weapon_list_frst_hlight.png \
+  panel_lblue_plain-64-baked/panel_weapon_list_next_hlight.png
 
 # List of sprites to pass without alterations
 pop0_sprnames_nomod = \
@@ -183,6 +187,56 @@ panel_lblue_plain-64-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel
 panel_lblue_plain-64-baked/%.nrm.png: panel_lblue_plain-64-baked/weapon_bk_empty.png panel_lblue_plain-64-baked/%.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
+
+# Use ImageMagick to generate light teal highlight border sprites
+# 1. convert non-transparent areas to white, transparent to black
+# 2. remove the transparency; add extra 4px black border (to make border detection work at edges)
+# 3. detect borders using Laplacian filter convolution
+# 4. remove the border again, make all non-black pixels white, and black pixels transparent
+# 5. multiply the pixels to achieve expected border color
+panel_lblue_plain-64-baked/panel_peragent_supl_hlight.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_supl_empty.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel -colorspace RGB "$@"
+
+panel_lblue_plain-64-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_lblue_plain-64/panel_weapon_frame.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel -colorspace RGB "$@"
+
+panel_lblue_plain-64-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/panel_lblue_plain-64/panel_weapon_list_frst_frame.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel -colorspace RGB "$@"
+
+panel_lblue_plain-64-baked/panel_weapon_list_next_hlight.png: $(top_srcdir)/panel_lblue_plain-64/panel_weapon_list_next_frame.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel -colorspace RGB "$@"
 
 data/%.dat:
 	$(MKDIR_P) "$(@D)"

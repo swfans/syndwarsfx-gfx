@@ -32,9 +32,10 @@ include $(srcdir)/sprites-font0-4.am
 font0_DATA = $(font0_1_files) $(font0_2_files) $(font0_4_files)
 font0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
+include $(srcdir)/sprites-pop0-0.am
 include $(srcdir)/sprites-pop0-1.am
 
-pop0_DATA = $(pop0_1_files)
+pop0_DATA = $(pop0_0_files) $(pop0_1_files)
 pop0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
 data/%.dat:

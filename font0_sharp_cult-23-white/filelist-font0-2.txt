@@ -41,7 +41,7 @@ char_u0046.png
 char_u0047.png
 char_u0048.png
 char_u0049.png
-char_u0050.png
+char_u004a.png
 char_u004b.png
 char_u004c.png
 char_u004d.png

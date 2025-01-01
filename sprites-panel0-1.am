@@ -88,7 +88,7 @@ panel_lblue_plain-64-baked/panel_peragent_old_main_number_3.png: $(top_srcdir)/p
 
 panel_lblue_plain-64-baked/panel_peragent_old_main_number_4.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_old_next_empty.png panel_lblue_plain-64-baked/panel_agent_number_4.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -57-2 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -56-2 -composite "$@"
 
 panel_lblue_plain-64-baked/%.sngl.nrm.png: panel_lblue_plain-64-baked/weapon_bk_empty.png panel_lblue_plain-64-baked/%.sngl.lgt.png
 	$(MKDIR_P) "$(@D)"

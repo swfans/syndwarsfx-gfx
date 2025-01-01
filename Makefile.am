@@ -35,7 +35,9 @@ font0dir = $(prefix)/$(PARENT_PACKAGE)/data
 include $(srcdir)/sprites-pop0-0.am
 include $(srcdir)/sprites-pop0-1.am
 
-pop0_DATA = $(pop0_0_files) $(pop0_1_files)
+include $(srcdir)/sprites-panel0-1.am
+
+pop0_DATA = $(pop0_0_files) $(pop0_1_files) $(panel0_1_files)
 pop0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
 data/%.dat:

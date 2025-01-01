@@ -90,15 +90,6 @@ panel_lblue_plain-64-baked/panel_peragent_old_main_number_4.png: $(top_srcdir)/p
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -56-2 -composite "$@"
 
-panel_lblue_plain-64-baked/%.sngl.nrm.png: panel_lblue_plain-64-baked/weapon_bk_empty.png panel_lblue_plain-64-baked/%.sngl.lgt.png
-	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
-
-panel_lblue_plain-64-baked/%.foup.nrm.png: panel_lblue_plain-64-baked/weapon_bk_empty.png panel_lblue_plain-64-baked/%.foup.lgt.png
-	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite \
-        -channel A -region 4x4-26+7 -negate -region 4x4-26-7 -negate -region 4x4+26+7 -negate -region 4x4+26-7 -negate +channel "$@"
-
 # Use ImageMagick to generate light teal highlight border sprites around weapon boxes
 # The algorithm goes as explained in other files, but here the hole in the sprite is first patched with empty weapon
 # For each sprite, a shift required to fully patch the hole is a bit different

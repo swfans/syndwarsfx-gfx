@@ -38,18 +38,18 @@ pop0_1_sprites_text = \
   panel_lblue_plain-64-baked/text_paused.png
 
 # Sprites representing each weapon, when in pocket and when taken out
-weapons_singl_outline = \
+pop0_1_weapons_singl_outline = \
   uzi minigun laser ellaser rap persuader flamer h2htaser longrange airstrike beam razorwire \
   qdevastator persuader2 stasisfld soulgun time cerberusiff medi1 medi2 explwire cloneshld item_cybmod item_suitcase
-weapons_fourp_outline = \
+pop0_1_weapons_fourp_outline = \
   nuclgren crazygas kogas elemine explmine
 
 pop0_1_sprites_wep_oln = \
-  $(foreach name,$(weapons_singl_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).sngl.lgt.png) \
-  $(foreach name,$(weapons_fourp_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).foup.lgt.png)
+  $(foreach name,$(pop0_1_weapons_singl_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).sngl.lgt.png) \
+  $(foreach name,$(pop0_1_weapons_fourp_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).foup.lgt.png)
 pop0_1_sprites_wep_pnl = \
-  $(foreach name,$(weapons_singl_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).sngl.nrm.png) \
-  $(foreach name,$(weapons_fourp_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).foup.nrm.png)
+  $(foreach name,$(pop0_1_weapons_singl_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).sngl.nrm.png) \
+  $(foreach name,$(pop0_1_weapons_fourp_outline),panel_lblue_plain-64-baked/weapon_outline_$(name).foup.nrm.png)
 
 # Genewrated elements of the per-agent panel
 pop0_1_sprites_agents_panel = \
@@ -88,15 +88,15 @@ panel_lblue_plain-64-baked/%.png: $(top_srcdir)/panel_lblue_plain-64/%.png
 
 panel_lblue_plain-64-baked/text_detail.png: $(pop0_1_sprites_text_detail)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 9x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 106x20+0+3 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 106x20+0+3 +repage "$@"
 
 panel_lblue_plain-64-baked/text_uplink.png: $(pop0_1_sprites_text_uplink)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 9x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 142x20+0+3 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 132x20+0+3 +repage "$@"
 
 panel_lblue_plain-64-baked/text_paused.png: $(pop0_1_sprites_text_paused)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 9x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 128x20+0+3 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 118x20+0+3 +repage "$@"
 
 # Use ImageMagick to generate light teal sprites from the white ones
 # rule with multiple targets is automatically divided into multiple rules with single target

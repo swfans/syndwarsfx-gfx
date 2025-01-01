@@ -31,18 +31,18 @@ pop0_0_sprites_text = \
   panel_lblue_plain-32-baked/text_uplink_paused.png
 
 # Sprites representing each weapon, when in pocket and when taken out
-weapons_singl_outline = \
+pop0_0_weapons_singl_outline = \
   uzi minigun laser ellaser rap persuader flamer h2htaser longrange airstrike beam razorwire \
   qdevastator persuader2 stasisfld soulgun time cerberusiff medi1 medi2 explwire cloneshld item_cybmod item_suitcase
-weapons_fourp_outline = \
+pop0_0_weapons_fourp_outline = \
   nuclgren crazygas kogas elemine explmine
 
 pop0_0_sprites_wep_oln = \
-  $(foreach name,$(weapons_singl_outline),panel_lblue_plain-32-baked/weapon_outline_$(name).sngl.lgt.png) \
-  $(foreach name,$(weapons_fourp_outline),panel_lblue_plain-32-baked/weapon_outline_$(name).foup.lgt.png)
+  $(foreach name,$(pop0_0_weapons_singl_outline),panel_lblue_plain-32-baked/weapon_outline_$(name).sngl.lgt.png) \
+  $(foreach name,$(pop0_0_weapons_fourp_outline),panel_lblue_plain-32-baked/weapon_outline_$(name).foup.lgt.png)
 pop0_0_sprites_wep_pnl = \
-  $(foreach name,$(weapons_singl_outline),panel_lblue_plain-32-baked/weapon_outline_$(name).sngl.nrm.png) \
-  $(foreach name,$(weapons_fourp_outline),panel_lblue_plain-32-baked/weapon_outline_$(name).foup.nrm.png)
+  $(foreach name,$(pop0_0_weapons_singl_outline),panel_lblue_plain-32-baked/weapon_outline_$(name).sngl.nrm.png) \
+  $(foreach name,$(pop0_0_weapons_fourp_outline),panel_lblue_plain-32-baked/weapon_outline_$(name).foup.nrm.png)
 
 # Genewrated elements of the per-agent panel
 pop0_0_sprites_agents_panel = \
@@ -81,11 +81,11 @@ panel_lblue_plain-32-baked/%.png: $(top_srcdir)/panel_lblue_plain-32/%.png
 
 panel_lblue_plain-32-baked/text_detail.png: $(pop0_0_sprites_text_detail)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 9x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 59x10+0+2 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 59x10+0+2 +repage "$@"
 
 panel_lblue_plain-32-baked/text_uplink_paused.png: $(pop0_0_sprites_text_uplink_paused)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 19x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 137x10+0+2 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 137x10+0+2 +repage "$@"
 
 # Use ImageMagick to generate light teal sprites from the white ones
 # rule with multiple targets is automatically divided into multiple rules with single target

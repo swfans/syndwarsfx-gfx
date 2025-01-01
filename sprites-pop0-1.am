@@ -158,7 +158,7 @@ panel_lblue_plain-64-baked/panel_peragent_supl_hlight.png: $(top_srcdir)/panel_l
         +channel -colorspace RGB "$@"
 
 # Use ImageMagick to generate light teal highlight border sprites around weapon boxes
-# The algorithm goes as explained before, but here the hole in the sprite is firs patched with empty weapon
+# The algorithm goes as explained before, but here the hole in the sprite is first patched with empty weapon
 # For each sprite, a shift required to fully patch the hole is a bit different
 panel_lblue_plain-64-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_lblue_plain-64/panel_weapon_frame.png $(top_srcdir)/panel_lblue_plain-64/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"

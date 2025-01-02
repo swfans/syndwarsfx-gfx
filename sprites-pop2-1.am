@@ -155,20 +155,45 @@ panel_dgren_marbl-64-baked/%.sngl.nrm.png: panel_dgren_marbl-64-baked/weapon_bk_
 
 panel_dgren_marbl-64-baked/%.foup.nrm.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.outln.foup.lgt.png $(top_srcdir)/panel_dgren_marbl-64/weapon_ammo_slot_upper.png $(top_srcdir)/panel_dgren_marbl-64/weapon_ammo_slot_lower.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -modulate 100,400,100 +level 0,54% \) -gravity Center -geometry +0+0 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 4,$+)" +level 0,99% \) -gravity Center -geometry +26+7 -composite miff:- | \
+	$(MAGICK_CONVERT) $< \( "$(word 4,$+)" +level 0,99% \) -gravity Center -geometry +26+7 -composite miff:- | \
       $(MAGICK_CONVERT) - \( "$(word 3,$+)" +level 0,99% \) -gravity Center -geometry +26-7 -composite miff:- | \
       $(MAGICK_CONVERT) - \( "$(word 4,$+)" +level 0,99% \) -gravity Center -geometry -26+7 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 3,$+)" +level 0,99% \) -gravity Center -geometry -26-7 -composite "$@"
+      $(MAGICK_CONVERT) - \( "$(word 3,$+)" +level 0,99% \) -gravity Center -geometry -26-7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 2,$+)" -modulate 100,400,100 +level 0,54% \) -gravity Center -geometry +0+0 -composite "$@"
+
+# Use ImageMagick to generate a strong halo effect around the weapon outline shape, to be used for wielded weapon
+# 1. Motion blur in all directions to prepare a smeared glow outside of the shape
+# 2. Multiply (using bumpmap) with a mask containing area outside of the shape only - reduce blur from the inside to circa 1/5
+# 3. Clone the resulting glow and blur again, to re-add a little blur inside of the shape
+# 4. Use Euclidean gradient to soften the glow on edges of the picture
+# 5. Re-color to greenish white
+panel_dgren_marbl-64-baked/%.halo.foup.lgt.png: panel_dgren_marbl-64-baked/%.outln.foup.lgt.png
+	$(MAGICK_CONVERT) $<  \( "$(word 1,$+)" -modulate 100,0 -blur 0x1 -motion-blur 0x2+90  +level 0,50% \) -gravity Center -geometry +0+0 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" -modulate 100,0 -blur 0x1 -motion-blur 0x2+270 +level 0,50% \) -gravity Center -geometry +0+0 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" -modulate 100,0 -blur 0x1 -motion-blur 0x3+0   -level 0,90% \) -gravity Center -geometry -1+0 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" -modulate 100,0 -blur 0x1 -motion-blur 0x3+180 -level 0,90% \) -gravity Center -geometry +1+0 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" \
+        -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 17,90% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $(MAGICK_CONVERT) - \( +clone -blur 0x1.2 -level 0,90% \) -gravity Center -geometry +0+0 -composite miff:- | \
+      $(MAGICK_CONVERT) -  -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! +channel  -shave 1x1 miff:- | \
+      $(MAGICK_CONVERT) - \
+        -channel R -evaluate multiply 0.97 \
+        -channel B -evaluate multiply 0.96 \
+        +channel "$@"
 
 panel_dgren_marbl-64-baked/%.sngl.lgt.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.outln.sngl.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" \) -gravity Center -geometry +0+0 -composite "$@"
 
-panel_dgren_marbl-64-baked/%.foup.lgt.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.outln.foup.lgt.png $(top_srcdir)/panel_dgren_marbl-64/weapon_ammo_slot_upper.png $(top_srcdir)/panel_dgren_marbl-64/weapon_ammo_slot_lower.png
+panel_dgren_marbl-64-baked/%.foup.lgt.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.outln.foup.lgt.png panel_dgren_marbl-64-baked/%.halo.foup.lgt.png $(top_srcdir)/panel_dgren_marbl-64/weapon_ammo_slot_upper.png $(top_srcdir)/panel_dgren_marbl-64/weapon_ammo_slot_lower.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" \) -gravity Center -geometry +0+0 -composite \
-        -channel A -region 4x4-26+7 -negate -region 4x4-26-7 -negate -region 4x4+26+7 -negate -region 4x4+26-7 -negate +channel "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 5,$+)" +level 0,99% \) -gravity Center -geometry +26+7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 4,$+)" +level 0,99% \) -gravity Center -geometry +26-7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 5,$+)" +level 0,99% \) -gravity Center -geometry -26+7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 4,$+)" +level 0,99% \) -gravity Center -geometry -26-7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 3,$+)" -modulate 100,400,100 \) -gravity Center -geometry +0+0 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 2,$+)" \) -gravity Center -geometry +0+0 -composite "$@"
 
 # Use ImageMagick to generate light teal highlight border sprites around medikit box
 # 1. convert non-transparent areas to white, transparent to black

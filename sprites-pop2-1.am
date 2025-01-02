@@ -166,7 +166,8 @@ panel_dgren_marbl-64-baked/%.foup.nrm.png: panel_dgren_marbl-64-baked/weapon_bk_
 # 2. Multiply (using bumpmap) with a mask containing area outside of the shape only - reduce blur from the inside to circa 1/5
 # 3. Clone the resulting glow and blur again, to re-add a little blur inside of the shape
 # 4. Use Euclidean gradient to soften the glow on edges of the picture
-# 5. Re-color to greenish white
+# 5. Use BottomHat differential filter to soften the glow on small detils which are quickly filled by any blur
+# 6. Re-color to greenish white
 panel_dgren_marbl-64-baked/%.halo.foup.lgt.png: panel_dgren_marbl-64-baked/%.outln.foup.lgt.png
 	$(MAGICK_CONVERT) $<  \( "$(word 1,$+)" -modulate 100,0 -blur 0x1 -motion-blur 0x2+90  +level 0,50% \) -gravity Center -geometry +0+0 -composite miff:- | \
       $(MAGICK_CONVERT) - \( "$(word 1,$+)" -modulate 100,0 -blur 0x1 -motion-blur 0x2+270 +level 0,50% \) -gravity Center -geometry +0+0 -composite miff:- | \
@@ -176,10 +177,13 @@ panel_dgren_marbl-64-baked/%.halo.foup.lgt.png: panel_dgren_marbl-64-baked/%.out
         -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 17,90% \
         \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
       $(MAGICK_CONVERT) - \( +clone -blur 0x1.2 -level 0,90% \) -gravity Center -geometry +0+0 -composite miff:- | \
-      $(MAGICK_CONVERT) -  -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! +channel  -shave 1x1 miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" \
+        -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,70% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $(MAGICK_CONVERT) - -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! -normalize +channel -shave 1x1 miff:- | \
       $(MAGICK_CONVERT) - \
         -channel R -evaluate multiply 0.97 \
-        -channel B -evaluate multiply 0.96 \
+        -channel B -evaluate multiply 0.95 \
         +channel "$@"
 
 panel_dgren_marbl-64-baked/%.sngl.lgt.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.outln.sngl.lgt.png

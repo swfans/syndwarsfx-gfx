@@ -99,8 +99,17 @@ panel_dgren_marbl-64-baked/text_paused.png: $(pop2_1_sprites_text_paused)
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 118x20+0+3 +repage "$@"
 
 # Use ImageMagick to generate light green sprites from the white ones
+# Gas can needs to have one row removed to better fit the ammo slots
+panel_dgren_marbl-64-baked/weapon_outline_crazygas.outln.foup.lgt.png: $(top_srcdir)/weapons-outline-18/weapon_outline_crazygas.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -colorspace RGB \
+        -channel R -evaluate multiply 0.88 \
+        -channel G -evaluate multiply 0.92 \
+        -channel B -evaluate multiply 0.86 \
+        +channel -chop 1x0+16+0 -colorspace RGB "$@"
+
 # rule with multiple targets is automatically divided into multiple rules with single target
-panel_dgren_marbl-64-baked/%.sngl.lgt.png panel_dgren_marbl-64-baked/%.foup.lgt.png: $(top_srcdir)/weapons-outline-18/%.png
+panel_dgren_marbl-64-baked/%.outln.sngl.lgt.png panel_dgren_marbl-64-baked/%.outln.foup.lgt.png: $(top_srcdir)/weapons-outline-18/%.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$<" -colorspace RGB \
         -channel R -evaluate multiply 0.88 \
@@ -132,13 +141,25 @@ panel_dgren_marbl-64-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $+ -gravity Center -geometry +0+0 -composite "$@"
 
-panel_dgren_marbl-64-baked/%.sngl.nrm.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.sngl.lgt.png
+panel_dgren_marbl-64-baked/%.sngl.nrm.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.outln.sngl.lgt.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize -modulate 100,400,100 +level 0,54% \) -gravity Center -geometry +0+0 -composite "$@"
 
-panel_dgren_marbl-64-baked/%.foup.nrm.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.foup.lgt.png
+panel_dgren_marbl-64-baked/%.foup.nrm.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.outln.foup.lgt.png $(top_srcdir)/panel_dgren_marbl-64/weapon_ammo_slot_upper.png $(top_srcdir)/panel_dgren_marbl-64/weapon_ammo_slot_lower.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite \
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -modulate 100,400,100 +level 0,54% \) -gravity Center -geometry +0+0 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 4,$+)" +level 0,99% \) -gravity Center -geometry +26+7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 3,$+)" +level 0,99% \) -gravity Center -geometry +26-7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 4,$+)" +level 0,99% \) -gravity Center -geometry -26+7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 3,$+)" +level 0,99% \) -gravity Center -geometry -26-7 -composite "$@"
+
+panel_dgren_marbl-64-baked/%.sngl.lgt.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.outln.sngl.lgt.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" \) -gravity Center -geometry +0+0 -composite "$@"
+
+panel_dgren_marbl-64-baked/%.foup.lgt.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.outln.foup.lgt.png $(top_srcdir)/panel_dgren_marbl-64/weapon_ammo_slot_upper.png $(top_srcdir)/panel_dgren_marbl-64/weapon_ammo_slot_lower.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" \) -gravity Center -geometry +0+0 -composite \
         -channel A -region 4x4-26+7 -negate -region 4x4-26-7 -negate -region 4x4+26+7 -negate -region 4x4+26-7 -negate +channel "$@"
 
 # Use ImageMagick to generate light teal highlight border sprites around medikit box

@@ -55,3 +55,12 @@ font0_sharp_cult-20-ltteal/%.png: $(top_srcdir)/font0_sharp_cult-20-white/%.png
         -channel G -evaluate multiply 0.99 \
         -channel B -evaluate multiply 0.99 \
         +channel -colorspace RGB "$@"
+
+# Use ImageMagick to generate light teal sprites from the white ones
+font0_sharp_cult-20-ltgren/%.png: $(top_srcdir)/font0_sharp_cult-20-white/%.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -colorspace RGB \
+        -channel R -evaluate multiply 0.88 \
+        -channel G -evaluate multiply 0.92 \
+        -channel B -evaluate multiply 0.86 \
+        +channel -colorspace RGB "$@"

@@ -143,11 +143,32 @@ panel_dgren_marbl-64-baked/panel_peragent_part_number_4.lgt.png: $(top_srcdir)/p
 
 panel_dgren_marbl-64-baked/panel_peragent_supl_medi.nrm.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_supl_empty.png $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_supl_bevel_medi.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" \) -gravity Center -geometry +0+0 -composite "$@"
+
+panel_dgren_marbl-64-baked/panel_peragent_supl_symbol_medi.halo.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_supl_symbol_medi.png
+	$(MAGICK_CONVERT) $< \( "$(word 1,$+)" -modulate 100,0 -motion-blur 0x2.7+90  -level 0,60% \) -gravity Center -geometry +0-1 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" -modulate 100,0 -motion-blur 0x2.7+270 -level 0,60% \) -gravity Center -geometry +0+1 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" -modulate 100,0 -motion-blur 0x2.3+0   +level 0,60% \) -gravity Center -geometry -1+0 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" -modulate 100,0 -motion-blur 0x2.3+180 +level 0,60% \) -gravity Center -geometry +1+0 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" \
+        -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 30%,90% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $(MAGICK_CONVERT) - -blur 0x0.5 +level 0,90%,0.80 miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" \
+        -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,88% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $(MAGICK_CONVERT) - -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! +channel -shave 1x1 miff:- | \
+      $(MAGICK_CONVERT) - \
+        -channel R -evaluate multiply 0.97 \
+        -channel B -evaluate multiply 0.95 \
+        +channel "$@"
 
 panel_dgren_marbl-64-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_supl_empty.png $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_supl_symbol_medi.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $+ -gravity Center -geometry +0+0 -composite "$@"
+	$(MAGICK_CONVERT) $< \
+      \( "$(word 2,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,80%,0.6 -fuzz 8% -fill none -opaque none \) -gravity Center -geometry +0+0 -composite \
+      \( "$(word 2,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,80%,0.6 -fuzz 5% -fill none -opaque none \) -gravity Center -geometry +0+1 -composite \
+      "$(word 2,$+)"  -geometry +0+0 -composite "$@"
 
 panel_dgren_marbl-64-baked/%.sngl.nrm.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.outln.sngl.lgt.png
 	$(MKDIR_P) "$(@D)"

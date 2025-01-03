@@ -39,7 +39,7 @@ include $(srcdir)/sprites-pop2-1.am
 include $(srcdir)/sprites-panel0-0.am
 include $(srcdir)/sprites-panel0-1.am
 
-pop0_DATA = $(pop0_0_files) $(pop0_1_files) $(panel0_0_files) $(panel0_1_files)
+pop0_DATA = $(pop0_0_files) $(pop0_1_files) $(pop2_1_files) $(panel0_0_files) $(panel0_1_files)
 pop0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
 data/%.dat:

@@ -171,7 +171,7 @@ panel_dgren_marbl-64-baked/%.foup.nrm.png: panel_dgren_marbl-64-baked/weapon_bk_
 
 # The halo for weapons which look better with vertical smudges
 define define_panel_halo_vertc_rule
-panel_dgren_marbl-64-baked/weapon_outline_explwire.halo.sngl.lgt.png panel_dgren_marbl-64-baked/weapon_outline_medi2.halo.sngl.lgt.png panel_dgren_marbl-64-baked/weapon_outline_medi1.halo.sngl.lgt.png panel_dgren_marbl-64-baked/weapon_outline_soulgun.halo.sngl.lgt.png panel_dgren_marbl-64-baked/weapon_outline_time.halo.sngl.lgt.png : \
+$$(foreach name,$(2),panel_dgren_marbl-64-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
 panel_dgren_marbl-64-baked/%.halo.$(1).lgt.png: panel_dgren_marbl-64-baked/%.outln.$(1).lgt.png
 	$$(MAGICK_CONVERT) $$< \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.7+90  -level 0,60% \) -gravity Center -geometry +0-1 -composite miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.7+270 -level 0,60% \) -gravity Center -geometry +0+1 -composite miff:- | \
@@ -192,7 +192,7 @@ panel_dgren_marbl-64-baked/%.halo.$(1).lgt.png: panel_dgren_marbl-64-baked/%.out
 
 endef
 
-$(foreach wepammo,sngl,$(eval $(call define_panel_halo_vertc_rule,$(wepammo))))
+$(eval $(call define_panel_halo_vertc_rule, sngl, explwire medi2 medi1 soulgun time))
 
 # The halo for weapons which have thick filled white areas, which require toning down the intensity
 

@@ -53,6 +53,7 @@ pop2_1_sprites_wep_pnl = \
 
 # Genewrated elements of the per-agent panel
 pop2_1_sprites_agents_panel = \
+  $(foreach num,1 2 3 4,panel_dgren_marbl-64-baked/panel_peragent_main_number_$(num).png) \
   $(foreach num,1 2 3 4,panel_dgren_marbl-64-baked/panel_peragent_part_number_$(num).lgt.png) \
   $(foreach name,nrm lgt,panel_dgren_marbl-64-baked/panel_peragent_supl_medi.$(name).png) \
   panel_dgren_marbl-64-baked/panel_peragent_supl_hlight.png \
@@ -62,7 +63,6 @@ pop2_1_sprites_agents_panel = \
 
 # List of sprites to pass without alterations
 pop2_1_sprnames_nomod = \
-  $(foreach num,1 2 3 4,panel_peragent_main_number_$(num)) \
   frame1_med_lgt_tl frame1_med_lgt_tr frame1_med_lgt_bl frame1_med_lgt_br \
   frame1_med_nrm_tl frame1_med_nrm_tr frame1_med_nrm_bl frame1_med_nrm_br \
   empty kicked_arrow_left kicked_arrow_right \
@@ -125,21 +125,41 @@ panel_dgren_marbl-64-baked/%.outln.sngl.lgt.png panel_dgren_marbl-64-baked/%.out
         -channel B -evaluate multiply 0.86 \
         +channel -colorspace RGB "$@"
 
-panel_dgren_marbl-64-baked/panel_peragent_part_number_1.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_main_number_1.png panel_dgren_marbl-64-baked/panel_agent_number_1.png
+panel_dgren_marbl-64-baked/panel_peragent_main_number_1.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_frst_empty.png panel_dgren_marbl-64/panel_agent_number_1.nrm.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -60-6 -composite "$@"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -60-6 -composite "$@"
 
-panel_dgren_marbl-64-baked/panel_peragent_part_number_2.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_main_number_2.png panel_dgren_marbl-64-baked/panel_agent_number_2.png
+panel_dgren_marbl-64-baked/panel_peragent_main_number_2.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_next_empty.png panel_dgren_marbl-64/panel_agent_number_2.nrm.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -55-2 -composite "$@"
 
-panel_dgren_marbl-64-baked/panel_peragent_part_number_3.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_main_number_3.png panel_dgren_marbl-64-baked/panel_agent_number_3.png
+panel_dgren_marbl-64-baked/panel_peragent_main_number_3.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_nxt3_empty.png panel_dgren_marbl-64/panel_agent_number_3.nrm.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -55-2 -composite "$@"
 
-panel_dgren_marbl-64-baked/panel_peragent_part_number_4.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_main_number_4.png panel_dgren_marbl-64-baked/panel_agent_number_4.png
+panel_dgren_marbl-64-baked/panel_peragent_main_number_4.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_nxt4_empty.png panel_dgren_marbl-64/panel_agent_number_4.nrm.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -57-2 -composite "$@"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -57-2 -composite "$@"
+
+panel_dgren_marbl-64-baked/panel_peragent_part_number_1.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_frst_empty.png panel_dgren_marbl-64-baked/panel_agent_number_1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +60+6 -composite \
+	  \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite "$@"
+
+panel_dgren_marbl-64-baked/panel_peragent_part_number_2.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_next_empty.png panel_dgren_marbl-64-baked/panel_agent_number_2.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +60+6 -composite \
+	  \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite "$@"
+
+panel_dgren_marbl-64-baked/panel_peragent_part_number_3.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_nxt3_empty.png panel_dgren_marbl-64-baked/panel_agent_number_3.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +60+6 -composite \
+	  \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite "$@"
+
+panel_dgren_marbl-64-baked/panel_peragent_part_number_4.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_nxt4_empty.png panel_dgren_marbl-64-baked/panel_agent_number_4.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +60+6 -composite \
+	  \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite "$@"
 
 panel_dgren_marbl-64-baked/panel_peragent_supl_medi.nrm.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_supl_empty.png $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_supl_bevel_medi.png
 	$(MKDIR_P) "$(@D)"

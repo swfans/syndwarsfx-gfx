@@ -32,7 +32,7 @@ panel0_0_sprites_wep_pnl = \
   $(foreach name,$(panel0_0_weapons_singl_outline),panel_lblue_plain-32-baked/weapon_outline_$(name).sngl.nrm.png) \
   $(foreach name,$(panel0_0_weapons_fourp_outline),panel_lblue_plain-32-baked/weapon_outline_$(name).foup.nrm.png)
 
-# Genewrated elements of the per-agent panel
+# Generated elements of the per-agent panel
 panel0_0_sprites_agents_panel = \
   $(foreach num,1 2 3 4,panel_lblue_plain-32-baked/panel_peragent_old_main_number_$(num).png) \
   panel_lblue_plain-32-baked/panel_weapon_list_old_centr_hlight.png \

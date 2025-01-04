@@ -51,7 +51,7 @@ pop2_1_sprites_wep_pnl = \
   $(foreach name,$(pop2_1_weapons_singl_outline),panel_dgren_marbl-64-baked/weapon_outline_$(name).sngl.nrm.png) \
   $(foreach name,$(pop2_1_weapons_fourp_outline),panel_dgren_marbl-64-baked/weapon_outline_$(name).foup.nrm.png)
 
-# Genewrated elements of the per-agent panel
+# Generated elements of the per-agent panel
 pop2_1_sprites_agents_panel = \
   $(foreach num,1 2 3 4,panel_dgren_marbl-64-baked/panel_peragent_main_number_$(num).png) \
   $(foreach num,1 2 3 4,panel_dgren_marbl-64-baked/panel_peragent_part_number_$(num).lgt.png) \
@@ -141,6 +141,7 @@ panel_dgren_marbl-64-baked/panel_peragent_main_number_4.png: $(top_srcdir)/panel
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -57-2 -composite "$@"
 
+# Use ImageMagick to generate bright halos to be used for active agent numbers
 $(foreach num,1 2 3 4,panel_dgren_marbl-64-baked/panel_agent_number_$(num).halo.lgt.png) : \
 panel_dgren_marbl-64-baked/%.halo.lgt.png: panel_dgren_marbl-64-baked/%.png
 	$(MAGICK_CONVERT) $< \
@@ -149,6 +150,7 @@ panel_dgren_marbl-64-baked/%.halo.lgt.png: panel_dgren_marbl-64-baked/%.png
       \( "$(word 1,$+)" -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,88% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
       "$@"
 
+# Use ImageMagick to generate active agent numbers, with bright numbers and additional halos behind
 panel_dgren_marbl-64-baked/panel_peragent_part_number_1.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_frst_empty.png panel_dgren_marbl-64-baked/panel_agent_number_1.png panel_dgren_marbl-64-baked/panel_agent_number_1.halo.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +60+6 -composite \

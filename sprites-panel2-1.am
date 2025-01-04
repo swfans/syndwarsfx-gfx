@@ -33,9 +33,10 @@ panel2_1_sprites_wep_pnl = \
   $(foreach name,$(panel2_1_weapons_singl_outline),panel_dgren_marbl-64-baked/weapon_outline_$(name).sngl.nrm.png) \
   $(foreach name,$(panel2_1_weapons_fourp_outline),panel_dgren_marbl-64-baked/weapon_outline_$(name).foup.nrm.png)
 
-# Genewrated elements of the per-agent panel
+# Generated elements of the per-agent panel
 panel2_1_sprites_agents_panel = \
   $(foreach num,1 2 3 4,panel_dgren_marbl-64-baked/panel_peragent_old_main_number_$(num).png) \
+  $(foreach num,1 2 3 4,panel_dgren_marbl-64-baked/panel_peragent_old_part_number_$(num).lgt.png) \
   panel_dgren_marbl-64-baked/panel_weapon_list_old_centr_hlight.png \
   panel_dgren_marbl-64-baked/panel_weapon_list_old_upper_hlight.png
 
@@ -64,7 +65,7 @@ panel_dgren_marbl-64-baked/%.png: $(top_srcdir)/panel_dgren_marbl-64/%.png
 	$(MKDIR_P) "$(@D)"
 	cp -p "$<" "$@"
 
-# Use ImageMagick to generate light teal sprites from the white ones
+# Use ImageMagick to generate light green sprites from the white ones
 # rule with multiple targets is automatically divided into multiple rules with single target
 panel_dgren_marbl-64-baked/%.sngl.lgt.png panel_dgren_marbl-64-baked/%.foup.lgt.png: $(top_srcdir)/weapons-outline-18/%.png
 	$(MKDIR_P) "$(@D)"
@@ -74,45 +75,74 @@ panel_dgren_marbl-64-baked/%.sngl.lgt.png panel_dgren_marbl-64-baked/%.foup.lgt.
         -channel B -evaluate multiply 0.86 \
         +channel -colorspace RGB "$@"
 
-panel_dgren_marbl-64-baked/panel_peragent_old_main_number_1.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_frst_empty.png panel_dgren_marbl-64-baked/panel_agent_number_1.png
+panel_dgren_marbl-64-baked/panel_peragent_old_main_number_1.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_frst_empty.png panel_dgren_marbl-64/panel_agent_number_1.nrm.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -60-6 -composite "$@"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -60-6 -composite "$@"
 
-panel_dgren_marbl-64-baked/panel_peragent_old_main_number_2.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_next_empty.png panel_dgren_marbl-64-baked/panel_agent_number_2.png
+panel_dgren_marbl-64-baked/panel_peragent_old_main_number_2.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_next_empty.png panel_dgren_marbl-64/panel_agent_number_2.nrm.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -55-2 -composite "$@"
 
-panel_dgren_marbl-64-baked/panel_peragent_old_main_number_3.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_next_empty.png panel_dgren_marbl-64-baked/panel_agent_number_3.png
+panel_dgren_marbl-64-baked/panel_peragent_old_main_number_3.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_next_empty.png panel_dgren_marbl-64/panel_agent_number_3.nrm.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -55-2 -composite "$@"
 
-panel_dgren_marbl-64-baked/panel_peragent_old_main_number_4.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_next_empty.png panel_dgren_marbl-64-baked/panel_agent_number_4.png
+panel_dgren_marbl-64-baked/panel_peragent_old_main_number_4.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_next_empty.png panel_dgren_marbl-64/panel_agent_number_4.nrm.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -56-2 -composite "$@"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -56-2 -composite "$@"
 
-# Use ImageMagick to generate light teal highlight border sprites around weapon boxes
-# The algorithm goes as explained in other files, but here the hole in the sprite is first patched with empty weapon
+# Use ImageMagick to generate active agent numbers, with bright numbers and additional halos behind
+panel_dgren_marbl-64-baked/panel_peragent_old_part_number_1.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_frst_empty.png panel_dgren_marbl-64-baked/panel_agent_number_1.png panel_dgren_marbl-64-baked/panel_agent_number_1.halo.lgt.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +60+6 -composite \
+      \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
+      "$@"
+
+panel_dgren_marbl-64-baked/panel_peragent_old_part_number_2.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_next_empty.png panel_dgren_marbl-64-baked/panel_agent_number_2.png panel_dgren_marbl-64-baked/panel_agent_number_2.halo.lgt.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +55+2 -composite \
+      \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
+      "$@"
+
+panel_dgren_marbl-64-baked/panel_peragent_old_part_number_3.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_next_empty.png panel_dgren_marbl-64-baked/panel_agent_number_3.png panel_dgren_marbl-64-baked/panel_agent_number_3.halo.lgt.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +55+2 -composite \
+      \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
+      "$@"
+
+panel_dgren_marbl-64-baked/panel_peragent_old_part_number_4.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_next_empty.png panel_dgren_marbl-64-baked/panel_agent_number_4.png panel_dgren_marbl-64-baked/panel_agent_number_4.halo.lgt.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +56+2 -composite \
+      \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
+      "$@"
+
+# Use ImageMagick to generate light green color gradient highlight border sprites around weapon boxes
+# The algorithm goes as explained in other files, but here the hole in the sprite is first patched with empty weapon; also thicker border is generated
 # For each sprite, a shift required to fully patch the hole is a bit different
 panel_dgren_marbl-64-baked/panel_weapon_list_old_centr_hlight.png: $(top_srcdir)/panel_dgren_marbl-64/panel_weapon_list_old_centr_frame.png $(top_srcdir)/panel_dgren_marbl-64/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $+ -gravity Center -geometry +1+0 -composite \
 	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
-        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -morphology EdgeIn Octagon:2 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
-        -channel R -evaluate multiply 0.88 \
-        -channel G -evaluate multiply 0.92 \
-        -channel B -evaluate multiply 0.86 \
-        +channel -colorspace RGB "$@"
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(59%,69%,53%)  %[fx:w*.5],%[fx:h*.5] rgb(30%,34%,27%) %[fx:w*.9],%[fx:h*.1] rgb(30%,34%,27%)  %[fx:w*.9],%[fx:h*.9] rgb(59%,69%,53%)' \
+        +channel "$@"
 
 panel_dgren_marbl-64-baked/panel_weapon_list_old_upper_hlight.png: $(top_srcdir)/panel_dgren_marbl-64/panel_weapon_list_old_upper_frame.png $(top_srcdir)/panel_dgren_marbl-64/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $+ -gravity Center -geometry +1-2 -composite \
 	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
-        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -morphology EdgeIn Octagon:2 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
-        -channel R -evaluate multiply 0.88 \
-        -channel G -evaluate multiply 0.92 \
-        -channel B -evaluate multiply 0.86 \
-        +channel -colorspace RGB "$@"
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(59%,69%,53%)  %[fx:w*.5],%[fx:h*.5] rgb(30%,34%,27%) %[fx:w*.9],%[fx:h*.1] rgb(30%,34%,27%)  %[fx:w*.9],%[fx:h*.9] rgb(59%,69%,53%)' \
+        +channel "$@"

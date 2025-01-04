@@ -4,10 +4,10 @@ empty.png
 panel_peragent_old_main_number_2.png
 panel_peragent_old_main_number_3.png
 panel_peragent_old_main_number_4.png
-panel_agent_number_1.png
-panel_agent_number_2.png
-panel_agent_number_3.png
-panel_agent_number_4.png
+panel_peragent_part_number_1.lgt.png
+panel_peragent_part_number_2.lgt.png
+panel_peragent_part_number_3.lgt.png
+panel_peragent_part_number_4.lgt.png
 panel_sshield_nrm_top.png
 panel_grouping.png
 panel_weapon_list_old_upper_frame.png

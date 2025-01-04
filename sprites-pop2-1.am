@@ -147,31 +147,39 @@ panel_dgren_marbl-64-baked/%.halo.lgt.png: panel_dgren_marbl-64-baked/%.png
       \( "$(word 1,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,90%,0.7 -fuzz 6% -fill none -opaque none \) -gravity Center -geometry +1+0 -composite \
       \( "$(word 1,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,90%,0.7 -fuzz 6% -fill none -opaque none \) -gravity Center -geometry -1+0 -composite \
       \( "$(word 1,$+)" -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,88% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
-	  "$@"
+      "$@"
 
 panel_dgren_marbl-64-baked/panel_peragent_part_number_1.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_frst_empty.png panel_dgren_marbl-64-baked/panel_agent_number_1.png panel_dgren_marbl-64-baked/panel_agent_number_1.halo.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +60+6 -composite \
       \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite "$@"
+      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
+      "$@"
 
 panel_dgren_marbl-64-baked/panel_peragent_part_number_2.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_next_empty.png panel_dgren_marbl-64-baked/panel_agent_number_2.png panel_dgren_marbl-64-baked/panel_agent_number_2.halo.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +55+2 -composite \
       \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite "$@"
+      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
+      "$@"
 
 panel_dgren_marbl-64-baked/panel_peragent_part_number_3.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_nxt3_empty.png panel_dgren_marbl-64-baked/panel_agent_number_3.png panel_dgren_marbl-64-baked/panel_agent_number_3.halo.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +55+2 -composite \
       \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite "$@"
+      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
+      "$@"
 
 panel_dgren_marbl-64-baked/panel_peragent_part_number_4.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_nxt4_empty.png panel_dgren_marbl-64-baked/panel_agent_number_4.png panel_dgren_marbl-64-baked/panel_agent_number_4.halo.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +57+2 -composite \
       \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite "$@"
+      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
+      "$@"
 
 panel_dgren_marbl-64-baked/panel_peragent_supl_medi.nrm.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_supl_empty.png $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_supl_bevel_medi.png
 	$(MKDIR_P) "$(@D)"

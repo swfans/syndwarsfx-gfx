@@ -1,0 +1,118 @@
+# *****************************************************************************
+#  Graphics assets generation for Syndicate Wars Port.
+# *****************************************************************************
+#  @file sprites-panel2-1.am
+#      Automake rules neccessary to build `panel2-1` in-game panel sprites.
+#  @author   Tomasz Lis
+#  @par  Copying and copyrights:
+#      This program is free software; you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation; either version 2 of the License, or
+#      (at your option) any later version.
+# *****************************************************************************
+
+panel2_1_files = data/panel2-1.dat data/panel2-1.tab
+
+# The sprites containing some text lines merged from bitmap fonts, are built with `pop0` panel
+panel2_1_sprites_text = \
+  panel_dgren_marbl-64-baked/text_detail.png \
+  panel_dgren_marbl-64-baked/text_uplink.png \
+  panel_dgren_marbl-64-baked/text_paused.png
+
+# Sprites representing each weapon, when in pocket and when taken out
+panel2_1_weapons_singl_outline = \
+  uzi minigun laser ellaser rap persuader flamer h2htaser longrange airstrike beam razorwire \
+  qdevastator persuader2 stasisfld soulgun time cerberusiff medi1 medi2 explwire cloneshld item_cybmod item_suitcase
+panel2_1_weapons_fourp_outline = \
+  nuclgren crazygas kogas elemine explmine
+
+panel2_1_sprites_wep_oln = \
+  $(foreach name,$(panel2_1_weapons_singl_outline),panel_dgren_marbl-64-baked/weapon_outline_$(name).sngl.lgt.png) \
+  $(foreach name,$(panel2_1_weapons_fourp_outline),panel_dgren_marbl-64-baked/weapon_outline_$(name).foup.lgt.png)
+panel2_1_sprites_wep_pnl = \
+  $(foreach name,$(panel2_1_weapons_singl_outline),panel_dgren_marbl-64-baked/weapon_outline_$(name).sngl.nrm.png) \
+  $(foreach name,$(panel2_1_weapons_fourp_outline),panel_dgren_marbl-64-baked/weapon_outline_$(name).foup.nrm.png)
+
+# Genewrated elements of the per-agent panel
+panel2_1_sprites_agents_panel = \
+  $(foreach num,1 2 3 4,panel_dgren_marbl-64-baked/panel_peragent_old_main_number_$(num).png) \
+  panel_dgren_marbl-64-baked/panel_weapon_list_old_centr_hlight.png \
+  panel_dgren_marbl-64-baked/panel_weapon_list_old_upper_hlight.png
+
+# List of sprites to pass without alterations
+panel2_1_sprnames_nomod = \
+  frame1_med_lgt_tl frame1_med_lgt_tr frame1_med_lgt_bl frame1_med_lgt_br frame1_med_lgt_al frame1_med_lgt_ar \
+  frame1_med_nrm_tl frame1_med_nrm_tr frame1_med_nrm_bl frame1_med_nrm_br frame1_med_nrm_al frame1_med_nrm_ar \
+  empty kicked_arrow_left kicked_arrow_right \
+  ingame_agent_number_1 ingame_agent_number_2 ingame_agent_number_3 ingame_agent_number_4 \
+  panel_agent_number_1 panel_agent_number_2 panel_agent_number_3 panel_agent_number_4 \
+  panel_grouping panel_grouping_bar_grp panel_grouping_bar_th \
+  panel_sshield_ena_btm panel_sshield_ena_top panel_sshield_nrm_btm panel_sshield_nrm_top \
+  panel_weapon_list_old_centr_frame panel_weapon_list_old_upper_frame weapon_bk_empty
+panel2_1_sprites_cp = \
+  $(foreach name,$(panel2_1_sprnames_nomod),panel_dgren_marbl-64-baked/$(name).png)
+
+data/panel2-1.tab: data/panel2-1.dat
+
+data/panel2-1.dat: panel_dgren_marbl-64-baked/filelist-panel2-1.txt $(top_srcdir)/data/engine-std.pal ${panel2_1_sprites_cp} $(panel2_1_sprites_text) $(panel2_1_sprites_agents_panel) $(panel2_1_sprites_wep_oln) $(panel2_1_sprites_wep_pnl)
+
+panel_dgren_marbl-64-baked/%.txt: $(top_srcdir)/panel_dgren_marbl-64/%.txt
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"
+
+panel_dgren_marbl-64-baked/%.png: $(top_srcdir)/panel_dgren_marbl-64/%.png
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"
+
+# Use ImageMagick to generate light teal sprites from the white ones
+# rule with multiple targets is automatically divided into multiple rules with single target
+panel_dgren_marbl-64-baked/%.sngl.lgt.png panel_dgren_marbl-64-baked/%.foup.lgt.png: $(top_srcdir)/weapons-outline-18/%.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -colorspace RGB \
+        -channel R -evaluate multiply 0.88 \
+        -channel G -evaluate multiply 0.92 \
+        -channel B -evaluate multiply 0.86 \
+        +channel -colorspace RGB "$@"
+
+panel_dgren_marbl-64-baked/panel_peragent_old_main_number_1.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_frst_empty.png panel_dgren_marbl-64-baked/panel_agent_number_1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -60-6 -composite "$@"
+
+panel_dgren_marbl-64-baked/panel_peragent_old_main_number_2.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_next_empty.png panel_dgren_marbl-64-baked/panel_agent_number_2.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+
+panel_dgren_marbl-64-baked/panel_peragent_old_main_number_3.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_next_empty.png panel_dgren_marbl-64-baked/panel_agent_number_3.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+
+panel_dgren_marbl-64-baked/panel_peragent_old_main_number_4.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_next_empty.png panel_dgren_marbl-64-baked/panel_agent_number_4.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -56-2 -composite "$@"
+
+# Use ImageMagick to generate light teal highlight border sprites around weapon boxes
+# The algorithm goes as explained in other files, but here the hole in the sprite is first patched with empty weapon
+# For each sprite, a shift required to fully patch the hole is a bit different
+panel_dgren_marbl-64-baked/panel_weapon_list_old_centr_hlight.png: $(top_srcdir)/panel_dgren_marbl-64/panel_weapon_list_old_centr_frame.png $(top_srcdir)/panel_dgren_marbl-64/weapon_bk_empty.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +1+0 -composite \
+	    -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -channel R -evaluate multiply 0.88 \
+        -channel G -evaluate multiply 0.92 \
+        -channel B -evaluate multiply 0.86 \
+        +channel -colorspace RGB "$@"
+
+panel_dgren_marbl-64-baked/panel_weapon_list_old_upper_hlight.png: $(top_srcdir)/panel_dgren_marbl-64/panel_weapon_list_old_upper_frame.png $(top_srcdir)/panel_dgren_marbl-64/weapon_bk_empty.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +1-2 -composite \
+	    -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -channel R -evaluate multiply 0.88 \
+        -channel G -evaluate multiply 0.92 \
+        -channel B -evaluate multiply 0.86 \
+        +channel -colorspace RGB "$@"

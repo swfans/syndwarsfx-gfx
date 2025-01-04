@@ -343,58 +343,50 @@ panel_dgren_marbl-64-baked/%.foup.lgt.png: panel_dgren_marbl-64-baked/weapon_bk_
       $(MAGICK_CONVERT) - \( "$(word 3,$+)" -modulate 100,400,100 \) -gravity Center -geometry +0+0 -composite miff:- | \
       $(MAGICK_CONVERT) - \( "$(word 2,$+)" \) -gravity Center -geometry +0+0 -composite "$@"
 
-# Use ImageMagick to generate light teal highlight border sprites around medikit box
+# Use ImageMagick to generate light green color gradient highlight border sprite around medikit box
 # 1. convert non-transparent areas to white, transparent to black
 # 2. remove the transparency; add extra 4px black border (to make border detection work at edges)
-# 3. detect borders using Laplacian filter convolution
+# 3. detect edge, drawing it inside the white shape (EdgeIn) using shape given by 1-px square filter
 # 4. remove the border again, make all non-black pixels white, and black pixels transparent
-# 5. multiply the pixels to achieve expected border color
+# 5. keep A channel from previous computations, and fill RGB with a gradient generated using sparse-color function
 panel_dgren_marbl-64-baked/panel_peragent_supl_hlight.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_supl_empty.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$<" -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
-        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -morphology EdgeIn Square:1 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
-        -channel R -evaluate multiply 0.88 \
-        -channel G -evaluate multiply 0.92 \
-        -channel B -evaluate multiply 0.86 \
-        +channel -colorspace RGB "$@"
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(59%,69%,53%)  %[fx:w*.5],%[fx:h*.5] rgb(30%,34%,27%) %[fx:w*.9],%[fx:h*.1] rgb(30%,34%,27%)  %[fx:w*.9],%[fx:h*.9] rgb(59%,69%,53%)' \
+        +channel "$@"
 
-# Use ImageMagick to generate light teal highlight border sprites around weapon boxes
-# The algorithm goes as explained before, but here the hole in the sprite is first patched with empty weapon
+# Use ImageMagick to generate light green color gradient highlight border sprites around weapon boxes
+# The algorithm goes as explained before, but here the hole in the sprite is first patched with empty weapon; also thicker border is generated
 # For each sprite, a shift required to fully patch the hole is a bit different
 panel_dgren_marbl-64-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_dgren_marbl-64/panel_weapon_frame.png $(top_srcdir)/panel_dgren_marbl-64/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $+ -gravity Center -geometry -6+0 -composite \
 	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
-        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -morphology EdgeIn Octagon:2 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
-        -channel R -evaluate multiply 0.88 \
-        -channel G -evaluate multiply 0.92 \
-        -channel B -evaluate multiply 0.86 \
-        +channel -colorspace RGB "$@"
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(59%,69%,53%)  %[fx:w*.5],%[fx:h*.5] rgb(30%,34%,27%) %[fx:w*.9],%[fx:h*.1] rgb(30%,34%,27%)  %[fx:w*.9],%[fx:h*.9] rgb(59%,69%,53%)' \
+        +channel "$@"
 
 panel_dgren_marbl-64-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/panel_dgren_marbl-64/panel_weapon_list_frst_frame.png $(top_srcdir)/panel_dgren_marbl-64/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $+ -gravity Center -geometry +6+4 -composite \
 	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
-        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -morphology EdgeIn Octagon:2 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
-        -channel R -evaluate multiply 0.88 \
-        -channel G -evaluate multiply 0.92 \
-        -channel B -evaluate multiply 0.86 \
-        +channel -colorspace RGB "$@"
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(59%,69%,53%)  %[fx:w*.5],%[fx:h*.5] rgb(30%,34%,27%) %[fx:w*.9],%[fx:h*.1] rgb(30%,34%,27%)  %[fx:w*.9],%[fx:h*.9] rgb(59%,69%,53%)' \
+        +channel "$@"
 
 panel_dgren_marbl-64-baked/panel_weapon_list_next_hlight.png: $(top_srcdir)/panel_dgren_marbl-64/panel_weapon_list_next_frame.png $(top_srcdir)/panel_dgren_marbl-64/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $+ -gravity Center -geometry +1+2 -composite \
 	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
-        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -morphology EdgeIn Octagon:2 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
-        -channel R -evaluate multiply 0.88 \
-        -channel G -evaluate multiply 0.92 \
-        -channel B -evaluate multiply 0.86 \
-        +channel -colorspace RGB "$@"
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(59%,69%,53%)  %[fx:w*.5],%[fx:h*.5] rgb(30%,34%,27%) %[fx:w*.9],%[fx:h*.1] rgb(30%,34%,27%)  %[fx:w*.9],%[fx:h*.9] rgb(59%,69%,53%)' \
+        +channel "$@"

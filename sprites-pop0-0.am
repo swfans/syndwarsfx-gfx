@@ -133,7 +133,7 @@ panel_lblue_plain-32-baked/%.foup.nrm.png: panel_lblue_plain-32-baked/weapon_bk_
 # Use ImageMagick to generate light teal highlight border sprites around medikit box
 # 1. convert non-transparent areas to white, transparent to black
 # 2. remove the transparency; add extra 4px black border (to make border detection work at edges)
-# 3. detect borders using Laplacian filter convolution
+# 3. detect edge using Laplacian filter convolution
 # 4. remove the border again, make all non-black pixels white, and black pixels transparent
 # 5. multiply the pixels to achieve expected border color
 panel_lblue_plain-32-baked/panel_peragent_supl_hlight.png: $(top_srcdir)/panel_lblue_plain-32/panel_peragent_supl_empty.png

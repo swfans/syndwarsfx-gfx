@@ -255,7 +255,7 @@ panel_dgren_marbl-64-baked/%.halo.$(1).lgt.png: panel_dgren_marbl-64-baked/%.out
 
 endef
 
-$(eval $(call define_panel_halo_vertc_rule,sngl,explwire medi2 medi1 soulgun time))
+$(eval $(call define_panel_halo_vertc_rule,sngl,explwire medi2 soulgun time))
 
 # The halo for weapons which look better with radial smudges, where the symbol circulates around the middle
 define define_panel_halo_radil_rule

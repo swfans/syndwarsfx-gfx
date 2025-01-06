@@ -98,15 +98,32 @@ panel_mblue_bevel-64-baked/text_paused.png: $(pop1_1_sprites_text_paused)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 118x20+0+3 +repage "$@"
 
-# Use ImageMagick to generate light green sprites from the white ones
+# Use ImageMagick to generate light cyan sprites from the white ones
 # rule with multiple targets is automatically divided into multiple rules with single target
 panel_mblue_bevel-64-baked/%.outln.sngl.lgt.png panel_mblue_bevel-64-baked/%.outln.foup.lgt.png: $(top_srcdir)/weapons-outline-18/%.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) "$<" -colorspace RGB \
-        -channel R -evaluate multiply 0.88 \
-        -channel G -evaluate multiply 0.92 \
-        -channel B -evaluate multiply 0.86 \
-        +channel -colorspace RGB "$@"
+	$(MAGICK_CONVERT) "$<" \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel "$@"
+
+# Use ImageMagick to generate dark blue (bevel shadow/valley) and light blue (bevel highlight) sprites from the white ones
+panel_mblue_bevel-64-baked/%.outln.sngl.nrm.png panel_mblue_bevel-64-baked/%.outln.foup.nrm.png: $(top_srcdir)/weapons-outline-18/%.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" \
+        -channel R -evaluate multiply 0.08 \
+        -channel G -evaluate multiply 0.00 \
+        -channel B -evaluate multiply 0.17 \
+        +channel "$@"
+
+panel_mblue_bevel-64-baked/%.outln.sngl.hlg.png panel_mblue_bevel-64-baked/%.outln.foup.hlg.png: $(top_srcdir)/weapons-outline-18/%.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" \
+        -channel R -evaluate multiply 0.42 \
+        -channel G -evaluate multiply 0.34 \
+        -channel B -evaluate multiply 0.98 \
+        +channel "$@"
 
 panel_mblue_bevel-64-baked/panel_peragent_main_number_1.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_frst_empty.png panel_mblue_bevel-64/panel_agent_number_1.nrm.png
 	$(MKDIR_P) "$(@D)"
@@ -153,9 +170,32 @@ panel_mblue_bevel-64-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel
       \( "$(word 2,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,80%,0.6 -fuzz 5% -fill none -opaque none \) -gravity Center -geometry +0+1 -composite \
       "$(word 2,$+)"  -geometry +0+0 -composite "$@"
 
-panel_mblue_bevel-64-baked/%.sngl.nrm.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.outln.sngl.lgt.png
+# Use ImageMagick to generate a bevel effect around the weapon outline shape, to be used for inactive(normal) weapon
+# 1. Motion blur dark outline towards upper left to make shadow part of the bevel
+# 2. Motion blur highlight outline towards lower right to make lit part of the bevel
+# 3. Use BottomHat differential filter to soften the effect on small detils which are quickly filled by any blur
+
+define define_panel_bevel_rule
+panel_mblue_bevel-64-baked/%.bevel.$(1).nrm.png: panel_mblue_bevel-64-baked/%.outln.$(1).nrm.png panel_mblue_bevel-64-baked/%.outln.$(1).hlg.png
+	$$(MKDIR_P) "$$(@D)"
+	$$(MAGICK_CONVERT) "$$(word 1,$$+)" -gravity Center \
+        \( "$$(word 1,$$+)" -motion-blur 0x0.6+25  -channel A +level 0,140% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -motion-blur 0x0.6+65  -channel A +level 0,100% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -motion-blur 0x0.6+45  -channel A +level 0,100% \) -geometry +0+0 -composite \
+        \( "$$(word 2,$$+)" -motion-blur 0x0.6+245 -channel A +level 0,300% \) -geometry +0+0 -composite \
+        \( "$$(word 2,$$+)" -motion-blur 0x0.6+225 -channel A +level 0,300% \) -geometry +0+0 -composite \
+        \( "$$(word 2,$$+)" -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:2 +level 100%,60% \) -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
+        "$$@"
+
+endef
+
+$(eval $(call define_panel_bevel_rule,sngl))
+$(eval $(call define_panel_bevel_rule,foup))
+
+panel_mblue_bevel-64-baked/%.sngl.nrm.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.bevel.sngl.nrm.png panel_mblue_bevel-64-baked/%.outln.sngl.nrm.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize -modulate 100,400,100 +level 0,54% \) -gravity Center -geometry +0+0 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" \) -gravity Center -geometry +0+0 -composite \
+	    \( "$(word 3,$+)" \) -gravity Center -geometry +0+0 -composite "$@"
 
 panel_mblue_bevel-64-baked/weapon_ammo_slot.png:
 	$(MKDIR_P) "$(@D)"
@@ -168,13 +208,16 @@ panel_mblue_bevel-64-baked/weapon_ammo_slot.png:
         \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 1,1 4,4" -motion-blur 0x3.0+45  +level 0,170% \) -gravity Center -geometry +0+0 -composite \
         -fill 'rgb(8%,0%,17%)' -draw "rectangle 1,1 4,4" "$@"
 
-panel_mblue_bevel-64-baked/%.foup.nrm.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.outln.foup.lgt.png panel_mblue_bevel-64-baked/weapon_ammo_slot.png
+panel_mblue_bevel-64-baked/%.foup.nrm.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.bevel.sngl.nrm.png panel_mblue_bevel-64-baked/%.outln.foup.nrm.png panel_mblue_bevel-64-baked/weapon_ammo_slot.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $<  \( "$(word 3,$+)" +level 0,99% \) -gravity Center -geometry +26+7 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 3,$+)" +level 0,99% \) -gravity Center -geometry +26-7 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 3,$+)" +level 0,99% \) -gravity Center -geometry -26+7 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 3,$+)" +level 0,99% \) -gravity Center -geometry -26-7 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 2,$+)" -modulate 100,400,100 +level 0,54% \) -gravity Center -geometry +0+0 -composite "$@"
+	$(MAGICK_CONVERT) $<  -gravity Center \
+        \( "$(word 4,$+)" +level 0,99% \) -geometry +26+7 -composite \
+        \( "$(word 4,$+)" +level 0,99% \) -geometry +26-7 -composite \
+        \( "$(word 4,$+)" +level 0,99% \) -geometry -26+7 -composite \
+        \( "$(word 4,$+)" +level 0,99% \) -geometry -26-7 -composite \
+        \( "$(word 2,$+)" \) -geometry +0+0 -composite \
+	    \( "$(word 3,$+)" \) -geometry +0+0 -composite \
+        "$@"
 
 # Use ImageMagick to generate a strong halo effect around the weapon outline shape, to be used for wielded weapon
 # 1. Motion blur in all directions to prepare a smeared glow outside of the shape

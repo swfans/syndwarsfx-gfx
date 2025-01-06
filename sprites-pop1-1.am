@@ -148,11 +148,11 @@ panel_mblue_bevel-64-baked/panel_peragent_supl_medi.nrm.png: $(top_srcdir)/panel
 
 panel_mblue_bevel-64-baked/panel_peragent_supl_symbol_medi.halo.lgt.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_supl_symbol_medi.png
 	$(MAGICK_CONVERT) $<  -gravity Center \
-      \( "$(word 1,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,80%,0.6 -fuzz 8% -fill none -opaque none \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 1,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,80%,0.6 -fuzz 5% -fill none -opaque none \) -gravity Center -geometry +0+1 -composite \
+        \( "$(word 1,$+)" -modulate 100,0 -level 0,50% -blur 0x1.3 -channel A +level 0,130%,0.6 \) -geometry +0+0 -composite \
+        \( "$(word 1,$+)" -modulate 100,0 -level 0,50% -blur 0x1.3 -channel A +level 0,130%,0.6 \) -geometry +0+1 -composite \
         -channel R -evaluate multiply 0.42 \
-        -channel G -evaluate multiply 0.34 \
-        -channel B -evaluate multiply 0.98 \
+        -channel G -evaluate multiply 0.55 \
+        -channel B -evaluate multiply 0.99 \
         +channel "$@"
 
 panel_mblue_bevel-64-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_supl_empty.png panel_mblue_bevel-64-baked/panel_peragent_supl_symbol_medi.halo.lgt.png $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_supl_symbol_medi.png

@@ -1,0 +1,359 @@
+# *****************************************************************************
+#  Graphics assets generation for Syndicate Wars Port.
+# *****************************************************************************
+#  @file sprites-pop1-1.am
+#      Automake rules neccessary to build `pop1-1` in-game panel sprites.
+#  @author   Tomasz Lis
+#  @par  Copying and copyrights:
+#      This program is free software; you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation; either version 2 of the License, or
+#      (at your option) any later version.
+# *****************************************************************************
+
+pop1_1_files = data/pop1-1.dat data/pop1-1.tab
+
+# The sprites contain some text lines merged from bitmap fonts
+pop1_1_chars_text_detail = \
+  0044 0045 0054 0041 0049 004c
+
+pop1_1_chars_text_uplink = \
+  0055 0050 004c 0049 004e 004b 0020
+
+pop1_1_chars_text_paused = \
+  0050 0041 0055 0053 0045 0044
+
+pop1_1_sprites_text_detail = \
+  $(foreach num,$(pop1_1_chars_text_detail),font0_sharp_cult-20-ltteal/char_u$(num).png)
+
+pop1_1_sprites_text_uplink = \
+  $(foreach num,$(pop1_1_chars_text_uplink),font0_sharp_cult-20-ltteal/char_u$(num).png)
+
+pop1_1_sprites_text_paused = \
+  $(foreach num,$(pop1_1_chars_text_paused),font0_sharp_cult-20-ltteal/char_u$(num).png)
+
+pop1_1_sprites_text = \
+  panel_mblue_bevel-64-baked/text_detail.png \
+  panel_mblue_bevel-64-baked/text_uplink.png \
+  panel_mblue_bevel-64-baked/text_paused.png
+
+# Sprites representing each weapon, when in pocket and when taken out
+pop1_1_weapons_singl_outline = \
+  uzi minigun laser ellaser rap persuader flamer h2htaser longrange airstrike beam razorwire \
+  qdevastator persuader2 stasisfld soulgun time cerberusiff medi1 medi2 explwire cloneshld item_cybmod item_suitcase
+pop1_1_weapons_fourp_outline = \
+  nuclgren crazygas kogas elemine explmine
+
+pop1_1_sprites_wep_oln = \
+  $(foreach name,$(pop1_1_weapons_singl_outline),panel_mblue_bevel-64-baked/weapon_outline_$(name).sngl.lgt.png) \
+  $(foreach name,$(pop1_1_weapons_fourp_outline),panel_mblue_bevel-64-baked/weapon_outline_$(name).foup.lgt.png)
+pop1_1_sprites_wep_pnl = \
+  $(foreach name,$(pop1_1_weapons_singl_outline),panel_mblue_bevel-64-baked/weapon_outline_$(name).sngl.nrm.png) \
+  $(foreach name,$(pop1_1_weapons_fourp_outline),panel_mblue_bevel-64-baked/weapon_outline_$(name).foup.nrm.png)
+
+# Generated elements of the per-agent panel
+pop1_1_sprites_agents_panel = \
+  $(foreach num,1 2 3 4,panel_mblue_bevel-64-baked/panel_peragent_main_number_$(num).png) \
+  $(foreach name,nrm lgt,panel_mblue_bevel-64-baked/panel_peragent_supl_medi.$(name).png) \
+  panel_mblue_bevel-64-baked/panel_peragent_supl_hlight.png \
+  panel_mblue_bevel-64-baked/panel_weapon_frame_hlight.png \
+  panel_mblue_bevel-64-baked/panel_weapon_list_frst_hlight.png \
+  panel_mblue_bevel-64-baked/panel_weapon_list_next_hlight.png
+
+# List of sprites to pass without alterations
+pop1_1_sprnames_nomod = \
+  frame1_med_lgt_tl frame1_med_lgt_tr frame1_med_lgt_bl frame1_med_lgt_br \
+  frame1_med_nrm_tl frame1_med_nrm_tr frame1_med_nrm_bl frame1_med_nrm_br \
+  empty kicked_arrow_left kicked_arrow_right \
+  ingame_agent_number_1 ingame_agent_number_2 ingame_agent_number_3 ingame_agent_number_4 \
+  $(foreach num,1 2 3 4,panel_agent_number_$(num)) \
+  panel_grouping panel_grouping_bar_grp panel_grouping_bar_th \
+  panel_peragent_supl_empty panel_peragent_supl_symbol_medi \
+  panel_sshield_ena_btm panel_sshield_ena_top panel_sshield_nrm_btm panel_sshield_nrm_top panel_weapon_frame \
+  panel_weapon_list_frst_frame panel_weapon_list_next_frame weapon_bk_empty
+pop1_1_sprites_cp = \
+  $(foreach name,$(pop1_1_sprnames_nomod),panel_mblue_bevel-64-baked/$(name).png)
+
+data/pop1-1.tab: data/pop1-1.dat
+
+data/pop1-1.dat: panel_mblue_bevel-64-baked/filelist-pop1-1.txt $(top_srcdir)/data/engine-std.pal ${pop1_1_sprites_cp} $(pop1_1_sprites_text) $(pop1_1_sprites_agents_panel) $(pop1_1_sprites_wep_oln) $(pop1_1_sprites_wep_pnl)
+
+panel_mblue_bevel-64-baked/%.txt: $(top_srcdir)/panel_mblue_bevel-64/%.txt
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"
+
+panel_mblue_bevel-64-baked/%.png: $(top_srcdir)/panel_mblue_bevel-64/%.png
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"
+
+panel_mblue_bevel-64-baked/text_detail.png: $(pop1_1_sprites_text_detail)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 106x20+0+3 +repage "$@"
+
+panel_mblue_bevel-64-baked/text_uplink.png: $(pop1_1_sprites_text_uplink)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 132x20+0+3 +repage "$@"
+
+panel_mblue_bevel-64-baked/text_paused.png: $(pop1_1_sprites_text_paused)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 118x20+0+3 +repage "$@"
+
+# Use ImageMagick to generate light green sprites from the white ones
+# Gas canisters need to have one row removed to better fit the ammo slots
+panel_mblue_bevel-64-baked/weapon_outline_crazygas.outln.foup.lgt.png: $(top_srcdir)/weapons-outline-18/weapon_outline_crazygas.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -colorspace RGB \
+        -channel R -evaluate multiply 0.88 \
+        -channel G -evaluate multiply 0.92 \
+        -channel B -evaluate multiply 0.86 \
+        +channel -chop 1x0+16+0 -colorspace RGB "$@"
+
+panel_mblue_bevel-64-baked/weapon_outline_kogas.outln.foup.lgt.png: $(top_srcdir)/weapons-outline-18/weapon_outline_kogas.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -colorspace RGB \
+        -channel R -evaluate multiply 0.88 \
+        -channel G -evaluate multiply 0.92 \
+        -channel B -evaluate multiply 0.86 \
+        +channel -chop 1x0+16+0 -colorspace RGB "$@"
+
+# rule with multiple targets is automatically divided into multiple rules with single target
+panel_mblue_bevel-64-baked/%.outln.sngl.lgt.png panel_mblue_bevel-64-baked/%.outln.foup.lgt.png: $(top_srcdir)/weapons-outline-18/%.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -colorspace RGB \
+        -channel R -evaluate multiply 0.88 \
+        -channel G -evaluate multiply 0.92 \
+        -channel B -evaluate multiply 0.86 \
+        +channel -colorspace RGB "$@"
+
+panel_mblue_bevel-64-baked/panel_peragent_main_number_1.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_frst_empty.png panel_mblue_bevel-64/panel_agent_number_1.nrm.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -60-6 -composite "$@"
+
+panel_mblue_bevel-64-baked/panel_peragent_main_number_2.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_next_empty.png panel_mblue_bevel-64/panel_agent_number_2.nrm.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -55-2 -composite "$@"
+
+panel_mblue_bevel-64-baked/panel_peragent_main_number_3.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_next_empty.png panel_mblue_bevel-64/panel_agent_number_3.nrm.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -55-2 -composite "$@"
+
+panel_mblue_bevel-64-baked/panel_peragent_main_number_4.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_next_empty.png panel_mblue_bevel-64/panel_agent_number_4.nrm.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -57-2 -composite "$@"
+
+# Use ImageMagick to generate per agent medi button
+panel_mblue_bevel-64-baked/panel_peragent_supl_medi.nrm.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_supl_empty.png $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_supl_bevel_medi.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" \) -gravity Center -geometry +0+0 -composite "$@"
+
+panel_mblue_bevel-64-baked/panel_peragent_supl_symbol_medi.halo.lgt.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_supl_symbol_medi.png
+	$(MAGICK_CONVERT) $<  \( "$(word 1,$+)" -modulate 100,0 -motion-blur 0x2.7+90  -level 0,60% \) -gravity Center -geometry +0-1 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" -modulate 100,0 -motion-blur 0x2.7+270 -level 0,60% \) -gravity Center -geometry +0+1 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" -modulate 100,0 -motion-blur 0x2.3+0   +level 0,60% \) -gravity Center -geometry -1+0 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" -modulate 100,0 -motion-blur 0x2.3+180 +level 0,60% \) -gravity Center -geometry +1+0 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" \
+        -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 30%,90% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $(MAGICK_CONVERT) - -blur 0x0.5 +level 0,90%,0.80 miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" \
+        -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,88% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $(MAGICK_CONVERT) - -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! +channel -shave 1x1 miff:- | \
+      $(MAGICK_CONVERT) - \
+        -channel R -evaluate multiply 0.00 \
+        +channel "$@"
+
+panel_mblue_bevel-64-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_supl_empty.png $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_supl_symbol_medi.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \
+      \( "$(word 2,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,80%,0.6 -fuzz 8% -fill none -opaque none \) -gravity Center -geometry +0+0 -composite \
+      \( "$(word 2,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,80%,0.6 -fuzz 5% -fill none -opaque none \) -gravity Center -geometry +0+1 -composite \
+      "$(word 2,$+)"  -geometry +0+0 -composite "$@"
+
+panel_mblue_bevel-64-baked/%.sngl.nrm.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.outln.sngl.lgt.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize -modulate 100,400,100 +level 0,54% \) -gravity Center -geometry +0+0 -composite "$@"
+
+panel_mblue_bevel-64-baked/weapon_ammo_slot.png:
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) -size 6x6 xc:none -stroke none \
+        \( xc:none -fill 'rgb(42%,34%,98%)' -draw "rectangle 1,1 4,4" -motion-blur 0x2.0+205 +level 0,80%  \) -gravity Center -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,34%,98%)' -draw "rectangle 1,1 4,4" -motion-blur 0x2.0+245 +level 0,80%  \) -gravity Center -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,34%,98%)' -draw "rectangle 1,1 4,4" -motion-blur 0x3.0+225 +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 1,1 4,4" -motion-blur 0x2.0+25  +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 1,1 4,4" -motion-blur 0x2.0+65  +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 1,1 4,4" -motion-blur 0x3.0+45  +level 0,170% \) -gravity Center -geometry +0+0 -composite \
+        -fill 'rgb(8%,0%,17%)' -draw "rectangle 1,1 4,4" "$@"
+
+panel_mblue_bevel-64-baked/%.foup.nrm.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.outln.foup.lgt.png panel_mblue_bevel-64-baked/weapon_ammo_slot.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $<  \( "$(word 3,$+)" +level 0,99% \) -gravity Center -geometry +26+7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 3,$+)" +level 0,99% \) -gravity Center -geometry +26-7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 3,$+)" +level 0,99% \) -gravity Center -geometry -26+7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 3,$+)" +level 0,99% \) -gravity Center -geometry -26-7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 2,$+)" -modulate 100,400,100 +level 0,54% \) -gravity Center -geometry +0+0 -composite "$@"
+
+# Use ImageMagick to generate a strong halo effect around the weapon outline shape, to be used for wielded weapon
+# 1. Motion blur in all directions to prepare a smeared glow outside of the shape
+# 2. Multiply (using bumpmap) with a mask containing area outside of the shape only - reduce blur from the inside to circa 1/5
+# 3. Clone the resulting glow and blur again, to re-add a little blur inside of the shape
+# 4. Use Euclidean gradient to soften the glow on edges of the picture
+# 5. Use BottomHat differential filter to soften the glow on small detils which are quickly filled by any blur
+# 6. Re-color to greenish white
+
+# The halo for weapons which look better with vertical smudges
+define define_panel_halo_vertc_rule
+$$(foreach name,$(2),panel_mblue_bevel-64-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
+panel_mblue_bevel-64-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-64-baked/%.outln.$(1).lgt.png
+	$$(MAGICK_CONVERT) $$< \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.7+90  -level 0,60% \) -gravity Center -geometry +0-1 -composite miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.7+270 -level 0,60% \) -gravity Center -geometry +0+1 -composite miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.3+0   +level 0,60% \) -gravity Center -geometry -1+0 -composite miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.3+180 +level 0,60% \) -gravity Center -geometry +1+0 -composite miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
+        -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 30%,90% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $$(MAGICK_CONVERT) - -blur 0x0.5 +level 0,90%,0.80 miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
+        -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,88% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $$(MAGICK_CONVERT) - -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! +channel -shave 1x1 miff:- | \
+      $$(MAGICK_CONVERT) - \
+        -channel R -evaluate multiply 0.00 \
+        +channel "$$@"
+
+endef
+
+$(eval $(call define_panel_halo_vertc_rule,sngl,explwire medi2 soulgun time))
+
+# The halo for weapons which look better with radial smudges, where the symbol circulates around the middle
+define define_panel_halo_radil_rule
+$$(foreach name,$(2),panel_mblue_bevel-64-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
+panel_mblue_bevel-64-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-64-baked/%.outln.$(1).lgt.png
+	$$(MAGICK_CONVERT) $$< \( "$$(word 1,$$+)" -modulate 100,0 -resize 100%x200%\! -rotational-blur 60 -resize 100%x50%\! -level 0,30% \) -gravity Center -geometry +0+0 -composite miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.5+0   -level 0,130% \) -gravity Center -geometry +0+0 -composite miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.5+180 -level 0,130% \) -gravity Center -geometry +0+0 -composite miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
+        -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 20%,90% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $$(MAGICK_CONVERT) - -blur 0x0.5 +level 0,90%,0.70 miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
+        -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:2 +level 100%,85% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $$(MAGICK_CONVERT) - -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! +channel -shave 1x1 miff:- | \
+      $$(MAGICK_CONVERT) - \
+        -channel R -evaluate multiply 0.00 \
+        +channel "$$@"
+
+endef
+
+$(eval $(call define_panel_halo_radil_rule,sngl,cloneshld stasisfld))
+
+# The halo for weapons which have thick filled white areas, which require toning down the intensity
+define define_panel_halo_thick_rule
+$$(foreach name,$(2),panel_mblue_bevel-64-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
+panel_mblue_bevel-64-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-64-baked/%.outln.$(1).lgt.png
+	$$(MAGICK_CONVERT) $$< \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.0+90  +level 0,60% \) -gravity Center -geometry +0+0 -composite miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.0+270 +level 0,60% \) -gravity Center -geometry +0+0 -composite miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+0   -level 0,70% \) -gravity Center -geometry -1+0 -composite miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+180 -level 0,70% \) -gravity Center -geometry +1+0 -composite miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
+        -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 20%,90% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $$(MAGICK_CONVERT) - -blur 0x1.2 +level 0,90%,0.70 miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
+        -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,85% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $$(MAGICK_CONVERT) - -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! +channel -shave 1x1 miff:- | \
+      $$(MAGICK_CONVERT) - \
+        -channel R -evaluate multiply 0.00 \
+        +channel "$$@"
+
+endef
+
+$(eval $(call define_panel_halo_thick_rule,sngl,cerberusiff h2htaser medi1))
+$(eval $(call define_panel_halo_thick_rule,foup,nuclgren))
+
+# The most generic halo, for weapons with horizonal symbols and thin lines
+define define_panel_halo_horiz_rule
+panel_mblue_bevel-64-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-64-baked/%.outln.$(1).lgt.png
+	$$(MAGICK_CONVERT) $$< \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2+90  +level 0,60% \) -gravity Center -geometry +0+0 -composite miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2+270 +level 0,60% \) -gravity Center -geometry +0+0 -composite miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+0   -level 0,70% \) -gravity Center -geometry -1+0 -composite miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+180 -level 0,70% \) -gravity Center -geometry +1+0 -composite miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
+        -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 30%,90% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $$(MAGICK_CONVERT) - -blur 0x1.2 +level 0,98%,0.70 miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
+        -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,70% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $$(MAGICK_CONVERT) - -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! +channel -shave 1x1 miff:- | \
+      $$(MAGICK_CONVERT) - \
+        -channel R -evaluate multiply 0.00 \
+        +channel "$$@"
+
+endef
+
+$(foreach wepammo,foup sngl,$(eval $(call define_panel_halo_horiz_rule,$(wepammo))))
+
+panel_mblue_bevel-64-baked/%.sngl.lgt.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.outln.sngl.lgt.png panel_mblue_bevel-64-baked/%.halo.sngl.lgt.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $<  \( "$(word 3,$+)" -modulate 100,400,100 \) -gravity Center -geometry +0+0 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 2,$+)" \) -gravity Center -geometry +0+0 -composite "$@"
+
+panel_mblue_bevel-64-baked/%.foup.lgt.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.outln.foup.lgt.png panel_mblue_bevel-64-baked/%.halo.foup.lgt.png panel_mblue_bevel-64-baked/weapon_ammo_slot.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $<  \( "$(word 4,$+)" +level 0,99% \) -gravity Center -geometry +26+7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 4,$+)" +level 0,99% \) -gravity Center -geometry +26-7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 4,$+)" +level 0,99% \) -gravity Center -geometry -26+7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 4,$+)" +level 0,99% \) -gravity Center -geometry -26-7 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 3,$+)" -modulate 100,400,100 \) -gravity Center -geometry +0+0 -composite miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 2,$+)" \) -gravity Center -geometry +0+0 -composite "$@"
+
+# Use ImageMagick to generate light green color gradient highlight border sprite around medikit box
+# 1. convert non-transparent areas to white, transparent to black
+# 2. remove the transparency; add extra 4px black border (to make border detection work at edges)
+# 3. detect edge, drawing it inside the white shape (EdgeIn) using shape given by 1-px square filter
+# 4. remove the border again, make all non-black pixels white, and black pixels transparent
+# 5. keep A channel from previous computations, and fill RGB with a gradient generated using sparse-color function
+panel_mblue_bevel-64-baked/panel_peragent_supl_hlight.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_supl_empty.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -morphology EdgeIn Square:1 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(59%,69%,53%)  %[fx:w*.5],%[fx:h*.5] rgb(30%,34%,27%) %[fx:w*.9],%[fx:h*.1] rgb(30%,34%,27%)  %[fx:w*.9],%[fx:h*.9] rgb(59%,69%,53%)' \
+        +channel "$@"
+
+# Use ImageMagick to generate light green color gradient highlight border sprites around weapon boxes
+# The algorithm goes as explained before, but here the hole in the sprite is first patched with empty weapon; also thicker border is generated
+# For each sprite, a shift required to fully patch the hole is a bit different
+panel_mblue_bevel-64-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_mblue_bevel-64/panel_weapon_frame.png $(top_srcdir)/panel_mblue_bevel-64/weapon_bk_empty.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry -6+0 -composite \
+	    -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -morphology EdgeIn Octagon:2 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(59%,69%,53%)  %[fx:w*.5],%[fx:h*.5] rgb(30%,34%,27%) %[fx:w*.9],%[fx:h*.1] rgb(30%,34%,27%)  %[fx:w*.9],%[fx:h*.9] rgb(59%,69%,53%)' \
+        +channel "$@"
+
+panel_mblue_bevel-64-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/panel_mblue_bevel-64/panel_weapon_list_frst_frame.png $(top_srcdir)/panel_mblue_bevel-64/weapon_bk_empty.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +6+4 -composite \
+	    -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -morphology EdgeIn Octagon:2 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(59%,69%,53%)  %[fx:w*.5],%[fx:h*.5] rgb(30%,34%,27%) %[fx:w*.9],%[fx:h*.1] rgb(30%,34%,27%)  %[fx:w*.9],%[fx:h*.9] rgb(59%,69%,53%)' \
+        +channel "$@"
+
+panel_mblue_bevel-64-baked/panel_weapon_list_next_hlight.png: $(top_srcdir)/panel_mblue_bevel-64/panel_weapon_list_next_frame.png $(top_srcdir)/panel_mblue_bevel-64/weapon_bk_empty.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +1+2 -composite \
+	    -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -morphology EdgeIn Octagon:2 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(59%,69%,53%)  %[fx:w*.5],%[fx:h*.5] rgb(30%,34%,27%) %[fx:w*.9],%[fx:h*.1] rgb(30%,34%,27%)  %[fx:w*.9],%[fx:h*.9] rgb(59%,69%,53%)' \
+        +channel "$@"

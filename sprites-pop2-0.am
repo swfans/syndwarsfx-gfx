@@ -88,23 +88,6 @@ panel_dgren_marbl-32-baked/text_uplink_paused.png: $(pop2_0_sprites_text_uplink_
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 137x10+0+2 +repage "$@"
 
 # Use ImageMagick to generate light green sprites from the white ones
-# Gas canisters need to have one row removed to better fit the ammo slots
-panel_dgren_marbl-32-baked/weapon_outline_crazygas.outln.foup.lgt.png: $(top_srcdir)/weapons-outline-9/weapon_outline_crazygas.png
-	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) "$<" -colorspace RGB \
-        -channel R -evaluate multiply 0.88 \
-        -channel G -evaluate multiply 0.92 \
-        -channel B -evaluate multiply 0.86 \
-        +channel -chop 1x0+16+0 -colorspace RGB "$@"
-
-panel_dgren_marbl-32-baked/weapon_outline_kogas.outln.foup.lgt.png: $(top_srcdir)/weapons-outline-9/weapon_outline_kogas.png
-	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) "$<" -colorspace RGB \
-        -channel R -evaluate multiply 0.88 \
-        -channel G -evaluate multiply 0.92 \
-        -channel B -evaluate multiply 0.86 \
-        +channel -chop 1x0+16+0 -colorspace RGB "$@"
-
 # rule with multiple targets is automatically divided into multiple rules with single target
 panel_dgren_marbl-32-baked/%.outln.sngl.lgt.png panel_dgren_marbl-32-baked/%.outln.foup.lgt.png: $(top_srcdir)/weapons-outline-9/%.png
 	$(MKDIR_P) "$(@D)"

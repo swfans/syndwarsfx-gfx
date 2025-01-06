@@ -138,43 +138,43 @@ panel_dgren_marbl-64-baked/panel_peragent_main_number_4.png: $(top_srcdir)/panel
 $(foreach num,1 2 3 4,panel_dgren_marbl-64-baked/panel_agent_number_$(num).halo.lgt.png) : \
 panel_dgren_marbl-64-baked/%.halo.lgt.png: panel_dgren_marbl-64-baked/%.png
 	$(MAGICK_CONVERT) $< \
-      \( "$(word 1,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,90%,0.7 -fuzz 6% -fill none -opaque none \) -gravity Center -geometry +1+0 -composite \
-      \( "$(word 1,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,90%,0.7 -fuzz 6% -fill none -opaque none \) -gravity Center -geometry -1+0 -composite \
-      \( "$(word 1,$+)" -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,88% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
-      "$@"
+        \( "$(word 1,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,90%,0.7 -fuzz 6% -fill none -opaque none \) -gravity Center -geometry +1+0 -composite \
+        \( "$(word 1,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,90%,0.7 -fuzz 6% -fill none -opaque none \) -gravity Center -geometry -1+0 -composite \
+        \( "$(word 1,$+)" -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,88% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
+        "$@"
 
 # Use ImageMagick to generate active agent numbers, with bright numbers and additional halos behind
 panel_dgren_marbl-64-baked/panel_peragent_part_number_1.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_frst_empty.png panel_dgren_marbl-64-baked/panel_agent_number_1.png panel_dgren_marbl-64-baked/panel_agent_number_1.halo.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +60+6 -composite \
-      \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
-      "$@"
+        \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+        \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+        \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
+        "$@"
 
 panel_dgren_marbl-64-baked/panel_peragent_part_number_2.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_next_empty.png panel_dgren_marbl-64-baked/panel_agent_number_2.png panel_dgren_marbl-64-baked/panel_agent_number_2.halo.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +55+2 -composite \
-      \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
-      "$@"
+        \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+        \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+        \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
+        "$@"
 
 panel_dgren_marbl-64-baked/panel_peragent_part_number_3.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_nxt3_empty.png panel_dgren_marbl-64-baked/panel_agent_number_3.png panel_dgren_marbl-64-baked/panel_agent_number_3.halo.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +55+2 -composite \
-      \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
-      "$@"
+        \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+        \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+        \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
+        "$@"
 
 panel_dgren_marbl-64-baked/panel_peragent_part_number_4.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_nxt4_empty.png panel_dgren_marbl-64-baked/panel_agent_number_4.png panel_dgren_marbl-64-baked/panel_agent_number_4.halo.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +57+2 -composite \
-      \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
-      "$@"
+        \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+        \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+        \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
+        "$@"
 
 panel_dgren_marbl-64-baked/panel_peragent_supl_medi.nrm.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_supl_empty.png $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_supl_bevel_medi.png
 	$(MKDIR_P) "$(@D)"
@@ -189,20 +189,23 @@ panel_dgren_marbl-64-baked/panel_peragent_supl_symbol_medi.halo.lgt.png: $(top_s
 panel_dgren_marbl-64-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_supl_empty.png panel_dgren_marbl-64-baked/panel_peragent_supl_symbol_medi.halo.lgt.png $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_supl_symbol_medi.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< -gravity Center \
-      "$(word 2,$+)" -geometry +0+0 -composite \
-      "$(word 3,$+)" -geometry +0+0 -composite "$@"
+        "$(word 2,$+)" -geometry +0+0 -composite \
+        "$(word 3,$+)" -geometry +0+0 -composite "$@"
 
 panel_dgren_marbl-64-baked/%.sngl.nrm.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.outln.sngl.lgt.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize -modulate 100,400,100 +level 0,54% \) -gravity Center -geometry +0+0 -composite "$@"
+	$(MAGICK_CONVERT) $< -gravity Center \
+        \( "$(word 2,$+)" -modulate 100,400,100 +level 0,54% \) -geometry +0+0 -composite "$@"
 
 panel_dgren_marbl-64-baked/%.foup.nrm.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.outln.foup.lgt.png $(top_srcdir)/panel_dgren_marbl-64/weapon_ammo_slot_upper.png $(top_srcdir)/panel_dgren_marbl-64/weapon_ammo_slot_lower.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $<  \( "$(word 4,$+)" +level 0,99% \) -gravity Center -geometry +26+7 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 3,$+)" +level 0,99% \) -gravity Center -geometry +26-7 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 4,$+)" +level 0,99% \) -gravity Center -geometry -26+7 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 3,$+)" +level 0,99% \) -gravity Center -geometry -26-7 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 2,$+)" -modulate 100,400,100 +level 0,54% \) -gravity Center -geometry +0+0 -composite "$@"
+	$(MAGICK_CONVERT) $< -gravity Center \
+        \( "$(word 4,$+)" +level 0,99% \) -geometry +26+7 -composite \
+        \( "$(word 3,$+)" +level 0,99% \) -geometry +26-7 -composite \
+        \( "$(word 4,$+)" +level 0,99% \) -geometry -26+7 -composite \
+        \( "$(word 3,$+)" +level 0,99% \) -geometry -26-7 -composite \
+        \( "$(word 2,$+)" -modulate 100,400,100 +level 0,54% \) -geometry +0+0 -composite \
+        "$@"
 
 # Use ImageMagick to generate a strong halo effect around the weapon outline shape, to be used for wielded weapon
 # 1. Motion blur in all directions to prepare a smeared glow outside of the shape
@@ -216,13 +219,13 @@ panel_dgren_marbl-64-baked/%.foup.nrm.png: panel_dgren_marbl-64-baked/weapon_bk_
 define define_panel_halo_vertc_rule
 $$(foreach name,$(2),panel_dgren_marbl-64-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
 panel_dgren_marbl-64-baked/%.halo.$(1).lgt.png: panel_dgren_marbl-64-baked/%.outln.$(1).lgt.png
-	$$(MAGICK_CONVERT) $$< \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.7+90  -level 0,60% \) -gravity Center -geometry +0-1 -composite miff:- | \
-      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.7+270 -level 0,60% \) -gravity Center -geometry +0+1 -composite miff:- | \
-      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.3+0   +level 0,60% \) -gravity Center -geometry -1+0 -composite miff:- | \
-      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.3+180 +level 0,60% \) -gravity Center -geometry +1+0 -composite miff:- | \
-      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
-        -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 30%,90% \
-        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+	$$(MAGICK_CONVERT) $$< -gravity Center \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.7+90  -level 0,60% \) -geometry +0-1 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.7+270 -level 0,60% \) -geometry +0+1 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.3+0   +level 0,60% \) -geometry -1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.3+180 +level 0,60% \) -geometry +1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 30%,90% \
+        \) -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
       $$(MAGICK_CONVERT) - -blur 0x0.5 +level 0,90%,0.80 miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
         -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,88% \
@@ -241,12 +244,12 @@ $(eval $(call define_panel_halo_vertc_rule,sngl,explwire medi2 soulgun time))
 define define_panel_halo_radil_rule
 $$(foreach name,$(2),panel_dgren_marbl-64-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
 panel_dgren_marbl-64-baked/%.halo.$(1).lgt.png: panel_dgren_marbl-64-baked/%.outln.$(1).lgt.png
-	$$(MAGICK_CONVERT) $$< \( "$$(word 1,$$+)" -modulate 100,0 -resize 100%x200%\! -rotational-blur 60 -resize 100%x50%\! -level 0,30% \) -gravity Center -geometry +0+0 -composite miff:- | \
-      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.5+0   -level 0,130% \) -gravity Center -geometry +0+0 -composite miff:- | \
-      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.5+180 -level 0,130% \) -gravity Center -geometry +0+0 -composite miff:- | \
-      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
-        -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 20%,90% \
-        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+	$$(MAGICK_CONVERT) $$< -gravity Center \
+        \( "$$(word 1,$$+)" -modulate 100,0 -resize 100%x200%\! -rotational-blur 60 -resize 100%x50%\! -level 0,30% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.5+0   -level 0,130% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.5+180 -level 0,130% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 20%,90% \
+        \) -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
       $$(MAGICK_CONVERT) - -blur 0x0.5 +level 0,90%,0.70 miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
         -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:2 +level 100%,85% \
@@ -265,13 +268,13 @@ $(eval $(call define_panel_halo_radil_rule,sngl,cloneshld stasisfld))
 define define_panel_halo_thick_rule
 $$(foreach name,$(2),panel_dgren_marbl-64-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
 panel_dgren_marbl-64-baked/%.halo.$(1).lgt.png: panel_dgren_marbl-64-baked/%.outln.$(1).lgt.png
-	$$(MAGICK_CONVERT) $$< \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.0+90  +level 0,60% \) -gravity Center -geometry +0+0 -composite miff:- | \
-      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.0+270 +level 0,60% \) -gravity Center -geometry +0+0 -composite miff:- | \
-      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+0   -level 0,70% \) -gravity Center -geometry -1+0 -composite miff:- | \
-      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+180 -level 0,70% \) -gravity Center -geometry +1+0 -composite miff:- | \
-      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
-        -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 20%,90% \
-        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+	$$(MAGICK_CONVERT) $$< -gravity Center \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.0+90  +level 0,60% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.0+270 +level 0,60% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+0   -level 0,70% \) -geometry -1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+180 -level 0,70% \) -geometry +1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 20%,90% \
+        \) -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
       $$(MAGICK_CONVERT) - -blur 0x1.2 +level 0,90%,0.70 miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
         -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,85% \
@@ -290,13 +293,13 @@ $(eval $(call define_panel_halo_thick_rule,foup,nuclgren))
 # The most generic halo, for weapons with horizonal symbols and thin lines
 define define_panel_halo_horiz_rule
 panel_dgren_marbl-64-baked/%.halo.$(1).lgt.png: panel_dgren_marbl-64-baked/%.outln.$(1).lgt.png
-	$$(MAGICK_CONVERT) $$< \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2+90  +level 0,60% \) -gravity Center -geometry +0+0 -composite miff:- | \
-      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2+270 +level 0,60% \) -gravity Center -geometry +0+0 -composite miff:- | \
-      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+0   -level 0,70% \) -gravity Center -geometry -1+0 -composite miff:- | \
-      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+180 -level 0,70% \) -gravity Center -geometry +1+0 -composite miff:- | \
-      $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
-        -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 30%,90% \
-        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+	$$(MAGICK_CONVERT) $$< -gravity Center \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2+90  +level 0,60% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2+270 +level 0,60% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+0   -level 0,70% \) -geometry -1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+180 -level 0,70% \) -geometry +1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 30%,90% \
+        \) -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
       $$(MAGICK_CONVERT) - -blur 0x1.2 +level 0,98%,0.70 miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
         -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,70% \
@@ -313,17 +316,21 @@ $(foreach wepammo,foup sngl,$(eval $(call define_panel_halo_horiz_rule,$(wepammo
 
 panel_dgren_marbl-64-baked/%.sngl.lgt.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.outln.sngl.lgt.png panel_dgren_marbl-64-baked/%.halo.sngl.lgt.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $<  \( "$(word 3,$+)" -modulate 100,400,100 \) -gravity Center -geometry +0+0 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 2,$+)" \) -gravity Center -geometry +0+0 -composite "$@"
+	$(MAGICK_CONVERT) $< -gravity Center \
+        \( "$(word 3,$+)" -modulate 100,400,100 \) -geometry +0+0 -composite \
+        \( "$(word 2,$+)" \) -geometry +0+0 -composite \
+        "$@"
 
 panel_dgren_marbl-64-baked/%.foup.lgt.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.outln.foup.lgt.png panel_dgren_marbl-64-baked/%.halo.foup.lgt.png $(top_srcdir)/panel_dgren_marbl-64/weapon_ammo_slot_upper.png $(top_srcdir)/panel_dgren_marbl-64/weapon_ammo_slot_lower.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $<  \( "$(word 5,$+)" +level 0,99% \) -gravity Center -geometry +26+7 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 4,$+)" +level 0,99% \) -gravity Center -geometry +26-7 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 5,$+)" +level 0,99% \) -gravity Center -geometry -26+7 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 4,$+)" +level 0,99% \) -gravity Center -geometry -26-7 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 3,$+)" -modulate 100,400,100 \) -gravity Center -geometry +0+0 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 2,$+)" \) -gravity Center -geometry +0+0 -composite "$@"
+	$(MAGICK_CONVERT) $< -gravity Center \
+        \( "$(word 5,$+)" +level 0,99% \) -geometry +26+7 -composite \
+        \( "$(word 4,$+)" +level 0,99% \) -geometry +26-7 -composite \
+        \( "$(word 5,$+)" +level 0,99% \) -geometry -26+7 -composite \
+        \( "$(word 4,$+)" +level 0,99% \) -geometry -26-7 -composite \
+        \( "$(word 3,$+)" -modulate 100,400,100 \) -geometry +0+0 -composite \
+        \( "$(word 2,$+)" \) -geometry +0+0 -composite \
+        "$@"
 
 # Use ImageMagick to generate light green color gradient highlight border sprite around medikit box
 # 1. convert non-transparent areas to white, transparent to black

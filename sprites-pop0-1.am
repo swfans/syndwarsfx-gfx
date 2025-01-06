@@ -102,31 +102,31 @@ panel_lblue_plain-64-baked/text_paused.png: $(pop0_1_sprites_text_paused)
 # rule with multiple targets is automatically divided into multiple rules with single target
 panel_lblue_plain-64-baked/%.sngl.lgt.png panel_lblue_plain-64-baked/%.foup.lgt.png: $(top_srcdir)/weapons-outline-18/%.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) "$<" -colorspace RGB \
+	$(MAGICK_CONVERT) "$<" \
         -channel R -evaluate multiply 0.00 \
         -channel G -evaluate multiply 0.99 \
         -channel B -evaluate multiply 0.99 \
-        +channel -colorspace RGB "$@"
+        +channel "$@"
 
 panel_lblue_plain-64-baked/panel_peragent_main_number_1.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_frst_empty.png panel_lblue_plain-64-baked/panel_agent_number_1.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -60-6 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -60-6 -composite "$@"
 
 panel_lblue_plain-64-baked/panel_peragent_main_number_2.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_next_empty.png panel_lblue_plain-64-baked/panel_agent_number_2.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
 
 panel_lblue_plain-64-baked/panel_peragent_main_number_3.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_next_empty.png panel_lblue_plain-64-baked/panel_agent_number_3.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
 
 panel_lblue_plain-64-baked/panel_peragent_main_number_4.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_next_empty.png panel_lblue_plain-64-baked/panel_agent_number_4.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -57-2 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -57-2 -composite "$@"
 
 panel_lblue_plain-64-baked/panel_peragent_supl_medi.nrm.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_supl_empty.png panel_lblue_plain-64/panel_peragent_supl_symbol_medi.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
 
 panel_lblue_plain-64-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_supl_empty.png panel_lblue_plain-64/panel_peragent_supl_symbol_medi.png
 	$(MKDIR_P) "$(@D)"
@@ -134,11 +134,11 @@ panel_lblue_plain-64-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel
 
 panel_lblue_plain-64-baked/%.sngl.nrm.png: panel_lblue_plain-64-baked/weapon_bk_empty.png panel_lblue_plain-64-baked/%.sngl.lgt.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
 
 panel_lblue_plain-64-baked/%.foup.nrm.png: panel_lblue_plain-64-baked/weapon_bk_empty.png panel_lblue_plain-64-baked/%.foup.lgt.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry +0+0 -composite \
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry +0+0 -composite \
         -channel A -region 4x4-26+7 -negate -region 4x4-26-7 -negate -region 4x4+26+7 -negate -region 4x4+26-7 -negate +channel "$@"
 
 # Use ImageMagick to generate light teal highlight border sprites around medikit box
@@ -156,7 +156,7 @@ panel_lblue_plain-64-baked/panel_peragent_supl_hlight.png: $(top_srcdir)/panel_l
         -channel R -evaluate multiply 0.00 \
         -channel G -evaluate multiply 0.99 \
         -channel B -evaluate multiply 0.99 \
-        +channel -colorspace RGB "$@"
+        +channel "$@"
 
 # Use ImageMagick to generate light teal highlight border sprites around weapon boxes
 # The algorithm goes as explained before, but here the hole in the sprite is first patched with empty weapon
@@ -171,7 +171,7 @@ panel_lblue_plain-64-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_lb
         -channel R -evaluate multiply 0.00 \
         -channel G -evaluate multiply 0.99 \
         -channel B -evaluate multiply 0.99 \
-        +channel -colorspace RGB "$@"
+        +channel "$@"
 
 panel_lblue_plain-64-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/panel_lblue_plain-64/panel_weapon_list_frst_frame.png $(top_srcdir)/panel_lblue_plain-64/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
@@ -183,7 +183,7 @@ panel_lblue_plain-64-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/pane
         -channel R -evaluate multiply 0.00 \
         -channel G -evaluate multiply 0.99 \
         -channel B -evaluate multiply 0.99 \
-        +channel -colorspace RGB "$@"
+        +channel "$@"
 
 panel_lblue_plain-64-baked/panel_weapon_list_next_hlight.png: $(top_srcdir)/panel_lblue_plain-64/panel_weapon_list_next_frame.png $(top_srcdir)/panel_lblue_plain-64/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
@@ -195,4 +195,4 @@ panel_lblue_plain-64-baked/panel_weapon_list_next_hlight.png: $(top_srcdir)/pane
         -channel R -evaluate multiply 0.00 \
         -channel G -evaluate multiply 0.99 \
         -channel B -evaluate multiply 0.99 \
-        +channel -colorspace RGB "$@"
+        +channel "$@"

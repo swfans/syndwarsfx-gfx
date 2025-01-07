@@ -63,16 +63,6 @@ panel_lblue_plain-32-baked/%.png: $(top_srcdir)/panel_lblue_plain-32/%.png
 	$(MKDIR_P) "$(@D)"
 	cp -p "$<" "$@"
 
-# Use ImageMagick to generate light teal sprites from the white ones
-# rule with multiple targets is automatically divided into multiple rules with single target
-panel_lblue_plain-32-baked/%.sngl.lgt.png panel_lblue_plain-32-baked/%.foup.lgt.png: $(top_srcdir)/weapons-outline-9/%.png
-	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) "$<" -colorspace RGB \
-        -channel R -evaluate multiply 0.00 \
-        -channel G -evaluate multiply 0.99 \
-        -channel B -evaluate multiply 0.99 \
-        +channel -colorspace RGB "$@"
-
 panel_lblue_plain-32-baked/panel_peragent_old_main_number_1.png: $(top_srcdir)/panel_lblue_plain-32/panel_peragent_old_frst_empty.png panel_lblue_plain-32-baked/panel_agent_number_1.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -30-3 -composite "$@"

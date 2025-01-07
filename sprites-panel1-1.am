@@ -36,7 +36,6 @@ panel1_1_sprites_wep_pnl = \
 # Generated elements of the per-agent panel
 panel1_1_sprites_agents_panel = \
   $(foreach num,1 2 3 4,panel_mblue_bevel-64-baked/panel_peragent_old_main_number_$(num).png) \
-  $(foreach num,1 2 3 4,panel_mblue_bevel-64-baked/panel_peragent_old_part_number_$(num).lgt.png) \
   panel_mblue_bevel-64-baked/panel_weapon_list_old_centr_hlight.png \
   panel_mblue_bevel-64-baked/panel_weapon_list_old_upper_hlight.png
 
@@ -46,7 +45,7 @@ panel1_1_sprnames_nomod = \
   frame1_med_nrm_tl frame1_med_nrm_tr frame1_med_nrm_bl frame1_med_nrm_br frame1_med_nrm_al frame1_med_nrm_ar \
   empty kicked_arrow_left kicked_arrow_right \
   ingame_agent_number_1 ingame_agent_number_2 ingame_agent_number_3 ingame_agent_number_4 \
-  panel_agent_number_1 panel_agent_number_2 panel_agent_number_3 panel_agent_number_4 \
+  $(foreach num,1 2 3 4,panel_agent_number_$(num)) \
   panel_grouping panel_grouping_bar_grp panel_grouping_bar_th \
   panel_sshield_ena_btm panel_sshield_ena_top panel_sshield_nrm_btm panel_sshield_nrm_top \
   panel_weapon_list_old_centr_frame panel_weapon_list_old_upper_frame weapon_bk_empty
@@ -90,39 +89,6 @@ panel_mblue_bevel-64-baked/panel_peragent_old_main_number_3.png: $(top_srcdir)/p
 panel_mblue_bevel-64-baked/panel_peragent_old_main_number_4.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_old_next_empty.png panel_mblue_bevel-64/panel_agent_number_4.nrm.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -56-2 -composite "$@"
-
-# Use ImageMagick to generate active agent numbers, with bright numbers and additional halos behind
-panel_mblue_bevel-64-baked/panel_peragent_old_part_number_1.lgt.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_old_frst_empty.png panel_mblue_bevel-64-baked/panel_agent_number_1.png panel_mblue_bevel-64-baked/panel_agent_number_1.halo.lgt.png
-	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +60+6 -composite \
-      \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
-      "$@"
-
-panel_mblue_bevel-64-baked/panel_peragent_old_part_number_2.lgt.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_old_next_empty.png panel_mblue_bevel-64-baked/panel_agent_number_2.png panel_mblue_bevel-64-baked/panel_agent_number_2.halo.lgt.png
-	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +55+2 -composite \
-      \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
-      "$@"
-
-panel_mblue_bevel-64-baked/panel_peragent_old_part_number_3.lgt.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_old_next_empty.png panel_mblue_bevel-64-baked/panel_agent_number_3.png panel_mblue_bevel-64-baked/panel_agent_number_3.halo.lgt.png
-	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +55+2 -composite \
-      \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
-      "$@"
-
-panel_mblue_bevel-64-baked/panel_peragent_old_part_number_4.lgt.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_old_next_empty.png panel_mblue_bevel-64-baked/panel_agent_number_4.png panel_mblue_bevel-64-baked/panel_agent_number_4.halo.lgt.png
-	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) "$(word 2,$+)" $< -gravity Center -geometry +56+2 -composite \
-      \( "$(word 3,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 2,$+)" +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-      \( "$(word 3,$+)" -modulate 100,0 -level 1%,1% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
-      "$@"
 
 # Use ImageMagick to generate blue color gradient highlight border sprites around weapon boxes
 # The algorithm goes as explained in other files, but here the hole in the sprite is first patched with empty weapon; also thicker border is generated

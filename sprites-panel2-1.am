@@ -65,16 +65,6 @@ panel_dgren_marbl-64-baked/%.png: $(top_srcdir)/panel_dgren_marbl-64/%.png
 	$(MKDIR_P) "$(@D)"
 	cp -p "$<" "$@"
 
-# Use ImageMagick to generate light green sprites from the white ones
-# rule with multiple targets is automatically divided into multiple rules with single target
-panel_dgren_marbl-64-baked/%.sngl.lgt.png panel_dgren_marbl-64-baked/%.foup.lgt.png: $(top_srcdir)/weapons-outline-18/%.png
-	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) "$<" -colorspace RGB \
-        -channel R -evaluate multiply 0.88 \
-        -channel G -evaluate multiply 0.92 \
-        -channel B -evaluate multiply 0.86 \
-        +channel -colorspace RGB "$@"
-
 panel_dgren_marbl-64-baked/panel_peragent_old_main_number_1.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_old_frst_empty.png panel_dgren_marbl-64/panel_agent_number_1.nrm.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -60-6 -composite "$@"

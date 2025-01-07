@@ -219,7 +219,7 @@ panel_mblue_bevel-64-baked/%.foup.nrm.png: panel_mblue_bevel-64-baked/weapon_bk_
 # 3. Clone the resulting glow and blur again, to re-add a little blur inside of the shape
 # 4. Use Euclidean gradient to soften the glow on edges of the picture
 # 5. Use BottomHat differential filter to soften the glow on small detils which are quickly filled by any blur
-# 6. Re-color to greenish white
+# 6. Re-color to light blue
 
 # The halo for weapons which look better with vertical smudges
 define define_panel_halo_vertc_rule
@@ -342,7 +342,7 @@ panel_mblue_bevel-64-baked/%.foup.lgt.png: panel_mblue_bevel-64-baked/weapon_bk_
         \( "$(word 2,$+)" \) -geometry +0+0 -compose Over -composite \
         "$@"
 
-# Use ImageMagick to generate light green color gradient highlight border sprite around medikit box
+# Use ImageMagick to generate light blue color gradient highlight border sprite around medikit box
 # 1. convert non-transparent areas to white, transparent to black
 # 2. remove the transparency; add extra 4px black border (to make border detection work at edges)
 # 3. detect edge, drawing it inside the white shape (EdgeIn) using shape given by 1-px square filter
@@ -357,7 +357,7 @@ panel_mblue_bevel-64-baked/panel_peragent_supl_hlight.png: $(top_srcdir)/panel_m
         -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(33%,22%,76%) %[fx:w*.9],%[fx:h*.1] rgb(33%,22%,76%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
         +channel "$@"
 
-# Use ImageMagick to generate light green color gradient highlight border sprites around weapon boxes
+# Use ImageMagick to generate light blue color gradient highlight border sprites around weapon boxes
 # The algorithm goes as explained before, but here the hole in the sprite is first patched with empty weapon; also thicker border is generated
 # For each sprite, a shift required to fully patch the hole is a bit different
 panel_mblue_bevel-64-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_mblue_bevel-64/panel_weapon_frame.png $(top_srcdir)/panel_mblue_bevel-64/weapon_bk_empty.png

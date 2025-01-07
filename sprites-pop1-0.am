@@ -1,8 +1,8 @@
 # *****************************************************************************
 #  Graphics assets generation for Syndicate Wars Port.
 # *****************************************************************************
-#  @file sprites-pop2-0.am
-#      Automake rules neccessary to build `pop2-0` in-game panel sprites.
+#  @file sprites-pop1-0.am
+#      Automake rules neccessary to build `pop1-0` in-game panel sprites.
 #  @author   Tomasz Lis
 #  @par  Copying and copyrights:
 #      This program is free software; you can redistribute it and/or modify
@@ -11,50 +11,50 @@
 #      (at your option) any later version.
 # *****************************************************************************
 
-pop2_0_files = data/pop2-0.dat data/pop2-0.tab
+pop1_0_files = data/pop1-0.dat data/pop1-0.tab
 
 # The sprites contain some text lines merged from bitmap fonts
-pop2_0_chars_text_detail = \
+pop1_0_chars_text_detail = \
   0044 0045 0054 0041 0049 004c
 
-pop2_0_chars_text_uplink_paused = \
+pop1_0_chars_text_uplink_paused = \
   0055 0050 004c 0049 004e 004b 0020 0050 0041 0055 0053 0045 0044
 
-pop2_0_sprites_text_detail = \
-  $(foreach num,$(pop2_0_chars_text_detail),font0_sharp_cult-10-ltgren/char_u$(num).png)
+pop1_0_sprites_text_detail = \
+  $(foreach num,$(pop1_0_chars_text_detail),font0_sharp_cult-10-ltgren/char_u$(num).png)
 
-pop2_0_sprites_text_uplink_paused = \
-  $(foreach num,$(pop2_0_chars_text_uplink_paused),font0_sharp_cult-10-ltgren/char_u$(num).png)
+pop1_0_sprites_text_uplink_paused = \
+  $(foreach num,$(pop1_0_chars_text_uplink_paused),font0_sharp_cult-10-ltgren/char_u$(num).png)
 
-pop2_0_sprites_text = \
-  panel_dgren_marbl-32-baked/text_detail.png \
-  panel_dgren_marbl-32-baked/text_uplink_paused.png
+pop1_0_sprites_text = \
+  panel_mblue_bevel-32-baked/text_detail.png \
+  panel_mblue_bevel-32-baked/text_uplink_paused.png
 
 # Sprites representing each weapon, when in pocket and when taken out
-pop2_0_weapons_singl_outline = \
+pop1_0_weapons_singl_outline = \
   uzi minigun laser ellaser rap persuader flamer h2htaser longrange airstrike beam razorwire \
   qdevastator persuader2 stasisfld soulgun time cerberusiff medi1 medi2 explwire cloneshld item_cybmod item_suitcase
-pop2_0_weapons_fourp_outline = \
+pop1_0_weapons_fourp_outline = \
   nuclgren crazygas kogas elemine explmine
 
-pop2_0_sprites_wep_oln = \
-  $(foreach name,$(pop2_0_weapons_singl_outline),panel_dgren_marbl-32-baked/weapon_outline_$(name).sngl.lgt.png) \
-  $(foreach name,$(pop2_0_weapons_fourp_outline),panel_dgren_marbl-32-baked/weapon_outline_$(name).foup.lgt.png)
-pop2_0_sprites_wep_pnl = \
-  $(foreach name,$(pop2_0_weapons_singl_outline),panel_dgren_marbl-32-baked/weapon_outline_$(name).sngl.nrm.png) \
-  $(foreach name,$(pop2_0_weapons_fourp_outline),panel_dgren_marbl-32-baked/weapon_outline_$(name).foup.nrm.png)
+pop1_0_sprites_wep_oln = \
+  $(foreach name,$(pop1_0_weapons_singl_outline),panel_mblue_bevel-32-baked/weapon_outline_$(name).sngl.lgt.png) \
+  $(foreach name,$(pop1_0_weapons_fourp_outline),panel_mblue_bevel-32-baked/weapon_outline_$(name).foup.lgt.png)
+pop1_0_sprites_wep_pnl = \
+  $(foreach name,$(pop1_0_weapons_singl_outline),panel_mblue_bevel-32-baked/weapon_outline_$(name).sngl.nrm.png) \
+  $(foreach name,$(pop1_0_weapons_fourp_outline),panel_mblue_bevel-32-baked/weapon_outline_$(name).foup.nrm.png)
 
 # Generated elements of the per-agent panel
-pop2_0_sprites_agents_panel = \
-  $(foreach num,1 2 3 4,panel_dgren_marbl-32-baked/panel_peragent_main_number_$(num).png) \
-  $(foreach name,nrm lgt,panel_dgren_marbl-32-baked/panel_peragent_supl_medi.$(name).png) \
-  panel_dgren_marbl-32-baked/panel_peragent_supl_hlight.png \
-  panel_dgren_marbl-32-baked/panel_weapon_frame_hlight.png \
-  panel_dgren_marbl-32-baked/panel_weapon_list_frst_hlight.png \
-  panel_dgren_marbl-32-baked/panel_weapon_list_next_hlight.png
+pop1_0_sprites_agents_panel = \
+  $(foreach num,1 2 3 4,panel_mblue_bevel-32-baked/panel_peragent_main_number_$(num).png) \
+  $(foreach name,nrm lgt,panel_mblue_bevel-32-baked/panel_peragent_supl_medi.$(name).png) \
+  panel_mblue_bevel-32-baked/panel_peragent_supl_hlight.png \
+  panel_mblue_bevel-32-baked/panel_weapon_frame_hlight.png \
+  panel_mblue_bevel-32-baked/panel_weapon_list_frst_hlight.png \
+  panel_mblue_bevel-32-baked/panel_weapon_list_next_hlight.png
 
 # List of sprites to pass without alterations
-pop2_0_sprnames_nomod = \
+pop1_0_sprnames_nomod = \
   frame1_med_lgt_tl frame1_med_lgt_tr frame1_med_lgt_bl frame1_med_lgt_br frame1_med_lgt_al frame1_med_lgt_ar \
   frame1_med_nrm_tl frame1_med_nrm_tr frame1_med_nrm_bl frame1_med_nrm_br frame1_med_nrm_al frame1_med_nrm_ar \
   empty kicked_arrow_left kicked_arrow_right \
@@ -64,77 +64,77 @@ pop2_0_sprnames_nomod = \
   panel_peragent_supl_empty panel_peragent_supl_symbol_medi \
   panel_sshield_ena panel_sshield_nrm panel_weapon_frame \
   panel_weapon_list_frst_frame panel_weapon_list_next_frame weapon_bk_empty
-pop2_0_sprites_cp = \
-  $(foreach name,$(pop2_0_sprnames_nomod),panel_dgren_marbl-32-baked/$(name).png)
+pop1_0_sprites_cp = \
+  $(foreach name,$(pop1_0_sprnames_nomod),panel_mblue_bevel-32-baked/$(name).png)
 
-data/pop2-0.tab: data/pop2-0.dat
+data/pop1-0.tab: data/pop1-0.dat
 
-data/pop2-0.dat: panel_dgren_marbl-32-baked/filelist-pop2-0.txt $(top_srcdir)/data/engine-std.pal ${pop2_0_sprites_cp} $(pop2_0_sprites_text) $(pop2_0_sprites_agents_panel) $(pop2_0_sprites_wep_oln) $(pop2_0_sprites_wep_pnl)
+data/pop1-0.dat: panel_mblue_bevel-32-baked/filelist-pop1-0.txt $(top_srcdir)/data/engine-std.pal ${pop1_0_sprites_cp} $(pop1_0_sprites_text) $(pop1_0_sprites_agents_panel) $(pop1_0_sprites_wep_oln) $(pop1_0_sprites_wep_pnl)
 
-panel_dgren_marbl-32-baked/%.txt: $(top_srcdir)/panel_dgren_marbl-32/%.txt
+panel_mblue_bevel-32-baked/%.txt: $(top_srcdir)/panel_mblue_bevel-32/%.txt
 	$(MKDIR_P) "$(@D)"
 	cp -p "$<" "$@"
 
-panel_dgren_marbl-32-baked/%.png: $(top_srcdir)/panel_dgren_marbl-32/%.png
+panel_mblue_bevel-32-baked/%.png: $(top_srcdir)/panel_mblue_bevel-32/%.png
 	$(MKDIR_P) "$(@D)"
 	cp -p "$<" "$@"
 
-panel_dgren_marbl-32-baked/text_detail.png: $(pop2_0_sprites_text_detail)
+panel_mblue_bevel-32-baked/text_detail.png: $(pop1_0_sprites_text_detail)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 59x10+0+2 +repage "$@"
 
-panel_dgren_marbl-32-baked/text_uplink_paused.png: $(pop2_0_sprites_text_uplink_paused)
+panel_mblue_bevel-32-baked/text_uplink_paused.png: $(pop1_0_sprites_text_uplink_paused)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 137x10+0+2 +repage "$@"
 
-# Use ImageMagick to generate light green sprites from the white ones
+# Use ImageMagick to generate light blue sprites from the white ones
 # rule with multiple targets is automatically divided into multiple rules with single target
-panel_dgren_marbl-32-baked/%.outln.sngl.lgt.png panel_dgren_marbl-32-baked/%.outln.foup.lgt.png: $(top_srcdir)/weapons-outline-9/%.png
+panel_mblue_bevel-32-baked/%.outln.sngl.lgt.png panel_mblue_bevel-32-baked/%.outln.foup.lgt.png: $(top_srcdir)/weapons-outline-9/%.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$<" -colorspace RGB \
-        -channel R -evaluate multiply 0.88 \
-        -channel G -evaluate multiply 0.92 \
-        -channel B -evaluate multiply 0.86 \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
         +channel "$@"
 
-panel_dgren_marbl-32-baked/panel_peragent_main_number_1.png: $(top_srcdir)/panel_dgren_marbl-32/panel_peragent_frst_empty.png panel_dgren_marbl-32/panel_agent_number_1.nrm.png
+panel_mblue_bevel-32-baked/panel_peragent_main_number_1.png: $(top_srcdir)/panel_mblue_bevel-32/panel_peragent_frst_empty.png panel_mblue_bevel-32/panel_agent_number_1.nrm.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -30-3 -composite "$@"
 
-panel_dgren_marbl-32-baked/panel_peragent_main_number_2.png: $(top_srcdir)/panel_dgren_marbl-32/panel_peragent_next_empty.png panel_dgren_marbl-32/panel_agent_number_2.nrm.png
+panel_mblue_bevel-32-baked/panel_peragent_main_number_2.png: $(top_srcdir)/panel_mblue_bevel-32/panel_peragent_next_empty.png panel_mblue_bevel-32/panel_agent_number_2.nrm.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -27-1 -composite "$@"
 
-panel_dgren_marbl-32-baked/panel_peragent_main_number_3.png: $(top_srcdir)/panel_dgren_marbl-32/panel_peragent_nxt3_empty.png panel_dgren_marbl-32/panel_agent_number_3.nrm.png
+panel_mblue_bevel-32-baked/panel_peragent_main_number_3.png: $(top_srcdir)/panel_mblue_bevel-32/panel_peragent_next_empty.png panel_mblue_bevel-32/panel_agent_number_3.nrm.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -27-1 -composite "$@"
 
-panel_dgren_marbl-32-baked/panel_peragent_main_number_4.png: $(top_srcdir)/panel_dgren_marbl-32/panel_peragent_nxt4_empty.png panel_dgren_marbl-32/panel_agent_number_4.nrm.png
+panel_mblue_bevel-32-baked/panel_peragent_main_number_4.png: $(top_srcdir)/panel_mblue_bevel-32/panel_peragent_next_empty.png panel_mblue_bevel-32/panel_agent_number_4.nrm.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -28-1 -composite "$@"
 
-panel_dgren_marbl-32-baked/panel_peragent_supl_medi.nrm.png: $(top_srcdir)/panel_dgren_marbl-32/panel_peragent_supl_empty.png $(top_srcdir)/panel_dgren_marbl-32/panel_peragent_supl_bevel_medi.png
+panel_mblue_bevel-32-baked/panel_peragent_supl_medi.nrm.png: $(top_srcdir)/panel_mblue_bevel-32/panel_peragent_supl_empty.png $(top_srcdir)/panel_mblue_bevel-32/panel_peragent_supl_bevel_medi.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" \) -gravity Center -geometry +0+0 -composite "$@"
 
-panel_dgren_marbl-32-baked/panel_peragent_supl_symbol_medi.halo.lgt.png: $(top_srcdir)/panel_dgren_marbl-32/panel_peragent_supl_symbol_medi.png
+panel_mblue_bevel-32-baked/panel_peragent_supl_symbol_medi.halo.lgt.png: $(top_srcdir)/panel_mblue_bevel-32/panel_peragent_supl_symbol_medi.png
 	$(MAGICK_CONVERT) $<  -gravity Center \
         \( "$(word 1,$+)" -blur 0x0.8 -modulate 100,500,95 +level 0,80%,0.6 -fuzz 8% -fill none -opaque none \) -geometry +0+0 -composite \
         \( "$(word 1,$+)" -blur 0x0.8 -modulate 100,500,95 +level 0,80%,0.6 -fuzz 5% -fill none -opaque none \) -geometry +0+1 -composite \
         +channel "$@"
 
-panel_dgren_marbl-32-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel_dgren_marbl-32/panel_peragent_supl_empty.png panel_dgren_marbl-32-baked/panel_peragent_supl_symbol_medi.halo.lgt.png $(top_srcdir)/panel_dgren_marbl-32/panel_peragent_supl_symbol_medi.png
+panel_mblue_bevel-32-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel_mblue_bevel-32/panel_peragent_supl_empty.png panel_mblue_bevel-32-baked/panel_peragent_supl_symbol_medi.halo.lgt.png $(top_srcdir)/panel_mblue_bevel-32/panel_peragent_supl_symbol_medi.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< -gravity Center \
       "$(word 2,$+)" -geometry +0+0 -composite \
       "$(word 3,$+)" -geometry +0+0 -composite "$@"
 
 # Compose final weapon icons, the hidden/normal flavour
-panel_dgren_marbl-32-baked/%.sngl.nrm.png: panel_dgren_marbl-32-baked/weapon_bk_empty.png panel_dgren_marbl-32-baked/%.outln.sngl.lgt.png
+panel_mblue_bevel-32-baked/%.sngl.nrm.png: panel_mblue_bevel-32-baked/weapon_bk_empty.png panel_mblue_bevel-32-baked/%.outln.sngl.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -modulate 100,400,100 +level 0,58% \) -gravity Center -geometry +0+0 -composite "$@"
 
-panel_dgren_marbl-32-baked/%.foup.nrm.png: panel_dgren_marbl-32-baked/weapon_bk_empty.png panel_dgren_marbl-32-baked/%.outln.foup.lgt.png
+panel_mblue_bevel-32-baked/%.foup.nrm.png: panel_mblue_bevel-32-baked/weapon_bk_empty.png panel_mblue_bevel-32-baked/%.outln.foup.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< -gravity Center \
         \( "$(word 2,$+)" -geometry +0+0 -fill 'rgb(97%,100%,95%)' -fuzz 100% \
@@ -147,12 +147,12 @@ panel_dgren_marbl-32-baked/%.foup.nrm.png: panel_dgren_marbl-32-baked/weapon_bk_
 # 3. Clone the resulting glow and blur again, to re-add a little blur inside of the shape
 # 4. Use Euclidean gradient to soften the glow on edges of the picture
 # 5. Use BottomHat differential filter to soften the glow on small detils which are quickly filled by any blur
-# 6. Re-color to greenish white
+# 6. Re-color to light blue
 
 # The halo for weapons which look better with vertical smudges
 define define_panel_halo_vertc_rule
-$$(foreach name,$(2),panel_dgren_marbl-32-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
-panel_dgren_marbl-32-baked/%.halo.$(1).lgt.png: panel_dgren_marbl-32-baked/%.outln.$(1).lgt.png
+$$(foreach name,$(2),panel_mblue_bevel-32-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
+panel_mblue_bevel-32-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-32-baked/%.outln.$(1).lgt.png
 	$$(MAGICK_CONVERT) $$< -gravity Center \
         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x1.6+90  -level 0,60% \) -geometry +0+0 -composite \
         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x1.6+270 -level 0,60% \) -geometry +0+0 -composite \
@@ -176,8 +176,8 @@ $(eval $(call define_panel_halo_vertc_rule,sngl,explwire medi2 soulgun time))
 
 # The halo for weapons which look better with radial smudges, where the symbol circulates around the middle
 define define_panel_halo_radil_rule
-$$(foreach name,$(2),panel_dgren_marbl-32-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
-panel_dgren_marbl-32-baked/%.halo.$(1).lgt.png: panel_dgren_marbl-32-baked/%.outln.$(1).lgt.png
+$$(foreach name,$(2),panel_mblue_bevel-32-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
+panel_mblue_bevel-32-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-32-baked/%.outln.$(1).lgt.png
 	$$(MAGICK_CONVERT) $$< -gravity Center \
         \( "$$(word 1,$$+)" -modulate 100,0 -resize 100%x200%\! -rotational-blur 60 -resize 100%x50%\! -level 0,30% \) -geometry +0+0 -composite \
         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x1.3+0   -level 0,130% \) -geometry +0+0 -composite \
@@ -200,8 +200,8 @@ $(eval $(call define_panel_halo_radil_rule,sngl,cloneshld stasisfld))
 
 # The halo for weapons which have thick filled white areas, which require toning down the intensity
 define define_panel_halo_thick_rule
-$$(foreach name,$(2),panel_dgren_marbl-32-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
-panel_dgren_marbl-32-baked/%.halo.$(1).lgt.png: panel_dgren_marbl-32-baked/%.outln.$(1).lgt.png
+$$(foreach name,$(2),panel_mblue_bevel-32-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
+panel_mblue_bevel-32-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-32-baked/%.outln.$(1).lgt.png
 	$$(MAGICK_CONVERT) $$< -gravity Center \
         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x1.0+90  +level 0,60% \) -geometry +0+0 -composite \
         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x1.0+270 +level 0,60% \) -geometry +0+0 -composite \
@@ -226,7 +226,7 @@ $(eval $(call define_panel_halo_thick_rule,foup,nuclgren))
 
 # The most generic halo, for weapons with horizonal symbols and thin lines
 define define_panel_halo_horiz_rule
-panel_dgren_marbl-32-baked/%.halo.$(1).lgt.png: panel_dgren_marbl-32-baked/%.outln.$(1).lgt.png
+panel_mblue_bevel-32-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-32-baked/%.outln.$(1).lgt.png
 	$$(MAGICK_CONVERT) $$< -gravity Center \
         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x1+90    +level 0,60% \) -geometry +0+0 -composite \
         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x1+270   +level 0,60% \) -geometry +0+0 -composite \
@@ -248,14 +248,14 @@ endef
 
 $(foreach wepammo,foup sngl,$(eval $(call define_panel_halo_horiz_rule,$(wepammo))))
 
-panel_dgren_marbl-32-baked/%.sngl.lgt.png: panel_dgren_marbl-32-baked/weapon_bk_empty.png panel_dgren_marbl-32-baked/%.outln.sngl.lgt.png panel_dgren_marbl-32-baked/%.halo.sngl.lgt.png
+panel_mblue_bevel-32-baked/%.sngl.lgt.png: panel_mblue_bevel-32-baked/weapon_bk_empty.png panel_mblue_bevel-32-baked/%.outln.sngl.lgt.png panel_mblue_bevel-32-baked/%.halo.sngl.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< -gravity Center \
         \( "$(word 3,$+)" -modulate 100,400,100 \) -geometry +0+0 -composite \
         \( "$(word 2,$+)" \) -geometry +0+0 -composite \
         "$@"
 
-panel_dgren_marbl-32-baked/%.foup.lgt.png: panel_dgren_marbl-32-baked/weapon_bk_empty.png panel_dgren_marbl-32-baked/%.outln.foup.lgt.png panel_dgren_marbl-32-baked/%.halo.foup.lgt.png
+panel_mblue_bevel-32-baked/%.foup.lgt.png: panel_mblue_bevel-32-baked/weapon_bk_empty.png panel_mblue_bevel-32-baked/%.outln.foup.lgt.png panel_mblue_bevel-32-baked/%.halo.foup.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< -gravity Center \
         \( "$(word 3,$+)" -modulate 100,400,100 \) -geometry +0+0 -composite \
@@ -265,50 +265,50 @@ panel_dgren_marbl-32-baked/%.foup.lgt.png: panel_dgren_marbl-32-baked/weapon_bk_
         +region -modulate 100,400,100 +level 0,58% \) -geometry +0+0 -composite \
         "$@"
 
-# Use ImageMagick to generate light green color gradient highlight border sprite around medikit box
+# Use ImageMagick to generate light blue color gradient highlight border sprite around medikit box
 # 1. convert non-transparent areas to white, transparent to black
 # 2. remove the transparency; add extra 4px black border (to make border detection work at edges)
 # 3. detect edge, drawing it inside the white shape (EdgeIn) using shape given by 1-px square filter
 # 4. remove the border again, make all non-black pixels white, and black pixels transparent
 # 5. keep A channel from previous computations, and fill RGB with a gradient generated using sparse-color function
-panel_dgren_marbl-32-baked/panel_peragent_supl_hlight.png: $(top_srcdir)/panel_dgren_marbl-32/panel_peragent_supl_empty.png
+panel_mblue_bevel-32-baked/panel_peragent_supl_hlight.png: $(top_srcdir)/panel_mblue_bevel-32/panel_peragent_supl_empty.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$<" -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 2x2 \
         -morphology EdgeIn Diamond:1 \
         -shave 2x2 -threshold 1% -fuzz 1% -transparent black \
-        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(59%,69%,53%)  %[fx:w*.5],%[fx:h*.5] rgb(30%,34%,27%) %[fx:w*.9],%[fx:h*.1] rgb(30%,34%,27%)  %[fx:w*.9],%[fx:h*.9] rgb(59%,69%,53%)' \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(33%,22%,76%) %[fx:w*.9],%[fx:h*.1] rgb(33%,22%,76%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
         +channel "$@"
 
-# Use ImageMagick to generate light green color gradient highlight border sprites around weapon boxes
+# Use ImageMagick to generate light blue color gradient highlight border sprites around weapon boxes
 # The algorithm goes as explained before, but here the hole in the sprite is first patched with empty weapon; also thicker border is generated
 # For each sprite, a shift required to fully patch the hole is a bit different
-panel_dgren_marbl-32-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_dgren_marbl-32/panel_weapon_frame.png $(top_srcdir)/panel_dgren_marbl-32/weapon_bk_empty.png
+panel_mblue_bevel-32-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_mblue_bevel-32/panel_weapon_frame.png $(top_srcdir)/panel_mblue_bevel-32/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $+ -gravity Center -geometry -3+0 -composite \
 	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
         -morphology EdgeIn Octagon:1 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
-        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(59%,69%,53%)  %[fx:w*.5],%[fx:h*.5] rgb(30%,34%,27%) %[fx:w*.9],%[fx:h*.1] rgb(30%,34%,27%)  %[fx:w*.9],%[fx:h*.9] rgb(59%,69%,53%)' \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(33%,22%,76%) %[fx:w*.9],%[fx:h*.1] rgb(33%,22%,76%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
         +channel "$@"
 
-panel_dgren_marbl-32-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/panel_dgren_marbl-32/panel_weapon_list_frst_frame.png $(top_srcdir)/panel_dgren_marbl-32/weapon_bk_empty.png
+panel_mblue_bevel-32-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/panel_mblue_bevel-32/panel_weapon_list_frst_frame.png $(top_srcdir)/panel_mblue_bevel-32/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $+ -gravity Center -geometry +3+2 -composite \
 	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
         -morphology EdgeIn Octagon:1 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
-        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(59%,69%,53%)  %[fx:w*.5],%[fx:h*.5] rgb(30%,34%,27%) %[fx:w*.9],%[fx:h*.1] rgb(30%,34%,27%)  %[fx:w*.9],%[fx:h*.9] rgb(59%,69%,53%)' \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(33%,22%,76%) %[fx:w*.9],%[fx:h*.1] rgb(33%,22%,76%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
         +channel "$@"
 
-panel_dgren_marbl-32-baked/panel_weapon_list_next_hlight.png: $(top_srcdir)/panel_dgren_marbl-32/panel_weapon_list_next_frame.png $(top_srcdir)/panel_dgren_marbl-32/weapon_bk_empty.png
+panel_mblue_bevel-32-baked/panel_weapon_list_next_hlight.png: $(top_srcdir)/panel_mblue_bevel-32/panel_weapon_list_next_frame.png $(top_srcdir)/panel_mblue_bevel-32/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $+ -gravity Center -geometry +1+1 -composite \
 	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
         -morphology EdgeIn Octagon:1 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
-        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(59%,69%,53%)  %[fx:w*.5],%[fx:h*.5] rgb(30%,34%,27%) %[fx:w*.9],%[fx:h*.1] rgb(30%,34%,27%)  %[fx:w*.9],%[fx:h*.9] rgb(59%,69%,53%)' \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(33%,22%,76%) %[fx:w*.9],%[fx:h*.1] rgb(33%,22%,76%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
         +channel "$@"

@@ -1,4 +1,4 @@
-pop0_panel_med_blue_bevel_detail1 0 0 0 0
+pop1_panel_med_blue_bevel_detail1 0 0 0 0
 panel_peragent_main_number_1.png
 empty.png
 panel_peragent_main_number_2.png

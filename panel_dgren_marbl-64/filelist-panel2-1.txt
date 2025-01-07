@@ -1,4 +1,4 @@
-panel0_old_panel_green_marble_detail1 0 0 0 0
+panel2_old_panel_green_marble_detail1 0 0 0 0
 panel_peragent_old_main_number_1.png
 empty.png
 panel_peragent_old_main_number_2.png

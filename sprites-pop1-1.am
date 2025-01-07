@@ -148,8 +148,8 @@ panel_mblue_bevel-64-baked/panel_peragent_supl_medi.nrm.png: $(top_srcdir)/panel
 
 panel_mblue_bevel-64-baked/panel_peragent_supl_symbol_medi.halo.lgt.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_supl_symbol_medi.png
 	$(MAGICK_CONVERT) $<  -gravity Center \
-        \( "$(word 1,$+)" -modulate 100,0 -level 0,50% -blur 0x1.3 -channel A +level 0,130%,0.6 \) -geometry +0+0 -composite \
-        \( "$(word 1,$+)" -modulate 100,0 -level 0,50% -blur 0x1.3 -channel A +level 0,130%,0.6 \) -geometry +0+1 -composite \
+        \( "$(word 1,$+)" -modulate 100,0 -level 0,50% -blur 0x1.3 -channel A +level 0,80%,0.6 \) -geometry +0+0 -composite \
+        \( "$(word 1,$+)" -modulate 100,0 -level 0,50% -blur 0x1.3 -channel A +level 0,80%,0.6 \) -geometry +0+1 -composite \
         -channel R -evaluate multiply 0.42 \
         -channel G -evaluate multiply 0.55 \
         -channel B -evaluate multiply 0.99 \
@@ -158,8 +158,8 @@ panel_mblue_bevel-64-baked/panel_peragent_supl_symbol_medi.halo.lgt.png: $(top_s
 panel_mblue_bevel-64-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_supl_empty.png panel_mblue_bevel-64-baked/panel_peragent_supl_symbol_medi.halo.lgt.png $(top_srcdir)/panel_mblue_bevel-64/panel_peragent_supl_symbol_medi.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< -gravity Center \
-        "$(word 2,$+)" -geometry +0+0 -composite \
-        "$(word 3,$+)" -geometry +0+0 -composite \
+        "$(word 2,$+)" -geometry +0+0 -compose Plus -composite \
+        "$(word 3,$+)" -geometry +0+0 -compose Over -composite \
         "$@"
 
 # Use ImageMagick to generate a bevel effect around the weapon outline shape, to be used for inactive(normal) weapon

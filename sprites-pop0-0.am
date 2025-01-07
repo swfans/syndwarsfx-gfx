@@ -121,6 +121,7 @@ panel_lblue_plain-32-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $+ -gravity Center -geometry +0+0 -composite "$@"
 
+# Compose final weapon icons, the hidden/normal flavour
 panel_lblue_plain-32-baked/%.sngl.nrm.png: panel_lblue_plain-32-baked/weapon_bk_empty.png panel_lblue_plain-32-baked/%.sngl.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"

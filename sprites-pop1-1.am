@@ -184,13 +184,6 @@ endef
 $(eval $(call define_panel_bevel_rule,sngl))
 $(eval $(call define_panel_bevel_rule,foup))
 
-panel_mblue_bevel-64-baked/%.sngl.nrm.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.bevel.sngl.nrm.png panel_mblue_bevel-64-baked/%.outln.sngl.nrm.png
-	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< -gravity Center \
-        \( "$(word 2,$+)" \) -geometry +0+0 -composite \
-	    \( "$(word 3,$+)" \) -geometry +0+0 -composite \
-        "$@"
-
 panel_mblue_bevel-64-baked/weapon_ammo_slot.png:
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) -size 6x6 xc:none -stroke none \
@@ -201,6 +194,52 @@ panel_mblue_bevel-64-baked/weapon_ammo_slot.png:
         \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 1,1 4,4" -motion-blur 0x2.0+65  +level 0,100% \) -gravity Center -geometry +0+0 -composite \
         \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 1,1 4,4" -motion-blur 0x3.0+45  +level 0,170% \) -gravity Center -geometry +0+0 -composite \
         -fill 'rgb(8%,0%,17%)' -draw "rectangle 1,1 4,4" "$@"
+
+panel_mblue_bevel-64-baked/panel_glare_dir4.png:
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) -size 11x11 xc:none -stroke none -gravity Center \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 5,5 5,5" -motion-blur 0x3.0+0   -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 5,5 5,5" -motion-blur 0x3.0+90  -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 5,5 5,5" -motion-blur 0x3.0+180 -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 5,5 5,5" -motion-blur 0x3.0+270 -channel A -level 0,80% \) -geometry +0+0 -composite \
+        "$@"
+
+panel_mblue_bevel-64-baked/panel_glare_dir5a.png:
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) -size 11x11 xc:none -stroke none -gravity Center \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 5,5 5,5" -motion-blur 0x3.0+0   -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 5,5 5,5" -motion-blur 0x3.0+45  -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 5,5 5,5" -motion-blur 0x3.0+90  -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 5,5 5,5" -motion-blur 0x3.0+180 -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 5,5 5,5" -motion-blur 0x3.0+270 -channel A -level 0,80% \) -geometry +0+0 -composite \
+        "$@"
+
+# Spacial case - weapon slot with glare
+panel_mblue_bevel-64-baked/weapon_outline_medi1.sngl.nrm.png : \
+panel_mblue_bevel-64-baked/%.sngl.nrm.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.bevel.sngl.nrm.png panel_mblue_bevel-64-baked/%.outln.sngl.nrm.png panel_mblue_bevel-64-baked/panel_glare_dir4.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< -gravity Center \
+        \( "$(word 2,$+)" \) -geometry +0+0 -composite \
+	    \( "$(word 3,$+)" \) -geometry +0+0 -composite \
+	    \( "$(word 4,$+)" \) -geometry +4+3 -composite \
+        "$@"
+
+panel_mblue_bevel-64-baked/weapon_outline_medi2.sngl.nrm.png : \
+panel_mblue_bevel-64-baked/%.sngl.nrm.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.bevel.sngl.nrm.png panel_mblue_bevel-64-baked/%.outln.sngl.nrm.png panel_mblue_bevel-64-baked/panel_glare_dir5a.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< -gravity Center \
+        \( "$(word 2,$+)" \) -geometry +0+0 -composite \
+	    \( "$(word 3,$+)" \) -geometry +0+0 -composite \
+	    \( "$(word 4,$+)" \) -geometry +4+3 -composite \
+        "$@"
+
+# Compose final weapon icons, the hidden/normal flavour
+panel_mblue_bevel-64-baked/%.sngl.nrm.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.bevel.sngl.nrm.png panel_mblue_bevel-64-baked/%.outln.sngl.nrm.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< -gravity Center \
+        \( "$(word 2,$+)" \) -geometry +0+0 -composite \
+	    \( "$(word 3,$+)" \) -geometry +0+0 -composite \
+        "$@"
 
 panel_mblue_bevel-64-baked/%.foup.nrm.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.bevel.foup.nrm.png panel_mblue_bevel-64-baked/%.outln.foup.nrm.png panel_mblue_bevel-64-baked/weapon_ammo_slot.png
 	$(MKDIR_P) "$(@D)"

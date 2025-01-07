@@ -192,6 +192,7 @@ panel_dgren_marbl-64-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel
         "$(word 2,$+)" -geometry +0+0 -composite \
         "$(word 3,$+)" -geometry +0+0 -composite "$@"
 
+# Compose final weapon icons, the hidden/normal flavour
 panel_dgren_marbl-64-baked/%.sngl.nrm.png: panel_dgren_marbl-64-baked/weapon_bk_empty.png panel_dgren_marbl-64-baked/%.outln.sngl.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< -gravity Center \

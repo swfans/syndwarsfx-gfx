@@ -105,3 +105,7 @@ text_detail.png
 text_paused.png
 panel_sshield_nrm_btm.png
 panel_sshield_ena_btm.png
+panel_peragent_main_number_2.png
+panel_peragent_main_number_2.png
+panel_peragent_main_number_2.png
+panel_peragent_main_number_2.png

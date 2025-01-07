@@ -62,8 +62,8 @@ pop1_1_sprites_agents_panel = \
 
 # List of sprites to pass without alterations
 pop1_1_sprnames_nomod = \
-  frame1_med_lgt_tl frame1_med_lgt_tr frame1_med_lgt_bl frame1_med_lgt_br \
-  frame1_med_nrm_tl frame1_med_nrm_tr frame1_med_nrm_bl frame1_med_nrm_br \
+  frame1_med_lgt_tl frame1_med_lgt_tr frame1_med_lgt_bl frame1_med_lgt_br frame1_med_lgt_al frame1_med_lgt_ar \
+  frame1_med_nrm_tl frame1_med_nrm_tr frame1_med_nrm_bl frame1_med_nrm_br frame1_med_nrm_al frame1_med_nrm_ar \
   empty kicked_arrow_left kicked_arrow_right \
   ingame_agent_number_1 ingame_agent_number_2 ingame_agent_number_3 ingame_agent_number_4 \
   $(foreach num,1 2 3 4,panel_agent_number_$(num)) \
@@ -320,8 +320,8 @@ panel_mblue_bevel-64-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-64-baked/%.out
         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.0+270 +level 0,60% \) -geometry +0+0 -composite \
         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+0   -level 0,70% \) -geometry -1+0 -composite \
         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+180 -level 0,70% \) -geometry +1+0 -composite \
-        \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 20%,90% \) -geometry +0+0 -channel A -compose Bumpmap -composite \
-        +channel miff:- | \
+        \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 20%,90% \
+        \) -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
       $$(MAGICK_CONVERT) - -blur 0x1.2 +level 0,100%,0.70 miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
         -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,85% \
@@ -342,12 +342,12 @@ $(eval $(call define_panel_halo_thick_rule,foup,nuclgren))
 define define_panel_halo_horiz_rule
 panel_mblue_bevel-64-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-64-baked/%.outln.$(1).lgt.png
 	$$(MAGICK_CONVERT) $$< -gravity Center \
-         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2+90    +level 0,60% \) -geometry +0+0 -composite \
-         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2+270   +level 0,60% \) -geometry +0+0 -composite \
-         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+0   -level 0,70% \) -geometry -1+0 -composite \
-         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+180 -level 0,70% \) -geometry +1+0 -composite \
-         \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 30%,90% \) -geometry +0+0 -channel A -compose Bumpmap -composite \
-         +channel miff:- | \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2+90    +level 0,60% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2+270   +level 0,60% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+0   -level 0,70% \) -geometry -1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+180 -level 0,70% \) -geometry +1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 30%,90% \) -geometry +0+0 -channel A -compose Bumpmap -composite \
+        +channel miff:- | \
       $$(MAGICK_CONVERT) - -blur 0x1.2 +level 0,100%,0.70 miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
         -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,70% \

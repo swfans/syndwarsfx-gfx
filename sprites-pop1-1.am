@@ -205,10 +205,10 @@ panel_mblue_bevel-64-baked/weapon_ammo_slot.png:
 panel_mblue_bevel-64-baked/%.foup.nrm.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.bevel.foup.nrm.png panel_mblue_bevel-64-baked/%.outln.foup.nrm.png panel_mblue_bevel-64-baked/weapon_ammo_slot.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< -gravity Center \
-        \( "$(word 4,$+)" +level 0,99% \) -geometry +26+7 -composite \
-        \( "$(word 4,$+)" +level 0,99% \) -geometry +26-7 -composite \
-        \( "$(word 4,$+)" +level 0,99% \) -geometry -26+7 -composite \
-        \( "$(word 4,$+)" +level 0,99% \) -geometry -26-7 -composite \
+        \( "$(word 4,$+)" \) -geometry +26+7 -composite \
+        \( "$(word 4,$+)" \) -geometry +26-7 -composite \
+        \( "$(word 4,$+)" \) -geometry -26+7 -composite \
+        \( "$(word 4,$+)" \) -geometry -26-7 -composite \
         \( "$(word 2,$+)" \) -geometry +0+0 -composite \
 	    \( "$(word 3,$+)" \) -geometry +0+0 -composite \
         "$@"
@@ -226,19 +226,21 @@ define define_panel_halo_vertc_rule
 $$(foreach name,$(2),panel_mblue_bevel-64-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
 panel_mblue_bevel-64-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-64-baked/%.outln.$(1).lgt.png
 	$$(MAGICK_CONVERT) $$< -gravity Center \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.7+90  -level 0,60% \) -geometry +0-1 -composite \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.7+270 -level 0,60% \) -geometry +0+1 -composite \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.3+0   +level 0,60% \) -geometry -1+0 -composite \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.3+180 +level 0,60% \) -geometry +1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.0+90  -level 0,60% \) -geometry +0-1 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.0+270 -level 0,60% \) -geometry +0+1 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x1.7+0   -level 0,80% \) -geometry -1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x1.7+180 -level 0,80% \) -geometry +1+0 -composite \
         \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 30%,90% \) -geometry +0+0 -channel A -compose Bumpmap -composite \
         +channel miff:- | \
-      $$(MAGICK_CONVERT) - -blur 0x0.5 +level 0,90%,0.80 miff:- | \
+      $$(MAGICK_CONVERT) - -blur 0x0.8 +level 0,100%,0.80 miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
         -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,88% \
         \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
       $$(MAGICK_CONVERT) - -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! +channel -shave 1x1 miff:- | \
       $$(MAGICK_CONVERT) - \
-        -channel R -evaluate multiply 0.00 \
+        -channel R -evaluate multiply 0.42 \
+        -channel G -evaluate multiply 0.55 \
+        -channel B -evaluate multiply 0.99 \
         +channel "$$@"
 
 endef
@@ -255,13 +257,15 @@ panel_mblue_bevel-64-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-64-baked/%.out
         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.5+180 -level 0,130% \) -geometry +0+0 -composite \
         \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 20%,90% \) -geometry +0+0 -channel A -compose Bumpmap -composite \
         +channel miff:- | \
-      $$(MAGICK_CONVERT) - -blur 0x0.5 +level 0,90%,0.70 miff:- | \
+      $$(MAGICK_CONVERT) - -blur 0x0.5 +level 0,100%,0.70 miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
         -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:2 +level 100%,85% \
         \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
       $$(MAGICK_CONVERT) - -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! +channel -shave 1x1 miff:- | \
       $$(MAGICK_CONVERT) - \
-        -channel R -evaluate multiply 0.00 \
+        -channel R -evaluate multiply 0.42 \
+        -channel G -evaluate multiply 0.55 \
+        -channel B -evaluate multiply 0.99 \
         +channel "$$@"
 
 endef
@@ -279,13 +283,15 @@ panel_mblue_bevel-64-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-64-baked/%.out
         \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+180 -level 0,70% \) -geometry +1+0 -composite \
         \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 20%,90% \) -geometry +0+0 -channel A -compose Bumpmap -composite \
         +channel miff:- | \
-      $$(MAGICK_CONVERT) - -blur 0x1.2 +level 0,90%,0.70 miff:- | \
+      $$(MAGICK_CONVERT) - -blur 0x1.2 +level 0,100%,0.70 miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
         -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,85% \
         \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
       $$(MAGICK_CONVERT) - -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! +channel -shave 1x1 miff:- | \
       $$(MAGICK_CONVERT) - \
-        -channel R -evaluate multiply 0.00 \
+        -channel R -evaluate multiply 0.42 \
+        -channel G -evaluate multiply 0.55 \
+        -channel B -evaluate multiply 0.99 \
         +channel "$$@"
 
 endef
@@ -303,13 +309,15 @@ panel_mblue_bevel-64-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-64-baked/%.out
          \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+180 -level 0,70% \) -geometry +1+0 -composite \
          \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 30%,90% \) -geometry +0+0 -channel A -compose Bumpmap -composite \
          +channel miff:- | \
-      $$(MAGICK_CONVERT) - -blur 0x1.2 +level 0,98%,0.70 miff:- | \
+      $$(MAGICK_CONVERT) - -blur 0x1.2 +level 0,100%,0.70 miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
         -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,70% \
         \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
       $$(MAGICK_CONVERT) - -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! +channel -shave 1x1 miff:- | \
       $$(MAGICK_CONVERT) - \
-        -channel R -evaluate multiply 0.00 \
+        -channel R -evaluate multiply 0.42 \
+        -channel G -evaluate multiply 0.55 \
+        -channel B -evaluate multiply 0.99 \
         +channel "$$@"
 
 endef
@@ -318,18 +326,20 @@ $(foreach wepammo,foup sngl,$(eval $(call define_panel_halo_horiz_rule,$(wepammo
 
 panel_mblue_bevel-64-baked/%.sngl.lgt.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.outln.sngl.lgt.png panel_mblue_bevel-64-baked/%.halo.sngl.lgt.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $<  \( "$(word 3,$+)" -modulate 100,400,100 \) -gravity Center -geometry +0+0 -composite miff:- | \
-      $(MAGICK_CONVERT) - \( "$(word 2,$+)" \) -gravity Center -geometry +0+0 -composite "$@"
+	$(MAGICK_CONVERT) $< -gravity Center \
+        \( "$(word 3,$+)" \) -geometry +0+0 -compose Plus -composite \
+        \( "$(word 2,$+)" \) -geometry +0+0 -compose Over -composite \
+        "$@"
 
 panel_mblue_bevel-64-baked/%.foup.lgt.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.outln.foup.lgt.png panel_mblue_bevel-64-baked/%.halo.foup.lgt.png panel_mblue_bevel-64-baked/weapon_ammo_slot.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< -gravity Center \
-        \( "$(word 4,$+)" +level 0,99% \) -geometry +26+7 -composite \
-        \( "$(word 4,$+)" +level 0,99% \) -geometry +26-7 -composite \
-        \( "$(word 4,$+)" +level 0,99% \) -geometry -26+7 -composite \
-        \( "$(word 4,$+)" +level 0,99% \) -geometry -26-7 -composite \
-        \( "$(word 3,$+)" -modulate 100,400,100 \) -geometry +0+0 -composite \
-        \( "$(word 2,$+)" \) -geometry +0+0 -composite \
+        \( "$(word 4,$+)" \) -geometry +26+7 -composite \
+        \( "$(word 4,$+)" \) -geometry +26-7 -composite \
+        \( "$(word 4,$+)" \) -geometry -26+7 -composite \
+        \( "$(word 4,$+)" \) -geometry -26-7 -composite \
+        \( "$(word 3,$+)" \) -geometry +0+0 -compose Plus -composite \
+        \( "$(word 2,$+)" \) -geometry +0+0 -compose Over -composite \
         "$@"
 
 # Use ImageMagick to generate light green color gradient highlight border sprite around medikit box

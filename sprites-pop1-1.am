@@ -238,18 +238,18 @@ panel_mblue_bevel-64-baked/%.sngl.nrm.png: panel_mblue_bevel-64-baked/weapon_bk_
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< -gravity Center \
         \( "$(word 2,$+)" \) -geometry +0+0 -composite \
-	    \( "$(word 3,$+)" \) -geometry +0+0 -composite \
+	    \( "$(word 3,$+)" \) -geometry +0+0 -compose Over -composite \
         "$@"
 
 panel_mblue_bevel-64-baked/%.foup.nrm.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.bevel.foup.nrm.png panel_mblue_bevel-64-baked/%.outln.foup.nrm.png panel_mblue_bevel-64-baked/weapon_ammo_slot.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< -gravity Center \
-        \( "$(word 4,$+)" \) -geometry +26+7 -composite \
+        \( "$(word 2,$+)" \) -geometry +0+0 -composite \
+        \( "$(word 4,$+)" \) -geometry +26+7 -compose Over -composite \
         \( "$(word 4,$+)" \) -geometry +26-7 -composite \
         \( "$(word 4,$+)" \) -geometry -26+7 -composite \
         \( "$(word 4,$+)" \) -geometry -26-7 -composite \
-        \( "$(word 2,$+)" \) -geometry +0+0 -composite \
-	    \( "$(word 3,$+)" \) -geometry +0+0 -composite \
+	    \( "$(word 3,$+)" \) -geometry +0+0 -compose Over -composite \
         "$@"
 
 # Use ImageMagick to generate a strong halo effect around the weapon outline shape, to be used for wielded weapon
@@ -373,11 +373,11 @@ panel_mblue_bevel-64-baked/%.sngl.lgt.png: panel_mblue_bevel-64-baked/weapon_bk_
 panel_mblue_bevel-64-baked/%.foup.lgt.png: panel_mblue_bevel-64-baked/weapon_bk_empty.png panel_mblue_bevel-64-baked/%.outln.foup.lgt.png panel_mblue_bevel-64-baked/%.halo.foup.lgt.png panel_mblue_bevel-64-baked/weapon_ammo_slot.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< -gravity Center \
-        \( "$(word 4,$+)" \) -geometry +26+7 -composite \
+        \( "$(word 3,$+)" \) -geometry +0+0 -compose Plus -composite \
+        \( "$(word 4,$+)" \) -geometry +26+7 -compose Over -composite \
         \( "$(word 4,$+)" \) -geometry +26-7 -composite \
         \( "$(word 4,$+)" \) -geometry -26+7 -composite \
         \( "$(word 4,$+)" \) -geometry -26-7 -composite \
-        \( "$(word 3,$+)" \) -geometry +0+0 -compose Plus -composite \
         \( "$(word 2,$+)" \) -geometry +0+0 -compose Over -composite \
         "$@"
 

@@ -175,14 +175,14 @@ $(eval $(call define_panel_bevel_rule,foup))
 
 panel_mblue_bevel-32-baked/weapon_ammo_slot.png:
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) -size 6x6 xc:none -stroke none \
-        \( xc:none -fill 'rgb(42%,34%,98%)' -draw "rectangle 1,1 4,4" -motion-blur 0x2.0+205 +level 0,80%  \) -gravity Center -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(42%,34%,98%)' -draw "rectangle 1,1 4,4" -motion-blur 0x2.0+245 +level 0,80%  \) -gravity Center -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(42%,34%,98%)' -draw "rectangle 1,1 4,4" -motion-blur 0x3.0+225 +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 1,1 4,4" -motion-blur 0x2.0+25  +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 1,1 4,4" -motion-blur 0x2.0+65  +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 1,1 4,4" -motion-blur 0x3.0+45  +level 0,170% \) -gravity Center -geometry +0+0 -composite \
-        -fill 'rgb(8%,0%,17%)' -draw "rectangle 1,1 4,4" "$@"
+	$(MAGICK_CONVERT) -size 4x4 xc:none -stroke none \
+        \( xc:none -fill 'rgb(42%,34%,98%)' -draw "rectangle 1,1 2,2" -motion-blur 0x1.4+205 -channel A +level 0,80%  \) -gravity Center -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,34%,98%)' -draw "rectangle 1,1 2,2" -motion-blur 0x1.4+245 -channel A +level 0,80%  \) -gravity Center -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,34%,98%)' -draw "rectangle 1,1 2,2" -motion-blur 0x2.0+225 -channel A +level 0,100%  \) -gravity Center -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 1,1 2,2" -motion-blur 0x1.4+25  -channel A +level 0,60% \) -gravity Center -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 1,1 2,2" -motion-blur 0x1.4+65  -channel A +level 0,60% \) -gravity Center -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 1,1 2,2" -motion-blur 0x2.0+45  -channel A +level 0,80% \) -gravity Center -geometry +0+0 -composite \
+        -fill 'rgb(8%,0%,17%)' -draw "rectangle 1,1 2,2" "$@"
 
 # Compose final weapon icons, the hidden/normal flavour
 panel_mblue_bevel-32-baked/%.sngl.nrm.png: panel_mblue_bevel-32-baked/weapon_bk_empty.png panel_mblue_bevel-32-baked/%.bevel.sngl.nrm.png panel_mblue_bevel-32-baked/%.outln.sngl.nrm.png
@@ -195,12 +195,12 @@ panel_mblue_bevel-32-baked/%.sngl.nrm.png: panel_mblue_bevel-32-baked/weapon_bk_
 panel_mblue_bevel-32-baked/%.foup.nrm.png: panel_mblue_bevel-32-baked/weapon_bk_empty.png panel_mblue_bevel-32-baked/%.bevel.foup.nrm.png panel_mblue_bevel-32-baked/%.outln.foup.nrm.png panel_mblue_bevel-32-baked/weapon_ammo_slot.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< -gravity Center \
-        \( "$(word 4,$+)" \) -geometry +26+7 -composite \
-        \( "$(word 4,$+)" \) -geometry +26-7 -composite \
-        \( "$(word 4,$+)" \) -geometry -26+7 -composite \
-        \( "$(word 4,$+)" \) -geometry -26-7 -composite \
-        \( "$(word 2,$+)" \) -geometry +0+0 -composite \
-	    \( "$(word 3,$+)" \) -geometry +0+0 -composite \
+        \( "$(word 4,$+)" \) -geometry +13+4 -compose Over -composite \
+        \( "$(word 4,$+)" \) -geometry +13-3 -composite \
+        \( "$(word 4,$+)" \) -geometry -13+4 -composite \
+        \( "$(word 4,$+)" \) -geometry -13-3 -composite \
+        \( "$(word 2,$+)" \) -geometry +0+0 -compose Plus -composite \
+	    \( "$(word 3,$+)" \) -geometry +0+0 -compose Over -composite \
         "$@"
 
 # Use ImageMagick to generate a strong halo effect around the weapon outline shape, to be used for wielded weapon
@@ -318,18 +318,19 @@ $(foreach wepammo,foup sngl,$(eval $(call define_panel_halo_horiz_rule,$(wepammo
 panel_mblue_bevel-32-baked/%.sngl.lgt.png: panel_mblue_bevel-32-baked/weapon_bk_empty.png panel_mblue_bevel-32-baked/%.outln.sngl.lgt.png panel_mblue_bevel-32-baked/%.halo.sngl.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< -gravity Center \
-        \( "$(word 3,$+)" -modulate 100,400,100 \) -geometry +0+0 -composite \
-        \( "$(word 2,$+)" \) -geometry +0+0 -composite \
+        \( "$(word 3,$+)" \) -geometry +0+0 -compose Plus -composite \
+        \( "$(word 2,$+)" \) -geometry +0+0 -compose Over -composite \
         "$@"
 
-panel_mblue_bevel-32-baked/%.foup.lgt.png: panel_mblue_bevel-32-baked/weapon_bk_empty.png panel_mblue_bevel-32-baked/%.outln.foup.lgt.png panel_mblue_bevel-32-baked/%.halo.foup.lgt.png
+panel_mblue_bevel-32-baked/%.foup.lgt.png: panel_mblue_bevel-32-baked/weapon_bk_empty.png panel_mblue_bevel-32-baked/%.outln.foup.lgt.png panel_mblue_bevel-32-baked/%.halo.foup.lgt.png panel_mblue_bevel-32-baked/weapon_ammo_slot.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< -gravity Center \
-        \( "$(word 3,$+)" -modulate 100,400,100 \) -geometry +0+0 -composite \
-        \( "$(word 2,$+)" \) -geometry +0+0 -composite \
-        \( "$(word 2,$+)" -geometry +0+0 -fuzz 100% -fill none -opaque none -fill 'rgb(97%,100%,95%)' \
-        -region 2x2-13+4 -opaque none -region 2x2-13-3 -opaque none -region 2x2+13+4 -opaque none -region 2x2+13-3 -opaque none \
-        +region -modulate 100,400,100 +level 0,58% \) -geometry +0+0 -composite \
+        \( "$(word 3,$+)" \) -geometry +0+0 -compose Plus -composite \
+        \( "$(word 4,$+)" \) -geometry +13+4 -compose Over -composite \
+        \( "$(word 4,$+)" \) -geometry +13-3 -composite \
+        \( "$(word 4,$+)" \) -geometry -13+4 -composite \
+        \( "$(word 4,$+)" \) -geometry -13-3 -composite \
+        \( "$(word 2,$+)" \) -geometry +0+0 -compose Over -composite \
         "$@"
 
 # Use ImageMagick to generate light blue color gradient highlight border sprite around medikit box

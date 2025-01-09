@@ -65,11 +65,11 @@ panel_mblue_bevel-32-baked/%.png: $(top_srcdir)/panel_mblue_bevel-32/%.png
 
 panel_mblue_bevel-32-baked/panel_peragent_old_main_number_1.png: $(top_srcdir)/panel_mblue_bevel-32/panel_peragent_old_frst_empty.png panel_mblue_bevel-32/panel_agent_number_1.nrm.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -30-3 -composite "$@"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -28-3 -composite "$@"
 
 panel_mblue_bevel-32-baked/panel_peragent_old_main_number_2.png: $(top_srcdir)/panel_mblue_bevel-32/panel_peragent_old_next_empty.png panel_mblue_bevel-32/panel_agent_number_2.nrm.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -27-1 -composite "$@"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -28-1 -composite "$@"
 
 panel_mblue_bevel-32-baked/panel_peragent_old_main_number_3.png: $(top_srcdir)/panel_mblue_bevel-32/panel_peragent_old_next_empty.png panel_mblue_bevel-32/panel_agent_number_3.nrm.png
 	$(MKDIR_P) "$(@D)"

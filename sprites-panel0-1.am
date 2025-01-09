@@ -66,19 +66,19 @@ panel_lblue_plain-64-baked/%.png: $(top_srcdir)/panel_lblue_plain-64/%.png
 
 panel_lblue_plain-64-baked/panel_peragent_old_main_number_1.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_old_frst_empty.png panel_lblue_plain-64-baked/panel_agent_number_1.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -60-6 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -56-4 -composite "$@"
 
 panel_lblue_plain-64-baked/panel_peragent_old_main_number_2.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_old_next_empty.png panel_lblue_plain-64-baked/panel_agent_number_2.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -56-0 -composite "$@"
 
 panel_lblue_plain-64-baked/panel_peragent_old_main_number_3.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_old_next_empty.png panel_lblue_plain-64-baked/panel_agent_number_3.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -56-0 -composite "$@"
 
 panel_lblue_plain-64-baked/panel_peragent_old_main_number_4.png: $(top_srcdir)/panel_lblue_plain-64/panel_peragent_old_next_empty.png panel_lblue_plain-64-baked/panel_agent_number_4.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -56-2 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -56-0 -composite "$@"
 
 # Use ImageMagick to generate light teal highlight border sprites around weapon boxes
 # The algorithm goes as explained in other files, but here the hole in the sprite is first patched with empty weapon

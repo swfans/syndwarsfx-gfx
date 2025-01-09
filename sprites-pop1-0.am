@@ -165,8 +165,11 @@ panel_mblue_bevel-32-baked/%.bevel.$(1).nrm.png: panel_mblue_bevel-32-baked/%.ou
         \( "$$(word 1,$$+)" -motion-blur 0x0.6+45  -channel A +level 0,100% \) -geometry +0+0 -composite \
         \( "$$(word 2,$$+)" -motion-blur 0x0.6+245 -channel A +level 0,300% \) -geometry +0+0 -composite \
         \( "$$(word 2,$$+)" -motion-blur 0x0.6+225 -channel A +level 0,300% \) -geometry +0+0 -composite \
-        \( "$$(word 2,$$+)" -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:2 +level 100%,60% \) -geometry +0+0 -channel A -compose Bumpmap -composite \
-        +channel "$$@"
+        +channel miff:- | \
+      $$(MAGICK_CONVERT) - \( "$$(word 2,$$+)" \
+        -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,65% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $$(MAGICK_CONVERT) - +channel "$$@"
 
 endef
 

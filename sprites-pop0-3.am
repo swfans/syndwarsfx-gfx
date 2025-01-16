@@ -1,0 +1,199 @@
+# *****************************************************************************
+#  Graphics assets generation for Syndicate Wars Port.
+# *****************************************************************************
+#  @file sprites-pop0-3.am
+#      Automake rules neccessary to build `pop0-3` in-game panel sprites.
+#  @author   Tomasz Lis
+#  @par  Copying and copyrights:
+#      This program is free software; you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation; either version 2 of the License, or
+#      (at your option) any later version.
+# *****************************************************************************
+
+pop0_3_files = data/pop0-3.dat data/pop0-3.tab
+
+# The sprites contain some text lines merged from bitmap fonts
+pop0_3_chars_text_detail = \
+  0044 0045 0054 0041 0049 004c
+
+pop0_3_chars_text_uplink = \
+  0055 0050 004c 0049 004e 004b 0020
+
+pop0_3_chars_text_paused = \
+  0050 0041 0055 0053 0045 0044
+
+pop0_3_sprites_text_detail = \
+  $(foreach num,$(pop0_3_chars_text_detail),font0_sharp_cult-20-ltteal/char_u$(num).png)
+
+pop0_3_sprites_text_uplink = \
+  $(foreach num,$(pop0_3_chars_text_uplink),font0_sharp_cult-20-ltteal/char_u$(num).png)
+
+pop0_3_sprites_text_paused = \
+  $(foreach num,$(pop0_3_chars_text_paused),font0_sharp_cult-20-ltteal/char_u$(num).png)
+
+pop0_3_sprites_text = \
+  panel_lblue_plain-128-baked/text_detail.png \
+  panel_lblue_plain-128-baked/text_uplink.png \
+  panel_lblue_plain-128-baked/text_paused.png
+
+# Sprites representing each weapon, when in pocket and when taken out
+pop0_3_weapons_singl_outline = \
+  uzi minigun laser ellaser rap persuader flamer h2htaser longrange airstrike beam razorwire \
+  qdevastator persuader2 stasisfld soulgun time cerberusiff medi1 medi2 explwire cloneshld item_cybmod item_suitcase
+pop0_3_weapons_fourp_outline = \
+  nuclgren crazygas kogas elemine explmine
+
+pop0_3_sprites_wep_oln = \
+  $(foreach name,$(pop0_3_weapons_singl_outline),panel_lblue_plain-128-baked/weapon_outline_$(name).sngl.lgt.png) \
+  $(foreach name,$(pop0_3_weapons_fourp_outline),panel_lblue_plain-128-baked/weapon_outline_$(name).foup.lgt.png)
+pop0_3_sprites_wep_pnl = \
+  $(foreach name,$(pop0_3_weapons_singl_outline),panel_lblue_plain-128-baked/weapon_outline_$(name).sngl.nrm.png) \
+  $(foreach name,$(pop0_3_weapons_fourp_outline),panel_lblue_plain-128-baked/weapon_outline_$(name).foup.nrm.png)
+
+# Generated elements of the per-agent panel
+pop0_3_sprites_agents_panel = \
+  $(foreach num,1 2 3 4,panel_lblue_plain-128-baked/panel_peragent_main_number_$(num).png) \
+  $(foreach name,nrm lgt,panel_lblue_plain-128-baked/panel_peragent_supl_medi.$(name).png) \
+  panel_lblue_plain-128-baked/panel_peragent_supl_hlight.png \
+  panel_lblue_plain-128-baked/panel_weapon_frame_hlight.png \
+  panel_lblue_plain-128-baked/panel_weapon_list_frst_hlight.png \
+  panel_lblue_plain-128-baked/panel_weapon_list_next_hlight.png
+
+# List of sprites to pass without alterations
+pop0_3_sprnames_nomod = \
+  frame1_med_lgt_tl frame1_med_lgt_tr frame1_med_lgt_bl frame1_med_lgt_br \
+  frame1_med_nrm_tl frame1_med_nrm_tr frame1_med_nrm_bl frame1_med_nrm_br \
+  empty kicked_arrow_left kicked_arrow_right \
+  ingame_agent_number_1 ingame_agent_number_2 ingame_agent_number_3 ingame_agent_number_4 \
+  panel_agent_number_1 panel_agent_number_2 panel_agent_number_3 panel_agent_number_4 \
+  panel_grouping panel_grouping_bar_grp panel_grouping_bar_th \
+  panel_peragent_supl_empty panel_peragent_supl_symbol_medi \
+  panel_sshield_ena_btm panel_sshield_ena_top panel_sshield_nrm_btm panel_sshield_nrm_top panel_weapon_frame \
+  panel_weapon_list_frst_frame panel_weapon_list_next_frame weapon_bk_empty
+pop0_3_sprites_cp = \
+  $(foreach name,$(pop0_3_sprnames_nomod),panel_lblue_plain-128-baked/$(name).png)
+
+data/pop0-3.tab: data/pop0-3.dat
+
+data/pop0-3.dat: panel_lblue_plain-128-baked/filelist-pop0-3.txt $(top_srcdir)/data/engine-std.pal ${pop0_3_sprites_cp} $(pop0_3_sprites_text) $(pop0_3_sprites_agents_panel) $(pop0_3_sprites_wep_oln) $(pop0_3_sprites_wep_pnl)
+
+panel_lblue_plain-128-baked/%.txt: $(top_srcdir)/panel_lblue_plain-128/%.txt
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"
+
+panel_lblue_plain-128-baked/%.png: $(top_srcdir)/panel_lblue_plain-128/%.png
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"
+
+panel_lblue_plain-128-baked/text_detail.png: $(pop0_3_sprites_text_detail)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 106x20+0+3 +repage "$@"
+
+panel_lblue_plain-128-baked/text_uplink.png: $(pop0_3_sprites_text_uplink)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 132x20+0+3 +repage "$@"
+
+panel_lblue_plain-128-baked/text_paused.png: $(pop0_3_sprites_text_paused)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 118x20+0+3 +repage "$@"
+
+# Use ImageMagick to generate light teal sprites from the white ones
+# rule with multiple targets is automatically divided into multiple rules with single target
+panel_lblue_plain-128-baked/%.sngl.lgt.png panel_lblue_plain-128-baked/%.foup.lgt.png: $(top_srcdir)/weapons-outline-36/%.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel "$@"
+
+panel_lblue_plain-128-baked/panel_peragent_main_number_1.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_frst_empty.png panel_lblue_plain-128-baked/panel_agent_number_1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -60-6 -composite "$@"
+
+panel_lblue_plain-128-baked/panel_peragent_main_number_2.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_next_empty.png panel_lblue_plain-128-baked/panel_agent_number_2.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+
+panel_lblue_plain-128-baked/panel_peragent_main_number_3.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_next_empty.png panel_lblue_plain-128-baked/panel_agent_number_3.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+
+panel_lblue_plain-128-baked/panel_peragent_main_number_4.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_next_empty.png panel_lblue_plain-128-baked/panel_agent_number_4.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -57-2 -composite "$@"
+
+panel_lblue_plain-128-baked/panel_peragent_supl_medi.nrm.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_supl_empty.png panel_lblue_plain-128/panel_peragent_supl_symbol_medi.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
+
+panel_lblue_plain-128-baked/panel_peragent_supl_medi.lgt.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_supl_empty.png panel_lblue_plain-128/panel_peragent_supl_symbol_medi.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +0+0 -composite "$@"
+
+# Compose final weapon icons, the hidden/normal flavour
+panel_lblue_plain-128-baked/%.sngl.nrm.png: panel_lblue_plain-128-baked/weapon_bk_empty.png panel_lblue_plain-128-baked/%.sngl.lgt.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry +0+0 -composite "$@"
+
+panel_lblue_plain-128-baked/%.foup.nrm.png: panel_lblue_plain-128-baked/weapon_bk_empty.png panel_lblue_plain-128-baked/%.foup.lgt.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry +0+0 -composite \
+        -channel A -region 4x4-26+7 -negate -region 4x4-26-7 -negate -region 4x4+26+7 -negate -region 4x4+26-7 -negate +channel "$@"
+
+# Use ImageMagick to generate light teal highlight border sprites around medikit box
+# 1. convert non-transparent areas to white, transparent to black
+# 2. remove the transparency; add extra 4px black border (to make border detection work at edges)
+# 3. detect edge using Laplacian filter convolution
+# 4. remove the border again, make all non-black pixels white, and black pixels transparent
+# 5. multiply the pixels to achieve expected border color
+panel_lblue_plain-128-baked/panel_peragent_supl_hlight.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_supl_empty.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel "$@"
+
+# Use ImageMagick to generate light teal highlight border sprites around weapon boxes
+# The algorithm goes as explained before, but here the hole in the sprite is first patched with empty weapon
+# For each sprite, a shift required to fully patch the hole is a bit different
+panel_lblue_plain-128-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_lblue_plain-128/panel_weapon_frame.png $(top_srcdir)/panel_lblue_plain-128/weapon_bk_empty.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry -6+0 -composite \
+	    -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel "$@"
+
+panel_lblue_plain-128-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/panel_lblue_plain-128/panel_weapon_list_frst_frame.png $(top_srcdir)/panel_lblue_plain-128/weapon_bk_empty.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +6+4 -composite \
+	    -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel "$@"
+
+panel_lblue_plain-128-baked/panel_weapon_list_next_hlight.png: $(top_srcdir)/panel_lblue_plain-128/panel_weapon_list_next_frame.png $(top_srcdir)/panel_lblue_plain-128/weapon_bk_empty.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +1+2 -composite \
+	    -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel "$@"

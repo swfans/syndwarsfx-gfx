@@ -76,18 +76,18 @@ ingame_agent_number_1.png
 ingame_agent_number_2.png
 ingame_agent_number_3.png
 ingame_agent_number_4.png
-frame1_med_nrm_tl.png
-frame1_med_nrm_tr.png
-frame1_med_nrm_bl.png
-frame1_med_nrm_br.png
-empty.png
-empty.png
-frame1_med_lgt_tl.png
-frame1_med_lgt_tr.png
-frame1_med_lgt_bl.png
-frame1_med_lgt_br.png
-empty.png
-empty.png
+frame1_med.nrm.png 0 0 28 28
+frame1_med.nrm.png 28 0 24 24
+frame1_med.nrm.png 0 28 24 24
+frame1_med.nrm.png 24 24 28 28
+frame1_med_arr.nrm.png 0 0 8 12
+frame1_med_arr.nrm.png 9 0 8 12
+frame1_med.lgt.png 0 0 32 32
+frame1_med.lgt.png 32 0 32 32
+frame1_med.lgt.png 0 32 32 32
+frame1_med.lgt.png 32 32 32 32
+frame1_med_arr.lgt.png 0 0 12 20
+frame1_med_arr.lgt.png 14 0 12 20
 panel_weapon_frame_hlight.png
 panel_grouping_bar_th.png
 panel_weapon_list_frst_hlight.png

@@ -1,4 +1,4 @@
-ingame_mouse_pointers_standard_detail2 0 0 0 0
+ingame_mouse_pointers_standard_detail3 0 0 0 0
 pointer_shaded_bonecolor_std.png
 target_rect_thin_grey_26.png
 target_rect_thin_red_14.png

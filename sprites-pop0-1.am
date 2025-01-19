@@ -68,7 +68,7 @@ pop0_1_sprnames_nomod = \
   panel_agent_number_1 panel_agent_number_2 panel_agent_number_3 panel_agent_number_4 \
   panel_grouping panel_grouping_bar_grp panel_grouping_bar_th \
   panel_peragent_supl_empty panel_peragent_supl_symbol_medi \
-  panel_sshield_ena_btm panel_sshield_ena_top panel_sshield.nrm_btm panel_sshield.nrm_top panel_weapon_frame \
+  panel_sshield_ena_btm panel_sshield_ena_top panel_sshield.nrm panel_weapon_frame \
   panel_weapon_list_frst_frame panel_weapon_list_next_frame weapon_bk_empty
 pop0_1_sprites_cp = \
   $(foreach name,$(pop0_1_sprnames_nomod),panel_lblue_plain-64-baked/$(name).png)

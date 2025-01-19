@@ -61,6 +61,10 @@ pop2_1_sprites_agents_panel = \
   panel_dgren_marbl-64-baked/panel_weapon_list_frst_hlight.png \
   panel_dgren_marbl-64-baked/panel_weapon_list_next_hlight.png
 
+# Generated elements of the panel which are not per-agent
+pop2_1_sprites_common_panel = \
+  panel_dgren_marbl-64-baked/panel_sshield.ena.png
+
 # List of sprites to pass without alterations
 pop2_1_sprnames_nomod = \
   frame1_med.lgt frame1_med_arr.lgt frame1_med.nrm frame1_med_arr.nrm \
@@ -68,14 +72,16 @@ pop2_1_sprnames_nomod = \
   ingame_agent_number_1 ingame_agent_number_2 ingame_agent_number_3 ingame_agent_number_4 \
   panel_grouping panel_grouping_bar_grp panel_grouping_bar_th \
   panel_peragent_supl_empty panel_peragent_supl_symbol_medi \
-  panel_sshield_ena_btm panel_sshield_ena_top panel_sshield.nrm_btm panel_sshield.nrm_top panel_weapon_frame \
+  panel_sshield.nrm panel_weapon_frame \
   panel_weapon_list_frst_frame panel_weapon_list_next_frame weapon_bk_empty
 pop2_1_sprites_cp = \
   $(foreach name,$(pop2_1_sprnames_nomod),panel_dgren_marbl-64-baked/$(name).png)
 
 data/pop2-1.tab: data/pop2-1.dat
 
-data/pop2-1.dat: panel_dgren_marbl-64-baked/filelist-pop2-1.txt $(top_srcdir)/data/engine-std.pal ${pop2_1_sprites_cp} $(pop2_1_sprites_text) $(pop2_1_sprites_agents_panel) $(pop2_1_sprites_wep_oln) $(pop2_1_sprites_wep_pnl)
+data/pop2-1.dat: panel_dgren_marbl-64-baked/filelist-pop2-1.txt $(top_srcdir)/data/engine-std.pal ${pop2_1_sprites_cp} \
+  $(pop2_1_sprites_text) $(pop2_1_sprites_agents_panel) $(pop2_1_sprites_common_panel) \
+  $(pop2_1_sprites_wep_oln) $(pop2_1_sprites_wep_pnl)
 
 panel_dgren_marbl-64-baked/%.txt: $(top_srcdir)/panel_dgren_marbl-64/%.txt
 	$(MKDIR_P) "$(@D)"
@@ -96,6 +102,15 @@ panel_dgren_marbl-64-baked/text_uplink.png: $(pop2_1_sprites_text_uplink)
 panel_dgren_marbl-64-baked/text_paused.png: $(pop2_1_sprites_text_paused)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 118x20+0+3 +repage "$@"
+
+# Use ImageMagick to generate red hue on enabled elements
+panel_dgren_marbl-64-baked/%.ena.png: $(top_srcdir)/panel_dgren_marbl-64/%.nrm.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -modulate 100,0 \
+        -channel R -evaluate multiply 1.06 \
+        -channel G -evaluate multiply 0.24 \
+        -channel B -evaluate multiply 0.20 \
+        +channel "$@"
 
 # Use ImageMagick to generate light green sprites from the white ones
 # Gas canisters need to have one row removed to better fit the ammo slots

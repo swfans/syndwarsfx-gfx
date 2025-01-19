@@ -92,6 +92,7 @@ panel_dgren_marbl-32-baked/text_uplink_paused.png: $(pop2_0_sprites_text_uplink_
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 137x10+0+2 +repage "$@"
 
+# Use ImageMagick to generate red hue on enabled elements
 panel_dgren_marbl-32-baked/%.ena.png: $(top_srcdir)/panel_dgren_marbl-32/%.nrm.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$<" -modulate 100,0 \

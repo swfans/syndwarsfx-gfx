@@ -97,7 +97,7 @@ empty.png
 empty.png
 empty.png
 empty.png
-panel_sshield_ena.png
+panel_sshield.ena.png
 kicked_arrow_left.png
 kicked_arrow_right.png
 text_uplink_paused.png

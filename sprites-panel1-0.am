@@ -38,6 +38,10 @@ panel1_0_sprites_agents_panel = \
   panel_mblue_bevel-32-baked/panel_weapon_list_old_centr_hlight.png \
   panel_mblue_bevel-32-baked/panel_weapon_list_old_upper_hlight.png
 
+# Generated elements of the panel which are not per-agent
+panel1_0_sprites_common_panel = \
+  panel_mblue_bevel-32-baked/panel_sshield.ena.png
+
 # List of sprites to pass without alterations
 panel1_0_sprnames_nomod = \
   frame1_med.lgt frame1_med_arr.lgt frame1_med.nrm frame1_med_arr.nrm \
@@ -45,14 +49,16 @@ panel1_0_sprnames_nomod = \
   ingame_agent_number_1 ingame_agent_number_2 ingame_agent_number_3 ingame_agent_number_4 \
   $(foreach num,1 2 3 4,panel_agent_number_$(num)) \
   panel_grouping panel_grouping_bar_grp panel_grouping_bar_th \
-  panel_sshield_ena panel_sshield.nrm \
+  panel_sshield.nrm \
   panel_weapon_list_old_centr_frame panel_weapon_list_old_upper_frame weapon_bk_empty
 panel1_0_sprites_cp = \
   $(foreach name,$(panel1_0_sprnames_nomod),panel_mblue_bevel-32-baked/$(name).png)
 
 data/panel1-0.tab: data/panel1-0.dat
 
-data/panel1-0.dat: panel_mblue_bevel-32-baked/filelist-panel1-0.txt $(top_srcdir)/data/engine-std.pal ${panel1_0_sprites_cp} $(panel1_0_sprites_text) $(panel1_0_sprites_agents_panel) $(panel1_0_sprites_wep_oln) $(panel1_0_sprites_wep_pnl)
+data/panel1-0.dat: panel_mblue_bevel-32-baked/filelist-panel1-0.txt $(top_srcdir)/data/engine-std.pal ${panel1_0_sprites_cp} \
+  $(panel1_0_sprites_text) $(panel1_0_sprites_agents_panel) $(panel1_0_sprites_common_panel) \
+  $(panel1_0_sprites_wep_oln) $(panel1_0_sprites_wep_pnl)
 
 panel_mblue_bevel-32-baked/%.txt: $(top_srcdir)/panel_mblue_bevel-32/%.txt
 	$(MKDIR_P) "$(@D)"

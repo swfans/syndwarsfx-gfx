@@ -97,7 +97,7 @@ panel_peragent_supl_medi.nrm.png
 panel_peragent_supl_medi.lgt.png
 panel_peragent_supl_hlight.png
 panel_peragent_supl_empty.png
-panel_sshield_ena.png
+panel_sshield.ena.png
 kicked_arrow_left.png
 kicked_arrow_right.png
 text_uplink_paused.png

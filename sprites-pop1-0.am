@@ -53,6 +53,10 @@ pop1_0_sprites_agents_panel = \
   panel_mblue_bevel-32-baked/panel_weapon_list_frst_hlight.png \
   panel_mblue_bevel-32-baked/panel_weapon_list_next_hlight.png
 
+# Generated elements of the panel which are not per-agent
+pop1_0_sprites_common_panel = \
+  panel_mblue_bevel-32-baked/panel_sshield.ena.png
+
 # List of sprites to pass without alterations
 pop1_0_sprnames_nomod = \
   frame1_med.lgt frame1_med_arr.lgt frame1_med.nrm frame1_med_arr.nrm \
@@ -61,14 +65,16 @@ pop1_0_sprnames_nomod = \
   $(foreach num,1 2 3 4,panel_agent_number_$(num)) \
   panel_grouping panel_grouping_bar_grp panel_grouping_bar_th \
   panel_peragent_supl_empty panel_peragent_supl_symbol_medi \
-  panel_sshield_ena panel_sshield.nrm panel_weapon_frame \
+  panel_sshield.nrm panel_weapon_frame \
   panel_weapon_list_frst_frame panel_weapon_list_next_frame weapon_bk_empty
 pop1_0_sprites_cp = \
   $(foreach name,$(pop1_0_sprnames_nomod),panel_mblue_bevel-32-baked/$(name).png)
 
 data/pop1-0.tab: data/pop1-0.dat
 
-data/pop1-0.dat: panel_mblue_bevel-32-baked/filelist-pop1-0.txt $(top_srcdir)/data/engine-std.pal ${pop1_0_sprites_cp} $(pop1_0_sprites_text) $(pop1_0_sprites_agents_panel) $(pop1_0_sprites_wep_oln) $(pop1_0_sprites_wep_pnl)
+data/pop1-0.dat: panel_mblue_bevel-32-baked/filelist-pop1-0.txt $(top_srcdir)/data/engine-std.pal ${pop1_0_sprites_cp} \
+  $(pop1_0_sprites_text) $(pop1_0_sprites_agents_panel) $(pop1_0_sprites_common_panel) \
+  $(pop1_0_sprites_wep_oln) $(pop1_0_sprites_wep_pnl)
 
 panel_mblue_bevel-32-baked/%.txt: $(top_srcdir)/panel_mblue_bevel-32/%.txt
 	$(MKDIR_P) "$(@D)"
@@ -85,6 +91,15 @@ panel_mblue_bevel-32-baked/text_detail.png: $(pop1_0_sprites_text_detail)
 panel_mblue_bevel-32-baked/text_uplink_paused.png: $(pop1_0_sprites_text_uplink_paused)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 137x10+0+2 +repage "$@"
+
+# Use ImageMagick to generate red hue on enabled elements
+panel_mblue_bevel-32-baked/%.ena.png: $(top_srcdir)/panel_mblue_bevel-32/%.nrm.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -modulate 100,0 \
+        -channel R -evaluate multiply 1.72 \
+        -channel G -evaluate multiply 0.28 \
+        -channel B -evaluate multiply 0.01 \
+        +channel "$@"
 
 # Use ImageMagick to generate light blue sprites from the white ones
 # rule with multiple targets is automatically divided into multiple rules with single target

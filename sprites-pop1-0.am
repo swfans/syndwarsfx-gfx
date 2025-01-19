@@ -62,7 +62,7 @@ pop1_0_sprnames_nomod = \
   $(foreach num,1 2 3 4,panel_agent_number_$(num)) \
   panel_grouping panel_grouping_bar_grp panel_grouping_bar_th \
   panel_peragent_supl_empty panel_peragent_supl_symbol_medi \
-  panel_sshield_ena panel_sshield_nrm panel_weapon_frame \
+  panel_sshield_ena panel_sshield.nrm panel_weapon_frame \
   panel_weapon_list_frst_frame panel_weapon_list_next_frame weapon_bk_empty
 pop1_0_sprites_cp = \
   $(foreach name,$(pop1_0_sprnames_nomod),panel_mblue_bevel-32-baked/$(name).png)

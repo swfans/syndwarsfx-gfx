@@ -8,7 +8,7 @@ panel_agent_number_1.png
 panel_agent_number_2.png
 panel_agent_number_3.png
 panel_agent_number_4.png
-panel_sshield_nrm.png
+panel_sshield.nrm.png
 panel_grouping.png
 panel_weapon_list_old_upper_frame.png
 panel_weapon_list_old_centr_frame.png
@@ -97,7 +97,7 @@ empty.png
 empty.png
 empty.png
 empty.png
-panel_sshield_ena.png
+panel_sshield.ena.png
 kicked_arrow_left.png
 kicked_arrow_right.png
 text_uplink_paused.png

@@ -8,7 +8,7 @@ panel_peragent_old_part_number_1.lgt.png
 panel_peragent_old_part_number_2.lgt.png
 panel_peragent_old_part_number_3.lgt.png
 panel_peragent_old_part_number_4.lgt.png
-panel_sshield_nrm_top.png
+panel_sshield.nrm_top.png
 panel_grouping.png
 panel_weapon_list_old_upper_frame.png
 panel_weapon_list_old_centr_frame.png
@@ -103,5 +103,5 @@ kicked_arrow_right.png
 text_uplink.png
 text_detail.png
 text_paused.png
-panel_sshield_nrm_btm.png
+panel_sshield.nrm_btm.png
 panel_sshield_ena_btm.png

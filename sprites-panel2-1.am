@@ -48,7 +48,7 @@ panel2_1_sprnames_nomod = \
   ingame_agent_number_1 ingame_agent_number_2 ingame_agent_number_3 ingame_agent_number_4 \
   panel_agent_number_1 panel_agent_number_2 panel_agent_number_3 panel_agent_number_4 \
   panel_grouping panel_grouping_bar_grp panel_grouping_bar_th \
-  panel_sshield_ena_btm panel_sshield_ena_top panel_sshield_nrm_btm panel_sshield_nrm_top \
+  panel_sshield_ena_btm panel_sshield_ena_top panel_sshield.nrm_btm panel_sshield.nrm_top \
   panel_weapon_list_old_centr_frame panel_weapon_list_old_upper_frame weapon_bk_empty
 panel2_1_sprites_cp = \
   $(foreach name,$(panel2_1_sprnames_nomod),panel_dgren_marbl-64-baked/$(name).png)

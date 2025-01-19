@@ -142,7 +142,7 @@ panel_lblue_plain-32-baked/%.sngl.nrm.png: panel_lblue_plain-32-baked/weapon_bk_
 
 panel_lblue_plain-32-baked/%.foup.nrm.png: panel_lblue_plain-32-baked/weapon_bk_empty.png panel_lblue_plain-32-baked/%.foup.lgt.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry +0+0 -composite \
+	$(MAGICK_CONVERT) $< -background none -transparent none \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry +0+0 -composite \
         -channel A -region 2x2-13+4 -negate -region 2x2-13-3 -negate -region 2x2+13+4 -negate -region 2x2+13-3 -negate +channel "$@"
 
 # Use ImageMagick to generate light teal highlight border sprites around medikit box

@@ -97,11 +97,11 @@ empty.png
 empty.png
 empty.png
 empty.png
-panel_sshield_ena_top.png
+panel_sshield.ena.png 0 0 20 154
 kicked_arrow_left.png
 kicked_arrow_right.png
 text_uplink.png
 text_detail.png
 text_paused.png
 panel_sshield.nrm.png 0 154 20 91
-panel_sshield_ena_btm.png
+panel_sshield.ena.png 0 154 20 91

@@ -110,19 +110,19 @@ panel_lblue_plain-128-baked/%.sngl.lgt.png panel_lblue_plain-128-baked/%.foup.lg
 
 panel_lblue_plain-128-baked/panel_peragent_main_number_1.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_frst_empty.png panel_lblue_plain-128-baked/panel_agent_number_1.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -60-6 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -120-12 -composite "$@"
 
 panel_lblue_plain-128-baked/panel_peragent_main_number_2.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_next_empty.png panel_lblue_plain-128-baked/panel_agent_number_2.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -110-4 -composite "$@"
 
 panel_lblue_plain-128-baked/panel_peragent_main_number_3.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_next_empty.png panel_lblue_plain-128-baked/panel_agent_number_3.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -55-2 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -110-4 -composite "$@"
 
 panel_lblue_plain-128-baked/panel_peragent_main_number_4.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_next_empty.png panel_lblue_plain-128-baked/panel_agent_number_4.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -57-2 -composite "$@"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry -114-4 -composite "$@"
 
 panel_lblue_plain-128-baked/panel_peragent_supl_medi.nrm.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_supl_empty.png panel_lblue_plain-128/panel_peragent_supl_symbol_medi.png
 	$(MKDIR_P) "$(@D)"
@@ -140,7 +140,7 @@ panel_lblue_plain-128-baked/%.sngl.nrm.png: panel_lblue_plain-128-baked/weapon_b
 panel_lblue_plain-128-baked/%.foup.nrm.png: panel_lblue_plain-128-baked/weapon_bk_empty.png panel_lblue_plain-128-baked/%.foup.lgt.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" +level 0,79% \) -gravity Center -geometry +0+0 -composite \
-        -channel A -region 4x4-26+7 -negate -region 4x4-26-7 -negate -region 4x4+26+7 -negate -region 4x4+26-7 -negate +channel "$@"
+        -channel A -region 8x8-52+14 -negate -region 8x8-52-14 -negate -region 8x8+52+14 -negate -region 8x8+52-14 -negate +channel "$@"
 
 # Use ImageMagick to generate light teal highlight border sprites around medikit box
 # 1. convert non-transparent areas to white, transparent to black
@@ -164,7 +164,7 @@ panel_lblue_plain-128-baked/panel_peragent_supl_hlight.png: $(top_srcdir)/panel_
 # For each sprite, a shift required to fully patch the hole is a bit different
 panel_lblue_plain-128-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_lblue_plain-128/panel_weapon_frame.png $(top_srcdir)/panel_lblue_plain-128/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $+ -gravity Center -geometry -6+0 -composite \
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry -13+0 -composite \
 	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
         -define convolve:scale='!' -morphology Convolve Laplacian:1 \
@@ -176,7 +176,7 @@ panel_lblue_plain-128-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_l
 
 panel_lblue_plain-128-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/panel_lblue_plain-128/panel_weapon_list_frst_frame.png $(top_srcdir)/panel_lblue_plain-128/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $+ -gravity Center -geometry +6+4 -composite \
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +12+8 -composite \
 	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
         -define convolve:scale='!' -morphology Convolve Laplacian:1 \
@@ -188,7 +188,7 @@ panel_lblue_plain-128-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/pan
 
 panel_lblue_plain-128-baked/panel_weapon_list_next_hlight.png: $(top_srcdir)/panel_lblue_plain-128/panel_weapon_list_next_frame.png $(top_srcdir)/panel_lblue_plain-128/weapon_bk_empty.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $+ -gravity Center -geometry +1+2 -composite \
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +2+4 -composite \
 	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
         -define convolve:scale='!' -morphology Convolve Laplacian:1 \

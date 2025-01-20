@@ -149,13 +149,20 @@ panel_dgren_marbl-64-baked/panel_peragent_main_number_4.png: $(top_srcdir)/panel
 	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -57-2 -composite "$@"
 
 # Use ImageMagick to generate bright halos to be used for active agent numbers
+# 1. Get original light number (background, for covienience only)
+# 2. Merge with slightly shifted and blurred number; but completely clear pixels which are barely visible anyway
+# 3. Merge with slightly shifted and blurred number exactly like before, but shif in opposite direction
+# 4. Multiply transparency of the result with BottomHat filter output (increase transparency in small details)
 $(foreach num,1 2 3 4,panel_dgren_marbl-64-baked/panel_agent_number_$(num).halo.lgt.png) : \
 panel_dgren_marbl-64-baked/%.halo.lgt.png: panel_dgren_marbl-64-baked/%.png
-	$(MAGICK_CONVERT) $< \
-        \( "$(word 1,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,90%,0.7 -fuzz 6% -fill none -opaque none \) -gravity Center -geometry +1+0 -composite \
-        \( "$(word 1,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,90%,0.7 -fuzz 6% -fill none -opaque none \) -gravity Center -geometry -1+0 -composite \
-        \( "$(word 1,$+)" -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,88% \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel \
-        "$@"
+	$(MAGICK_CONVERT) $< -gravity Center \
+        \( "$(word 1,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,90%,0.7 -fuzz 6% -transparent none \) -geometry +1+0 -composite \
+        \( "$(word 1,$+)" -blur 0x1.3 -modulate 100,500,95 +level 0,90%,0.7 -fuzz 6% -transparent none \) -geometry -1+0 -composite \
+        miff:- | \
+      $(MAGICK_CONVERT) - \( "$(word 1,$+)" \
+        -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,88% \
+        \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
+      $(MAGICK_CONVERT) - +channel "$@"
 
 # Use ImageMagick to generate active agent numbers, with bright numbers and additional halos behind
 panel_dgren_marbl-64-baked/panel_peragent_part_number_1.lgt.png: $(top_srcdir)/panel_dgren_marbl-64/panel_peragent_frst_empty.png panel_dgren_marbl-64-baked/panel_agent_number_1.png panel_dgren_marbl-64-baked/panel_agent_number_1.halo.lgt.png

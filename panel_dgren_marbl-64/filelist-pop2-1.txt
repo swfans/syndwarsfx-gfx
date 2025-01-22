@@ -1,9 +1,9 @@
 pop2_panel_green_marble_detail1 0 0 0 0
 empty.png
 empty.png
-panel_peragent_main_number_2.png
-panel_peragent_main_number_3.png
-panel_peragent_main_number_4.png
+empty.png
+empty.png
+empty.png
 panel_peragent_part_number_1.lgt.png
 panel_peragent_part_number_2.lgt.png
 panel_peragent_part_number_3.lgt.png
@@ -129,15 +129,15 @@ empty.png
 panel_peragent_main_number_1.png 0 0 57 42
 panel_peragent_main_number_1.png 57 0 86 42
 panel_peragent_main_number_1.png 143 0 34 42
-empty.png
-empty.png
-empty.png
-empty.png
-empty.png
-empty.png
-empty.png
-empty.png
-empty.png
+panel_peragent_main_number_2.png 0 0 68 32
+panel_peragent_main_number_2.png 68 0 72 32
+panel_peragent_main_number_2.png 140 0 34 32
+panel_peragent_main_number_3.png 0 0 68 32
+panel_peragent_main_number_3.png 68 0 72 32
+panel_peragent_main_number_3.png 140 0 34 32
+panel_peragent_main_number_4.png 0 0 68 32
+panel_peragent_main_number_4.png 68 0 72 32
+panel_peragent_main_number_4.png 140 0 34 32
 panel_sshield.nrm.png 0 0 20 30
 panel_sshield.nrm.png 0 30 20 185
 panel_sshield.nrm.png 0 215 20 30

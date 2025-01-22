@@ -1,9 +1,9 @@
 pop0_panel_standard_detail3 0 0 0 0
 empty.png
 empty.png
-panel_peragent_main_number_2.png
-panel_peragent_main_number_3.png
-panel_peragent_main_number_4.png
+empty.png
+empty.png
+empty.png
 panel_agent_number_1.png
 panel_agent_number_2.png
 panel_agent_number_3.png
@@ -129,15 +129,15 @@ empty.png
 panel_peragent_main_number_1.png 0 0 114 84
 panel_peragent_main_number_1.png 114 0 172 84
 panel_peragent_main_number_1.png 286 0 68 84
-empty.png
-empty.png
-empty.png
-empty.png
-empty.png
-empty.png
-empty.png
-empty.png
-empty.png
+panel_peragent_main_number_2.png 0 0 136 64
+panel_peragent_main_number_2.png 136 0 144 64
+panel_peragent_main_number_2.png 280 0 68 64
+panel_peragent_main_number_3.png 0 0 136 64
+panel_peragent_main_number_3.png 136 0 144 64
+panel_peragent_main_number_3.png 280 0 68 64
+panel_peragent_main_number_4.png 0 0 136 64
+panel_peragent_main_number_4.png 136 0 144 64
+panel_peragent_main_number_4.png 280 0 68 64
 panel_sshield.nrm.png 0 0 40 120
 panel_sshield.nrm.png 0 120 40 250
 panel_sshield.nrm.png 0 370 40 120

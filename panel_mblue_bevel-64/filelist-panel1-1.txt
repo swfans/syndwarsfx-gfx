@@ -1,9 +1,9 @@
 panel1_old_panel_med_blue_bevel_detail1 0 0 0 0
 empty.png
 empty.png
-panel_peragent_old_main_number_2.png
-panel_peragent_old_main_number_3.png
-panel_peragent_old_main_number_4.png
+empty.png
+empty.png
+empty.png
 panel_agent_number_1.png
 panel_agent_number_2.png
 panel_agent_number_3.png
@@ -129,15 +129,15 @@ empty.png
 panel_peragent_old_main_number_1.png 0 0 57 42
 panel_peragent_old_main_number_1.png 57 0 71 42
 panel_peragent_old_main_number_1.png 128 0 34 42
-empty.png
-empty.png
-empty.png
-empty.png
-empty.png
-empty.png
-empty.png
-empty.png
-empty.png
+panel_peragent_old_main_number_2.png 0 0 69 32
+panel_peragent_old_main_number_2.png 69 0 81 32
+panel_peragent_old_main_number_2.png 150 0 26 32
+panel_peragent_old_main_number_3.png 0 0 69 32
+panel_peragent_old_main_number_3.png 69 0 81 32
+panel_peragent_old_main_number_3.png 150 0 26 32
+panel_peragent_old_main_number_4.png 0 0 69 32
+panel_peragent_old_main_number_4.png 69 0 81 32
+panel_peragent_old_main_number_4.png 150 0 26 32
 panel_sshield.nrm.png 0 0 20 30
 panel_sshield.nrm.png 0 30 20 185
 panel_sshield.nrm.png 0 215 20 30

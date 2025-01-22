@@ -1,5 +1,5 @@
 panel0_old_panel_standard_detail0 0 0 0 0
-panel_peragent_old_main_number_1.png
+empty.png
 empty.png
 panel_peragent_old_main_number_2.png
 panel_peragent_old_main_number_3.png
@@ -126,9 +126,9 @@ empty.png
 empty.png
 empty.png
 empty.png
-empty.png
-empty.png
-empty.png
+panel_peragent_old_main_number_1.png 0 0 28 21
+panel_peragent_old_main_number_1.png 28 0 36 21
+panel_peragent_old_main_number_1.png 64 0 17 21
 empty.png
 empty.png
 empty.png

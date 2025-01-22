@@ -1,5 +1,5 @@
 pop1_panel_med_blue_bevel_detail0 0 0 0 0
-panel_peragent_main_number_1.png
+empty.png
 empty.png
 panel_peragent_main_number_2.png
 panel_peragent_main_number_3.png
@@ -126,9 +126,9 @@ empty.png
 empty.png
 empty.png
 empty.png
-empty.png
-empty.png
-empty.png
+panel_peragent_main_number_1.png 0 0 28 21
+panel_peragent_main_number_1.png 28 0 36 21
+panel_peragent_main_number_1.png 64 0 17 21
 empty.png
 empty.png
 empty.png

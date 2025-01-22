@@ -8,7 +8,7 @@ panel_agent_number_1.png
 panel_agent_number_2.png
 panel_agent_number_3.png
 panel_agent_number_4.png
-panel_sshield.nrm.png 0 0 40 308
+empty.png
 panel_grouping.png
 panel_weapon_frame.png
 panel_weapon_list_frst_frame.png
@@ -97,14 +97,57 @@ panel_peragent_supl_medi.nrm.png
 panel_peragent_supl_medi.lgt.png
 panel_peragent_supl_hlight.png
 panel_peragent_supl_empty.png
-panel_sshield.ena.png 0 0 40 308
+empty.png
 kicked_arrow_left.png
 kicked_arrow_right.png
 text_uplink.png
 text_detail.png
 text_paused.png
-panel_sshield.nrm.png 0 308 40 182
-panel_sshield.ena.png 0 308 40 182
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+empty.png
+panel_sshield.nrm.png 0 0 40 120
+panel_sshield.nrm.png 0 120 40 250
+panel_sshield.nrm.png 0 370 40 120
+panel_sshield.ena.png 0 0 40 120
+panel_sshield.ena.png 0 120 40 250
+panel_sshield.ena.png 0 370 40 120
+empty.png
+empty.png
+empty.png
+empty.png
 panel_peragent_main_number_2.png
 panel_peragent_main_number_2.png
 panel_peragent_main_number_2.png

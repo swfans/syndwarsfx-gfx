@@ -127,8 +127,8 @@ empty.png
 empty.png
 empty.png
 panel_peragent_main_number_1.png 0 0 57 42
-panel_peragent_main_number_1.png 57 0 86 42
-panel_peragent_main_number_1.png 143 0 34 42
+panel_peragent_main_number_1.png 57 0 71 42
+panel_peragent_main_number_1.png 128 0 34 42
 panel_peragent_main_number_2.png 0 0 68 32
 panel_peragent_main_number_2.png 68 0 72 32
 panel_peragent_main_number_2.png 140 0 34 32

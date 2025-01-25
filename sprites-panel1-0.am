@@ -94,7 +94,7 @@ panel_mblue_bevel-32-baked/panel_weapon_list_old_centr_hlight.png: $(top_srcdir)
         -background black -alpha remove -bordercolor black -border 4x4 \
         -morphology EdgeIn Octagon:1 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
-        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(33%,22%,76%) %[fx:w*.9],%[fx:h*.1] rgb(33%,22%,76%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(38%,27%,88%) %[fx:w*.9],%[fx:h*.1] rgb(42%,30%,99%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
         +channel "$@"
 
 panel_mblue_bevel-32-baked/panel_weapon_list_old_upper_hlight.png: $(top_srcdir)/panel_mblue_bevel-32/panel_weapon_list_old_upper_frame.png $(top_srcdir)/panel_mblue_bevel-32/weapon_bk_empty.png
@@ -104,5 +104,5 @@ panel_mblue_bevel-32-baked/panel_weapon_list_old_upper_hlight.png: $(top_srcdir)
         -background black -alpha remove -bordercolor black -border 4x4 \
         -morphology EdgeIn Octagon:1 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
-        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(33%,22%,76%) %[fx:w*.9],%[fx:h*.1] rgb(33%,22%,76%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(38%,27%,88%) %[fx:w*.9],%[fx:h*.1] rgb(42%,30%,99%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
         +channel "$@"

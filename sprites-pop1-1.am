@@ -410,7 +410,7 @@ panel_mblue_bevel-64-baked/panel_peragent_supl_hlight.png: $(top_srcdir)/panel_m
         -background black -alpha remove -bordercolor black -border 4x4 \
         -morphology EdgeIn Square:1 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
-        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(33%,22%,76%) %[fx:w*.9],%[fx:h*.1] rgb(33%,22%,76%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(38%,27%,88%) %[fx:w*.9],%[fx:h*.1] rgb(42%,30%,99%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
         +channel "$@"
 
 # Use ImageMagick to generate light blue color gradient highlight border sprites around weapon boxes
@@ -423,7 +423,7 @@ panel_mblue_bevel-64-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_mb
         -background black -alpha remove -bordercolor black -border 4x4 \
         -morphology EdgeIn Octagon:2 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
-        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(33%,22%,76%) %[fx:w*.9],%[fx:h*.1] rgb(33%,22%,76%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(38%,27%,88%) %[fx:w*.9],%[fx:h*.1] rgb(42%,30%,99%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
         +channel "$@"
 
 panel_mblue_bevel-64-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/panel_mblue_bevel-64/panel_weapon_list_frst_frame.png $(top_srcdir)/panel_mblue_bevel-64/weapon_bk_empty.png
@@ -433,7 +433,7 @@ panel_mblue_bevel-64-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/pane
         -background black -alpha remove -bordercolor black -border 4x4 \
         -morphology EdgeIn Octagon:2 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
-        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(33%,22%,76%) %[fx:w*.9],%[fx:h*.1] rgb(33%,22%,76%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(38%,27%,88%) %[fx:w*.9],%[fx:h*.1] rgb(42%,30%,99%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
         +channel "$@"
 
 panel_mblue_bevel-64-baked/panel_weapon_list_next_hlight.png: $(top_srcdir)/panel_mblue_bevel-64/panel_weapon_list_next_frame.png $(top_srcdir)/panel_mblue_bevel-64/weapon_bk_empty.png
@@ -443,5 +443,5 @@ panel_mblue_bevel-64-baked/panel_weapon_list_next_hlight.png: $(top_srcdir)/pane
         -background black -alpha remove -bordercolor black -border 4x4 \
         -morphology EdgeIn Octagon:2 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
-        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(33%,22%,76%) %[fx:w*.9],%[fx:h*.1] rgb(33%,22%,76%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(38%,27%,88%) %[fx:w*.9],%[fx:h*.1] rgb(42%,30%,99%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
         +channel "$@"

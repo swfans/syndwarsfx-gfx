@@ -1,0 +1,113 @@
+# *****************************************************************************
+#  Graphics assets generation for Syndicate Wars Port.
+# *****************************************************************************
+#  @file sprites-panel0-3.am
+#      Automake rules neccessary to build `panel0-3` in-game panel sprites.
+#  @author   Tomasz Lis
+#  @par  Copying and copyrights:
+#      This program is free software; you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation; either version 2 of the License, or
+#      (at your option) any later version.
+# *****************************************************************************
+
+panel0_3_files = data/panel0-3.dat data/panel0-3.tab
+
+# The sprites containing some text lines merged from bitmap fonts, are built with `pop0` panel
+panel0_3_sprites_text = \
+  panel_lblue_plain-128-baked/text_detail.png \
+  panel_lblue_plain-128-baked/text_uplink.png \
+  panel_lblue_plain-128-baked/text_paused.png
+
+# Sprites representing each weapon, when in pocket and when taken out
+panel0_3_weapons_singl_outline = \
+  uzi minigun laser ellaser rap persuader flamer h2htaser longrange airstrike beam razorwire \
+  qdevastator persuader2 stasisfld soulgun time cerberusiff medi1 medi2 explwire cloneshld item_cybmod item_suitcase
+panel0_3_weapons_fourp_outline = \
+  nuclgren crazygas kogas elemine explmine
+
+panel0_3_sprites_wep_oln = \
+  $(foreach name,$(panel0_3_weapons_singl_outline),panel_lblue_plain-128-baked/weapon_outline_$(name).sngl.lgt.png) \
+  $(foreach name,$(panel0_3_weapons_fourp_outline),panel_lblue_plain-128-baked/weapon_outline_$(name).foup.lgt.png)
+panel0_3_sprites_wep_pnl = \
+  $(foreach name,$(panel0_3_weapons_singl_outline),panel_lblue_plain-128-baked/weapon_outline_$(name).sngl.nrm.png) \
+  $(foreach name,$(panel0_3_weapons_fourp_outline),panel_lblue_plain-128-baked/weapon_outline_$(name).foup.nrm.png)
+
+# Generated elements of the per-agent panel
+panel0_3_sprites_agents_panel = \
+  $(foreach num,1 2 3 4,panel_lblue_plain-128-baked/panel_peragent_old_main_number_$(num).png) \
+  panel_lblue_plain-128-baked/panel_weapon_list_old_centr_hlight.png \
+  panel_lblue_plain-128-baked/panel_weapon_list_old_upper_hlight.png
+
+# Generated elements of the panel which are not per-agent
+panel0_3_sprites_common_panel = \
+  panel_lblue_plain-128-baked/panel_sshield.ena.png
+
+# List of sprites to pass without alterations
+panel0_3_sprnames_nomod = \
+  frame1_med.lgt frame1_med_arr.lgt frame1_med.nrm frame1_med_arr.nrm \
+  empty kicked_arrow_left kicked_arrow_right \
+  ingame_agent_number_1 ingame_agent_number_2 ingame_agent_number_3 ingame_agent_number_4 \
+  $(foreach num,1 2 3 4,panel_agent_number_$(num)) \
+  panel_grouping panel_grouping_bar_grp panel_grouping_bar_th \
+  panel_sshield.nrm \
+  panel_weapon_list_old_centr_frame panel_weapon_list_old_upper_frame weapon_bk_empty
+panel0_3_sprites_cp = \
+  $(foreach name,$(panel0_3_sprnames_nomod),panel_lblue_plain-128-baked/$(name).png)
+
+data/panel0-3.tab: data/panel0-3.dat
+
+data/panel0-3.dat: panel_lblue_plain-128-baked/filelist-panel0-3.txt $(top_srcdir)/data/engine-std.pal ${panel0_3_sprites_cp} \
+  $(panel0_3_sprites_text) $(panel0_3_sprites_agents_panel) $(panel0_3_sprites_common_panel) \
+  $(panel0_3_sprites_wep_oln) $(panel0_3_sprites_wep_pnl)
+
+panel_lblue_plain-128-baked/%.txt: $(top_srcdir)/panel_lblue_plain-128/%.txt
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"
+
+panel_lblue_plain-128-baked/%.png: $(top_srcdir)/panel_lblue_plain-128/%.png
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"
+
+panel_lblue_plain-128-baked/panel_peragent_old_main_number_1.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_old_frst_empty.png panel_lblue_plain-128-baked/panel_agent_number_1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -112-12 -composite "$@"
+
+panel_lblue_plain-128-baked/panel_peragent_old_main_number_2.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_old_next_empty.png panel_lblue_plain-128-baked/panel_agent_number_2.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -110-4 -composite "$@"
+
+panel_lblue_plain-128-baked/panel_peragent_old_main_number_3.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_old_next_empty.png panel_lblue_plain-128-baked/panel_agent_number_3.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -110-4 -composite "$@"
+
+panel_lblue_plain-128-baked/panel_peragent_old_main_number_4.png: $(top_srcdir)/panel_lblue_plain-128/panel_peragent_old_next_empty.png panel_lblue_plain-128-baked/panel_agent_number_4.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< \( "$(word 2,$+)" -normalize +level 0,79% \) -gravity Center -geometry -112-4 -composite "$@"
+
+# Use ImageMagick to generate light teal highlight border sprites around weapon boxes
+# The algorithm goes as explained in other files, but here the hole in the sprite is first patched with empty weapon
+# For each sprite, a shift required to fully patch the hole is a bit different
+panel_lblue_plain-128-baked/panel_weapon_list_old_centr_hlight.png: $(top_srcdir)/panel_lblue_plain-128/panel_weapon_list_old_centr_frame.png $(top_srcdir)/panel_lblue_plain-128/weapon_bk_empty.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +2+0 -composite \
+	    -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel -colorspace RGB "$@"
+
+panel_lblue_plain-128-baked/panel_weapon_list_old_upper_hlight.png: $(top_srcdir)/panel_lblue_plain-128/panel_weapon_list_old_upper_frame.png $(top_srcdir)/panel_lblue_plain-128/weapon_bk_empty.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +2-4 -composite \
+	    -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -define convolve:scale='!' -morphology Convolve Laplacian:1 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel -colorspace RGB "$@"

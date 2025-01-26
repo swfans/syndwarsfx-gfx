@@ -1,0 +1,109 @@
+# *****************************************************************************
+#  Graphics assets generation for Syndicate Wars Port.
+# *****************************************************************************
+#  @file sprites-panel1-3.am
+#      Automake rules neccessary to build `panel1-3` in-game panel sprites.
+#  @author   Tomasz Lis
+#  @par  Copying and copyrights:
+#      This program is free software; you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation; either version 2 of the License, or
+#      (at your option) any later version.
+# *****************************************************************************
+
+panel1_3_files = data/panel1-3.dat data/panel1-3.tab
+
+# The sprites containing some text lines merged from bitmap fonts, are built with `pop0` panel
+panel1_3_sprites_text = \
+  panel_mblue_bevel-128-baked/text_detail.png \
+  panel_mblue_bevel-128-baked/text_uplink.png \
+  panel_mblue_bevel-128-baked/text_paused.png
+
+# Sprites representing each weapon, when in pocket and when taken out
+panel1_3_weapons_singl_outline = \
+  uzi minigun laser ellaser rap persuader flamer h2htaser longrange airstrike beam razorwire \
+  qdevastator persuader2 stasisfld soulgun time cerberusiff medi1 medi2 explwire cloneshld item_cybmod item_suitcase
+panel1_3_weapons_fourp_outline = \
+  nuclgren crazygas kogas elemine explmine
+
+panel1_3_sprites_wep_oln = \
+  $(foreach name,$(panel1_3_weapons_singl_outline),panel_mblue_bevel-128-baked/weapon_outline_$(name).sngl.lgt.png) \
+  $(foreach name,$(panel1_3_weapons_fourp_outline),panel_mblue_bevel-128-baked/weapon_outline_$(name).foup.lgt.png)
+panel1_3_sprites_wep_pnl = \
+  $(foreach name,$(panel1_3_weapons_singl_outline),panel_mblue_bevel-128-baked/weapon_outline_$(name).sngl.nrm.png) \
+  $(foreach name,$(panel1_3_weapons_fourp_outline),panel_mblue_bevel-128-baked/weapon_outline_$(name).foup.nrm.png)
+
+# Generated elements of the per-agent panel
+panel1_3_sprites_agents_panel = \
+  $(foreach num,1 2 3 4,panel_mblue_bevel-128-baked/panel_peragent_old_main_number_$(num).png) \
+  panel_mblue_bevel-128-baked/panel_weapon_list_old_centr_hlight.png \
+  panel_mblue_bevel-128-baked/panel_weapon_list_old_upper_hlight.png
+
+# Generated elements of the panel which are not per-agent
+panel1_3_sprites_common_panel = \
+  panel_mblue_bevel-128-baked/panel_sshield.ena.png
+
+# List of sprites to pass without alterations
+panel1_3_sprnames_nomod = \
+  frame1_med.lgt frame1_med_arr.lgt frame1_med.nrm frame1_med_arr.nrm \
+  empty kicked_arrow_left kicked_arrow_right \
+  ingame_agent_number_1 ingame_agent_number_2 ingame_agent_number_3 ingame_agent_number_4 \
+  $(foreach num,1 2 3 4,panel_agent_number_$(num)) \
+  panel_grouping panel_grouping_bar_grp panel_grouping_bar_th \
+  panel_sshield.nrm \
+  panel_weapon_list_old_centr_frame panel_weapon_list_old_upper_frame weapon_bk_empty
+panel1_3_sprites_cp = \
+  $(foreach name,$(panel1_3_sprnames_nomod),panel_mblue_bevel-128-baked/$(name).png)
+
+data/panel1-3.tab: data/panel1-3.dat
+
+data/panel1-3.dat: panel_mblue_bevel-128-baked/filelist-panel1-3.txt $(top_srcdir)/data/engine-std.pal ${panel1_3_sprites_cp} \
+  $(panel1_3_sprites_text) $(panel1_3_sprites_agents_panel) $(panel1_3_sprites_common_panel) \
+  $(panel1_3_sprites_wep_oln) $(panel1_3_sprites_wep_pnl)
+
+panel_mblue_bevel-128-baked/%.txt: $(top_srcdir)/panel_mblue_bevel-128/%.txt
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"
+
+panel_mblue_bevel-128-baked/%.png: $(top_srcdir)/panel_mblue_bevel-128/%.png
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"
+
+panel_mblue_bevel-128-baked/panel_peragent_old_main_number_1.png: $(top_srcdir)/panel_mblue_bevel-128/panel_peragent_old_frst_empty.png panel_mblue_bevel-128/panel_agent_number_1.nrm.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -112-8 -composite "$@"
+
+panel_mblue_bevel-128-baked/panel_peragent_old_main_number_2.png: $(top_srcdir)/panel_mblue_bevel-128/panel_peragent_old_next_empty.png panel_mblue_bevel-128/panel_agent_number_2.nrm.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -112-0 -composite "$@"
+
+panel_mblue_bevel-128-baked/panel_peragent_old_main_number_3.png: $(top_srcdir)/panel_mblue_bevel-128/panel_peragent_old_next_empty.png panel_mblue_bevel-128/panel_agent_number_3.nrm.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -112-0 -composite "$@"
+
+panel_mblue_bevel-128-baked/panel_peragent_old_main_number_4.png: $(top_srcdir)/panel_mblue_bevel-128/panel_peragent_old_next_empty.png panel_mblue_bevel-128/panel_agent_number_4.nrm.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry -112-0 -composite "$@"
+
+# Use ImageMagick to generate blue color gradient highlight border sprites around weapon boxes
+# The algorithm goes as explained in other files, but here the hole in the sprite is first patched with empty weapon; also thicker border is generated
+# For each sprite, a shift required to fully patch the hole is a bit different
+panel_mblue_bevel-128-baked/panel_weapon_list_old_centr_hlight.png: $(top_srcdir)/panel_mblue_bevel-128/panel_weapon_list_old_centr_frame.png $(top_srcdir)/panel_mblue_bevel-128/weapon_bk_empty.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +2+0 -composite \
+	    -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -morphology EdgeIn Octagon:2 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(38%,27%,88%) %[fx:w*.9],%[fx:h*.1] rgb(42%,30%,99%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
+        +channel "$@"
+
+panel_mblue_bevel-128-baked/panel_weapon_list_old_upper_hlight.png: $(top_srcdir)/panel_mblue_bevel-128/panel_weapon_list_old_upper_frame.png $(top_srcdir)/panel_mblue_bevel-128/weapon_bk_empty.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) $+ -gravity Center -geometry +2-4 -composite \
+	    -channel RGB -fuzz 100% -fill white -opaque black \
+        -background black -alpha remove -bordercolor black -border 4x4 \
+        -morphology EdgeIn Octagon:2 \
+        -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
+        -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(38%,27%,88%) %[fx:w*.9],%[fx:h*.1] rgb(42%,30%,99%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
+        +channel "$@"

@@ -148,7 +148,3 @@ empty.png
 empty.png
 empty.png
 empty.png
-panel_peragent_main_number_2.png
-panel_peragent_main_number_2.png
-panel_peragent_main_number_2.png
-panel_peragent_main_number_2.png

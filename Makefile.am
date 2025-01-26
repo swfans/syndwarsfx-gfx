@@ -37,19 +37,23 @@ include $(srcdir)/sprites-pop0-1.am
 include $(srcdir)/sprites-pop0-3.am
 include $(srcdir)/sprites-pop1-0.am
 include $(srcdir)/sprites-pop1-1.am
+include $(srcdir)/sprites-pop1-3.am
 include $(srcdir)/sprites-pop2-0.am
 include $(srcdir)/sprites-pop2-1.am
+include $(srcdir)/sprites-pop2-3.am
 
 include $(srcdir)/sprites-panel0-0.am
 include $(srcdir)/sprites-panel0-1.am
 include $(srcdir)/sprites-panel0-3.am
 include $(srcdir)/sprites-panel1-0.am
 include $(srcdir)/sprites-panel1-1.am
+include $(srcdir)/sprites-panel1-3.am
 include $(srcdir)/sprites-panel2-0.am
 include $(srcdir)/sprites-panel2-1.am
+include $(srcdir)/sprites-panel2-3.am
 
-pop0_DATA = $(pop0_0_files) $(pop0_1_files) $(pop0_3_files) $(pop1_0_files) $(pop1_1_files) $(pop2_0_files) $(pop2_1_files) \
-  $(panel0_0_files) $(panel0_1_files) $(panel0_3_files) $(panel1_0_files) $(panel1_1_files) $(panel2_0_files) $(panel2_1_files)
+pop0_DATA = $(pop0_0_files) $(pop0_1_files) $(pop0_3_files) $(pop1_0_files) $(pop1_1_files) $(pop1_3_files) $(pop2_0_files) $(pop2_1_files) $(pop2_3_files) \
+  $(panel0_0_files) $(panel0_1_files) $(panel0_3_files) $(panel1_0_files) $(panel1_1_files) $(panel1_3_files) $(panel2_0_files) $(panel2_1_files) $(panel2_3_files)
 pop0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
 data/%.dat:

@@ -185,11 +185,11 @@ define define_panel_bevel_rule
 panel_mblue_bevel-128-baked/%.bevel.$(1).nrm.png: panel_mblue_bevel-128-baked/%.outln.$(1).nrm.png panel_mblue_bevel-128-baked/%.outln.$(1).hlg.png
 	$$(MKDIR_P) "$$(@D)"
 	$$(MAGICK_CONVERT) "$$(word 1,$$+)" -gravity Center \
-        \( "$$(word 1,$$+)" -motion-blur 0x0.6+25  -channel A +level 0,140% \) -geometry +0+0 -composite \
-        \( "$$(word 1,$$+)" -motion-blur 0x0.6+65  -channel A +level 0,100% \) -geometry +0+0 -composite \
-        \( "$$(word 1,$$+)" -motion-blur 0x0.6+45  -channel A +level 0,100% \) -geometry +0+0 -composite \
-        \( "$$(word 2,$$+)" -motion-blur 0x0.6+245 -channel A +level 0,300% \) -geometry +0+0 -composite \
-        \( "$$(word 2,$$+)" -motion-blur 0x0.6+225 -channel A +level 0,300% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -motion-blur 0x1.6+25  -channel A +level 0,140% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -motion-blur 0x1.6+65  -channel A +level 0,100% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -motion-blur 0x1.6+45  -channel A +level 0,100% \) -geometry +0+0 -composite \
+        \( "$$(word 2,$$+)" -motion-blur 0x1.6+245 -channel A +level 0,300% \) -geometry +0+0 -composite \
+        \( "$$(word 2,$$+)" -motion-blur 0x1.6+225 -channel A +level 0,300% \) -geometry +0+0 -composite \
         +channel miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 2,$$+)" \
         -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:4 +level 100%,65% \
@@ -204,31 +204,31 @@ $(eval $(call define_panel_bevel_rule,foup))
 panel_mblue_bevel-128-baked/weapon_ammo_slot.png:
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) -size 12x12 xc:none -stroke none \
-        \( xc:none -fill 'rgb(42%,34%,98%)' -draw "rectangle 2,2 8,8" -motion-blur 0x2.0+205 +level 0,80%  \) -gravity Center -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(42%,34%,98%)' -draw "rectangle 2,2 8,8" -motion-blur 0x2.0+245 +level 0,80%  \) -gravity Center -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(42%,34%,98%)' -draw "rectangle 2,2 8,8" -motion-blur 0x3.0+225 +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 2,2 8,8" -motion-blur 0x2.0+25  +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 2,2 8,8" -motion-blur 0x2.0+65  +level 0,100% \) -gravity Center -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 2,2 8,8" -motion-blur 0x3.0+45  +level 0,170% \) -gravity Center -geometry +0+0 -composite \
-        -fill 'rgb(8%,0%,17%)' -draw "rectangle 1,1 4,4" "$@"
+        \( xc:none -fill 'rgb(42%,34%,98%)' -draw "rectangle 2,2 8,8" -motion-blur 0x4.0+205 +level 0,80%  \) -gravity Center -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,34%,98%)' -draw "rectangle 2,2 8,8" -motion-blur 0x4.0+245 +level 0,80%  \) -gravity Center -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,34%,98%)' -draw "rectangle 2,2 8,8" -motion-blur 0x6.0+225 +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 2,2 8,8" -motion-blur 0x4.0+25  +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 2,2 8,8" -motion-blur 0x4.0+65  +level 0,100% \) -gravity Center -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(8%,0%,17%)'   -draw "rectangle 2,2 8,8" -motion-blur 0x6.0+45  +level 0,170% \) -gravity Center -geometry +0+0 -composite \
+        -fill 'rgb(8%,0%,17%)' -draw "rectangle 2,2 8,8" "$@"
 
 panel_mblue_bevel-128-baked/panel_glare_dir4.png:
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) -size 22x22 xc:none -stroke none -gravity Center \
-        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x3.0+0   -channel A -level 0,80% \) -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x3.0+90  -channel A -level 0,80% \) -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x3.0+180 -channel A -level 0,80% \) -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x3.0+270 -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x6.0+0   -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x6.0+90  -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x6.0+180 -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x6.0+270 -channel A -level 0,80% \) -geometry +0+0 -composite \
         "$@"
 
 panel_mblue_bevel-128-baked/panel_glare_dir5a.png:
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) -size 22x22 xc:none -stroke none -gravity Center \
-        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x3.0+0   -channel A -level 0,80% \) -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x3.0+45  -channel A -level 0,80% \) -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x3.0+90  -channel A -level 0,80% \) -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x3.0+180 -channel A -level 0,80% \) -geometry +0+0 -composite \
-        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x3.0+270 -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x6.0+0   -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x6.0+45  -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x6.0+90  -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x6.0+180 -channel A -level 0,80% \) -geometry +0+0 -composite \
+        \( xc:none -fill 'rgb(42%,55%,99%)' -draw "rectangle 10,10 10,10" -motion-blur 0x6.0+270 -channel A -level 0,80% \) -geometry +0+0 -composite \
         "$@"
 
 # Spacial case - weapon slot with glare
@@ -282,13 +282,13 @@ define define_panel_halo_vertc_rule
 $$(foreach name,$(2),panel_mblue_bevel-128-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
 panel_mblue_bevel-128-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-128-baked/%.outln.$(1).lgt.png
 	$$(MAGICK_CONVERT) $$< -gravity Center \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.0+90  -level 0,60% \) -geometry +0-1 -composite \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.0+270 -level 0,60% \) -geometry +0+1 -composite \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x1.7+0   -level 0,80% \) -geometry -1+0 -composite \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x1.7+180 -level 0,80% \) -geometry +1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x4.0+90  -level 0,60% \) -geometry +0-1 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x4.0+270 -level 0,60% \) -geometry +0+1 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x3.4+0   -level 0,80% \) -geometry -1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x3.4+180 -level 0,80% \) -geometry +1+0 -composite \
         \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 30%,90% \) -geometry +0+0 -channel A -compose Bumpmap -composite \
         +channel miff:- | \
-      $$(MAGICK_CONVERT) - -blur 0x0.8 +level 0,100%,0.80 miff:- | \
+      $$(MAGICK_CONVERT) - -blur 0x1.6 +level 0,100%,0.80 miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
         -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:4 +level 100%,88% \
         \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
@@ -309,13 +309,13 @@ $$(foreach name,$(2),panel_mblue_bevel-128-baked/weapon_outline_$$(name).halo.$(
 panel_mblue_bevel-128-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-128-baked/%.outln.$(1).lgt.png
 	$$(MAGICK_CONVERT) $$< -gravity Center \
         \( "$$(word 1,$$+)" -modulate 100,0 -resize 100%x200%\! -rotational-blur 60 -resize 100%x50%\! -level 0,30% \) -geometry +0+0 -composite \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.5+0   -level 0,130% \) -geometry +0+0 -composite \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.5+180 -level 0,130% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x5.0+0   -level 0,130% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x5.0+180 -level 0,130% \) -geometry +0+0 -composite \
         \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 20%,90% \) -geometry +0+0 -channel A -compose Bumpmap -composite \
         +channel miff:- | \
       $$(MAGICK_CONVERT) - -blur 0x0.5 +level 0,100%,0.70 miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
-        -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:2 +level 100%,85% \
+        -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:3 +level 100%,85% \
         \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
       $$(MAGICK_CONVERT) - -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! +channel -shave 1x1 miff:- | \
       $$(MAGICK_CONVERT) - \
@@ -333,15 +333,15 @@ define define_panel_halo_thick_rule
 $$(foreach name,$(2),panel_mblue_bevel-128-baked/weapon_outline_$$(name).halo.$(1).lgt.png) : \
 panel_mblue_bevel-128-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-128-baked/%.outln.$(1).lgt.png
 	$$(MAGICK_CONVERT) $$< -gravity Center \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.0+90  +level 0,60% \) -geometry +0+0 -composite \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.0+270 +level 0,60% \) -geometry +0+0 -composite \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+0   -level 0,70% \) -geometry -1+0 -composite \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+180 -level 0,70% \) -geometry +1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x4.0+90  +level 0,60% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x4.0+270 +level 0,60% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x4.4+0   -level 0,70% \) -geometry -1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x4.4+180 -level 0,70% \) -geometry +1+0 -composite \
         \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 20%,90% \
         \) -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
-      $$(MAGICK_CONVERT) - -blur 0x1.2 +level 0,100%,0.70 miff:- | \
+      $$(MAGICK_CONVERT) - -blur 0x2.4 +level 0,100%,0.70 miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
-        -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:1 +level 100%,85% \
+        -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:2 +level 100%,85% \
         \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
       $$(MAGICK_CONVERT) - -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! +channel -shave 1x1 miff:- | \
       $$(MAGICK_CONVERT) - \
@@ -359,15 +359,15 @@ $(eval $(call define_panel_halo_thick_rule,foup,nuclgren))
 define define_panel_halo_horiz_rule
 panel_mblue_bevel-128-baked/%.halo.$(1).lgt.png: panel_mblue_bevel-128-baked/%.outln.$(1).lgt.png
 	$$(MAGICK_CONVERT) $$< -gravity Center \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2+90    +level 0,60% \) -geometry +0+0 -composite \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2+270   +level 0,60% \) -geometry +0+0 -composite \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+0   -level 0,70% \) -geometry -1+0 -composite \
-        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x2.2+180 -level 0,70% \) -geometry +1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x4+90    +level 0,60% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x4+270   +level 0,60% \) -geometry +0+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x4.4+0   -level 0,70% \) -geometry -1+0 -composite \
+        \( "$$(word 1,$$+)" -modulate 100,0 -motion-blur 0x4.4+180 -level 0,70% \) -geometry +1+0 -composite \
         \( "$$(word 1,$$+)" -modulate 100,0 -level 0,50% -bordercolor none -border 4x4 -fill white -draw 'color 0,0 floodfill' +level 30%,90% \) -geometry +0+0 -channel A -compose Bumpmap -composite \
         +channel miff:- | \
-      $$(MAGICK_CONVERT) - -blur 0x1.2 +level 0,100%,0.70 miff:- | \
+      $$(MAGICK_CONVERT) - -blur 0x2.4 +level 0,100%,0.70 miff:- | \
       $$(MAGICK_CONVERT) - \( "$$(word 1,$$+)" \
-        -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:4 +level 100%,70% \
+        -modulate 100,0 -level 0,50% -morphology BottomHat Diamond:3 +level 100%,70% \
         \) -gravity Center -geometry +0+0 -channel A -compose Bumpmap -composite +channel miff:- | \
       $$(MAGICK_CONVERT) - -bordercolor none -border 1x1 -virtual-pixel transparent -channel A -morphology Distance Euclidean:1,2\! +channel -shave 1x1 miff:- | \
       $$(MAGICK_CONVERT) - \
@@ -408,7 +408,7 @@ panel_mblue_bevel-128-baked/panel_peragent_supl_hlight.png: $(top_srcdir)/panel_
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$<" -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
-        -morphology EdgeIn Square:1 \
+        -morphology EdgeIn Square:4 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
         -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(38%,27%,88%) %[fx:w*.9],%[fx:h*.1] rgb(42%,30%,99%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
         +channel "$@"
@@ -421,7 +421,7 @@ panel_mblue_bevel-128-baked/panel_weapon_frame_hlight.png: $(top_srcdir)/panel_m
 	$(MAGICK_CONVERT) $+ -gravity Center -geometry -12+0 -composite \
 	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
-        -morphology EdgeIn Octagon:2 \
+        -morphology EdgeIn Octagon:4 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
         -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(38%,27%,88%) %[fx:w*.9],%[fx:h*.1] rgb(42%,30%,99%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
         +channel "$@"
@@ -431,7 +431,7 @@ panel_mblue_bevel-128-baked/panel_weapon_list_frst_hlight.png: $(top_srcdir)/pan
 	$(MAGICK_CONVERT) $+ -gravity Center -geometry +12+8 -composite \
 	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
-        -morphology EdgeIn Octagon:2 \
+        -morphology EdgeIn Octagon:4 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
         -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(38%,27%,88%) %[fx:w*.9],%[fx:h*.1] rgb(42%,30%,99%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
         +channel "$@"
@@ -441,7 +441,7 @@ panel_mblue_bevel-128-baked/panel_weapon_list_next_hlight.png: $(top_srcdir)/pan
 	$(MAGICK_CONVERT) $+ -gravity Center -geometry +2+4 -composite \
 	    -channel RGB -fuzz 100% -fill white -opaque black \
         -background black -alpha remove -bordercolor black -border 4x4 \
-        -morphology EdgeIn Octagon:2 \
+        -morphology EdgeIn Octagon:4 \
         -shave 4x4 -threshold 1% -fuzz 1% -transparent black \
         -sparse-color  Shepards '%[fx:w*.1],%[fx:h*.1] rgb(43%,72%,88%)  %[fx:w*.5],%[fx:h*.5] rgb(38%,27%,88%) %[fx:w*.9],%[fx:h*.1] rgb(42%,30%,99%)  %[fx:w*.9],%[fx:h*.9] rgb(43%,72%,88%)' \
         +channel "$@"

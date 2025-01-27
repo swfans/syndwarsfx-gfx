@@ -25,21 +25,21 @@ font0_2_chars = \
 font0_2_charnames_nomod = \
   empty char_u0020
 font0_2_sprites_gen = \
-  $(foreach num,$(font0_2_chars),font0_sharp_cult-23-ltblue/char_u$(num).png)
+  $(foreach num,$(font0_2_chars),font_sharp_cult-23-ltblue/char_u$(num).png)
 font0_2_sprites_cp = \
-  $(foreach name,$(font0_2_charnames_nomod),$(top_srcdir)/font0_sharp_cult-23-white/$(name).png)
+  $(foreach name,$(font0_2_charnames_nomod),$(top_srcdir)/font_sharp_cult-23-white/$(name).png)
 
 data/font0-2.tab: data/font0-2.dat
 
-data/font0-2.dat: font0_sharp_cult-23-ltblue/filelist-font0-2.txt $(top_srcdir)/data/feproj-std.pal $(font0_2_sprites_gen)
+data/font0-2.dat: font_sharp_cult-23-ltblue/filelist-font0-2.txt $(top_srcdir)/data/feproj-std.pal $(font0_2_sprites_gen)
 
-font0_sharp_cult-23-ltblue/filelist-font0-2.txt: $(top_srcdir)/font0_sharp_cult-23-white/filelist-font0-2.txt
+font_sharp_cult-23-ltblue/filelist-font0-2.txt: $(top_srcdir)/font_sharp_cult-23-white/filelist-font0-2.txt
 	$(MKDIR_P) "$(@D)"
 	cp -p -t "$(@D)" $(font0_2_sprites_cp)
 	cp -p "$<" "$@"
 
 # Use ImageMagick to generate light blue sprites from the white ones
-font0_sharp_cult-23-ltblue/%.png: $(top_srcdir)/font0_sharp_cult-23-white/%.png
+font_sharp_cult-23-ltblue/%.png: $(top_srcdir)/font_sharp_cult-23-white/%.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$<" -colorspace RGB \
         -channel R -evaluate multiply 0.66 \
@@ -48,7 +48,7 @@ font0_sharp_cult-23-ltblue/%.png: $(top_srcdir)/font0_sharp_cult-23-white/%.png
         +channel -colorspace RGB "$@"
 
 # Use ImageMagick to generate light teal sprites from the white ones
-font0_sharp_cult-20-ltteal/%.png: $(top_srcdir)/font0_sharp_cult-20-white/%.png
+font_sharp_cult-20-ltteal/%.png: $(top_srcdir)/font_sharp_cult-20-white/%.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$<" -colorspace RGB \
         -channel R -evaluate multiply 0.00 \
@@ -57,7 +57,7 @@ font0_sharp_cult-20-ltteal/%.png: $(top_srcdir)/font0_sharp_cult-20-white/%.png
         +channel -colorspace RGB "$@"
 
 # Use ImageMagick to generate light green sprites from the white ones
-font0_sharp_cult-20-ltgren/%.png: $(top_srcdir)/font0_sharp_cult-20-white/%.png
+font_sharp_cult-20-ltgren/%.png: $(top_srcdir)/font_sharp_cult-20-white/%.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$<" -colorspace RGB \
         -channel R -evaluate multiply 0.88 \

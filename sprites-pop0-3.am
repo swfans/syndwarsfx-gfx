@@ -24,13 +24,13 @@ pop0_3_chars_text_paused = \
   0050 0041 0055 0053 0045 0044
 
 pop0_3_sprites_text_detail = \
-  $(foreach num,$(pop0_3_chars_text_detail),font0_sharp_cult-20-ltteal/char_u$(num).png)
+  $(foreach num,$(pop0_3_chars_text_detail),font_sharp_cult-20-ltteal/char_u$(num).png)
 
 pop0_3_sprites_text_uplink = \
-  $(foreach num,$(pop0_3_chars_text_uplink),font0_sharp_cult-20-ltteal/char_u$(num).png)
+  $(foreach num,$(pop0_3_chars_text_uplink),font_sharp_cult-20-ltteal/char_u$(num).png)
 
 pop0_3_sprites_text_paused = \
-  $(foreach num,$(pop0_3_chars_text_paused),font0_sharp_cult-20-ltteal/char_u$(num).png)
+  $(foreach num,$(pop0_3_chars_text_paused),font_sharp_cult-20-ltteal/char_u$(num).png)
 
 pop0_3_sprites_text = \
   panel_lblue_plain-128-baked/text_detail.png \

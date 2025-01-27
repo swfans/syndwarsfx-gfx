@@ -25,21 +25,21 @@ font0_1_chars = \
 font0_1_charnames_nomod = \
   empty char_u0020
 font0_1_sprites_gen = \
-  $(foreach num,$(font0_1_chars),font0_sharp_cult-10-ltblue/char_u$(num).png)
+  $(foreach num,$(font0_1_chars),font_sharp_cult-10-ltblue/char_u$(num).png)
 font0_1_sprites_cp = \
-  $(foreach name,$(font0_1_charnames_nomod),$(top_srcdir)/font0_sharp_cult-10-white/$(name).png)
+  $(foreach name,$(font0_1_charnames_nomod),$(top_srcdir)/font_sharp_cult-10-white/$(name).png)
 
 data/font0-1.tab: data/font0-1.dat
 
-data/font0-1.dat: font0_sharp_cult-10-ltblue/filelist-font0-1.txt $(top_srcdir)/data/feproj-std.pal $(font0_1_sprites_gen)
+data/font0-1.dat: font_sharp_cult-10-ltblue/filelist-font0-1.txt $(top_srcdir)/data/feproj-std.pal $(font0_1_sprites_gen)
 
-font0_sharp_cult-10-ltblue/filelist-font0-1.txt: $(top_srcdir)/font0_sharp_cult-10-white/filelist-font0-1.txt
+font_sharp_cult-10-ltblue/filelist-font0-1.txt: $(top_srcdir)/font_sharp_cult-10-white/filelist-font0-1.txt
 	$(MKDIR_P) "$(@D)"
 	cp -p -t "$(@D)" $(font0_1_sprites_cp)
 	cp -p "$<" "$@"
 
 # Use ImageMagick to generate light blue sprites from the white ones
-font0_sharp_cult-10-ltblue/%.png: $(top_srcdir)/font0_sharp_cult-10-white/%.png
+font_sharp_cult-10-ltblue/%.png: $(top_srcdir)/font_sharp_cult-10-white/%.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$<" -colorspace RGB \
         -channel R -evaluate multiply 0.66 \
@@ -48,7 +48,7 @@ font0_sharp_cult-10-ltblue/%.png: $(top_srcdir)/font0_sharp_cult-10-white/%.png
         +channel -colorspace RGB "$@"
 
 # Use ImageMagick to generate light green sprites from the white ones
-font0_sharp_cult-10-ltgren/%.png: $(top_srcdir)/font0_sharp_cult-10-white/%.png
+font_sharp_cult-10-ltgren/%.png: $(top_srcdir)/font_sharp_cult-10-white/%.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$<" -colorspace RGB \
         -channel R -evaluate multiply 0.88 \

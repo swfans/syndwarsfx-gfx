@@ -24,13 +24,13 @@ pop2_1_chars_text_paused = \
   0050 0041 0055 0053 0045 0044
 
 pop2_1_sprites_text_detail = \
-  $(foreach num,$(pop2_1_chars_text_detail),font0_sharp_cult-20-ltgren/char_u$(num).png)
+  $(foreach num,$(pop2_1_chars_text_detail),font_sharp_cult-20-ltgren/char_u$(num).png)
 
 pop2_1_sprites_text_uplink = \
-  $(foreach num,$(pop2_1_chars_text_uplink),font0_sharp_cult-20-ltgren/char_u$(num).png)
+  $(foreach num,$(pop2_1_chars_text_uplink),font_sharp_cult-20-ltgren/char_u$(num).png)
 
 pop2_1_sprites_text_paused = \
-  $(foreach num,$(pop2_1_chars_text_paused),font0_sharp_cult-20-ltgren/char_u$(num).png)
+  $(foreach num,$(pop2_1_chars_text_paused),font_sharp_cult-20-ltgren/char_u$(num).png)
 
 pop2_1_sprites_text = \
   panel_dgren_marbl-64-baked/text_detail.png \

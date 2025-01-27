@@ -25,14 +25,14 @@ data/pointr0-0.tab: data/pointr0-0.dat
 
 data/pointr0-0.dat: $(top_srcdir)/pointers-32/filelist-pointr0-0.txt $(top_srcdir)/data/engine-std.pal
 
-include $(srcdir)/sprites-font0-0.am
-include $(srcdir)/sprites-font0-1.am
-include $(srcdir)/sprites-font0-2.am
-include $(srcdir)/sprites-font0-3.am
-include $(srcdir)/sprites-font0-4.am
-include $(srcdir)/sprites-font0-5.am
+include $(srcdir)/sprites-fontc0-0.am
+include $(srcdir)/sprites-fontc0-1.am
+include $(srcdir)/sprites-fontc1-0.am
+include $(srcdir)/sprites-fontc1-2.am
+include $(srcdir)/sprites-fontc2-0.am
+include $(srcdir)/sprites-fontc2-1.am
 
-font0_DATA = $(font0_0_files) $(font0_1_files) $(font0_2_files) $(font0_3_files) $(font0_4_files) $(font0_5_files)
+font0_DATA = $(fontc0_0_files) $(fontc0_1_files) $(fontc1_0_files) $(fontc1_2_files) $(fontc2_0_files) $(fontc2_1_files)
 font0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
 include $(srcdir)/sprites-pop0-0.am

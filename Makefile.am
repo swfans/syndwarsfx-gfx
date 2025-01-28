@@ -27,12 +27,16 @@ data/pointr0-0.dat: $(top_srcdir)/pointers-32/filelist-pointr0-0.txt $(top_srcdi
 
 include $(srcdir)/sprites-fontc0-0.am
 include $(srcdir)/sprites-fontc0-1.am
+include $(srcdir)/sprites-fontc0-3.am
 include $(srcdir)/sprites-fontc1-0.am
 include $(srcdir)/sprites-fontc1-2.am
 include $(srcdir)/sprites-fontc2-0.am
 include $(srcdir)/sprites-fontc2-1.am
+include $(srcdir)/sprites-fontc2-3.am
 
-font0_DATA = $(fontc0_0_files) $(fontc0_1_files) $(fontc1_0_files) $(fontc1_2_files) $(fontc2_0_files) $(fontc2_1_files)
+font0_DATA = $(fontc0_0_files) $(fontc0_1_files) $(fontc0_3_files) \
+  $(fontc1_0_files) $(fontc1_2_files) \
+  $(fontc2_0_files) $(fontc2_1_files) $(fontc2_3_files)
 font0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
 include $(srcdir)/sprites-pop0-0.am

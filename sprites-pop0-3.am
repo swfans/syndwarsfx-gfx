@@ -24,13 +24,13 @@ pop0_3_chars_text_paused = \
   0050 0041 0055 0053 0045 0044
 
 pop0_3_sprites_text_detail = \
-  $(foreach num,$(pop0_3_chars_text_detail),font_sharp_cult-20-ltteal/char_u$(num).png)
+  $(foreach num,$(pop0_3_chars_text_detail),font_sharp_cult-40-ltteal/char_u$(num).png)
 
 pop0_3_sprites_text_uplink = \
-  $(foreach num,$(pop0_3_chars_text_uplink),font_sharp_cult-20-ltteal/char_u$(num).png)
+  $(foreach num,$(pop0_3_chars_text_uplink),font_sharp_cult-40-ltteal/char_u$(num).png)
 
 pop0_3_sprites_text_paused = \
-  $(foreach num,$(pop0_3_chars_text_paused),font_sharp_cult-20-ltteal/char_u$(num).png)
+  $(foreach num,$(pop0_3_chars_text_paused),font_sharp_cult-40-ltteal/char_u$(num).png)
 
 pop0_3_sprites_text = \
   panel_lblue_plain-128-baked/text_detail.png \
@@ -93,15 +93,15 @@ panel_lblue_plain-128-baked/%.png: $(top_srcdir)/panel_lblue_plain-128/%.png
 
 panel_lblue_plain-128-baked/text_detail.png: $(pop0_3_sprites_text_detail)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 106x20+0+3 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 212x40+0+6 +repage "$@"
 
 panel_lblue_plain-128-baked/text_uplink.png: $(pop0_3_sprites_text_uplink)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 132x20+0+3 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 254x40+0+6 +repage "$@"
 
 panel_lblue_plain-128-baked/text_paused.png: $(pop0_3_sprites_text_paused)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 118x20+0+3 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 236x40+0+6 +repage "$@"
 
 # Use ImageMagick to generate red hue on enabled elements
 panel_lblue_plain-128-baked/%.ena.png: $(top_srcdir)/panel_lblue_plain-128/%.nrm.png

@@ -1,0 +1,48 @@
+# *****************************************************************************
+#  Graphics assets generation for Syndicate Wars Port.
+# *****************************************************************************
+#  @file sprites-fontc2-7.am
+#      Automake rules neccessary to build `fontc2-7` menu font sprites.
+#  @author   Tomasz Lis
+#  @par  Copying and copyrights:
+#      This program is free software; you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation; either version 2 of the License, or
+#      (at your option) any later version.
+# *****************************************************************************
+
+fontc2_7_files = data/fontc2-7.dat data/fontc2-7.tab
+
+# List of font letters which can be colorized
+fontc2_7_chars = \
+  0021 0022 0023 0024 0025 0026 0027 0028 0029 002a 002b 002c 002d 002e 002f \
+  0030 0031 0032 0033 0034 0035 0036 0037 0038 0039 003a 003b 003c 003d 003e 003f \
+  0040 0041 0042 0043 0044 0045 0046 0047 0048 0049 004a 004b 004c 004d 004e 004f \
+  0050 0051 0052 0053 0054 0055 0056 0057 0058 0059 005a 005b 005c 005d 005e 005f \
+  00a1 00aa 00b0 00bf 00c0 00c1 00c4 00c5 00c7 00c8 00c9 00cc 00cd \
+  00d1 00d2 00d3 00d6 00d9 00da 00dc 00df
+# List of non-letters or other sprites to pass without colorization
+fontc2_7_charnames_nomod = \
+  empty char_u0020
+fontc2_7_sprites_gen = \
+  $(foreach num,$(fontc2_7_chars),font_sharp_cult-40-ltteal/char_u$(num).png)
+fontc2_7_sprites_cp = \
+  $(foreach name,$(fontc2_7_charnames_nomod),$(top_srcdir)/font_sharp_cult-40-white/$(name).png)
+
+data/fontc2-7.tab: data/fontc2-7.dat
+
+data/fontc2-7.dat: font_sharp_cult-40-ltteal/filelist-fontc2-7.txt $(top_srcdir)/data/feproj-std.pal $(fontc2_7_sprites_gen)
+
+font_sharp_cult-40-ltteal/filelist-fontc2-7.txt: $(top_srcdir)/font_sharp_cult-40-white/filelist-fontc0-7.txt
+	$(MKDIR_P) "$(@D)"
+	cp -p -t "$(@D)" $(fontc2_7_sprites_cp)
+	cp -p "$<" "$@"
+
+# Use ImageMagick to generate light teal sprites from the white ones
+font_sharp_cult-40-ltteal/%.png: $(top_srcdir)/font_sharp_cult-40-white/%.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -colorspace RGB \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel -colorspace RGB "$@"

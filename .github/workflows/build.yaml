@@ -54,8 +54,8 @@ jobs:
 
       - name: Download extra tools
         run: |
-          wget https://github.com/swfans/pngpal2raw/releases/download/1.0.2.47/pngpal2raw-1_0_2_47-x86_64-ubuntu.zip
-          unzip -o -j -d /usr/local/bin/ pngpal2raw-1_0_2_47-x86_64-ubuntu.zip
+          wget https://github.com/swfans/pngpal2raw/releases/download/1.0.3.57/pngpal2raw-1_0_3_57-x86_64-ubuntu.zip
+          unzip -o -j -d /usr/local/bin/ pngpal2raw-1_0_3_57-x86_64-ubuntu.zip
 
       - name: Autoreconf
         run: autoreconf -ivf

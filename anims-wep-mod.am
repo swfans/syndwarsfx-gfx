@@ -1,0 +1,18 @@
+# *****************************************************************************
+#  Graphics assets generation for Syndicate Wars Port.
+# *****************************************************************************
+#  @file sprites-fontc0-0.am
+#      Automake rules neccessary to build `fontc0-0` menu font sprites.
+#  @author   Tomasz Lis
+#  @par  Copying and copyrights:
+#      This program is free software; you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation; either version 2 of the License, or
+#      (at your option) any later version.
+# *****************************************************************************
+
+equip_wep_files = data/equip/wep-00.fli
+equip_mod_files = 
+
+data/equip/wep-00.fli: \
+  $(top_srcdir)/weapons-render-64/filelist-wep-00.txt $(top_srcdir)/data/feproj-std.pal

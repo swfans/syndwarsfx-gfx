@@ -69,10 +69,19 @@ data/%.dat:
 	$(MKDIR_P) "$(@D)"
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
 
+include $(srcdir)/anims-wep-mod.am
+
+eqwepmod0_DATA = $(equip_wep_files) $(equip_mod_files)
+eqwepmod0dir = $(prefix)/$(PARENT_PACKAGE)/data/equip
+
+data/equip/%.fli:
+	$(MKDIR_P) "$(@D)"
+	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f flic -l 0 "$<"
+
 docs_DATA = README.md gfx_config.h
 docsdir = $(prefix)/$(PARENT_PACKAGE)
 
-EXTRA_DIST = gfxani docs mouse0 pointr0 font0 pop0
+EXTRA_DIST = gfxani docs mouse0 pointr0 font0 pop0 eqwepmod0
 
 install-data-hook:
 	cd "$(DESTDIR)${prefix}/$(PARENT_PACKAGE)"; \

@@ -17,9 +17,13 @@ equip_wep_nums = \
 equip_wep_files = \
   $(foreach num,$(equip_wep_nums),data/equip/wep-$(num).fli)
 
-equip_mod_files = 
+equip_mod_nums = \
+  00 01 02 03 04 05 06 07 08 09 10 11
 
-# The halo for weapons which look better with vertical smudges
+equip_mod_files = \
+  $(foreach num,$(equip_mod_nums),data/equip/mod-$(num).fli)
+
+
 define define_equip_wep_rule
 data/equip/wep-$(1).fli: \
   $$(top_srcdir)/weapons-render-64/filelist-wep-$(1).txt $$(top_srcdir)/data/feproj-std.pal
@@ -27,3 +31,12 @@ data/equip/wep-$(1).fli: \
 endef
 
 $(foreach num,$(equip_wep_nums),$(eval $(call define_equip_wep_rule,$(num))))
+
+
+define define_equip_mod_rule
+data/equip/mod-$(1).fli: \
+  $$(top_srcdir)/cybmods-render-64/filelist-mod-$(1).txt $$(top_srcdir)/data/feproj-std.pal
+
+endef
+
+$(foreach num,$(equip_mod_nums),$(eval $(call define_equip_mod_rule,$(num))))

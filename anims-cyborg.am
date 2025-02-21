@@ -1,0 +1,33 @@
+# *****************************************************************************
+#  Graphics assets generation for Syndicate Wars Port.
+# *****************************************************************************
+#  @file anims-wep-mod.am
+#      Automake rules neccessary to build `wep-NN.fli` menu weapon animations.
+#  @author   Tomasz Lis
+#  @par  Copying and copyrights:
+#      This program is free software; you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation; either version 2 of the License, or
+#      (at your option) any later version.
+# *****************************************************************************
+
+cyborg_nomotion_arm_i_nums = \
+  1a1 1a2 2a1 2a2 2a3 3a1 3a2 3a3
+
+cyborg_nomotion_arm_i_files = \
+  $(foreach num,$(cyborg_nomotion_arm_i_nums),qdata/equip/m$(num)i.fli)
+
+cyborg_nomotion_i_files = \
+  $(cyborg_nomotion_arm_i_files)
+
+cyborg_nomotion_o_files = 
+
+cyborg_inmotion_files = 
+
+define define_cyborg_nomotion_arm_i_rule
+qdata/equip/m$(1)i.fli: \
+  $$(top_srcdir)/cyborg-arms-render-64/filelist-m$(1)i.txt $$(top_srcdir)/data/feproj-std.pal
+
+endef
+
+$(foreach num,$(cyborg_nomotion_arm_i_nums),$(eval $(call define_cyborg_nomotion_arm_i_rule,$(num))))

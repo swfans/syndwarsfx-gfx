@@ -1,4 +1,4 @@
-cyborg_arms_render_m3a1i_detail1 0 0 0 0
+cyborg_arms_render_chestv3_armsv1_in_detail1 0 0 0 0
 m3a1i0000.png
 m3a1i0001.png
 m3a1i0002.png

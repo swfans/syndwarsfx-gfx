@@ -78,10 +78,19 @@ data/equip/%.fli:
 	$(MKDIR_P) "$(@D)"
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f flic -l 0 "$<"
 
+include $(srcdir)/anims-cyborg.am
+
+cybermod0_DATA = $(cyborg_nomotion_i_files) $(cyborg_nomotion_o_files) $(cyborg_inmotion_files)
+cybermod0dir = $(prefix)/$(PARENT_PACKAGE)/qdata/equip
+
+qdata/equip/%.fli:
+	$(MKDIR_P) "$(@D)"
+	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f flic -l 0 "$<"
+
 docs_DATA = README.md gfx_config.h
 docsdir = $(prefix)/$(PARENT_PACKAGE)
 
-EXTRA_DIST = gfxani docs mouse0 pointr0 font0 pop0 eqwepmod0
+EXTRA_DIST = gfxani docs mouse0 pointr0 font0 pop0 eqwepmod0 cybermod0
 
 install-data-hook:
 	cd "$(DESTDIR)${prefix}/$(PARENT_PACKAGE)"; \

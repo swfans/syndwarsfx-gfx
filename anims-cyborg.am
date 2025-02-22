@@ -11,39 +11,70 @@
 #      (at your option) any later version.
 # *****************************************************************************
 
-cyborg_nomotion_arm_i_nums = \
+cyborg_nomotion_chst_i_nums = \
+  1b 2b 3b
+
+cyborg_nomotion_chst_i_files = \
+  $(foreach num,$(cyborg_nomotion_chst_i_nums),qdata/equip/m$(num)i.fli)
+
+cyborg_nomotion_brin_i_nums = \
+  1bb 2bb 3bb
+
+cyborg_nomotion_brin_i_files = \
+  $(foreach num,$(cyborg_nomotion_brin_i_nums),qdata/equip/m$(num)i.fli)
+
+cyborg_nomotion_arms_i_nums = \
   1a1 1a2 2a1 2a2 2a3 3a1 3a2 3a3
 
-cyborg_nomotion_arm_i_files = \
-  $(foreach num,$(cyborg_nomotion_arm_i_nums),qdata/equip/m$(num)i.fli)
+cyborg_nomotion_arms_i_files = \
+  $(foreach num,$(cyborg_nomotion_arms_i_nums),qdata/equip/m$(num)i.fli)
 
-cyborg_nomotion_leg_i_nums = \
+cyborg_nomotion_legs_i_nums = \
   1l1 1l2 2l1 2l2 2l3 3l1 3l2 3l3
 
-cyborg_nomotion_leg_i_files = \
-  $(foreach num,$(cyborg_nomotion_leg_i_nums),qdata/equip/m$(num)i.fli)
+cyborg_nomotion_legs_i_files = \
+  $(foreach num,$(cyborg_nomotion_legs_i_nums),qdata/equip/m$(num)i.fli)
 
 cyborg_nomotion_i_files = \
-  $(cyborg_nomotion_arm_i_files) $(cyborg_nomotion_leg_i_files)
+  $(cyborg_nomotion_chst_i_files) $(cyborg_nomotion_brin_i_files) \
+  $(cyborg_nomotion_arms_i_files) $(cyborg_nomotion_legs_i_files)
 
 cyborg_nomotion_o_files = 
 
 cyborg_inmotion_files = 
 
 
-define define_cyborg_nomotion_arm_i_rule
+define define_cyborg_nomotion_chst_i_rule
 qdata/equip/m$(1)i.fli: \
-  $$(top_srcdir)/cyborg-arms-render-64/filelist-m$(1)i.txt $$(top_srcdir)/data/feproj-std.pal
+  $$(top_srcdir)/cyborg-chst-i-render-64/filelist-m$(1)i.txt $$(top_srcdir)/data/feproj-std.pal
 
 endef
 
-$(foreach num,$(cyborg_nomotion_arm_i_nums),$(eval $(call define_cyborg_nomotion_arm_i_rule,$(num))))
+$(foreach num,$(cyborg_nomotion_chst_i_nums),$(eval $(call define_cyborg_nomotion_chst_i_rule,$(num))))
 
 
-define define_cyborg_nomotion_leg_i_rule
+define define_cyborg_nomotion_brin_i_rule
 qdata/equip/m$(1)i.fli: \
-  $$(top_srcdir)/cyborg-legs-render-64/filelist-m$(1)i.txt $$(top_srcdir)/data/feproj-std.pal
+  $$(top_srcdir)/cyborg-brin-i-render-64/filelist-m$(1)i.txt $$(top_srcdir)/data/feproj-std.pal
 
 endef
 
-$(foreach num,$(cyborg_nomotion_leg_i_nums),$(eval $(call define_cyborg_nomotion_leg_i_rule,$(num))))
+$(foreach num,$(cyborg_nomotion_brin_i_nums),$(eval $(call define_cyborg_nomotion_brin_i_rule,$(num))))
+
+
+define define_cyborg_nomotion_arms_i_rule
+qdata/equip/m$(1)i.fli: \
+  $$(top_srcdir)/cyborg-arms-i-render-64/filelist-m$(1)i.txt $$(top_srcdir)/data/feproj-std.pal
+
+endef
+
+$(foreach num,$(cyborg_nomotion_arms_i_nums),$(eval $(call define_cyborg_nomotion_arms_i_rule,$(num))))
+
+
+define define_cyborg_nomotion_legs_i_rule
+qdata/equip/m$(1)i.fli: \
+  $$(top_srcdir)/cyborg-legs-i-render-64/filelist-m$(1)i.txt $$(top_srcdir)/data/feproj-std.pal
+
+endef
+
+$(foreach num,$(cyborg_nomotion_legs_i_nums),$(eval $(call define_cyborg_nomotion_legs_i_rule,$(num))))

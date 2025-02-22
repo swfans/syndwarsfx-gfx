@@ -11,35 +11,47 @@
 #      (at your option) any later version.
 # *****************************************************************************
 
-cyborg_nomotion_chst_i_nums = \
+cyborg_nomotion_chst_nums = \
   1b 2b 3b
 
 cyborg_nomotion_chst_i_files = \
-  $(foreach num,$(cyborg_nomotion_chst_i_nums),qdata/equip/m$(num)i.fli)
+  $(foreach num,$(cyborg_nomotion_chst_nums),qdata/equip/m$(num)i.fli)
 
-cyborg_nomotion_brin_i_nums = \
+cyborg_nomotion_chst_o_files = \
+  $(foreach num,$(cyborg_nomotion_chst_nums),qdata/equip/m$(num)o.fli)
+
+cyborg_nomotion_brin_nums = \
   1bb 2bb 3bb
 
 cyborg_nomotion_brin_i_files = \
-  $(foreach num,$(cyborg_nomotion_brin_i_nums),qdata/equip/m$(num)i.fli)
+  $(foreach num,$(cyborg_nomotion_brin_nums),qdata/equip/m$(num)i.fli)
 
-cyborg_nomotion_arms_i_nums = \
+cyborg_nomotion_brin_o_files = \
+  $(foreach num,$(cyborg_nomotion_brin_nums),qdata/equip/m$(num)o.fli)
+
+cyborg_nomotion_arms_nums = \
   1a1 1a2 2a1 2a2 2a3 3a1 3a2 3a3
 
 cyborg_nomotion_arms_i_files = \
-  $(foreach num,$(cyborg_nomotion_arms_i_nums),qdata/equip/m$(num)i.fli)
+  $(foreach num,$(cyborg_nomotion_arms_nums),qdata/equip/m$(num)i.fli)
 
-cyborg_nomotion_legs_i_nums = \
+cyborg_nomotion_arms_o_files = \
+  $(foreach num,$(cyborg_nomotion_arms_nums),qdata/equip/m$(num)o.fli)
+
+cyborg_nomotion_legs_nums = \
   1l1 1l2 2l1 2l2 2l3 3l1 3l2 3l3
 
 cyborg_nomotion_legs_i_files = \
-  $(foreach num,$(cyborg_nomotion_legs_i_nums),qdata/equip/m$(num)i.fli)
+  $(foreach num,$(cyborg_nomotion_legs_nums),qdata/equip/m$(num)i.fli)
+
+cyborg_nomotion_legs_o_files = \
+  $(foreach num,$(cyborg_nomotion_legs_nums),qdata/equip/m$(num)o.fli)
 
 cyborg_nomotion_i_files = \
   $(cyborg_nomotion_chst_i_files) $(cyborg_nomotion_brin_i_files) \
   $(cyborg_nomotion_arms_i_files) $(cyborg_nomotion_legs_i_files)
 
-cyborg_nomotion_o_files = 
+cyborg_nomotion_o_files =
 
 cyborg_inmotion_files = 
 
@@ -50,7 +62,16 @@ qdata/equip/m$(1)i.fli: \
 
 endef
 
-$(foreach num,$(cyborg_nomotion_chst_i_nums),$(eval $(call define_cyborg_nomotion_chst_i_rule,$(num))))
+$(foreach num,$(cyborg_nomotion_chst_nums),$(eval $(call define_cyborg_nomotion_chst_i_rule,$(num))))
+
+
+define define_cyborg_nomotion_chst_o_rule
+qdata/equip/m$(1)o.fli: \
+  $$(top_srcdir)/cyborg-chst-o-render-64/filelist-m$(1)o.txt $$(top_srcdir)/data/feproj-std.pal
+
+endef
+
+$(foreach num,$(cyborg_nomotion_chst_nums),$(eval $(call define_cyborg_nomotion_chst_o_rule,$(num))))
 
 
 define define_cyborg_nomotion_brin_i_rule
@@ -59,7 +80,16 @@ qdata/equip/m$(1)i.fli: \
 
 endef
 
-$(foreach num,$(cyborg_nomotion_brin_i_nums),$(eval $(call define_cyborg_nomotion_brin_i_rule,$(num))))
+$(foreach num,$(cyborg_nomotion_brin_nums),$(eval $(call define_cyborg_nomotion_brin_i_rule,$(num))))
+
+
+define define_cyborg_nomotion_brin_o_rule
+qdata/equip/m$(1)o.fli: \
+  $$(top_srcdir)/cyborg-brin-o-render-64/filelist-m$(1)o.txt $$(top_srcdir)/data/feproj-std.pal
+
+endef
+
+$(foreach num,$(cyborg_nomotion_brin_nums),$(eval $(call define_cyborg_nomotion_brin_o_rule,$(num))))
 
 
 define define_cyborg_nomotion_arms_i_rule
@@ -68,7 +98,16 @@ qdata/equip/m$(1)i.fli: \
 
 endef
 
-$(foreach num,$(cyborg_nomotion_arms_i_nums),$(eval $(call define_cyborg_nomotion_arms_i_rule,$(num))))
+$(foreach num,$(cyborg_nomotion_arms_nums),$(eval $(call define_cyborg_nomotion_arms_i_rule,$(num))))
+
+
+define define_cyborg_nomotion_arms_o_rule
+qdata/equip/m$(1)o.fli: \
+  $$(top_srcdir)/cyborg-arms-o-render-64/filelist-m$(1)o.txt $$(top_srcdir)/data/feproj-std.pal
+
+endef
+
+$(foreach num,$(cyborg_nomotion_arms_nums),$(eval $(call define_cyborg_nomotion_arms_o_rule,$(num))))
 
 
 define define_cyborg_nomotion_legs_i_rule
@@ -77,4 +116,13 @@ qdata/equip/m$(1)i.fli: \
 
 endef
 
-$(foreach num,$(cyborg_nomotion_legs_i_nums),$(eval $(call define_cyborg_nomotion_legs_i_rule,$(num))))
+$(foreach num,$(cyborg_nomotion_legs_nums),$(eval $(call define_cyborg_nomotion_legs_i_rule,$(num))))
+
+
+define define_cyborg_nomotion_legs_o_rule
+qdata/equip/m$(1)o.fli: \
+  $$(top_srcdir)/cyborg-legs-o-render-64/filelist-m$(1)o.txt $$(top_srcdir)/data/feproj-std.pal
+
+endef
+
+$(foreach num,$(cyborg_nomotion_legs_nums),$(eval $(call define_cyborg_nomotion_legs_o_rule,$(num))))

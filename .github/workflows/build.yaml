@@ -50,12 +50,31 @@ jobs:
       - name: Install dependencies
         run: |
           apt install -y \
-            build-essential autoconf autoconf-archive imagemagick libtool make wget unzip
+            build-essential autoconf autoconf-archive pkg-config libpng-dev libtool make wget unzip
+
+      - name: Download imagemagick
+        run: |
+          wget 'https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.0-31.tar.gz'
+          tar xzf 7.1.0-31.tar.gz
+          rm 7.1.0-31.tar.gz
+
+      - name: Build and install imagemagick
+        run: |
+          cd ./ImageMagick-7.1.0-31
+          ./configure --prefix=/usr/local --with-bzlib=yes --with-fontconfig=yes \
+            --with-freetype=yes --with-gslib=yes --with-gvc=yes --with-jpeg=yes --with-jp2=yes \
+            --with-png=yes --with-tiff=yes --with-xml=yes --with-gs-font-dir=yes
+          make -j
+          make install
+          ldconfig /usr/local/lib/
 
       - name: Download extra tools
         run: |
-          wget https://github.com/swfans/pngpal2raw/releases/download/1.0.3.60/pngpal2raw-1_0_3_60-x86_64-ubuntu.zip
+          wget 'https://github.com/swfans/pngpal2raw/releases/download/1.0.3.60/pngpal2raw-1_0_3_60-x86_64-ubuntu.zip'
           unzip -o -j -d /usr/local/bin/ pngpal2raw-1_0_3_60-x86_64-ubuntu.zip
+
+      - name: Check dependencies
+        run: magick -version
 
       - name: Autoreconf
         run: autoreconf -ivf

@@ -1,0 +1,10 @@
+cyborg_brain_render_chestvN_brainv1_out_detail1 0 0 0 0
+m2bbo0008.png
+m2bbo0007.png
+m2bbo0006.png
+m2bbo0005.png
+m2bbo0004.png
+m2bbo0003.png
+m2bbo0002.png
+m2bbo0001.png
+m2bbo0000.png

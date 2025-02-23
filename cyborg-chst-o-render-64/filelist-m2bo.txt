@@ -1,0 +1,10 @@
+cyborg_chest_render_chestv2_out_detail1 0 0 0 0
+m2bo0008.png
+m2bo0007.png
+m2bo0006.png
+m2bo0005.png
+m2bo0004.png
+m2bo0003.png
+m2bo0002.png
+m2bo0001.png
+m2bo0000.png

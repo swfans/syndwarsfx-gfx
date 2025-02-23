@@ -51,7 +51,9 @@ cyborg_nomotion_i_files = \
   $(cyborg_nomotion_chst_i_files) $(cyborg_nomotion_brin_i_files) \
   $(cyborg_nomotion_arms_i_files) $(cyborg_nomotion_legs_i_files)
 
-cyborg_nomotion_o_files =
+cyborg_nomotion_o_files = \
+  $(cyborg_nomotion_chst_o_files) $(cyborg_nomotion_brin_o_files) \
+  $(cyborg_nomotion_arms_o_files) $(cyborg_nomotion_legs_o_files)
 
 cyborg_inmotion_files = 
 

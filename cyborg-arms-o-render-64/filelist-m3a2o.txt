@@ -1,0 +1,10 @@
+cyborg_arms_render_chestv3_armsv2_out_detail1 0 0 0 0
+m3a2o0008.png
+m3a2o0007.png
+m3a2o0006.png
+m3a2o0005.png
+m3a2o0004.png
+m3a2o0003.png
+m3a2o0002.png
+m3a2o0001.png
+m3a2o0000.png

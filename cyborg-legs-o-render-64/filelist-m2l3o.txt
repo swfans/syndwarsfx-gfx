@@ -1,0 +1,10 @@
+cyborg_legs_render_chestv2_legsv3_out_detail1 0 0 0 0
+m2l3o0008.png
+m2l3o0007.png
+m2l3o0006.png
+m2l3o0005.png
+m2l3o0004.png
+m2l3o0003.png
+m2l3o0002.png
+m2l3o0001.png
+m2l3o0000.png

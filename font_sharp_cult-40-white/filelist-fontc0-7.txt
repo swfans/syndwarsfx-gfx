@@ -1,4 +1,4 @@
-font_sharp_cult_size20 0 0 0 0
+font_sharp_cult_size40 0 0 0 0
 char_u0020.png
 char_u0021.png
 char_u0022.png

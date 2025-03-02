@@ -57,6 +57,8 @@ cyborg_nomotion_o_files = \
 
 cyborg_inmotion_files = 
 
+cyborg_static_files =  \
+  qdata/equip/bgman.raw
 
 define define_cyborg_nomotion_chst_i_rule
 qdata/equip/m$(1)i.fli: \
@@ -128,3 +130,5 @@ qdata/equip/m$(1)o.fli: \
 endef
 
 $(foreach num,$(cyborg_nomotion_legs_nums),$(eval $(call define_cyborg_nomotion_legs_o_rule,$(num))))
+
+qdata/equip/bgman.raw: $(top_srcdir)/cyborg-shape/bgman.png $(top_srcdir)/data/feproj-std.pal

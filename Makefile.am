@@ -61,8 +61,10 @@ include $(srcdir)/sprites-panel2-0.am
 include $(srcdir)/sprites-panel2-1.am
 include $(srcdir)/sprites-panel2-3.am
 
-pop0_DATA = $(pop0_0_files) $(pop0_1_files) $(pop0_3_files) $(pop1_0_files) $(pop1_1_files) $(pop1_3_files) $(pop2_0_files) $(pop2_1_files) $(pop2_3_files) \
-  $(panel0_0_files) $(panel0_1_files) $(panel0_3_files) $(panel1_0_files) $(panel1_1_files) $(panel1_3_files) $(panel2_0_files) $(panel2_1_files) $(panel2_3_files)
+pop0_DATA = $(pop0_0_files) $(pop0_1_files) $(pop0_3_files) $(pop1_0_files) \
+  $(pop1_1_files) $(pop1_3_files) $(pop2_0_files) $(pop2_1_files) $(pop2_3_files) \
+  $(panel0_0_files) $(panel0_1_files) $(panel0_3_files) $(panel1_0_files) \
+  $(panel1_1_files) $(panel1_3_files) $(panel2_0_files) $(panel2_1_files) $(panel2_3_files)
 pop0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
 data/%.dat:
@@ -80,12 +82,16 @@ data/equip/%.fli:
 
 include $(srcdir)/anims-cyborg.am
 
-cybermod0_DATA = $(cyborg_nomotion_i_files) $(cyborg_nomotion_o_files) $(cyborg_inmotion_files)
+cybermod0_DATA = $(cyborg_nomotion_i_files) $(cyborg_nomotion_o_files) $(cyborg_inmotion_files) $(cyborg_static_files)
 cybermod0dir = $(prefix)/$(PARENT_PACKAGE)/qdata/equip
 
 qdata/equip/%.fli:
 	$(MKDIR_P) "$(@D)"
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f flic -l 0 "$<"
+
+qdata/equip/%.raw:
+	$(MKDIR_P) "$(@D)"
+	$(PNGTORAW) -o "$@" -p "$(word 2,$^)" -f raw -l 0 "$<"
 
 docs_DATA = README.md gfx_config.h
 docsdir = $(prefix)/$(PARENT_PACKAGE)

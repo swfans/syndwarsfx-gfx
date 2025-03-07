@@ -55,7 +55,14 @@ cyborg_nomotion_o_files = \
   $(cyborg_nomotion_chst_o_files) $(cyborg_nomotion_brin_o_files) \
   $(cyborg_nomotion_arms_o_files) $(cyborg_nomotion_legs_o_files)
 
-cyborg_inmotion_files = 
+cyborg_inmotion_breath_nums = \
+  1a1 1a2 2a1 2a2 2a3 3a1 3a2 3a3
+
+cyborg_inmotion_breath_files = \
+  $(foreach num,$(cyborg_inmotion_breath_nums),qdata/equip/m$(num).fli)
+
+cyborg_inmotion_files = \
+  $(cyborg_inmotion_breath_files)
 
 cyborg_static_files =  \
   qdata/equip/bgman.raw
@@ -130,5 +137,15 @@ qdata/equip/m$(1)o.fli: \
 endef
 
 $(foreach num,$(cyborg_nomotion_legs_nums),$(eval $(call define_cyborg_nomotion_legs_o_rule,$(num))))
+
+
+define define_cyborg_inmotion_breath_rule
+qdata/equip/m$(1).fli: \
+  $$(top_srcdir)/cyborg-breath-render-64/filelist-m$(1).txt $$(top_srcdir)/data/feproj-std.pal
+
+endef
+
+$(foreach num,$(cyborg_inmotion_breath_nums),$(eval $(call define_cyborg_inmotion_breath_rule,$(num))))
+
 
 qdata/equip/bgman.raw: $(top_srcdir)/cyborg-shape/bgman.png $(top_srcdir)/data/feproj-std.pal

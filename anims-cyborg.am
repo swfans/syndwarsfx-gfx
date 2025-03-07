@@ -64,8 +64,23 @@ cyborg_inmotion_breath_files = \
 cyborg_inmotion_files = \
   $(cyborg_inmotion_breath_files)
 
+cyborg_static_chst_files = \
+  $(foreach num,$(cyborg_nomotion_chst_nums),qdata/equip/m$(num).raw)
+
+cyborg_static_brin_files = \
+  $(foreach num,$(cyborg_nomotion_brin_nums),qdata/equip/m$(num).raw)
+
+cyborg_static_arms_files = \
+  $(foreach num,$(cyborg_nomotion_arms_nums),qdata/equip/m$(num).raw)
+
+cyborg_static_legs_files = \
+  $(foreach num,$(cyborg_nomotion_legs_nums),qdata/equip/m$(num).raw)
+
 cyborg_static_files =  \
+  $(cyborg_static_chst_files) $(cyborg_static_brin_files) \
+  $(cyborg_static_arms_files) $(cyborg_static_legs_files) \
   qdata/equip/bgman.raw
+
 
 define define_cyborg_nomotion_chst_i_rule
 qdata/equip/m$(1)i.fli: \
@@ -146,6 +161,42 @@ qdata/equip/m$(1).fli: \
 endef
 
 $(foreach num,$(cyborg_inmotion_breath_nums),$(eval $(call define_cyborg_inmotion_breath_rule,$(num))))
+
+
+define define_cyborg_static_chst_rule
+qdata/equip/m$(1).raw: \
+  $$(top_srcdir)/cyborg-chst-i-render-64/m$(1)i0035.png $$(top_srcdir)/data/feproj-std.pal
+
+endef
+
+$(foreach num,$(cyborg_nomotion_chst_nums),$(eval $(call define_cyborg_static_chst_rule,$(num))))
+
+
+define define_cyborg_static_brin_rule
+qdata/equip/m$(1).raw: \
+  $$(top_srcdir)/cyborg-brin-i-render-64/m$(1)i0035.png $$(top_srcdir)/data/feproj-std.pal
+
+endef
+
+$(foreach num,$(cyborg_nomotion_brin_nums),$(eval $(call define_cyborg_static_brin_rule,$(num))))
+
+
+define define_cyborg_static_arms_rule
+qdata/equip/m$(1).raw: \
+  $$(top_srcdir)/cyborg-arms-i-render-64/m$(1)i0035.png $$(top_srcdir)/data/feproj-std.pal
+
+endef
+
+$(foreach num,$(cyborg_nomotion_arms_nums),$(eval $(call define_cyborg_static_arms_rule,$(num))))
+
+
+define define_cyborg_static_legs_rule
+qdata/equip/m$(1).raw: \
+  $$(top_srcdir)/cyborg-legs-i-render-64/m$(1)i0035.png $$(top_srcdir)/data/feproj-std.pal
+
+endef
+
+$(foreach num,$(cyborg_nomotion_legs_nums),$(eval $(call define_cyborg_static_legs_rule,$(num))))
 
 
 qdata/equip/bgman.raw: $(top_srcdir)/cyborg-shape/bgman.png $(top_srcdir)/data/feproj-std.pal

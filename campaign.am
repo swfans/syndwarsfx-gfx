@@ -1,0 +1,18 @@
+# *****************************************************************************
+#  Graphics assets generation for Syndicate Wars Port.
+# *****************************************************************************
+#  @file campaign.am
+#      Automake rules neccessary to build campaign-specific images.
+#  @author   Tomasz Lis
+#  @par  Copying and copyrights:
+#      This program is free software; you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation; either version 2 of the License, or
+#      (at your option) any later version.
+# *****************************************************************************
+
+qdata/proj-s-1.raw: $(top_srcdir)/campaign-eurocorp/proj-s-64.png $(top_srcdir)/data/feproj-std.pal
+
+qdata/proj-z-1.raw: $(top_srcdir)/campaign-churchne/proj-z-64.png $(top_srcdir)/data/feproj-std.pal
+
+campaign_raw_files = qdata/proj-s-1.raw qdata/proj-z-1.raw

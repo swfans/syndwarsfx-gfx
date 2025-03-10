@@ -90,10 +90,6 @@ include $(srcdir)/campaign.am
 campaign0_DATA = $(campaign_raw_files)
 campaign0dir = $(prefix)/$(PARENT_PACKAGE)/qdata
 
-qdata/%.raw:
-	$(MKDIR_P) "$(@D)"
-	$(PNGTORAW) -o "$@" -p "$(word 2,$^)" -f raw -l 50 "$<"
-
 qdata/equip/%.fli:
 	$(MKDIR_P) "$(@D)"
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f flic -l 0 "$<"

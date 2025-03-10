@@ -11,8 +11,50 @@
 #      (at your option) any later version.
 # *****************************************************************************
 
-qdata/proj-s-1.raw: $(top_srcdir)/campaign-eurocorp/proj-s-64.png $(top_srcdir)/data/feproj-std.pal
+campaign_raw_files = \
+  qdata/proj-s0-3.raw qdata/proj-z0-3.raw \
+  qdata/proj-s0-2.raw qdata/proj-z0-2.raw \
+  qdata/proj-s0-1.raw qdata/proj-z0-1.raw \
+  qdata/proj-s0-0.raw qdata/proj-z0-0.raw
 
-qdata/proj-z-1.raw: $(top_srcdir)/campaign-churchne/proj-z-64.png $(top_srcdir)/data/feproj-std.pal
+qdata/%.raw: $(top_srcdir)/campaign-eurocorp/%.png $(top_srcdir)/data/feproj-std.pal
+	$(MKDIR_P) "$(@D)"
+	$(PNGTORAW) -o "$@" -p "$(word 2,$^)" -f raw -l 50 "$<"
 
-campaign_raw_files = qdata/proj-s-1.raw qdata/proj-z-1.raw
+qdata/%.raw: $(top_srcdir)/campaign-churchne/%.png $(top_srcdir)/data/feproj-std.pal
+	$(MKDIR_P) "$(@D)"
+	$(PNGTORAW) -o "$@" -p "$(word 2,$^)" -f raw -l 50 "$<"
+
+qdata/%.raw: campaign-eurocorp/%.png $(top_srcdir)/data/feproj-std.pal
+	$(MKDIR_P) "$(@D)"
+	$(PNGTORAW) -o "$@" -p "$(word 2,$^)" -f raw -l 50 "$<"
+
+qdata/%.raw: campaign-churchne/%.png $(top_srcdir)/data/feproj-std.pal
+	$(MKDIR_P) "$(@D)"
+	$(PNGTORAW) -o "$@" -p "$(word 2,$^)" -f raw -l 50 "$<"
+
+# Rescale images to get needed detail levels
+
+campaign-eurocorp/proj-s0-0.png: $(top_srcdir)/campaign-eurocorp/proj-s0-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -filter Mitchell -resize 50% "$@"
+
+campaign-churchne/proj-z0-0.png: $(top_srcdir)/campaign-churchne/proj-z0-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -filter Mitchell -resize 50% "$@"
+
+campaign-eurocorp/proj-s0-2.png: $(top_srcdir)/campaign-eurocorp/proj-s0-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -filter Mitchell -resize 150% "$@"
+
+campaign-churchne/proj-z0-2.png: $(top_srcdir)/campaign-churchne/proj-z0-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -filter Mitchell -resize 150% "$@"
+
+campaign-eurocorp/proj-s0-3.png: $(top_srcdir)/campaign-eurocorp/proj-s0-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -filter Mitchell -resize 200% "$@"
+
+campaign-churchne/proj-z0-3.png: $(top_srcdir)/campaign-churchne/proj-z0-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -filter Mitchell -resize 200% "$@"

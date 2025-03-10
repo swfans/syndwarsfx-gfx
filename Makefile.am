@@ -92,7 +92,7 @@ campaign0dir = $(prefix)/$(PARENT_PACKAGE)/qdata
 
 qdata/%.raw:
 	$(MKDIR_P) "$(@D)"
-	$(PNGTORAW) -o "$@" -p "$(word 2,$^)" -f raw -l 100 "$<"
+	$(PNGTORAW) -o "$@" -p "$(word 2,$^)" -f raw -l 50 "$<"
 
 qdata/equip/%.fli:
 	$(MKDIR_P) "$(@D)"

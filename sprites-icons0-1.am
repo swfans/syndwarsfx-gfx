@@ -187,7 +187,7 @@ icons0_1_sprites_cp = \
 
 data/icons0-1.tab: data/icons0-1.dat
 
-data/icons0-1.dat: feicons-64-eng/filelist-icons0-1.txt $(top_srcdir)/data/engine-std.pal ${icons0_1_sprites_cp} \
+data/icons0-1.dat: feicons-64-eng/filelist-icons0-1.txt $(top_srcdir)/data/feproj-std.pal ${icons0_1_sprites_cp} \
   $(icons0_1_sprites_appicon_rot_eng)
 
 feicons-64-eng/%.txt: $(top_srcdir)/feicons-64/%.txt

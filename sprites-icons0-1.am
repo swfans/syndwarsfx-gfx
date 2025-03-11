@@ -35,7 +35,7 @@ icons0_1_chars_text_access = \
 icons0_1_chars_text_network = \
   004e 0045 0054 0057 004f 0052 004b
 
-icons0_1_chars_text_rsndv = \
+icons0_1_chars_text_resndev = \
   0052 0026 0044
 
 icons0_1_chars_text_system = \
@@ -65,8 +65,8 @@ icons0_1_sprites_text_access = \
 icons0_1_sprites_text_network = \
   $(foreach num,$(icons0_1_chars_text_network),font_sharp_cult-5-ltteal/char_u$(num).png)
 
-icons0_1_sprites_text_rsndv = \
-  $(foreach num,$(icons0_1_chars_text_rsndv),font_sharp_cult-5-ltteal/char_u$(num).png)
+icons0_1_sprites_text_resndev = \
+  $(foreach num,$(icons0_1_chars_text_resndev),font_sharp_cult-5-ltteal/char_u$(num).png)
 
 icons0_1_sprites_text_system = \
   $(foreach num,$(icons0_1_chars_text_system),font_sharp_cult-5-ltteal/char_u$(num).png)
@@ -95,35 +95,63 @@ icons0_1_sprites_appicon_rot_system_frameno = \
 icons0_1_sprites_appicon_rot_wrldmap_frameno = \
   00 01 02
 
-icons0_1_sprites_appicon_rot_eng_cryovat = \
+icons0_1_sprites_appicon_rot_eng_cryovat_lgt = \
   $(foreach num,$(icons0_1_sprites_appicon_rot_cryovat_frameno),feicons-64-eng/appicon-rot-cryovat-f$(num).lgt.png)
 
-icons0_1_sprites_appicon_rot_eng_equip = \
+icons0_1_sprites_appicon_rot_eng_equip_lgt = \
   $(foreach num,$(icons0_1_sprites_appicon_rot_equip_frameno),feicons-64-eng/appicon-rot-equip-f$(num).lgt.png)
 
-icons0_1_sprites_appicon_rot_eng_newmail = \
+icons0_1_sprites_appicon_rot_eng_newmail_lgt = \
   $(foreach num,$(icons0_1_sprites_appicon_rot_newmail_frameno),feicons-64-eng/appicon-rot-newmail-f$(num).lgt.png)
 
-icons0_1_sprites_appicon_rot_eng_panet = \
+icons0_1_sprites_appicon_rot_eng_panet_lgt = \
   $(foreach num,$(icons0_1_sprites_appicon_rot_panet_frameno),feicons-64-eng/appicon-rot-panet-f$(num).lgt.png)
 
-icons0_1_sprites_appicon_rot_eng_resndev = \
+icons0_1_sprites_appicon_rot_eng_resndev_lgt = \
   $(foreach num,$(icons0_1_sprites_appicon_rot_resndev_frameno),feicons-64-eng/appicon-rot-resndev-f$(num).lgt.png)
 
-icons0_1_sprites_appicon_rot_eng_system = \
+icons0_1_sprites_appicon_rot_eng_system_lgt = \
   $(foreach num,$(icons0_1_sprites_appicon_rot_system_frameno),feicons-64-eng/appicon-rot-system-f$(num).lgt.png)
 
-icons0_1_sprites_appicon_rot_eng_wrldmap = \
+icons0_1_sprites_appicon_rot_eng_wrldmap_lgt = \
   $(foreach num,$(icons0_1_sprites_appicon_rot_wrldmap_frameno),feicons-64-eng/appicon-rot-wrldmap-f$(num).lgt.png)
 
+icons0_1_sprites_appicon_rot_eng_cryovat_nrm = \
+  $(foreach num,$(icons0_1_sprites_appicon_rot_cryovat_frameno),feicons-64-eng/appicon-rot-cryovat-f$(num).nrm.png)
+
+icons0_1_sprites_appicon_rot_eng_equip_nrm = \
+  $(foreach num,$(icons0_1_sprites_appicon_rot_equip_frameno),feicons-64-eng/appicon-rot-equip-f$(num).nrm.png)
+
+icons0_1_sprites_appicon_rot_eng_newmail_nrm = \
+  $(foreach num,$(icons0_1_sprites_appicon_rot_newmail_frameno),feicons-64-eng/appicon-rot-newmail-f$(num).nrm.png)
+
+icons0_1_sprites_appicon_rot_eng_panet_nrm = \
+  $(foreach num,$(icons0_1_sprites_appicon_rot_panet_frameno),feicons-64-eng/appicon-rot-panet-f$(num).nrm.png)
+
+icons0_1_sprites_appicon_rot_eng_resndev_nrm = \
+  $(foreach num,$(icons0_1_sprites_appicon_rot_resndev_frameno),feicons-64-eng/appicon-rot-resndev-f$(num).nrm.png)
+
+icons0_1_sprites_appicon_rot_eng_system_nrm = \
+  $(foreach num,$(icons0_1_sprites_appicon_rot_system_frameno),feicons-64-eng/appicon-rot-system-f$(num).nrm.png)
+
+icons0_1_sprites_appicon_rot_eng_wrldmap_nrm = \
+  $(foreach num,$(icons0_1_sprites_appicon_rot_wrldmap_frameno),feicons-64-eng/appicon-rot-wrldmap-f$(num).nrm.png)
+
 icons0_1_sprites_appicon_rot_eng = \
-  $(icons0_1_sprites_appicon_rot_eng_cryovat) \
-  $(icons0_1_sprites_appicon_rot_eng_equip) \
-  $(icons0_1_sprites_appicon_rot_eng_newmail) \
-  $(icons0_1_sprites_appicon_rot_eng_panet) \
-  $(icons0_1_sprites_appicon_rot_eng_resndev) \
-  $(icons0_1_sprites_appicon_rot_eng_system) \
-  $(icons0_1_sprites_appicon_rot_eng_wrldmap)
+  $(icons0_1_sprites_appicon_rot_eng_cryovat_lgt) \
+  $(icons0_1_sprites_appicon_rot_eng_equip_lgt) \
+  $(icons0_1_sprites_appicon_rot_eng_newmail_lgt) \
+  $(icons0_1_sprites_appicon_rot_eng_panet_lgt) \
+  $(icons0_1_sprites_appicon_rot_eng_resndev_lgt) \
+  $(icons0_1_sprites_appicon_rot_eng_system_lgt) \
+  $(icons0_1_sprites_appicon_rot_eng_wrldmap_lgt) \
+  $(icons0_1_sprites_appicon_rot_eng_cryovat_nrm) \
+  $(icons0_1_sprites_appicon_rot_eng_equip_nrm) \
+  $(icons0_1_sprites_appicon_rot_eng_newmail_nrm) \
+  $(icons0_1_sprites_appicon_rot_eng_panet_nrm) \
+  $(icons0_1_sprites_appicon_rot_eng_resndev_nrm) \
+  $(icons0_1_sprites_appicon_rot_eng_system_nrm) \
+  $(icons0_1_sprites_appicon_rot_eng_wrldmap_nrm)
 
 icons0_1_sprites_text = \
   feicons-64-eng/text_cryo.png \
@@ -133,7 +161,7 @@ icons0_1_sprites_text = \
   feicons-64-eng/text_public.png \
   feicons-64-eng/text_access.png \
   feicons-64-eng/text_network.png \
-  feicons-64-eng/text_rsndv.png \
+  feicons-64-eng/text_resndev.png \
   feicons-64-eng/text_system.png \
   feicons-64-eng/text_map.png
 
@@ -172,38 +200,76 @@ feicons-64-eng/%.png: $(top_srcdir)/feicons-64/%.png
 
 feicons-64-eng/appicon-rot-cryovat-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-cryovat-%.png feicons-64-eng/text_cryo.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry +0+17 -composite "$@"
+	$(MAGICK_CONVERT) "$<" \
+      "$(word 2,$+)" -gravity Center -geometry +0+17 -composite \
+      "$@"
 
 feicons-64-eng/appicon-rot-equip-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-equip-%.png feicons-64-eng/text_equip.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry +0+17 -composite "$@"
+	$(MAGICK_CONVERT) "$<" \
+      "$(word 2,$+)" -gravity Center -geometry +0+17 -composite \
+      "$@"
 
 feicons-64-eng/appicon-rot-newmail-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-newmail-%.png feicons-64-eng/text_new.png feicons-64-eng/text_mail.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \
+	$(MAGICK_CONVERT) "$<" \
       "$(word 2,$+)" -gravity Center -geometry +0+10 -composite \
       "$(word 3,$+)" -gravity Center -geometry +0+17 -composite \
       "$@"
 
 feicons-64-eng/appicon-rot-panet-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-panet-%.png feicons-64-eng/text_public.png feicons-64-eng/text_access.png feicons-64-eng/text_network.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< \
+	$(MAGICK_CONVERT) "$<" \
       "$(word 2,$+)" -gravity Center -geometry +0+3 -composite \
       "$(word 3,$+)" -gravity Center -geometry +0+10 -composite \
       "$(word 4,$+)" -gravity Center -geometry +0+17 -composite \
       "$@"
 
-feicons-64-eng/appicon-rot-resndev-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-resndev-%.png feicons-64-eng/text_rsndv.png
+feicons-64-eng/appicon-rot-resndev-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-resndev-%.png feicons-64-eng/text_resndev.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry +0+17 -composite "$@"
+	$(MAGICK_CONVERT) "$<" \
+      "$(word 2,$+)" -gravity Center -geometry +0+17 -composite \
+      "$@"
 
 feicons-64-eng/appicon-rot-system-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-system-%.png feicons-64-eng/text_system.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry +0+17 -composite "$@"
+	$(MAGICK_CONVERT) "$<" \
+      "$(word 2,$+)" -gravity Center -geometry +0+17 -composite \
+      "$@"
 
 feicons-64-eng/appicon-rot-wrldmap-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-wrldmap-%.png feicons-64-eng/text_map.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) $< "$(word 2,$+)" -gravity Center -geometry +0+17 -composite "$@"
+	$(MAGICK_CONVERT) "$<" \
+      "$(word 2,$+)" -gravity Center -geometry +0+17 -composite \
+      "$@"
+
+feicons-64-eng/appicon-rot-cryovat-%.nrm.png: feicons-64-eng/appicon-rot-cryovat-%.lgt.png $(top_srcdir)/feicons-64/appicon-bkground-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
+
+feicons-64-eng/appicon-rot-equip-%.nrm.png: feicons-64-eng/appicon-rot-equip-%.lgt.png $(top_srcdir)/feicons-64/appicon-bkground-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
+
+feicons-64-eng/appicon-rot-newmail-%.nrm.png: feicons-64-eng/appicon-rot-newmail-%.lgt.png $(top_srcdir)/feicons-64/appicon-bkground-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
+
+feicons-64-eng/appicon-rot-panet-%.nrm.png: feicons-64-eng/appicon-rot-panet-%.lgt.png $(top_srcdir)/feicons-64/appicon-bkground-3.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
+
+feicons-64-eng/appicon-rot-resndev-%.nrm.png: feicons-64-eng/appicon-rot-resndev-%.lgt.png $(top_srcdir)/feicons-64/appicon-bkground-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
+
+feicons-64-eng/appicon-rot-system-%.nrm.png: feicons-64-eng/appicon-rot-system-%.lgt.png $(top_srcdir)/feicons-64/appicon-bkground-2.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
+
+feicons-64-eng/appicon-rot-wrldmap-%.nrm.png: feicons-64-eng/appicon-rot-wrldmap-%.lgt.png $(top_srcdir)/feicons-64/appicon-bkground-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
 
 feicons-64-eng/text_cryo.png: $(icons0_1_sprites_text_cryo)
 	$(MKDIR_P) "$(@D)"
@@ -233,7 +299,7 @@ feicons-64-eng/text_network.png: $(icons0_1_sprites_text_network)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 42x6+0+0 +repage "$@"
 
-feicons-64-eng/text_rsndv.png: $(icons0_1_sprites_text_rsndv)
+feicons-64-eng/text_resndev.png: $(icons0_1_sprites_text_resndev)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 17x6+0+0 +repage "$@"
 

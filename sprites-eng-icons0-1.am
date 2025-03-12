@@ -1,7 +1,7 @@
 # *****************************************************************************
 #  Graphics assets generation for Syndicate Wars Port.
 # *****************************************************************************
-#  @file sprites-icons0-1.am
+#  @file sprites-eng-icons0-1.am
 #      Automake rules neccessary to build `icons0-1` menu sprites.
 #  @author   Tomasz Lis
 #  @par  Copying and copyrights:
@@ -11,149 +11,149 @@
 #      (at your option) any later version.
 # *****************************************************************************
 
-icons0_1_files = data/icons0-1.dat data/icons0-1.tab
+eng_icons0_1_files = language/eng/icons0-1.dat language/eng/icons0-1.tab
 
 # The sprites contain some text lines merged from bitmap fonts
-icons0_1_chars_text_cryo = \
+eng_icons0_1_chars_text_cryo = \
   0043 0052 0059 004f
 
-icons0_1_chars_text_equip = \
+eng_icons0_1_chars_text_equip = \
   0045 0051 0055 0049 0050
 
-icons0_1_chars_text_new = \
+eng_icons0_1_chars_text_new = \
   004e 0045 0057
 
-icons0_1_chars_text_mail = \
+eng_icons0_1_chars_text_mail = \
   004d 0041 0049 004c
 
-icons0_1_chars_text_public = \
+eng_icons0_1_chars_text_public = \
   0050 0055 0042 004c 0049 0043
 
-icons0_1_chars_text_access = \
+eng_icons0_1_chars_text_access = \
   0041 0043 0043 0045 0053 0053
 
-icons0_1_chars_text_network = \
+eng_icons0_1_chars_text_network = \
   004e 0045 0054 0057 004f 0052 004b
 
-icons0_1_chars_text_resndev = \
+eng_icons0_1_chars_text_resndev = \
   0052 0026 0044
 
-icons0_1_chars_text_system = \
+eng_icons0_1_chars_text_system = \
   0053 0059 0053 0054 0045 004d
 
-icons0_1_chars_text_map = \
+eng_icons0_1_chars_text_map = \
   004d 0041 0050
 
-icons0_1_sprites_text_cryo = \
-  $(foreach num,$(icons0_1_chars_text_cryo),font_sharp_cult-5-ltteal/char_u$(num).png)
+eng_icons0_1_sprites_text_cryo = \
+  $(foreach num,$(eng_icons0_1_chars_text_cryo),font_sharp_cult-5-ltteal/char_u$(num).png)
 
-icons0_1_sprites_text_equip = \
-  $(foreach num,$(icons0_1_chars_text_equip),font_sharp_cult-5-ltteal/char_u$(num).png)
+eng_icons0_1_sprites_text_equip = \
+  $(foreach num,$(eng_icons0_1_chars_text_equip),font_sharp_cult-5-ltteal/char_u$(num).png)
 
-icons0_1_sprites_text_new = \
-  $(foreach num,$(icons0_1_chars_text_new),font_sharp_cult-5-ltteal/char_u$(num).png)
+eng_icons0_1_sprites_text_new = \
+  $(foreach num,$(eng_icons0_1_chars_text_new),font_sharp_cult-5-ltteal/char_u$(num).png)
 
-icons0_1_sprites_text_mail = \
-  $(foreach num,$(icons0_1_chars_text_mail),font_sharp_cult-5-ltteal/char_u$(num).png)
+eng_icons0_1_sprites_text_mail = \
+  $(foreach num,$(eng_icons0_1_chars_text_mail),font_sharp_cult-5-ltteal/char_u$(num).png)
 
-icons0_1_sprites_text_public = \
-  $(foreach num,$(icons0_1_chars_text_public),font_sharp_cult-5-ltteal/char_u$(num).png)
+eng_icons0_1_sprites_text_public = \
+  $(foreach num,$(eng_icons0_1_chars_text_public),font_sharp_cult-5-ltteal/char_u$(num).png)
 
-icons0_1_sprites_text_access = \
-  $(foreach num,$(icons0_1_chars_text_access),font_sharp_cult-5-ltteal/char_u$(num).png)
+eng_icons0_1_sprites_text_access = \
+  $(foreach num,$(eng_icons0_1_chars_text_access),font_sharp_cult-5-ltteal/char_u$(num).png)
 
-icons0_1_sprites_text_network = \
-  $(foreach num,$(icons0_1_chars_text_network),font_sharp_cult-5-ltteal/char_u$(num).png)
+eng_icons0_1_sprites_text_network = \
+  $(foreach num,$(eng_icons0_1_chars_text_network),font_sharp_cult-5-ltteal/char_u$(num).png)
 
-icons0_1_sprites_text_resndev = \
-  $(foreach num,$(icons0_1_chars_text_resndev),font_sharp_cult-5-ltteal/char_u$(num).png)
+eng_icons0_1_sprites_text_resndev = \
+  $(foreach num,$(eng_icons0_1_chars_text_resndev),font_sharp_cult-5-ltteal/char_u$(num).png)
 
-icons0_1_sprites_text_system = \
-  $(foreach num,$(icons0_1_chars_text_system),font_sharp_cult-5-ltteal/char_u$(num).png)
+eng_icons0_1_sprites_text_system = \
+  $(foreach num,$(eng_icons0_1_chars_text_system),font_sharp_cult-5-ltteal/char_u$(num).png)
 
-icons0_1_sprites_text_map = \
-  $(foreach num,$(icons0_1_chars_text_map),font_sharp_cult-5-ltteal/char_u$(num).png)
+eng_icons0_1_sprites_text_map = \
+  $(foreach num,$(eng_icons0_1_chars_text_map),font_sharp_cult-5-ltteal/char_u$(num).png)
 
-icons0_1_sprites_appicon_rot_cryovat_frameno = \
+eng_icons0_1_sprites_appicon_rot_cryovat_frameno = \
   00 01 02 03 04 05 06 07 08 09 10 11
 
-icons0_1_sprites_appicon_rot_equip_frameno = \
+eng_icons0_1_sprites_appicon_rot_equip_frameno = \
   00 01 02 03 04 05 06 07
 
-icons0_1_sprites_appicon_rot_newmail_frameno = \
+eng_icons0_1_sprites_appicon_rot_newmail_frameno = \
   00 01 02 03
 
-icons0_1_sprites_appicon_rot_panet_frameno = \
+eng_icons0_1_sprites_appicon_rot_panet_frameno = \
   00 01 02 03 04 05 06 07
 
-icons0_1_sprites_appicon_rot_resndev_frameno = \
+eng_icons0_1_sprites_appicon_rot_resndev_frameno = \
   00 01 02 03
 
-icons0_1_sprites_appicon_rot_system_frameno = \
+eng_icons0_1_sprites_appicon_rot_system_frameno = \
   00 01 02 03 04 05 06 07
 
-icons0_1_sprites_appicon_rot_wrldmap_frameno = \
+eng_icons0_1_sprites_appicon_rot_wrldmap_frameno = \
   00 01 02
 
-icons0_1_sprites_appicon_rot_eng_cryovat_lgt = \
-  $(foreach num,$(icons0_1_sprites_appicon_rot_cryovat_frameno),feicons-64-eng/appicon-rot-cryovat-f$(num).lgt.png)
+eng_icons0_1_sprites_appicon_rot_cryovat_lgt = \
+  $(foreach num,$(eng_icons0_1_sprites_appicon_rot_cryovat_frameno),feicons-64-eng/appicon-rot-cryovat-f$(num).lgt.png)
 
-icons0_1_sprites_appicon_rot_eng_equip_lgt = \
-  $(foreach num,$(icons0_1_sprites_appicon_rot_equip_frameno),feicons-64-eng/appicon-rot-equip-f$(num).lgt.png)
+eng_icons0_1_sprites_appicon_rot_equip_lgt = \
+  $(foreach num,$(eng_icons0_1_sprites_appicon_rot_equip_frameno),feicons-64-eng/appicon-rot-equip-f$(num).lgt.png)
 
-icons0_1_sprites_appicon_rot_eng_newmail_lgt = \
-  $(foreach num,$(icons0_1_sprites_appicon_rot_newmail_frameno),feicons-64-eng/appicon-rot-newmail-f$(num).lgt.png)
+eng_icons0_1_sprites_appicon_rot_newmail_lgt = \
+  $(foreach num,$(eng_icons0_1_sprites_appicon_rot_newmail_frameno),feicons-64-eng/appicon-rot-newmail-f$(num).lgt.png)
 
-icons0_1_sprites_appicon_rot_eng_panet_lgt = \
-  $(foreach num,$(icons0_1_sprites_appicon_rot_panet_frameno),feicons-64-eng/appicon-rot-panet-f$(num).lgt.png)
+eng_icons0_1_sprites_appicon_rot_panet_lgt = \
+  $(foreach num,$(eng_icons0_1_sprites_appicon_rot_panet_frameno),feicons-64-eng/appicon-rot-panet-f$(num).lgt.png)
 
-icons0_1_sprites_appicon_rot_eng_resndev_lgt = \
-  $(foreach num,$(icons0_1_sprites_appicon_rot_resndev_frameno),feicons-64-eng/appicon-rot-resndev-f$(num).lgt.png)
+eng_icons0_1_sprites_appicon_rot_resndev_lgt = \
+  $(foreach num,$(eng_icons0_1_sprites_appicon_rot_resndev_frameno),feicons-64-eng/appicon-rot-resndev-f$(num).lgt.png)
 
-icons0_1_sprites_appicon_rot_eng_system_lgt = \
-  $(foreach num,$(icons0_1_sprites_appicon_rot_system_frameno),feicons-64-eng/appicon-rot-system-f$(num).lgt.png)
+eng_icons0_1_sprites_appicon_rot_system_lgt = \
+  $(foreach num,$(eng_icons0_1_sprites_appicon_rot_system_frameno),feicons-64-eng/appicon-rot-system-f$(num).lgt.png)
 
-icons0_1_sprites_appicon_rot_eng_wrldmap_lgt = \
-  $(foreach num,$(icons0_1_sprites_appicon_rot_wrldmap_frameno),feicons-64-eng/appicon-rot-wrldmap-f$(num).lgt.png)
+eng_icons0_1_sprites_appicon_rot_wrldmap_lgt = \
+  $(foreach num,$(eng_icons0_1_sprites_appicon_rot_wrldmap_frameno),feicons-64-eng/appicon-rot-wrldmap-f$(num).lgt.png)
 
-icons0_1_sprites_appicon_rot_eng_cryovat_nrm = \
-  $(foreach num,$(icons0_1_sprites_appicon_rot_cryovat_frameno),feicons-64-eng/appicon-rot-cryovat-f$(num).nrm.png)
+eng_icons0_1_sprites_appicon_rot_cryovat_nrm = \
+  $(foreach num,$(eng_icons0_1_sprites_appicon_rot_cryovat_frameno),feicons-64-eng/appicon-rot-cryovat-f$(num).nrm.png)
 
-icons0_1_sprites_appicon_rot_eng_equip_nrm = \
-  $(foreach num,$(icons0_1_sprites_appicon_rot_equip_frameno),feicons-64-eng/appicon-rot-equip-f$(num).nrm.png)
+eng_icons0_1_sprites_appicon_rot_equip_nrm = \
+  $(foreach num,$(eng_icons0_1_sprites_appicon_rot_equip_frameno),feicons-64-eng/appicon-rot-equip-f$(num).nrm.png)
 
-icons0_1_sprites_appicon_rot_eng_newmail_nrm = \
-  $(foreach num,$(icons0_1_sprites_appicon_rot_newmail_frameno),feicons-64-eng/appicon-rot-newmail-f$(num).nrm.png)
+eng_icons0_1_sprites_appicon_rot_newmail_nrm = \
+  $(foreach num,$(eng_icons0_1_sprites_appicon_rot_newmail_frameno),feicons-64-eng/appicon-rot-newmail-f$(num).nrm.png)
 
-icons0_1_sprites_appicon_rot_eng_panet_nrm = \
-  $(foreach num,$(icons0_1_sprites_appicon_rot_panet_frameno),feicons-64-eng/appicon-rot-panet-f$(num).nrm.png)
+eng_icons0_1_sprites_appicon_rot_panet_nrm = \
+  $(foreach num,$(eng_icons0_1_sprites_appicon_rot_panet_frameno),feicons-64-eng/appicon-rot-panet-f$(num).nrm.png)
 
-icons0_1_sprites_appicon_rot_eng_resndev_nrm = \
-  $(foreach num,$(icons0_1_sprites_appicon_rot_resndev_frameno),feicons-64-eng/appicon-rot-resndev-f$(num).nrm.png)
+eng_icons0_1_sprites_appicon_rot_resndev_nrm = \
+  $(foreach num,$(eng_icons0_1_sprites_appicon_rot_resndev_frameno),feicons-64-eng/appicon-rot-resndev-f$(num).nrm.png)
 
-icons0_1_sprites_appicon_rot_eng_system_nrm = \
-  $(foreach num,$(icons0_1_sprites_appicon_rot_system_frameno),feicons-64-eng/appicon-rot-system-f$(num).nrm.png)
+eng_icons0_1_sprites_appicon_rot_system_nrm = \
+  $(foreach num,$(eng_icons0_1_sprites_appicon_rot_system_frameno),feicons-64-eng/appicon-rot-system-f$(num).nrm.png)
 
-icons0_1_sprites_appicon_rot_eng_wrldmap_nrm = \
-  $(foreach num,$(icons0_1_sprites_appicon_rot_wrldmap_frameno),feicons-64-eng/appicon-rot-wrldmap-f$(num).nrm.png)
+eng_icons0_1_sprites_appicon_rot_wrldmap_nrm = \
+  $(foreach num,$(eng_icons0_1_sprites_appicon_rot_wrldmap_frameno),feicons-64-eng/appicon-rot-wrldmap-f$(num).nrm.png)
 
-icons0_1_sprites_appicon_rot_eng = \
-  $(icons0_1_sprites_appicon_rot_eng_cryovat_lgt) \
-  $(icons0_1_sprites_appicon_rot_eng_equip_lgt) \
-  $(icons0_1_sprites_appicon_rot_eng_newmail_lgt) \
-  $(icons0_1_sprites_appicon_rot_eng_panet_lgt) \
-  $(icons0_1_sprites_appicon_rot_eng_resndev_lgt) \
-  $(icons0_1_sprites_appicon_rot_eng_system_lgt) \
-  $(icons0_1_sprites_appicon_rot_eng_wrldmap_lgt) \
-  $(icons0_1_sprites_appicon_rot_eng_cryovat_nrm) \
-  $(icons0_1_sprites_appicon_rot_eng_equip_nrm) \
-  $(icons0_1_sprites_appicon_rot_eng_newmail_nrm) \
-  $(icons0_1_sprites_appicon_rot_eng_panet_nrm) \
-  $(icons0_1_sprites_appicon_rot_eng_resndev_nrm) \
-  $(icons0_1_sprites_appicon_rot_eng_system_nrm) \
-  $(icons0_1_sprites_appicon_rot_eng_wrldmap_nrm)
+eng_icons0_1_sprites_appicon_rot = \
+  $(eng_icons0_1_sprites_appicon_rot_cryovat_lgt) \
+  $(eng_icons0_1_sprites_appicon_rot_equip_lgt) \
+  $(eng_icons0_1_sprites_appicon_rot_newmail_lgt) \
+  $(eng_icons0_1_sprites_appicon_rot_panet_lgt) \
+  $(eng_icons0_1_sprites_appicon_rot_resndev_lgt) \
+  $(eng_icons0_1_sprites_appicon_rot_system_lgt) \
+  $(eng_icons0_1_sprites_appicon_rot_wrldmap_lgt) \
+  $(eng_icons0_1_sprites_appicon_rot_cryovat_nrm) \
+  $(eng_icons0_1_sprites_appicon_rot_equip_nrm) \
+  $(eng_icons0_1_sprites_appicon_rot_newmail_nrm) \
+  $(eng_icons0_1_sprites_appicon_rot_panet_nrm) \
+  $(eng_icons0_1_sprites_appicon_rot_resndev_nrm) \
+  $(eng_icons0_1_sprites_appicon_rot_system_nrm) \
+  $(eng_icons0_1_sprites_appicon_rot_wrldmap_nrm)
 
-icons0_1_sprites_text = \
+eng_icons0_1_sprites_text = \
   feicons-64-eng/text_cryo.png \
   feicons-64-eng/text_equip.png \
   feicons-64-eng/text_new.png \
@@ -166,7 +166,7 @@ icons0_1_sprites_text = \
   feicons-64-eng/text_map.png
 
 # List of sprites to pass without alterations
-icons0_1_sprnames_nomod = \
+eng_icons0_1_sprnames_nomod = \
   appbar-border appbar-scroll-l appbar-scroll-r appicon-bkground-1 \
   background-tile cursor-target-map \
   cyborg-epidermis1-microscope cyborg-epidermis2-microscope \
@@ -182,13 +182,13 @@ icons0_1_sprnames_nomod = \
   straight_arrow_left straight_arrow_right \
   symbol-h symbol-money symbol-team-delta symbol-team-omega symbol-team-sigma \
   empty
-icons0_1_sprites_cp = \
-  $(foreach name,$(icons0_1_sprnames_nomod),feicons-64-eng/$(name).png)
+eng_icons0_1_sprites_cp = \
+  $(foreach name,$(eng_icons0_1_sprnames_nomod),feicons-64-eng/$(name).png)
 
-data/icons0-1.tab: data/icons0-1.dat
+language/eng/icons0-1.tab: language/eng/icons0-1.dat
 
-data/icons0-1.dat: feicons-64-eng/filelist-icons0-1.txt $(top_srcdir)/data/feproj-std.pal ${icons0_1_sprites_cp} \
-  $(icons0_1_sprites_appicon_rot_eng)
+language/eng/icons0-1.dat: feicons-64-eng/filelist-icons0-1.txt $(top_srcdir)/data/feproj-std.pal ${eng_icons0_1_sprites_cp} \
+  $(eng_icons0_1_sprites_appicon_rot)
 
 feicons-64-eng/%.txt: $(top_srcdir)/feicons-64/%.txt
 	$(MKDIR_P) "$(@D)"
@@ -271,42 +271,42 @@ feicons-64-eng/appicon-rot-wrldmap-%.nrm.png: feicons-64-eng/appicon-rot-wrldmap
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
 
-feicons-64-eng/text_cryo.png: $(icons0_1_sprites_text_cryo)
+feicons-64-eng/text_cryo.png: $(eng_icons0_1_sprites_text_cryo)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 23x6+0+0 +repage "$@"
 
-feicons-64-eng/text_equip.png: $(icons0_1_sprites_text_equip)
+feicons-64-eng/text_equip.png: $(eng_icons0_1_sprites_text_equip)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 28x6+0+0 +repage "$@"
 
-feicons-64-eng/text_new.png: $(icons0_1_sprites_text_new)
+feicons-64-eng/text_new.png: $(eng_icons0_1_sprites_text_new)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 18x6+0+0 +repage "$@"
 
-feicons-64-eng/text_mail.png: $(icons0_1_sprites_text_mail)
+feicons-64-eng/text_mail.png: $(eng_icons0_1_sprites_text_mail)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 22x6+0+0 +repage "$@"
 
-feicons-64-eng/text_public.png: $(icons0_1_sprites_text_public)
+feicons-64-eng/text_public.png: $(eng_icons0_1_sprites_text_public)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 33x6+0+0 +repage "$@"
 
-feicons-64-eng/text_access.png: $(icons0_1_sprites_text_access)
+feicons-64-eng/text_access.png: $(eng_icons0_1_sprites_text_access)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 35x6+0+0 +repage "$@"
 
-feicons-64-eng/text_network.png: $(icons0_1_sprites_text_network)
+feicons-64-eng/text_network.png: $(eng_icons0_1_sprites_text_network)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 42x6+0+0 +repage "$@"
 
-feicons-64-eng/text_resndev.png: $(icons0_1_sprites_text_resndev)
+feicons-64-eng/text_resndev.png: $(eng_icons0_1_sprites_text_resndev)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 17x6+0+0 +repage "$@"
 
-feicons-64-eng/text_system.png: $(icons0_1_sprites_text_system)
+feicons-64-eng/text_system.png: $(eng_icons0_1_sprites_text_system)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 36x6+0+0 +repage "$@"
 
-feicons-64-eng/text_map.png: $(icons0_1_sprites_text_map)
+feicons-64-eng/text_map.png: $(eng_icons0_1_sprites_text_map)
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 18x6+0+0 +repage "$@"

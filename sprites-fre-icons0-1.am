@@ -21,10 +21,10 @@ fre_icons0_1_chars_text_equip = \
   0045 0051 0055 0049 0050
 
 fre_icons0_1_chars_text_new = \
-  004e 0045 0057
+  004e 004f 0055 0056 002e
 
 fre_icons0_1_chars_text_mail = \
-  004d 0041 0049 004c
+  004d 0045 0053 0053 002e
 
 fre_icons0_1_chars_text_public = \
   0050 0055 0042 004c 0049 0043
@@ -39,10 +39,10 @@ fre_icons0_1_chars_text_resndev = \
   0052 0026 0044
 
 fre_icons0_1_chars_text_system = \
-  0053 0059 0053 0054 0045 004d
+  0053 0059 0053 0054 00c8 004d 0045
 
 fre_icons0_1_chars_text_map = \
-  004d 0041 0050
+  0043 0041 0052 0054 0045
 
 fre_icons0_1_sprites_text_cryo = \
   $(foreach num,$(fre_icons0_1_chars_text_cryo),font_sharp_cult-5-ltteal/char_u$(num).png)
@@ -281,11 +281,11 @@ feicons-64-fre/text_equip.png: $(fre_icons0_1_sprites_text_equip)
 
 feicons-64-fre/text_new.png: $(fre_icons0_1_sprites_text_new)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 18x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 26x6+0+0 +repage "$@"
 
 feicons-64-fre/text_mail.png: $(fre_icons0_1_sprites_text_mail)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 22x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 27x6+0+0 +repage "$@"
 
 feicons-64-fre/text_public.png: $(fre_icons0_1_sprites_text_public)
 	$(MKDIR_P) "$(@D)"
@@ -305,8 +305,8 @@ feicons-64-fre/text_resndev.png: $(fre_icons0_1_sprites_text_resndev)
 
 feicons-64-fre/text_system.png: $(fre_icons0_1_sprites_text_system)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 36x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 43x6+0+0 +repage "$@"
 
 feicons-64-fre/text_map.png: $(fre_icons0_1_sprites_text_map)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 18x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 28x6+0+0 +repage "$@"

@@ -18,13 +18,13 @@ spa_icons0_1_chars_text_cryo = \
   0043 0052 0059 004f
 
 spa_icons0_1_chars_text_equip = \
-  0045 0051 0055 0049 0050
+  0045 0051 0055 0049 0050 004f
 
 spa_icons0_1_chars_text_new = \
-  004e 0045 0057
+  004d 0045 004e 002d
 
 spa_icons0_1_chars_text_mail = \
-  004d 0041 0049 004c
+  0053 0041 004a 0045
 
 spa_icons0_1_chars_text_public = \
   0050 0055 0042 004c 0049 0043
@@ -36,13 +36,13 @@ spa_icons0_1_chars_text_network = \
   004e 0045 0054 0057 004f 0052 004b
 
 spa_icons0_1_chars_text_resndev = \
-  0052 0026 0044
+  0049 0026 0044
 
 spa_icons0_1_chars_text_system = \
-  0053 0059 0053 0054 0045 004d
+  0053 0049 0053 0054 0045 004d 0041
 
 spa_icons0_1_chars_text_map = \
-  004d 0041 0050
+  004d 0041 0050 0041
 
 spa_icons0_1_sprites_text_cryo = \
   $(foreach num,$(spa_icons0_1_chars_text_cryo),font_sharp_cult-5-ltteal/char_u$(num).png)
@@ -277,15 +277,15 @@ feicons-64-spa/text_cryo.png: $(spa_icons0_1_sprites_text_cryo)
 
 feicons-64-spa/text_equip.png: $(spa_icons0_1_sprites_text_equip)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 28x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 33x6+0+0 +repage "$@"
 
 feicons-64-spa/text_new.png: $(spa_icons0_1_sprites_text_new)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 18x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 23x6+0+0 +repage "$@"
 
 feicons-64-spa/text_mail.png: $(spa_icons0_1_sprites_text_mail)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 22x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 24x6+0+0 +repage "$@"
 
 feicons-64-spa/text_public.png: $(spa_icons0_1_sprites_text_public)
 	$(MKDIR_P) "$(@D)"
@@ -301,12 +301,12 @@ feicons-64-spa/text_network.png: $(spa_icons0_1_sprites_text_network)
 
 feicons-64-spa/text_resndev.png: $(spa_icons0_1_sprites_text_resndev)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 17x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 16x6+0+0 +repage "$@"
 
 feicons-64-spa/text_system.png: $(spa_icons0_1_sprites_text_system)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 36x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 40x6+0+0 +repage "$@"
 
 feicons-64-spa/text_map.png: $(spa_icons0_1_sprites_text_map)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 18x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 25x6+0+0 +repage "$@"

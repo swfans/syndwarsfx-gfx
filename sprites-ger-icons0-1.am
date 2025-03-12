@@ -277,15 +277,15 @@ feicons-64-ger/text_cryo.png: $(ger_icons0_1_sprites_text_cryo)
 
 feicons-64-ger/text_equip.png: $(ger_icons0_1_sprites_text_equip)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 28x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 24x6+0+0 +repage "$@"
 
 feicons-64-ger/text_new.png: $(ger_icons0_1_sprites_text_new)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 18x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 22x6+0+0 +repage "$@"
 
 feicons-64-ger/text_mail.png: $(ger_icons0_1_sprites_text_mail)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 22x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 24x6+0+0 +repage "$@"
 
 feicons-64-ger/text_public.png: $(ger_icons0_1_sprites_text_public)
 	$(MKDIR_P) "$(@D)"
@@ -309,4 +309,4 @@ feicons-64-ger/text_system.png: $(ger_icons0_1_sprites_text_system)
 
 feicons-64-ger/text_map.png: $(ger_icons0_1_sprites_text_map)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 18x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 28x6+0+0 +repage "$@"

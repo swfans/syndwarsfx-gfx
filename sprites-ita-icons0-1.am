@@ -15,13 +15,13 @@ ita_icons0_1_files = language/ita/icons0-1.dat language/ita/icons0-1.tab
 
 # The sprites contain some text lines merged from bitmap fonts
 ita_icons0_1_chars_text_cryo = \
-  0043 0052 0059 004f
+  0043 0052 0049 004f
 
 ita_icons0_1_chars_text_equip = \
   0045 0051 0055 0049 0050
 
 ita_icons0_1_chars_text_new = \
-  004e 0045 0057
+  004e 0055 004f 0056 0041
 
 ita_icons0_1_chars_text_mail = \
   004d 0041 0049 004c
@@ -36,13 +36,13 @@ ita_icons0_1_chars_text_network = \
   004e 0045 0054 0057 004f 0052 004b
 
 ita_icons0_1_chars_text_resndev = \
-  0052 0026 0044
+  0052 0026 0053
 
 ita_icons0_1_chars_text_system = \
-  0053 0059 0053 0054 0045 004d
+  0053 0049 0053 0054 0045 004d 0041
 
 ita_icons0_1_chars_text_map = \
-  004d 0041 0050
+  004d 0041 0050 0050 0041
 
 ita_icons0_1_sprites_text_cryo = \
   $(foreach num,$(ita_icons0_1_chars_text_cryo),font_sharp_cult-5-ltteal/char_u$(num).png)
@@ -273,7 +273,7 @@ feicons-64-ita/appicon-rot-wrldmap-%.nrm.png: feicons-64-ita/appicon-rot-wrldmap
 
 feicons-64-ita/text_cryo.png: $(ita_icons0_1_sprites_text_cryo)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 23x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 22x6+0+0 +repage "$@"
 
 feicons-64-ita/text_equip.png: $(ita_icons0_1_sprites_text_equip)
 	$(MKDIR_P) "$(@D)"
@@ -281,7 +281,7 @@ feicons-64-ita/text_equip.png: $(ita_icons0_1_sprites_text_equip)
 
 feicons-64-ita/text_new.png: $(ita_icons0_1_sprites_text_new)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 18x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 30x6+0+0 +repage "$@"
 
 feicons-64-ita/text_mail.png: $(ita_icons0_1_sprites_text_mail)
 	$(MKDIR_P) "$(@D)"
@@ -305,8 +305,8 @@ feicons-64-ita/text_resndev.png: $(ita_icons0_1_sprites_text_resndev)
 
 feicons-64-ita/text_system.png: $(ita_icons0_1_sprites_text_system)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 36x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 41x6+0+0 +repage "$@"
 
 feicons-64-ita/text_map.png: $(ita_icons0_1_sprites_text_map)
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 18x6+0+0 +repage "$@"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 26x6+0+0 +repage "$@"

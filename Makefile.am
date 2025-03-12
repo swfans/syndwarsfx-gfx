@@ -80,6 +80,15 @@ language/eng/%.dat:
 	$(MKDIR_P) "$(@D)"
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
 
+include $(srcdir)/sprites-ger-icons0-1.am
+
+ger_icons0_DATA = $(ger_icons0_1_files)
+ger_icons0dir = $(prefix)/$(PARENT_PACKAGE)/language/ger
+
+language/ger/%.dat:
+	$(MKDIR_P) "$(@D)"
+	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
+
 include $(srcdir)/anims-wep-mod.am
 
 eqwepmod0_DATA = $(equip_wep_files) $(equip_mod_files)
@@ -110,7 +119,7 @@ qdata/equip/%.raw:
 docs_DATA = README.md gfx_config.h
 docsdir = $(prefix)/$(PARENT_PACKAGE)
 
-EXTRA_DIST = gfxani docs mouse0 pointr0 font0 pop0 eng_icons0 eqwepmod0 cybermod0 campaign0
+EXTRA_DIST = gfxani docs mouse0 pointr0 font0 pop0 eng_icons0 ger_icons0 eqwepmod0 cybermod0 campaign0
 
 install-data-hook:
 	cd "$(DESTDIR)${prefix}/$(PARENT_PACKAGE)"; \

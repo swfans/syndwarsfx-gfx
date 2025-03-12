@@ -80,12 +80,48 @@ language/eng/%.dat:
 	$(MKDIR_P) "$(@D)"
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
 
+include $(srcdir)/sprites-fre-icons0-1.am
+
+fre_icons0_DATA = $(fre_icons0_1_files)
+fre_icons0dir = $(prefix)/$(PARENT_PACKAGE)/language/fre
+
+language/fre/%.dat:
+	$(MKDIR_P) "$(@D)"
+	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
+
 include $(srcdir)/sprites-ger-icons0-1.am
 
 ger_icons0_DATA = $(ger_icons0_1_files)
 ger_icons0dir = $(prefix)/$(PARENT_PACKAGE)/language/ger
 
 language/ger/%.dat:
+	$(MKDIR_P) "$(@D)"
+	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
+
+include $(srcdir)/sprites-ita-icons0-1.am
+
+ita_icons0_DATA = $(ita_icons0_1_files)
+ita_icons0dir = $(prefix)/$(PARENT_PACKAGE)/language/ita
+
+language/ita/%.dat:
+	$(MKDIR_P) "$(@D)"
+	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
+
+include $(srcdir)/sprites-spa-icons0-1.am
+
+spa_icons0_DATA = $(spa_icons0_1_files)
+spa_icons0dir = $(prefix)/$(PARENT_PACKAGE)/language/spa
+
+language/spa/%.dat:
+	$(MKDIR_P) "$(@D)"
+	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
+
+include $(srcdir)/sprites-swe-icons0-1.am
+
+swe_icons0_DATA = $(swe_icons0_1_files)
+swe_icons0dir = $(prefix)/$(PARENT_PACKAGE)/language/swe
+
+language/swe/%.dat:
 	$(MKDIR_P) "$(@D)"
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
 
@@ -119,7 +155,7 @@ qdata/equip/%.raw:
 docs_DATA = README.md gfx_config.h
 docsdir = $(prefix)/$(PARENT_PACKAGE)
 
-EXTRA_DIST = gfxani docs mouse0 pointr0 font0 pop0 eng_icons0 ger_icons0 eqwepmod0 cybermod0 campaign0
+EXTRA_DIST = gfxani docs mouse0 pointr0 font0 pop0 eng_icons0 fre_icons0 ger_icons0 ita_icons0 spa_icons0 swe_icons0 eqwepmod0 cybermod0 campaign0
 
 install-data-hook:
 	cd "$(DESTDIR)${prefix}/$(PARENT_PACKAGE)"; \

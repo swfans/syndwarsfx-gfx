@@ -1,0 +1,312 @@
+# *****************************************************************************
+#  Graphics assets generation for Syndicate Wars Port.
+# *****************************************************************************
+#  @file sprites-ita-icons0-1.am
+#      Automake rules neccessary to build `icons0-1` menu sprites.
+#  @author   Tomasz Lis
+#  @par  Copying and copyrights:
+#      This program is free software; you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation; either version 2 of the License, or
+#      (at your option) any later version.
+# *****************************************************************************
+
+ita_icons0_1_files = language/ita/icons0-1.dat language/ita/icons0-1.tab
+
+# The sprites contain some text lines merged from bitmap fonts
+ita_icons0_1_chars_text_cryo = \
+  0043 0052 0059 004f
+
+ita_icons0_1_chars_text_equip = \
+  0045 0051 0055 0049 0050
+
+ita_icons0_1_chars_text_new = \
+  004e 0045 0057
+
+ita_icons0_1_chars_text_mail = \
+  004d 0041 0049 004c
+
+ita_icons0_1_chars_text_public = \
+  0050 0055 0042 004c 0049 0043
+
+ita_icons0_1_chars_text_access = \
+  0041 0043 0043 0045 0053 0053
+
+ita_icons0_1_chars_text_network = \
+  004e 0045 0054 0057 004f 0052 004b
+
+ita_icons0_1_chars_text_resndev = \
+  0052 0026 0044
+
+ita_icons0_1_chars_text_system = \
+  0053 0059 0053 0054 0045 004d
+
+ita_icons0_1_chars_text_map = \
+  004d 0041 0050
+
+ita_icons0_1_sprites_text_cryo = \
+  $(foreach num,$(ita_icons0_1_chars_text_cryo),font_sharp_cult-5-ltteal/char_u$(num).png)
+
+ita_icons0_1_sprites_text_equip = \
+  $(foreach num,$(ita_icons0_1_chars_text_equip),font_sharp_cult-5-ltteal/char_u$(num).png)
+
+ita_icons0_1_sprites_text_new = \
+  $(foreach num,$(ita_icons0_1_chars_text_new),font_sharp_cult-5-ltteal/char_u$(num).png)
+
+ita_icons0_1_sprites_text_mail = \
+  $(foreach num,$(ita_icons0_1_chars_text_mail),font_sharp_cult-5-ltteal/char_u$(num).png)
+
+ita_icons0_1_sprites_text_public = \
+  $(foreach num,$(ita_icons0_1_chars_text_public),font_sharp_cult-5-ltteal/char_u$(num).png)
+
+ita_icons0_1_sprites_text_access = \
+  $(foreach num,$(ita_icons0_1_chars_text_access),font_sharp_cult-5-ltteal/char_u$(num).png)
+
+ita_icons0_1_sprites_text_network = \
+  $(foreach num,$(ita_icons0_1_chars_text_network),font_sharp_cult-5-ltteal/char_u$(num).png)
+
+ita_icons0_1_sprites_text_resndev = \
+  $(foreach num,$(ita_icons0_1_chars_text_resndev),font_sharp_cult-5-ltteal/char_u$(num).png)
+
+ita_icons0_1_sprites_text_system = \
+  $(foreach num,$(ita_icons0_1_chars_text_system),font_sharp_cult-5-ltteal/char_u$(num).png)
+
+ita_icons0_1_sprites_text_map = \
+  $(foreach num,$(ita_icons0_1_chars_text_map),font_sharp_cult-5-ltteal/char_u$(num).png)
+
+ita_icons0_1_sprites_appicon_rot_cryovat_frameno = \
+  00 01 02 03 04 05 06 07 08 09 10 11
+
+ita_icons0_1_sprites_appicon_rot_equip_frameno = \
+  00 01 02 03 04 05 06 07
+
+ita_icons0_1_sprites_appicon_rot_newmail_frameno = \
+  00 01 02 03
+
+ita_icons0_1_sprites_appicon_rot_panet_frameno = \
+  00 01 02 03 04 05 06 07
+
+ita_icons0_1_sprites_appicon_rot_resndev_frameno = \
+  00 01 02 03
+
+ita_icons0_1_sprites_appicon_rot_system_frameno = \
+  00 01 02 03 04 05 06 07
+
+ita_icons0_1_sprites_appicon_rot_wrldmap_frameno = \
+  00 01 02
+
+ita_icons0_1_sprites_appicon_rot_cryovat_lgt = \
+  $(foreach num,$(ita_icons0_1_sprites_appicon_rot_cryovat_frameno),feicons-64-ita/appicon-rot-cryovat-f$(num).lgt.png)
+
+ita_icons0_1_sprites_appicon_rot_equip_lgt = \
+  $(foreach num,$(ita_icons0_1_sprites_appicon_rot_equip_frameno),feicons-64-ita/appicon-rot-equip-f$(num).lgt.png)
+
+ita_icons0_1_sprites_appicon_rot_newmail_lgt = \
+  $(foreach num,$(ita_icons0_1_sprites_appicon_rot_newmail_frameno),feicons-64-ita/appicon-rot-newmail-f$(num).lgt.png)
+
+ita_icons0_1_sprites_appicon_rot_panet_lgt = \
+  $(foreach num,$(ita_icons0_1_sprites_appicon_rot_panet_frameno),feicons-64-ita/appicon-rot-panet-f$(num).lgt.png)
+
+ita_icons0_1_sprites_appicon_rot_resndev_lgt = \
+  $(foreach num,$(ita_icons0_1_sprites_appicon_rot_resndev_frameno),feicons-64-ita/appicon-rot-resndev-f$(num).lgt.png)
+
+ita_icons0_1_sprites_appicon_rot_system_lgt = \
+  $(foreach num,$(ita_icons0_1_sprites_appicon_rot_system_frameno),feicons-64-ita/appicon-rot-system-f$(num).lgt.png)
+
+ita_icons0_1_sprites_appicon_rot_wrldmap_lgt = \
+  $(foreach num,$(ita_icons0_1_sprites_appicon_rot_wrldmap_frameno),feicons-64-ita/appicon-rot-wrldmap-f$(num).lgt.png)
+
+ita_icons0_1_sprites_appicon_rot_cryovat_nrm = \
+  $(foreach num,$(ita_icons0_1_sprites_appicon_rot_cryovat_frameno),feicons-64-ita/appicon-rot-cryovat-f$(num).nrm.png)
+
+ita_icons0_1_sprites_appicon_rot_equip_nrm = \
+  $(foreach num,$(ita_icons0_1_sprites_appicon_rot_equip_frameno),feicons-64-ita/appicon-rot-equip-f$(num).nrm.png)
+
+ita_icons0_1_sprites_appicon_rot_newmail_nrm = \
+  $(foreach num,$(ita_icons0_1_sprites_appicon_rot_newmail_frameno),feicons-64-ita/appicon-rot-newmail-f$(num).nrm.png)
+
+ita_icons0_1_sprites_appicon_rot_panet_nrm = \
+  $(foreach num,$(ita_icons0_1_sprites_appicon_rot_panet_frameno),feicons-64-ita/appicon-rot-panet-f$(num).nrm.png)
+
+ita_icons0_1_sprites_appicon_rot_resndev_nrm = \
+  $(foreach num,$(ita_icons0_1_sprites_appicon_rot_resndev_frameno),feicons-64-ita/appicon-rot-resndev-f$(num).nrm.png)
+
+ita_icons0_1_sprites_appicon_rot_system_nrm = \
+  $(foreach num,$(ita_icons0_1_sprites_appicon_rot_system_frameno),feicons-64-ita/appicon-rot-system-f$(num).nrm.png)
+
+ita_icons0_1_sprites_appicon_rot_wrldmap_nrm = \
+  $(foreach num,$(ita_icons0_1_sprites_appicon_rot_wrldmap_frameno),feicons-64-ita/appicon-rot-wrldmap-f$(num).nrm.png)
+
+ita_icons0_1_sprites_appicon_rot = \
+  $(ita_icons0_1_sprites_appicon_rot_cryovat_lgt) \
+  $(ita_icons0_1_sprites_appicon_rot_equip_lgt) \
+  $(ita_icons0_1_sprites_appicon_rot_newmail_lgt) \
+  $(ita_icons0_1_sprites_appicon_rot_panet_lgt) \
+  $(ita_icons0_1_sprites_appicon_rot_resndev_lgt) \
+  $(ita_icons0_1_sprites_appicon_rot_system_lgt) \
+  $(ita_icons0_1_sprites_appicon_rot_wrldmap_lgt) \
+  $(ita_icons0_1_sprites_appicon_rot_cryovat_nrm) \
+  $(ita_icons0_1_sprites_appicon_rot_equip_nrm) \
+  $(ita_icons0_1_sprites_appicon_rot_newmail_nrm) \
+  $(ita_icons0_1_sprites_appicon_rot_panet_nrm) \
+  $(ita_icons0_1_sprites_appicon_rot_resndev_nrm) \
+  $(ita_icons0_1_sprites_appicon_rot_system_nrm) \
+  $(ita_icons0_1_sprites_appicon_rot_wrldmap_nrm)
+
+ita_icons0_1_sprites_text = \
+  feicons-64-ita/text_cryo.png \
+  feicons-64-ita/text_equip.png \
+  feicons-64-ita/text_new.png \
+  feicons-64-ita/text_mail.png \
+  feicons-64-ita/text_public.png \
+  feicons-64-ita/text_access.png \
+  feicons-64-ita/text_network.png \
+  feicons-64-ita/text_resndev.png \
+  feicons-64-ita/text_system.png \
+  feicons-64-ita/text_map.png
+
+# List of sprites to pass without alterations
+ita_icons0_1_sprnames_nomod = \
+  appbar-border appbar-scroll-l appbar-scroll-r appicon-bkground-1 \
+  background-tile cursor-target-map \
+  cyborg-epidermis1-microscope cyborg-epidermis2-microscope \
+  cyborg-epidermis3-microscope cyborg-epidermis4-microscope \
+  hlight-a-00 hlight-a-01 hlight-a-02 hlight-a-03 hlight-a-04 hlight-a-05 \
+  hlight-a-06 hlight-a-07 hlight-b-00 hlight-b-01 hlight-b-02 \
+  kicked_arrow_left kicked_arrow_right \
+  objectv-alarm objectv-assassin objectv-evacuate objectv-gold \
+  objectv-goto_area objectv-leave_area objectv-persuade objectv-stop \
+  panel_agent_number_1 panel_agent_number_2 \
+  panel_agent_number_3 panel_agent_number_4 \
+  panel_peragent_empty-hlight panel_peragent_empty panel_peragent_under \
+  straight_arrow_left straight_arrow_right \
+  symbol-h symbol-money symbol-team-delta symbol-team-omega symbol-team-sigma \
+  empty
+ita_icons0_1_sprites_cp = \
+  $(foreach name,$(ita_icons0_1_sprnames_nomod),feicons-64-ita/$(name).png)
+
+language/ita/icons0-1.tab: language/ita/icons0-1.dat
+
+language/ita/icons0-1.dat: feicons-64-ita/filelist-icons0-1.txt $(top_srcdir)/data/feproj-std.pal ${ita_icons0_1_sprites_cp} \
+  $(ita_icons0_1_sprites_appicon_rot)
+
+feicons-64-ita/%.txt: $(top_srcdir)/feicons-64/%.txt
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"
+
+feicons-64-ita/%.png: $(top_srcdir)/feicons-64/%.png
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"
+
+feicons-64-ita/appicon-rot-cryovat-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-cryovat-%.png feicons-64-ita/text_cryo.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" \
+      "$(word 2,$+)" -gravity Center -geometry +0+17 -composite \
+      "$@"
+
+feicons-64-ita/appicon-rot-equip-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-equip-%.png feicons-64-ita/text_equip.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" \
+      "$(word 2,$+)" -gravity Center -geometry +0+17 -composite \
+      "$@"
+
+feicons-64-ita/appicon-rot-newmail-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-newmail-%.png feicons-64-ita/text_new.png feicons-64-ita/text_mail.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" \
+      "$(word 2,$+)" -gravity Center -geometry +0+10 -composite \
+      "$(word 3,$+)" -gravity Center -geometry +0+17 -composite \
+      "$@"
+
+feicons-64-ita/appicon-rot-panet-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-panet-%.png feicons-64-ita/text_public.png feicons-64-ita/text_access.png feicons-64-ita/text_network.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" \
+      "$(word 2,$+)" -gravity Center -geometry +0+3 -composite \
+      "$(word 3,$+)" -gravity Center -geometry +0+10 -composite \
+      "$(word 4,$+)" -gravity Center -geometry +0+17 -composite \
+      "$@"
+
+feicons-64-ita/appicon-rot-resndev-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-resndev-%.png feicons-64-ita/text_resndev.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" \
+      "$(word 2,$+)" -gravity Center -geometry +0+17 -composite \
+      "$@"
+
+feicons-64-ita/appicon-rot-system-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-system-%.png feicons-64-ita/text_system.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" \
+      "$(word 2,$+)" -gravity Center -geometry +0+17 -composite \
+      "$@"
+
+feicons-64-ita/appicon-rot-wrldmap-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-wrldmap-%.png feicons-64-ita/text_map.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" \
+      "$(word 2,$+)" -gravity Center -geometry +0+17 -composite \
+      "$@"
+
+feicons-64-ita/appicon-rot-cryovat-%.nrm.png: feicons-64-ita/appicon-rot-cryovat-%.lgt.png $(top_srcdir)/feicons-64/appicon-bkground-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
+
+feicons-64-ita/appicon-rot-equip-%.nrm.png: feicons-64-ita/appicon-rot-equip-%.lgt.png $(top_srcdir)/feicons-64/appicon-bkground-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
+
+feicons-64-ita/appicon-rot-newmail-%.nrm.png: feicons-64-ita/appicon-rot-newmail-%.lgt.png $(top_srcdir)/feicons-64/appicon-bkground-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
+
+feicons-64-ita/appicon-rot-panet-%.nrm.png: feicons-64-ita/appicon-rot-panet-%.lgt.png $(top_srcdir)/feicons-64/appicon-bkground-3.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
+
+feicons-64-ita/appicon-rot-resndev-%.nrm.png: feicons-64-ita/appicon-rot-resndev-%.lgt.png $(top_srcdir)/feicons-64/appicon-bkground-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
+
+feicons-64-ita/appicon-rot-system-%.nrm.png: feicons-64-ita/appicon-rot-system-%.lgt.png $(top_srcdir)/feicons-64/appicon-bkground-2.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
+
+feicons-64-ita/appicon-rot-wrldmap-%.nrm.png: feicons-64-ita/appicon-rot-wrldmap-%.lgt.png $(top_srcdir)/feicons-64/appicon-bkground-1.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
+
+feicons-64-ita/text_cryo.png: $(ita_icons0_1_sprites_text_cryo)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 23x6+0+0 +repage "$@"
+
+feicons-64-ita/text_equip.png: $(ita_icons0_1_sprites_text_equip)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 28x6+0+0 +repage "$@"
+
+feicons-64-ita/text_new.png: $(ita_icons0_1_sprites_text_new)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 18x6+0+0 +repage "$@"
+
+feicons-64-ita/text_mail.png: $(ita_icons0_1_sprites_text_mail)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 22x6+0+0 +repage "$@"
+
+feicons-64-ita/text_public.png: $(ita_icons0_1_sprites_text_public)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 33x6+0+0 +repage "$@"
+
+feicons-64-ita/text_access.png: $(ita_icons0_1_sprites_text_access)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 35x6+0+0 +repage "$@"
+
+feicons-64-ita/text_network.png: $(ita_icons0_1_sprites_text_network)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 42x6+0+0 +repage "$@"
+
+feicons-64-ita/text_resndev.png: $(ita_icons0_1_sprites_text_resndev)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 17x6+0+0 +repage "$@"
+
+feicons-64-ita/text_system.png: $(ita_icons0_1_sprites_text_system)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 36x6+0+0 +repage "$@"
+
+feicons-64-ita/text_map.png: $(ita_icons0_1_sprites_text_map)
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_MONTAGE) $+ -background none -tile 99x1 -geometry +0+0 miff:- | $(MAGICK_CONVERT) - -crop 18x6+0+0 +repage "$@"

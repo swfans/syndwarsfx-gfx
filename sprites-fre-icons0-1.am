@@ -153,17 +153,8 @@ fre_icons0_1_sprites_appicon_rot = \
   $(fre_icons0_1_sprites_appicon_rot_system_nrm) \
   $(fre_icons0_1_sprites_appicon_rot_wrldmap_nrm)
 
-fre_icons0_1_sprites_text = \
-  feicons-64-fre/text_cryo.png \
-  feicons-64-fre/text_equip.png \
-  feicons-64-fre/text_new.png \
-  feicons-64-fre/text_mail.png \
-  feicons-64-fre/text_public.png \
-  feicons-64-fre/text_access.png \
-  feicons-64-fre/text_network.png \
-  feicons-64-fre/text_resndev.png \
-  feicons-64-fre/text_system.png \
-  feicons-64-fre/text_map.png
+fre_icons0_1_sprites_panel = \
+  feicons-64-fre/panel_peragent_empty.png
 
 # List of sprites to pass without alterations
 fre_icons0_1_sprnames_nomod = \
@@ -178,7 +169,7 @@ fre_icons0_1_sprnames_nomod = \
   objectv-goto_area objectv-leave_area objectv-persuade objectv-stop \
   panel_agent_number_1 panel_agent_number_2 \
   panel_agent_number_3 panel_agent_number_4 \
-  panel_peragent_empty-hlight panel_peragent_empty panel_peragent_under \
+  panel_peragent_empty-hlight panel_peragent_under \
   straight_arrow_left straight_arrow_right \
   symbol-h symbol-money symbol-team-delta symbol-team-omega symbol-team-sigma \
   empty
@@ -188,7 +179,7 @@ fre_icons0_1_sprites_cp = \
 language/fre/icons0-1.tab: language/fre/icons0-1.dat
 
 language/fre/icons0-1.dat: feicons-64-fre/filelist-icons0-1.txt $(top_srcdir)/data/feproj-std.pal ${fre_icons0_1_sprites_cp} \
-  $(fre_icons0_1_sprites_appicon_rot)
+  $(fre_icons0_1_sprites_appicon_rot) $(fre_icons0_1_sprites_panel)
 
 feicons-64-fre/%.txt: $(top_srcdir)/feicons-64/%.txt
 	$(MKDIR_P) "$(@D)"
@@ -197,6 +188,10 @@ feicons-64-fre/%.txt: $(top_srcdir)/feicons-64/%.txt
 feicons-64-fre/%.png: $(top_srcdir)/feicons-64/%.png
 	$(MKDIR_P) "$(@D)"
 	cp -p "$<" "$@"
+
+feicons-64-fre/panel_peragent_empty.png: $(top_srcdir)/feicons-64/panel_peragent_empty-hlight.png $(top_srcdir)/feicons-64/panel_peragent_empty-bkgnd.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$(word 2,$+)" "$<" -gravity Center -geometry +0+0 -composite "$@"
 
 feicons-64-fre/appicon-rot-cryovat-%.lgt.png: $(top_srcdir)/feicons-64/appicon-rot-cryovat-%.png feicons-64-fre/text_cryo.png
 	$(MKDIR_P) "$(@D)"

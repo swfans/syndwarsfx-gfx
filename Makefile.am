@@ -10,12 +10,16 @@ data/mouse0-1.tab: data/mouse0-1.dat
 
 data/mouse0-1.dat: $(top_srcdir)/femouse-64/filelist-mouse0-1.txt $(top_srcdir)/data/feproj-std.pal
 
-pointr0_DATA = data/pointr0-3.dat data/pointr0-3.tab data/pointr0-1.dat data/pointr0-1.tab data/pointr0-0.dat data/pointr0-0.tab
+pointr0_DATA = data/pointr0-3.dat data/pointr0-3.tab data/pointr0-2.dat data/pointr0-2.tab data/pointr0-1.dat data/pointr0-1.tab data/pointr0-0.dat data/pointr0-0.tab
 pointr0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
 data/pointr0-3.tab: data/pointr0-3.dat
 
 data/pointr0-3.dat: $(top_srcdir)/pointers-128/filelist-pointr0-3.txt $(top_srcdir)/data/engine-std.pal
+
+data/pointr0-2.tab: data/pointr0-2.dat
+
+data/pointr0-2.dat: $(top_srcdir)/pointers-96/filelist-pointr0-2.txt $(top_srcdir)/data/engine-std.pal
 
 data/pointr0-1.tab: data/pointr0-1.dat
 

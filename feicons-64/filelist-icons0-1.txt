@@ -112,14 +112,14 @@ symbol-team-omega.png
 symbol-team-delta.png
 symbol-team-sigma.png
 symbol-h.png
-hlight-a-00.png
-hlight-a-01.png
-hlight-a-02.png
-hlight-a-03.png
-hlight-a-04.png
-hlight-a-05.png
-hlight-a-06.png
-hlight-a-07.png
+slidebar-segmented-body.png  0 12 38 16
+slidebar-segmented-body.png 38 14 39 14
+slidebar-segmented-body.png 77  0 53 28
+slidebar-segmented-body.png 130 0 53 28
+slidebar-segmented-body.png 183 0 53 28
+slidebar-segmented-body.png 236 0 53 28
+slidebar-segmented-body.png 289 0 27  8
+slidebar-segmented-body.png 316 0 31 14
 empty.png
 empty.png
 empty.png

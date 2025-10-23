@@ -162,9 +162,8 @@ eng_icons0_1_sprnames_nomod = \
   background-tile cursor-target-map \
   cyborg-epidermis1-microscope cyborg-epidermis2-microscope \
   cyborg-epidermis3-microscope cyborg-epidermis4-microscope \
-  hlight-a-00 hlight-a-01 hlight-a-02 hlight-a-03 hlight-a-04 hlight-a-05 \
-  hlight-a-06 hlight-a-07 hlight-b-00 hlight-b-01 hlight-b-02 \
-  kicked_arrow_left kicked_arrow_right \
+  hlight-b-00 hlight-b-01 hlight-b-02 \
+  slidebar-segmented-body kicked_arrow_left kicked_arrow_right \
   objectv-alarm objectv-assassin objectv-evacuate objectv-gold \
   objectv-goto_area objectv-leave_area objectv-persuade objectv-stop \
   panel_agent_number_1 panel_agent_number_2 \

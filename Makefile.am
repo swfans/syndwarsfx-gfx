@@ -3,14 +3,37 @@ ACLOCAL_AMFLAGS = --install -I m4
 gfxani_DATA = $(wildcard $(top_srcdir)/data/*.ani)
 gfxanidir = $(prefix)/$(PARENT_PACKAGE)/data
 
-mouse0_DATA = data/mouse0-1.dat data/mouse0-1.tab
+mouse0_DATA = data/mouse0-1.dat data/mouse0-1.tab \
+  data/mouse0-2.dat data/mouse0-2.tab \
+  data/mouse0-3.dat data/mouse0-3.tab \
+  data/mouse0-5.dat data/mouse0-5.tab \
+  data/mouse0-7.dat data/mouse0-7.tab
 mouse0dir = $(prefix)/$(PARENT_PACKAGE)/data
+
+data/mouse0-7.tab: data/mouse0-7.dat
+
+data/mouse0-7.dat: $(top_srcdir)/femouse-256/filelist-mouse0-7.txt $(top_srcdir)/data/feproj-std.pal
+
+data/mouse0-5.tab: data/mouse0-5.dat
+
+data/mouse0-5.dat: $(top_srcdir)/femouse-192/filelist-mouse0-5.txt $(top_srcdir)/data/feproj-std.pal
+
+data/mouse0-3.tab: data/mouse0-3.dat
+
+data/mouse0-3.dat: $(top_srcdir)/femouse-128/filelist-mouse0-3.txt $(top_srcdir)/data/feproj-std.pal
+
+data/mouse0-2.tab: data/mouse0-2.dat
+
+data/mouse0-2.dat: $(top_srcdir)/femouse-96/filelist-mouse0-2.txt $(top_srcdir)/data/feproj-std.pal
 
 data/mouse0-1.tab: data/mouse0-1.dat
 
 data/mouse0-1.dat: $(top_srcdir)/femouse-64/filelist-mouse0-1.txt $(top_srcdir)/data/feproj-std.pal
 
-pointr0_DATA = data/pointr0-3.dat data/pointr0-3.tab data/pointr0-2.dat data/pointr0-2.tab data/pointr0-1.dat data/pointr0-1.tab data/pointr0-0.dat data/pointr0-0.tab
+pointr0_DATA = data/pointr0-0.dat data/pointr0-0.tab \
+  data/pointr0-1.dat data/pointr0-1.tab \
+  data/pointr0-2.dat data/pointr0-2.tab \
+  data/pointr0-3.dat data/pointr0-3.tab
 pointr0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
 data/pointr0-3.tab: data/pointr0-3.dat

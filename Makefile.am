@@ -99,9 +99,10 @@ data/%.dat:
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
 
 include $(srcdir)/sprites-eng-icons0-1.am
+include $(srcdir)/sprites-eng-icons0-2.am
 include $(srcdir)/sprites-eng-icons0-3.am
 
-eng_icons0_DATA = $(eng_icons0_1_files) $(eng_icons0_3_files)
+eng_icons0_DATA = $(eng_icons0_1_files) $(eng_icons0_2_files) $(eng_icons0_3_files)
 eng_icons0dir = $(prefix)/$(PARENT_PACKAGE)/language/eng
 
 language/eng/%.dat:
@@ -109,9 +110,10 @@ language/eng/%.dat:
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
 
 include $(srcdir)/sprites-fre-icons0-1.am
+include $(srcdir)/sprites-fre-icons0-2.am
 include $(srcdir)/sprites-fre-icons0-3.am
 
-fre_icons0_DATA = $(fre_icons0_1_files) $(fre_icons0_3_files)
+fre_icons0_DATA = $(fre_icons0_1_files) $(fre_icons0_2_files) $(fre_icons0_3_files)
 fre_icons0dir = $(prefix)/$(PARENT_PACKAGE)/language/fre
 
 language/fre/%.dat:
@@ -119,9 +121,10 @@ language/fre/%.dat:
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
 
 include $(srcdir)/sprites-ger-icons0-1.am
+include $(srcdir)/sprites-ger-icons0-2.am
 include $(srcdir)/sprites-ger-icons0-3.am
 
-ger_icons0_DATA = $(ger_icons0_1_files) $(ger_icons0_3_files)
+ger_icons0_DATA = $(ger_icons0_1_files) $(ger_icons0_2_files) $(ger_icons0_3_files)
 ger_icons0dir = $(prefix)/$(PARENT_PACKAGE)/language/ger
 
 language/ger/%.dat:
@@ -129,9 +132,10 @@ language/ger/%.dat:
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
 
 include $(srcdir)/sprites-ita-icons0-1.am
+include $(srcdir)/sprites-ita-icons0-2.am
 include $(srcdir)/sprites-ita-icons0-3.am
 
-ita_icons0_DATA = $(ita_icons0_1_files) $(ita_icons0_3_files)
+ita_icons0_DATA = $(ita_icons0_1_files) $(ita_icons0_2_files) $(ita_icons0_3_files)
 ita_icons0dir = $(prefix)/$(PARENT_PACKAGE)/language/ita
 
 language/ita/%.dat:
@@ -139,9 +143,10 @@ language/ita/%.dat:
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
 
 include $(srcdir)/sprites-spa-icons0-1.am
+include $(srcdir)/sprites-spa-icons0-2.am
 include $(srcdir)/sprites-spa-icons0-3.am
 
-spa_icons0_DATA = $(spa_icons0_1_files) $(spa_icons0_3_files)
+spa_icons0_DATA = $(spa_icons0_1_files) $(spa_icons0_2_files) $(spa_icons0_3_files)
 spa_icons0dir = $(prefix)/$(PARENT_PACKAGE)/language/spa
 
 language/spa/%.dat:
@@ -149,9 +154,10 @@ language/spa/%.dat:
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
 
 include $(srcdir)/sprites-swe-icons0-1.am
+include $(srcdir)/sprites-swe-icons0-2.am
 include $(srcdir)/sprites-swe-icons0-3.am
 
-swe_icons0_DATA = $(swe_icons0_1_files) $(swe_icons0_3_files)
+swe_icons0_DATA = $(swe_icons0_1_files) $(swe_icons0_2_files) $(swe_icons0_3_files)
 swe_icons0dir = $(prefix)/$(PARENT_PACKAGE)/language/swe
 
 language/swe/%.dat:

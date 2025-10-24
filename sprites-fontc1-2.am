@@ -3,6 +3,8 @@
 # *****************************************************************************
 #  @file sprites-fontc1-2.am
 #      Automake rules neccessary to build `fontc1-2` menu font sprites.
+#      Font 1 - font_sharp_cult ltblue 40% bigger.
+#      Detail 2 - 23 px height.
 #  @author   Tomasz Lis
 #  @par  Copying and copyrights:
 #      This program is free software; you can redistribute it and/or modify
@@ -47,6 +49,7 @@ font_sharp_cult-23-ltblue/%.png: $(top_srcdir)/font_sharp_cult-23-white/%.png
         -channel B -evaluate multiply 0.99 \
         +channel -colorspace RGB "$@"
 
+# Extras placed here because we do not need to generate a whole front for them, so does not need its own script
 # Use ImageMagick to generate light teal sprites from the white ones
 font_sharp_cult-20-ltteal/%.png: $(top_srcdir)/font_sharp_cult-20-white/%.png
 	$(MKDIR_P) "$(@D)"

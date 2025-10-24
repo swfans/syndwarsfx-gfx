@@ -3,6 +3,8 @@
 # *****************************************************************************
 #  @file sprites-fontc0-3.am
 #      Automake rules neccessary to build `fontc0-3` menu font sprites.
+#      Font 0 - font_sharp_cult ltblue.
+#      Detail 3 - 20 px height.
 #  @author   Tomasz Lis
 #  @par  Copying and copyrights:
 #      This program is free software; you can redistribute it and/or modify
@@ -47,6 +49,7 @@ font_sharp_cult-20-ltblue/%.png: $(top_srcdir)/font_sharp_cult-20-white/%.png
         -channel B -evaluate multiply 0.99 \
         +channel -colorspace RGB "$@"
 
+# Extras placed here because we do not need to generate a whole front for them, so does not need its own script
 # Use ImageMagick to generate light green sprites from the white ones
 font_sharp_cult-20-ltgren/%.png: $(top_srcdir)/font_sharp_cult-20-white/%.png
 	$(MKDIR_P) "$(@D)"

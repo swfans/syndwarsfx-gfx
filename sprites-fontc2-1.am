@@ -3,6 +3,8 @@
 # *****************************************************************************
 #  @file sprites-fontc2-1.am
 #      Automake rules neccessary to build `fontc2-1` menu font sprites.
+#      Font 2 - font_sharp_cult ltteal.
+#      Detail 1 - 10 px height.
 #  @author   Tomasz Lis
 #  @par  Copying and copyrights:
 #      This program is free software; you can redistribute it and/or modify

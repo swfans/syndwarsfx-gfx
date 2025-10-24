@@ -3,6 +3,8 @@
 # *****************************************************************************
 #  @file sprites-fontc1-0.am
 #      Automake rules neccessary to build `fontc1-0` menu font sprites.
+#      Font 1 - font_sharp_cult ltblue 40% bigger.
+#      Detail 0 - 7 px height.
 #  @author   Tomasz Lis
 #  @par  Copying and copyrights:
 #      This program is free software; you can redistribute it and/or modify
@@ -46,6 +48,16 @@ font_sharp_cult-7-ltblue/%.png: $(top_srcdir)/font_sharp_cult-7-white/%.png
 	$(MAGICK_CONVERT) "$<" -colorspace RGB \
         -channel R -evaluate multiply 0.66 \
         -channel G -evaluate multiply 0.53 \
+        -channel B -evaluate multiply 0.99 \
+        +channel -colorspace RGB "$@"
+
+# Extras placed here because we do not need to generate a whole front for them, so does not need its own script
+# Use ImageMagick to generate light teal sprites from the white ones
+font_sharp_cult-7-ltteal/%.png: $(top_srcdir)/font_sharp_cult-7-white/%.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" -colorspace RGB \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
         -channel B -evaluate multiply 0.99 \
         +channel -colorspace RGB "$@"
 

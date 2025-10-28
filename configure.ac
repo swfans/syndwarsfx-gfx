@@ -8,12 +8,12 @@ m4_define([ver_release], [3])
 # Set build number to commit count only if ".git" folder is present
 m4_define([ver_build], m4_if(m4_esyscmd_s([ls -1 -d ".git" 2>&1]),.git,[m4_esyscmd_s([git rev-list --count HEAD])],[0]))
 
-m4_define([swars_gfx_version],
+m4_define([syndwarsfx_gfx_version],
       [ver_major.ver_minor.ver_release.ver_build])
 
-AC_INIT([Syndicate Wars GFX], [swars_gfx_version], [mefistotelis@gmail.com], [swars_gfx])
+AC_INIT([SyndWarsFX GFX], [syndwarsfx_gfx_version], [mefistotelis@gmail.com], [syndwarsfx_gfx])
 
-m4_define([parent_package], [swars])
+m4_define([parent_package], [syndwarsfx])
 AC_DEFINE([PARENT_PACKAGE], [parent_package], [Name of the parent package, for which this one provides data files])
 
 AC_CONFIG_SRCDIR([data/nfra-0.ani])

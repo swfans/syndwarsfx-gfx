@@ -1,10 +1,10 @@
-# swars-gfx
+# syndwarsfx-gfx
 
-Source graphics files for Syndicate Wars Port.
+Source graphics files for Syndicate Wars Fan Expansion.
 
 ## About
 
-**Syndicate Wars Port**, alternative binary for the classic Bullfrog game.
+**Syndicate Wars Fan Expansion**, alternative binary for the classic Bullfrog game.
 
 Alongside fixes to the game executable code, an updated set of assets is
 required to use the full potential of the code fixes.
@@ -14,21 +14,21 @@ Bullfrog, with additional fixes applied to the files by fan community.
 
 ## Installation from a release
 
-Download the release `swars-gfx-*.zip` file. Copy the extracted
-`DATA` folder to a previous Syndicate Wars Port installation,
+Download the release `syndwarsfx-gfx-*.zip` file. Copy the extracted
+`DATA` folder to a previous SyndWarsFX installation,
 replacing the existing files.
 
 ### General building instructions
 
-To build **Syndicate Wars GFX**, use the following steps:
+To build **SyndWarsFX GFX**, use the following steps:
 
 1. download [pngpal2raw](https://github.com/swfans/pngpal2raw/releases/),
-   place the binary in `swars-gfx/bin` or any folder included in `PATH` env var.
-2. go into the directory with `swars-gfx` source release
+   place the binary in `syndwarsfx-gfx/bin` or any folder included in `PATH` env var.
+2. go into the directory with `syndwarsfx-gfx` source release
 3. do `autoreconf -if` to create build scripts from templates
 4. do `./configure` to make the build scripts find required dependencies
 5. do `make` to build release versions of data files
-6. do `make install` to copy the files into `swars` installation folder
+6. do `make install` to copy the files into `syndwarsfx` installation folder
 
 You should now have the latest DAT/TAB/ANI files in your installation folder.
 
@@ -36,17 +36,17 @@ You should now have the latest DAT/TAB/ANI files in your installation folder.
 
 Here are specific commands required to build the gfx on Ubuntu linux.
 
-Download the `swars-gfx` source release, and extract it somewhere.
+Download the `syndwarsfx-gfx` source release, and extract it somewhere.
 
 Also download latest release of the [pngpal2raw](https://github.com/swfans/pngpal2raw/releases/),
-and extract the binary into `bin` sub-folder of the place with `swars-gfx`.
-If you've downloaded the `.zip` to `swars-sfx` folder, you can just go there and run:
+and extract the binary into `bin` sub-folder of the place with `syndwarsfx-gfx`.
+If you've downloaded the `.zip` to `syndwarsfx-sfx` folder, you can just go there and run:
 
 ```
 unzip -j -d ./bin/ pngpal2raw-*-ubuntu.zip
 ```
 
-Being still in the `swars-gfx` folder, generate build scripts from templates using
+Being still in the `syndwarsfx-gfx` folder, generate build scripts from templates using
 autotools:
 
 ```
@@ -79,4 +79,4 @@ That's it, now you have the DAT/TAB/ANI files ready.
 
 ## Done
 
-That's all. See more documentation in [Syndicate Wars Port repo](https://github.com/swfans/swars).
+That's all. See more documentation in [SyndWarsFX repo](https://github.com/swfans/syndwarsfx).

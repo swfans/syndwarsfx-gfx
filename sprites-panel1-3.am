@@ -1,5 +1,5 @@
 # *****************************************************************************
-#  Graphics assets generation for Syndicate Wars Port.
+#  Graphics assets generation for SyndWarsFX.
 # *****************************************************************************
 #  @file sprites-panel1-3.am
 #      Automake rules neccessary to build `panel1-3` in-game panel sprites.

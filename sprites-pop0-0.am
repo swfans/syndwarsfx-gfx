@@ -1,5 +1,5 @@
 # *****************************************************************************
-#  Graphics assets generation for Syndicate Wars Port.
+#  Graphics assets generation for SyndWarsFX.
 # *****************************************************************************
 #  @file sprites-pop0-0.am
 #      Automake rules neccessary to build `pop0-0` in-game panel sprites.

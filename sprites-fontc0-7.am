@@ -1,5 +1,5 @@
 # *****************************************************************************
-#  Graphics assets generation for Syndicate Wars Port.
+#  Graphics assets generation for SyndWarsFX.
 # *****************************************************************************
 #  @file sprites-fontc0-7.am
 #      Automake rules neccessary to build `fontc0-7` menu font sprites.

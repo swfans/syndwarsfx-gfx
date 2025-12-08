@@ -1,5 +1,5 @@
 # *****************************************************************************
-#  Graphics assets generation for Syndicate Wars Port.
+#  Graphics assets generation for SyndWarsFX.
 # *****************************************************************************
 #  @file sprites-spa-icons0-2.am
 #      Automake rules neccessary to build `icons0-2` menu sprites.

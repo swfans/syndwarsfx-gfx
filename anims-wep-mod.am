@@ -1,5 +1,5 @@
 # *****************************************************************************
-#  Graphics assets generation for Syndicate Wars Port.
+#  Graphics assets generation for SyndWarsFX.
 # *****************************************************************************
 #  @file anims-wep-mod.am
 #      Automake rules neccessary to build `wep-NN.fli` menu weapon animations.

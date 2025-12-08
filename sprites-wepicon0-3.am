@@ -1,0 +1,44 @@
+# *****************************************************************************
+#  Graphics assets generation for SyndWarsFX.
+# *****************************************************************************
+#  @file sprites-wepicon0-3.am
+#      Automake rules neccessary to build `wepicon0-3` menu font sprites.
+#      Weapon icons for equip screen, medium blue.
+#      Detail 3 - 42 px height.
+#  @author   Tomasz Lis
+#  @par  Copying and copyrights:
+#      This program is free software; you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation; either version 2 of the License, or
+#      (at your option) any later version.
+# *****************************************************************************
+
+wepicon0_3_files = data/wepicon0-3.dat data/wepicon0-3.tab
+
+# List of font letters which can be colorized
+wepicon0_3_names = \
+  item_suitcase uzi minigun laser ellaser rap nuclgren persuader flamer h2htaser \
+  crazygas kogas elemine explmine naplmine longrange airstrike beam razorwire \
+  sonicblast qdevastator persuader2 stasisfld enrgyshld soulgun time cerberusiff \
+  medi1 medi2 explwire cloneshld item_cybmod 
+wepicon0_3_sprites_gen = \
+  $(foreach nam,$(wepicon0_3_names),weapons-outline-42-mdblue/weapon_outline_$(nam).png)
+
+data/wepicon0-3.tab: data/wepicon0-3.dat
+
+data/wepicon0-3.dat: weapons-outline-42-mdblue/filelist-wepicon0-3.txt $(top_srcdir)/data/feproj-std.pal $(wepicon0_3_sprites_gen)
+
+weapons-outline-42-mdblue/filelist-wepicon0-3.txt: $(top_srcdir)/weapons-outline-39/filelist-wepicon0-3.txt
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"
+
+# Use ImageMagick to generate light blue sprites from the white ones
+weapons-outline-42-mdblue/%.png: $(top_srcdir)/weapons-outline-39/%.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) -size 181x42 xc:"rgba(0,0,0,0)" \
+      "$<" -colorspace RGB \
+        -channel R -evaluate multiply 0.42 \
+        -channel G -evaluate multiply 0.34 \
+        -channel B -evaluate multiply 0.99 \
+        -gravity Center -geometry +0+0 -composite \
+        +channel -colorspace RGB "$@"

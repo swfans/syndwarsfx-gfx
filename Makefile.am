@@ -68,6 +68,11 @@ font0_DATA = $(fontc0_0_files) $(fontc0_1_files) $(fontc0_3_files) $(fontc0_7_fi
   $(fontc2_0_files) $(fontc2_1_files) $(fontc2_3_files) $(fontc2_7_files)
 font0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
+include $(srcdir)/sprites-wepicon0-3.am
+
+wepicon0_DATA = $(wepicon0_3_files)
+wepicon0dir = $(prefix)/$(PARENT_PACKAGE)/data
+
 include $(srcdir)/sprites-pop0-0.am
 include $(srcdir)/sprites-pop0-1.am
 include $(srcdir)/sprites-pop0-3.am

@@ -63,7 +63,7 @@ char_u005c.png
 char_u005d.png
 char_u005e.png
 char_u005f.png
-empty.png
+char_u0060.png
 empty.png
 empty.png
 empty.png

@@ -93,7 +93,7 @@ empty.png
 empty.png
 empty.png
 empty.png
-empty.png
+char_u007e.png
 empty.png
 char_u00c7.png
 empty.png

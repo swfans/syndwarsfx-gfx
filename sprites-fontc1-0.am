@@ -24,7 +24,8 @@ fontc1_0_chars = \
   0061 0062 0063 0064 0065 0066 0067 0068 0069 006a 006b 006c 006d 006e 006f \
   0070 0071 0072 0073 0074 0075 0076 0077 0078 0079 007a 007e \
   00a1 00aa 00b0 00bf 00c0 00c1 00c4 00c5 00c7 00c8 00c9 00cc 00cd \
-  00d1 00d2 00d3 00d6 00d9 00da 00dc 00df
+  00d1 00d2 00d3 00d6 00d9 00da 00dc 00df \
+  0104 0106 0118 0141 0143 015a 0179 017b 2018 2019
 # List of non-letters or other sprites to pass without colorization
 fontc1_0_charnames_nomod = \
   empty char_u0020

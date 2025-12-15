@@ -191,7 +191,7 @@ empty.png
 empty.png
 empty.png
 empty.png
-empty.png
+char_u00d3.png
 char_u00df.png
 empty.png
 char_u00d2.png

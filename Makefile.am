@@ -147,6 +147,17 @@ language/ita/%.dat:
 	$(MKDIR_P) "$(@D)"
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
 
+include $(srcdir)/sprites-pol-icons0-1.am
+include $(srcdir)/sprites-pol-icons0-2.am
+include $(srcdir)/sprites-pol-icons0-3.am
+
+pol_icons0_DATA = $(pol_icons0_1_files) $(pol_icons0_2_files) $(pol_icons0_3_files)
+pol_icons0dir = $(prefix)/$(PARENT_PACKAGE)/language/pol
+
+language/pol/%.dat:
+	$(MKDIR_P) "$(@D)"
+	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
+
 include $(srcdir)/sprites-spa-icons0-1.am
 include $(srcdir)/sprites-spa-icons0-2.am
 include $(srcdir)/sprites-spa-icons0-3.am
@@ -199,7 +210,10 @@ qdata/equip/%.raw:
 docs_DATA = README.md gfx_config.h
 docsdir = $(prefix)/$(PARENT_PACKAGE)
 
-EXTRA_DIST = gfxani docs mouse0 pointr0 font0 pop0 eng_icons0 fre_icons0 ger_icons0 ita_icons0 spa_icons0 swe_icons0 eqwepmod0 cybermod0 campaign0
+EXTRA_DIST = \
+ gfxani docs mouse0 pointr0 font0 pop0 \
+ eng_icons0 fre_icons0 ger_icons0 ita_icons0 pol_icons0 spa_icons0 swe_icons0 \
+ eqwepmod0 cybermod0 campaign0
 
 install-data-hook:
 	cd "$(DESTDIR)${prefix}/$(PARENT_PACKAGE)"; \

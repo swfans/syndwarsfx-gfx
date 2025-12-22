@@ -1,0 +1,153 @@
+# *****************************************************************************
+#  Graphics assets generation for SyndWarsFX.
+# *****************************************************************************
+#  @file sprites-mspr0-0.am
+#      Automake rules neccessary to build `mspr0-0` in-mission things sprites.
+#  @author   Tomasz Lis
+#  @par  Copying and copyrights:
+#      This program is free software; you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation; either version 2 of the License, or
+#      (at your option) any later version.
+# *****************************************************************************
+
+mspr0_0_files = data/mspr0-0.dat data/mspr0-0.tab
+
+# Sprites representing a person - agent
+
+mspr0_agent_sprites_bloody = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,agent-grey/bloody_ang$(ang)_f$(frm)))
+
+mspr0_agent_sprites_fall = \
+  $(foreach ang,0 1 3 4,$(foreach frm,000 001 002 003 004,agent-grey/fall_ang$(ang)_f$(frm))) \
+  $(foreach ang,2,$(foreach frm,001 002 003 004,agent-grey/fall_ang$(ang)_f$(frm)))
+
+mspr0_agent_sprites_laying = \
+  $(foreach ang,1 3,$(foreach frm,000 001,agent-grey/laying_ang$(ang)_f$(frm)))
+
+mspr0_agent_sprites_pickup = \
+  $(foreach ang,0 1,$(foreach frm,000 001 002,agent-grey/pickup_ang$(ang)_f$(frm)))
+
+mspr0_agent_sprites_pushback = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,agent-grey/pushback_ang$(ang)_f$(frm)))
+
+mspr0_agent_sprites_running = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,agent-grey/running_ang$(ang)_f$(frm)))
+
+mspr0_agent_sprites_walk_armr_nowep = \
+  $(foreach ang,0 1 4,$(foreach frm,000 001 002 003 004 005,agent-grey/walk_armr_nowep_ang$(ang)_f$(frm)))
+
+mspr0_agent_sprites_walk_armr_weplt = \
+  $(foreach ang,0 1 2,$(foreach frm,000 001 002 003 004 005,agent-grey/walk_armr_weplt_ang$(ang)_f$(frm)))
+
+mspr0_agent_sprites_walk_hand_weplt = \
+  $(foreach ang,2,$(foreach frm,000,agent-grey/walk_hand_weplt_ang$(ang)_f$(frm)))
+
+mspr0_agent_sprites_walk_legs = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,agent-grey/walk_legs_ang$(ang)_f$(frm)))
+
+mspr0_agent_sprites_walk_tors_nowep = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,agent-grey/walk_tors_nowep_ang$(ang)_f$(frm)))
+
+mspr0_agent_sprites_walk_tors_weplt = \
+  $(foreach ang,0 3,$(foreach frm,000 001 002 003 004 005,agent-grey/walk_tors_weplt_ang$(ang)_f$(frm)))
+
+mspr0_agent_sprites = \
+  ${mspr0_agent_sprites_bloody} \
+  ${mspr0_agent_sprites_fall} \
+  ${mspr0_agent_sprites_laying} \
+  ${mspr0_agent_sprites_pickup} \
+  ${mspr0_agent_sprites_pushback} \
+  ${mspr0_agent_sprites_running} \
+  ${mspr0_agent_sprites_walk_armr_nowep} \
+  ${mspr0_agent_sprites_walk_armr_weplt} \
+  ${mspr0_agent_sprites_walk_hand_weplt} \
+  ${mspr0_agent_sprites_walk_legs} \
+  ${mspr0_agent_sprites_walk_tors_nowep} \
+  ${mspr0_agent_sprites_walk_tors_weplt}
+
+# Sprites representing a person - female punk
+
+mspr0_punk_f_sprites_bloody = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,punk_f-beige/bloody_ang$(ang)_f$(frm)))
+
+mspr0_punk_f_sprites_braid_red = \
+  $(foreach ang,0 2,$(foreach frm,000 001 002,punk_f-beige/braid_red3_ang$(ang)_f$(frm)))
+
+mspr0_punk_f_sprites_fall = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003,punk_f-beige/fall_ang$(ang)_f$(frm)))
+
+mspr0_punk_f_sprites_head_blond = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,punk_f-beige/head_blond1_ang$(ang)_f$(frm))) \
+  $(foreach ang,0 1 2 4,$(foreach frm,000,punk_f-beige/head_blond2_ang$(ang)_f$(frm))) \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,punk_f-beige/head_blond3_ang$(ang)_f$(frm)))
+
+mspr0_punk_f_sprites_head_blue = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,punk_f-beige/head_blue1_ang$(ang)_f$(frm)))
+
+mspr0_punk_f_sprites_head_brown = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,punk_f-beige/head_brown1_ang$(ang)_f$(frm))) \
+  $(foreach ang,0 1 2 4,$(foreach frm,000,punk_f-beige/head_brown2_ang$(ang)_f$(frm)))
+
+mspr0_punk_f_sprites_head_red = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,punk_f-beige/head_red1_ang$(ang)_f$(frm))) \
+  $(foreach ang,0 1 2 4,$(foreach frm,000,punk_f-beige/head_red3_ang$(ang)_f$(frm)))
+
+mspr0_punk_f_sprites_hold_wephv = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,punk_f-beige/hold_wephv_ang$(ang)_f$(frm)))
+
+mspr0_punk_f_sprites_laying = \
+  $(foreach ang,1 3,$(foreach frm,000 001,punk_f-beige/laying_ang$(ang)_f$(frm)))
+
+mspr0_punk_f_sprites_pickup = \
+  $(foreach ang,0 1,$(foreach frm,000 001 002,punk_f-beige/pickup_ang$(ang)_f$(frm)))
+
+mspr0_punk_f_sprites_pushback = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,punk_f-beige/pushback_ang$(ang)_f$(frm)))
+
+mspr0_punk_f_sprites_walk_legs = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,punk_f-beige/walk_legs_ang$(ang)_f$(frm)))
+
+mspr0_punk_f_sprites_var = \
+  $(foreach frm,348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380,punk_f-beige/pic0$(frm))
+
+mspr0_punk_f_sprites = \
+  ${mspr0_punk_f_sprites_bloody} \
+  ${mspr0_punk_f_sprites_braid_red} \
+  ${mspr0_punk_f_sprites_fall} \
+  ${mspr0_punk_f_sprites_head_blond} \
+  ${mspr0_punk_f_sprites_head_blue} \
+  ${mspr0_punk_f_sprites_head_brown} \
+  ${mspr0_punk_f_sprites_head_red} \
+  ${mspr0_punk_f_sprites_hold_wephv} \
+  ${mspr0_punk_f_sprites_laying} \
+  ${mspr0_punk_f_sprites_pickup} \
+  ${mspr0_punk_f_sprites_pushback} \
+  ${mspr0_punk_f_sprites_walk_legs} \
+  ${mspr0_punk_f_sprites_var}
+
+
+# List of sprites to pass without alterations
+mspr0_0_sprnames_nomod = \
+  ${mspr0_agent_sprites} \
+  ${mspr0_punk_f_sprites} \
+  empty
+
+mspr0_0_sprites_cp = \
+  $(foreach name,$(mspr0_0_sprnames_nomod),engine_sprites-32-baked/$(name).png)
+
+data/mspr0-0.tab: data/mspr0-0.dat
+
+data/mspr0-0.dat: engine_sprites-32-baked/filelist-mspr0-0.txt $(top_srcdir)/data/engine-std.pal ${mspr0_0_sprites_cp}
+
+engine_sprites-32-baked/%.txt: $(top_srcdir)/engine_sprites-32/%.txt
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"
+
+engine_sprites-32-baked/%.png: $(top_srcdir)/engine_sprites-32/%.png
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"
+
+engine_sprites-32-baked/agent-grey/%.png: $(top_srcdir)/engine_sprites-32/agent-grey/%.png
+	$(MKDIR_P) "$(@D)"
+	cp -p "$<" "$@"

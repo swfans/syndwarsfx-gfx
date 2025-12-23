@@ -99,6 +99,11 @@ pop0_DATA = $(pop0_0_files) $(pop0_1_files) $(pop0_3_files) $(pop1_0_files) \
   $(panel1_1_files) $(panel1_3_files) $(panel2_0_files) $(panel2_1_files) $(panel2_3_files)
 pop0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
+include $(srcdir)/sprites-mspr0-0.am
+
+mspr0_DATA = $(mspr0_0_files)
+mspr0dir = $(prefix)/$(PARENT_PACKAGE)/data
+
 data/%.dat:
 	$(MKDIR_P) "$(@D)"
 	$(PNGTORAW) -b -o "$@" -p "$(word 2,$^)" -f sspr -l 0 "$<"
@@ -211,7 +216,7 @@ docs_DATA = README.md gfx_config.h
 docsdir = $(prefix)/$(PARENT_PACKAGE)
 
 EXTRA_DIST = \
- gfxani docs mouse0 pointr0 font0 pop0 \
+ gfxani docs mouse0 pointr0 font0 pop0 mspr0 \
  eng_icons0 fre_icons0 ger_icons0 ita_icons0 pol_icons0 spa_icons0 swe_icons0 \
  eqwepmod0 cybermod0 campaign0
 

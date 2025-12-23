@@ -108,6 +108,9 @@ mspr0_punk_f_sprites_pushback = \
 mspr0_punk_f_sprites_walk_legs = \
   $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,punk_f-beige/walk_legs_ang$(ang)_f$(frm)))
 
+mspr0_punk_f_sprites_walk_tors_nowep = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,punk_f-beige/walk_tors_nowep_ang$(ang)_f$(frm)))
+
 mspr0_punk_f_sprites_var = \
   $(foreach frm,348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380,punk_f-beige/pic0$(frm))
 
@@ -124,13 +127,498 @@ mspr0_punk_f_sprites = \
   ${mspr0_punk_f_sprites_pickup} \
   ${mspr0_punk_f_sprites_pushback} \
   ${mspr0_punk_f_sprites_walk_legs} \
+  ${mspr0_punk_f_sprites_walk_tors_nowep} \
   ${mspr0_punk_f_sprites_var}
 
+# Sprites representing a person - shapely woman, brown skirt
+
+mspr0_shapely_w_brown_sprites_bloody = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,shapely_w-brown/bloody_ang$(ang)_f$(frm)))
+
+mspr0_shapely_w_brown_sprites_fall = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003,shapely_w-brown/fall_ang$(ang)_f$(frm)))
+
+mspr0_shapely_w_brown_sprites_laying = \
+  $(foreach ang,1 3,$(foreach frm,000 001,shapely_w-brown/laying_ang$(ang)_f$(frm)))
+
+mspr0_shapely_w_brown_sprites_pickup = \
+  $(foreach ang,0 1,$(foreach frm,000 001 002,shapely_w-brown/pickup_ang$(ang)_f$(frm)))
+
+mspr0_shapely_w_brown_sprites_pushback = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,shapely_w-brown/pushback_ang$(ang)_f$(frm)))
+
+mspr0_shapely_w_brown_sprites_walk_legs = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,shapely_w-brown/walk_legs_ang$(ang)_f$(frm)))
+
+mspr0_shapely_w_brown_sprites = \
+  ${mspr0_shapely_w_brown_sprites_bloody} \
+  ${mspr0_shapely_w_brown_sprites_fall} \
+  ${mspr0_shapely_w_brown_sprites_laying} \
+  ${mspr0_shapely_w_brown_sprites_pickup} \
+  ${mspr0_shapely_w_brown_sprites_pushback} \
+  ${mspr0_shapely_w_brown_sprites_walk_legs}
+
+# Sprites representing a person - shapely woman, purple skirt
+
+mspr0_shapely_w_purple_sprites_fall = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003,shapely_w-purple/fall_ang$(ang)_f$(frm)))
+
+mspr0_shapely_w_purple_sprites_laying = \
+  $(foreach ang,0 3,$(foreach frm,000 001,shapely_w-purple/laying_ang$(ang)_f$(frm)))
+
+mspr0_shapely_w_purple_sprites_pickup = \
+  $(foreach ang,0 1,$(foreach frm,000 001 002,shapely_w-purple/pickup_ang$(ang)_f$(frm)))
+
+mspr0_shapely_w_purple_sprites_pushback = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,shapely_w-purple/pushback_ang$(ang)_f$(frm)))
+
+mspr0_shapely_w_purple_sprites_walk_legs = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,shapely_w-purple/walk_legs_ang$(ang)_f$(frm)))
+
+mspr0_shapely_w_purple_sprites = \
+  ${mspr0_shapely_w_purple_sprites_fall} \
+  ${mspr0_shapely_w_purple_sprites_laying} \
+  ${mspr0_shapely_w_purple_sprites_pickup} \
+  ${mspr0_shapely_w_purple_sprites_pushback} \
+  ${mspr0_shapely_w_purple_sprites_walk_legs}
+
+# Sprites representing a person - shapely woman, common part (all skirts)
+
+mspr0_shapely_w_common_sprites_walk_hand_nowep = \
+  $(foreach ang,0,$(foreach frm,000 001 002 003 004 005,shapely_w-common/walk_hand_nowep_ang$(ang)_f$(frm))) \
+  $(foreach ang,1 2 3,$(foreach frm,000 001 002 004,shapely_w-common/walk_hand_nowep_ang$(ang)_f$(frm))) \
+  $(foreach ang,4,$(foreach frm,000 001 002 003 004,shapely_w-common/walk_hand_nowep_ang$(ang)_f$(frm)))
+
+mspr0_shapely_w_common_sprites_walk_tors_nowep = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,shapely_w-common/walk_tors_nowep_ang$(ang)_f$(frm)))
+
+mspr0_shapely_w_common_sprites = \
+  ${mspr0_shapely_w_common_sprites_walk_hand_nowep} \
+  ${mspr0_shapely_w_common_sprites_walk_tors_nowep}
+
+mspr0_shapely_w_sprites = \
+  ${mspr0_shapely_w_brown_sprites} \
+  ${mspr0_shapely_w_purple_sprites} \
+  ${mspr0_shapely_w_common_sprites}
+
+# Sprites representing a person - briefcase man
+
+mspr0_briefc_m_sprites_bloody = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,briefc_m-grey/bloody_ang$(ang)_f$(frm)))
+
+mspr0_briefc_m_sprites_fall = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004,briefc_m-grey/fall_ang$(ang)_f$(frm)))
+
+mspr0_briefc_m_sprites_head_blond = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,briefc_m-grey/head_blond1_ang$(ang)_f$(frm)))
+
+mspr0_briefc_m_sprites_laying = \
+  $(foreach ang,1 3,$(foreach frm,000 001,briefc_m-grey/laying_ang$(ang)_f$(frm)))
+
+mspr0_briefc_m_sprites_pickup = \
+  $(foreach ang,0 1,$(foreach frm,000 001,briefc_m-grey/pickup_ang$(ang)_f$(frm)))
+
+mspr0_briefc_m_sprites_pushback = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,briefc_m-grey/pushback_ang$(ang)_f$(frm)))
+
+mspr0_briefc_m_sprites_running = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,briefc_m-grey/running_ang$(ang)_f$(frm)))
+
+mspr0_briefc_m_sprites_walk_brifcs = \
+  $(foreach ang,0,$(foreach frm,000 001 002 005,briefc_m-grey/walk_brifcs_ang$(ang)_f$(frm))) \
+  $(foreach ang,1 3,$(foreach frm,000 001 002 003 004 005,briefc_m-grey/walk_brifcs_ang$(ang)_f$(frm))) \
+  $(foreach ang,2,$(foreach frm,000,briefc_m-grey/walk_brifcs_ang$(ang)_f$(frm))) \
+  $(foreach ang,4,$(foreach frm,001 002 003 004 005,briefc_m-grey/walk_brifcs_ang$(ang)_f$(frm)))
+
+mspr0_briefc_m_sprites_walk_legs = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,briefc_m-grey/walk_legs_ang$(ang)_f$(frm)))
+
+mspr0_briefc_m_sprites_walk_tors_nowep = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,briefc_m-grey/walk_tors_nowep_ang$(ang)_f$(frm)))
+
+mspr0_briefc_m_sprites = \
+  ${mspr0_briefc_m_sprites_bloody} \
+  ${mspr0_briefc_m_sprites_fall} \
+  ${mspr0_briefc_m_sprites_head_blond} \
+  ${mspr0_briefc_m_sprites_laying} \
+  ${mspr0_briefc_m_sprites_pickup} \
+  ${mspr0_briefc_m_sprites_pushback} \
+  ${mspr0_briefc_m_sprites_running} \
+  ${mspr0_briefc_m_sprites_walk_brifcs} \
+  ${mspr0_briefc_m_sprites_walk_legs} \
+  ${mspr0_briefc_m_sprites_walk_tors_nowep}
+
+# Sprites representing a person - leather jacket man
+
+mspr0_jackt_lth_m_sprites_bloody = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,jackt_lth_m/bloody_ang$(ang)_f$(frm)))
+
+mspr0_jackt_lth_m_sprites_fall = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003,jackt_lth_m/fall_ang$(ang)_f$(frm)))
+
+mspr0_jackt_lth_m_sprites_laying = \
+  $(foreach ang,1 3,$(foreach frm,000 001,jackt_lth_m/laying_ang$(ang)_f$(frm)))
+
+mspr0_jackt_lth_m_sprites_pickup = \
+  $(foreach ang,0 1,$(foreach frm,000 001 002,jackt_lth_m/pickup_ang$(ang)_f$(frm)))
+
+mspr0_jackt_lth_m_sprites_pushback = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,jackt_lth_m/pushback_ang$(ang)_f$(frm)))
+
+mspr0_jackt_lth_m_sprites_walk_legs = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,jackt_lth_m/walk_legs_ang$(ang)_f$(frm)))
+
+mspr0_jackt_lth_m_sprites_walk_tors_nowep = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,jackt_lth_m/walk_tors_nowep_ang$(ang)_f$(frm)))
+
+mspr0_jackt_lth_m_sprites_walk_tors_weplt = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,jackt_lth_m/walk_tors_weplt_ang$(ang)_f$(frm)))
+
+mspr0_jackt_lth_m_sprites = \
+  ${mspr0_jackt_lth_m_sprites_bloody} \
+  ${mspr0_jackt_lth_m_sprites_fall} \
+  ${mspr0_jackt_lth_m_sprites_laying} \
+  ${mspr0_jackt_lth_m_sprites_pickup} \
+  ${mspr0_jackt_lth_m_sprites_pushback} \
+  ${mspr0_jackt_lth_m_sprites_walk_legs} \
+  ${mspr0_jackt_lth_m_sprites_walk_tors_nowep} \
+  ${mspr0_jackt_lth_m_sprites_walk_tors_weplt}
+
+# Sprites representing a person - red akira jacket man
+
+mspr0_jackt_red_m_sprites_bloody = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,jackt_red_m/bloody_ang$(ang)_f$(frm)))
+
+mspr0_jackt_red_m_sprites_fall = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003,jackt_red_m/fall_ang$(ang)_f$(frm)))
+
+mspr0_jackt_red_m_sprites_laying = \
+  $(foreach ang,1 3,$(foreach frm,000 001,jackt_red_m/laying_ang$(ang)_f$(frm)))
+
+mspr0_jackt_red_m_sprites_pickup = \
+  $(foreach ang,0 1,$(foreach frm,000 001 002,jackt_red_m/pickup_ang$(ang)_f$(frm)))
+
+mspr0_jackt_red_m_sprites_pushback = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,jackt_red_m/pushback_ang$(ang)_f$(frm)))
+
+mspr0_jackt_red_m_sprites_walk_legs = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,jackt_red_m/walk_legs_ang$(ang)_f$(frm)))
+
+mspr0_jackt_red_m_sprites_walk_tors_nowep = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,jackt_red_m/walk_tors_nowep_ang$(ang)_f$(frm)))
+
+mspr0_jackt_red_m_sprites_walk_tors_weplt = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,jackt_red_m/walk_tors_weplt_ang$(ang)_f$(frm)))
+
+mspr0_jackt_red_m_sprites = \
+  ${mspr0_jackt_red_m_sprites_bloody} \
+  ${mspr0_jackt_red_m_sprites_fall} \
+  ${mspr0_jackt_red_m_sprites_laying} \
+  ${mspr0_jackt_red_m_sprites_pickup} \
+  ${mspr0_jackt_red_m_sprites_pushback} \
+  ${mspr0_jackt_red_m_sprites_walk_legs} \
+  ${mspr0_jackt_red_m_sprites_walk_tors_nowep} \
+  ${mspr0_jackt_red_m_sprites_walk_tors_weplt}
+
+# Sprites representing a person - mechanical spider
+
+mspr0_mechspider_sprites_walk = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005 006 007,mechspider-grey/walk_ang$(ang)_f$(frm)))
+
+mspr0_mechspider_sprites = \
+  ${mspr0_mechspider_sprites_walk}
+
+# Sprites representing a person - male mercenary
+
+mspr0_mercen_m_sprites_bloody = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,mercen_m-black/bloody_ang$(ang)_f$(frm)))
+
+mspr0_mercen_m_sprites_fall = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003,mercen_m-black/fall_ang$(ang)_f$(frm)))
+
+mspr0_mercen_m_sprites_laying = \
+  $(foreach ang,0 1 2 3 4 5 6,$(foreach frm,000 001,mercen_m-black/laying_ang$(ang)_f$(frm)))
+
+mspr0_mercen_m_sprites_pickup = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002,mercen_m-black/pickup_ang$(ang)_f$(frm)))
+
+mspr0_mercen_m_sprites_pushback = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,mercen_m-black/pushback_ang$(ang)_f$(frm)))
+
+mspr0_mercen_m_sprites_running = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,mercen_m-black/running_ang$(ang)_f$(frm)))
+
+mspr0_mercen_m_sprites_walk_legs = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,mercen_m-black/walk_legs_ang$(ang)_f$(frm)))
+
+mspr0_mercen_m_sprites_walk_tors_nowep = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,mercen_m-black/walk_tors_nowep_ang$(ang)_f$(frm)))
+
+mspr0_mercen_m_sprites_walk_tors_weplt = \
+  $(foreach ang,0 1 2 3,$(foreach frm,000 001 002 003 004 005,mercen_m-black/walk_tors_weplt_ang$(ang)_f$(frm)))
+
+mspr0_mercen_m_sprites = \
+  ${mspr0_mercen_m_sprites_bloody} \
+  ${mspr0_mercen_m_sprites_fall} \
+  ${mspr0_mercen_m_sprites_laying} \
+  ${mspr0_mercen_m_sprites_pickup} \
+  ${mspr0_mercen_m_sprites_pushback} \
+  ${mspr0_mercen_m_sprites_running} \
+  ${mspr0_mercen_m_sprites_walk_legs} \
+  ${mspr0_mercen_m_sprites_walk_tors_nowep} \
+  ${mspr0_mercen_m_sprites_walk_tors_weplt}
+
+# Sprites representing a person - police officer, male
+
+mspr0_police_m_sprites_bloody = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,police_m-blue/bloody_ang$(ang)_f$(frm)))
+
+mspr0_police_m_sprites_fall = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003,police_m-blue/fall_ang$(ang)_f$(frm)))
+
+mspr0_police_m_sprites_laying = \
+  $(foreach ang,0 1 2 3 4 5 6,$(foreach frm,000 001,police_m-blue/laying_ang$(ang)_f$(frm)))
+
+mspr0_police_m_sprites_pickup = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002,police_m-blue/pickup_ang$(ang)_f$(frm)))
+
+mspr0_police_m_sprites_pushback = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,police_m-blue/pushback_ang$(ang)_f$(frm)))
+
+mspr0_police_m_sprites_running_legs = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,police_m-blue/running_legs_ang$(ang)_f$(frm)))
+
+mspr0_police_m_sprites_running_tors = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,police_m-blue/running_tors_ang$(ang)_f$(frm)))
+
+mspr0_police_m_sprites_walk_legs = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,police_m-blue/walk_legs_ang$(ang)_f$(frm)))
+
+mspr0_police_m_sprites_walk_tors_nowep = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,police_m-blue/walk_tors_nowep_ang$(ang)_f$(frm))) \
+  police_m-blue/walk_debrit_0
+
+mspr0_police_m_sprites_walk_tors_weplt = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,police_m-blue/walk_tors_weplt_ang$(ang)_f$(frm)))
+
+mspr0_police_m_sprites = \
+  ${mspr0_police_m_sprites_bloody} \
+  ${mspr0_police_m_sprites_fall} \
+  ${mspr0_police_m_sprites_laying} \
+  ${mspr0_police_m_sprites_pickup} \
+  ${mspr0_police_m_sprites_pushback} \
+  ${mspr0_police_m_sprites_running_legs} \
+  ${mspr0_police_m_sprites_running_tors} \
+  ${mspr0_police_m_sprites_walk_legs} \
+  ${mspr0_police_m_sprites_walk_tors_nowep} \
+  ${mspr0_police_m_sprites_walk_tors_weplt}
+
+# Sprites representing a person - male punk
+
+mspr0_punk_m_sprites_bloody = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,punk_m-blue/bloody_ang$(ang)_f$(frm)))
+
+mspr0_punk_m_sprites_fall = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003,punk_m-blue/fall_ang$(ang)_f$(frm)))
+
+mspr0_punk_m_sprites_laying = \
+  $(foreach ang,1 3,$(foreach frm,000,punk_m-blue/laying_ang$(ang)_f$(frm)))
+
+mspr0_punk_m_sprites_pickup = \
+  $(foreach ang,1 3,$(foreach frm,000 001 002,punk_m-blue/pickup_ang$(ang)_f$(frm)))
+
+mspr0_punk_m_sprites_pushback = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,punk_m-blue/pushback_ang$(ang)_f$(frm)))
+
+mspr0_punk_m_sprites_running = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,punk_m-blue/running_ang$(ang)_f$(frm)))
+
+mspr0_punk_m_sprites_walk_legs = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,punk_m-blue/walk_legs_ang$(ang)_f$(frm)))
+
+mspr0_punk_m_sprites_walk_tors_nowep = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,punk_m-blue/walk_tors_nowep_ang$(ang)_f$(frm)))
+
+mspr0_punk_m_sprites_walk_tors_wephv = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,punk_m-blue/walk_tors_wephv_ang$(ang)_f$(frm)))
+
+mspr0_punk_m_sprites = \
+  ${mspr0_punk_m_sprites_bloody} \
+  ${mspr0_punk_m_sprites_fall} \
+  ${mspr0_punk_m_sprites_laying} \
+  ${mspr0_punk_m_sprites_pickup} \
+  ${mspr0_punk_m_sprites_pushback} \
+  ${mspr0_punk_m_sprites_running} \
+  ${mspr0_punk_m_sprites_walk_legs} \
+  ${mspr0_punk_m_sprites_walk_tors_nowep} \
+  ${mspr0_punk_m_sprites_walk_tors_wephv}
+
+# Sprites representing a person - Zealot, blue
+
+mspr0_zealot_blue_sprites_bloody = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,zealot-blue/bloody_ang$(ang)_f$(frm)))
+
+mspr0_zealot_blue_sprites_fall = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004,zealot-blue/fall_ang$(ang)_f$(frm)))
+
+mspr0_zealot_blue_sprites_laying = \
+  $(foreach ang,1 3,$(foreach frm,000 001,zealot-blue/laying_ang$(ang)_f$(frm)))
+
+mspr0_zealot_blue_sprites_pickup = \
+  $(foreach ang,0 1,$(foreach frm,000 001 002,zealot-blue/pickup_ang$(ang)_f$(frm)))
+
+mspr0_zealot_blue_sprites_pushback = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,zealot-blue/pushback_ang$(ang)_f$(frm)))
+
+mspr0_zealot_blue_sprites_running = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002,zealot-blue/running_ang$(ang)_f$(frm)))
+
+mspr0_zealot_blue_sprites_walk = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,zealot-blue/walk_ang$(ang)_f$(frm)))
+
+mspr0_zealot_blue_sprites = \
+  ${mspr0_zealot_blue_sprites_bloody} \
+  ${mspr0_zealot_blue_sprites_fall} \
+  ${mspr0_zealot_blue_sprites_laying} \
+  ${mspr0_zealot_blue_sprites_pickup} \
+  ${mspr0_zealot_blue_sprites_pushback} \
+  ${mspr0_zealot_blue_sprites_running} \
+  ${mspr0_zealot_blue_sprites_walk}
+
+# Sprites representing a person - Zealot, white
+
+mspr0_zealot_white_sprites_bloody = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,zealot-white/bloody_ang$(ang)_f$(frm)))
+
+mspr0_zealot_white_sprites_fall = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004,zealot-white/fall_ang$(ang)_f$(frm)))
+
+mspr0_zealot_white_sprites_laying = \
+  $(foreach ang,1 3,$(foreach frm,000 001,zealot-white/laying_ang$(ang)_f$(frm)))
+
+mspr0_zealot_white_sprites_pickup = \
+  $(foreach ang,0 1,$(foreach frm,000 001 002,zealot-white/pickup_ang$(ang)_f$(frm)))
+
+mspr0_zealot_white_sprites_pushback = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000,zealot-white/pushback_ang$(ang)_f$(frm)))
+
+mspr0_zealot_white_sprites_running = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002,zealot-white/running_ang$(ang)_f$(frm)))
+
+mspr0_zealot_white_sprites_walk = \
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,zealot-white/walk_ang$(ang)_f$(frm)))
+
+mspr0_zealot_white_sprites = \
+  ${mspr0_zealot_white_sprites_bloody} \
+  ${mspr0_zealot_white_sprites_fall} \
+  ${mspr0_zealot_white_sprites_laying} \
+  ${mspr0_zealot_white_sprites_pickup} \
+  ${mspr0_zealot_white_sprites_pushback} \
+  ${mspr0_zealot_white_sprites_running} \
+  ${mspr0_zealot_white_sprites_walk}
+
+# Sprites representing in-mission things
+
+mspr0_blood_splat_sprites = \
+  $(foreach frm,566 568 569 570 571 572 573 574 575 576 577 578 579 580 581 884 885 886 887 888 889 890 891 892 893 898 899,blood_splat/pic0$(frm))
+
+mspr0_bullet_hit_sludge_sprites = \
+  $(foreach frm,631 632 633 634 635 636,bullet_hit_sludge/pic0$(frm))
+
+mspr0_bullet_hit_water_sprites = \
+  $(foreach frm,618 619 620 621 622 623,bullet_hit_water/pic0$(frm))
+
+mspr0_bullet_ricos_sprites = \
+  $(foreach frm,589 590 591 592 593 594 595 596 600 601 602 603 604 605,bullet_ricos/pic0$(frm))
+
+mspr0_direction_arrows_sprites = \
+  $(foreach frm,0996 0997 0998 0999 1000 1001 1002 1003 1004 1005 1006 1007 1008 1009 1010 1011 1012 1013 1014 1015 1016 1017 1018 1019 1020 1021 1022 1023 1024 1025 1026 1027 1028 1029,direction_arrows/pic$(frm))
+
+mspr0_energy_hit_gnd_sprites = \
+  $(foreach frm,624 625 626 627 628 629 630,energy_hit_gnd/pic0$(frm))
+
+mspr0_explosion_sprites = \
+  $(foreach frm,777 778 779 780 781,explosion_1/pic0$(frm)) \
+  $(foreach frm,475 476 477 478 479 480 481 482 483 484 485 486 487 488 489 490,explosion_2/pic0$(frm)) \
+  $(foreach frm,491 492 493 494 495 496 497 498 499 500 501 502 503 504 505 506 507 508 509 510,explosion_3/pic0$(frm))
+
+mspr0_fire_sprites = \
+  $(foreach frm,543 544 545 546 547 548 549 550,fire_1/pic0$(frm)) \
+  $(foreach frm,551 552 553 554 555 556 557 558 559 560 561 562 563 564 565,fire_2/pic0$(frm))
+
+mspr0_gas_sprites = \
+  $(foreach frm,000 001 002 003 004 005 006 007,gas_blue/cloud0_f$(frm)) \
+  $(foreach frm,000 001 002 003 004 005 006 007,gas_grey/cloud0_f$(frm)) \
+  $(foreach frm,000 001 002 003 004 005 006 007,gas_red/cloud0_f$(frm)) \
+  $(foreach frm,000 001 002 003 004 005 006 007,gas_yellow/cloud0_f$(frm))
+
+mspr0_items_sprites = \
+  $(foreach frm,713 714 715 716,items_brazier/pic0$(frm)) \
+  $(foreach frm,674 689 690 701 704 705 706,items_containers/pic0$(frm)) \
+  $(foreach frm,682 683 684 707 729 732 733,items_dropped/pic0$(frm)) \
+  $(foreach frm,693 730,items_iff/pic0$(frm)) \
+  $(foreach frm,685 694 699 700 702,items_lights/pic0$(frm)) \
+  $(foreach frm,671 672 677 679 680,items_poles/pic0$(frm)) \
+  $(foreach frm,670 673 678 681 688 691 695 696 698 712 722 843,items_var/pic0$(frm))
+
+mspr0_numbers_sprites = \
+  $(foreach frm,637 638 639 640 641 642 643 644 645 646 647 648 649 650 651 652 653 654 655 656 657 658 659 660 661 662 663 664 665 666 667 668,numbers/pic0$(frm))
+
+mspr0_person_burns_sprites = \
+  $(foreach frm,728,person_burns/pic0$(frm)) \
+  $(foreach frm,273 274 275 276 277 278 279 280 281 282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298 299 300 301 302 303 304 305 306 307 308 309,person_burns/pic1$(frm)) \
+  $(foreach frm,310 311 312 313 314 315 316 317 318 319 320 321 322 323 324 325 326 327 328 329 330 331 332 333 334 335 336 337 338 339 340 341 342 343 344 345 346 347 348 349,person_burns/pic1$(frm)) \
+  $(foreach frm,350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379,person_burns/pic1$(frm))
+
+mspr0_person_persuad_sprites = \
+  $(foreach frm,582 583 584 585 586 587,person_persuad/pic0$(frm))
+
+mspr0_person_zap_green_sprites = \
+  $(foreach frm,030 031 032 033 034 035 036 037,person_zap_green/pic1$(frm))
+
+mspr0_plants_sprites = \
+  $(foreach frm,675 676 686 687 692 697 703 708 709 710 711 717 718 719 720 721 723 724 725 726 727 731,plants/pic0$(frm))
+
+mspr0_smoke_clouds_sprites = \
+  $(foreach frm,782 783 784 785 786 787 788 789 790,smoke_clouds/pic0$(frm))
+
+mspr0_target_frame_sprites = \
+  $(foreach frm,967 968 969 970 971 972 973 974 975 976 977 978 979 980 981 982 983 984 985 986 987 988 989 990 991 992 993 994,target_frame/pic0$(frm))
+
+mspr0_walk_mark_sprites = \
+  $(foreach frm,597 598 599 606 607 608 609 610 611 612 613 614 615 616 617,walk_mark/pic0$(frm))
 
 # List of sprites to pass without alterations
 mspr0_0_sprnames_nomod = \
   ${mspr0_agent_sprites} \
   ${mspr0_punk_f_sprites} \
+  ${mspr0_shapely_w_sprites} \
+  ${mspr0_briefc_m_sprites} \
+  ${mspr0_jackt_lth_m_sprites} \
+  ${mspr0_mechspider_sprites} \
+  ${mspr0_mercen_m_sprites} \
+  ${mspr0_police_m_sprites} \
+  ${mspr0_punk_m_sprites} \
+  ${mspr0_zealot_blue_sprites} \
+  ${mspr0_zealot_white_sprites} \
+  ${mspr0_blood_splat_sprites} \
+  ${mspr0_bullet_hit_sludge_sprites} \
+  ${mspr0_bullet_hit_water_sprites} \
+  ${mspr0_bullet_ricos_sprites} \
+  ${mspr0_direction_arrows_sprites} \
+  ${mspr0_energy_hit_gnd_sprites} \
+  ${mspr0_explosion_sprites} \
+  ${mspr0_fire_sprites} \
+  ${mspr0_gas_sprites} \
+  ${mspr0_items_sprites} \
+  ${mspr0_numbers_sprites} \
+  ${mspr0_person_burns_sprites} \
+  ${mspr0_person_persuad_sprites} \
+  ${mspr0_person_zap_green_sprites} \
+  ${mspr0_plants_sprites} \
+  ${mspr0_smoke_clouds_sprites} \
+  ${mspr0_target_frame_sprites} \
+  ${mspr0_walk_mark_sprites} \
   empty
 
 mspr0_0_sprites_cp = \

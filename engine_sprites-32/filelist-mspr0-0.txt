@@ -2279,8 +2279,8 @@ shady_m-purple/bloody_ang0_f000.png
 shady_m-purple/bloody_ang1_f000.png
 shady_m-purple/bloody_ang2_f000.png
 shady_m-purple/bloody_chunk1_f000.png
-shady_m-purple/bloody_ang3_f010.png
-shady_m-purple/bloody_ang4_f011.png
+shady_m-purple/bloody_ang3_f000.png
+shady_m-purple/bloody_ang4_f000.png
 shady_m-purple/laying_ang0_f010.png
 shady_m-purple/laying_ang0_f011.png
 shady_m-purple/laying_ang1_f010.png

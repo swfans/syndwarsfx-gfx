@@ -2123,9 +2123,9 @@ shady_m-purple/walk_tors_weplt_ang0_f004.png
 shady_m-purple/walk_legs_ang0_f005.png
 shady_m-purple/walk_tors_nowep_ang0_f005.png
 shady_m-purple/walk_tors_weplt_ang0_f005.png
-shady_m-purple/walk_legs_ang1_f009.png
-shady_m-purple/walk_tors_nowep_ang1_f009.png
-shady_m-purple/walk_tors_weplt_ang1_f009.png
+shady_m-purple/walk_legs_ang1_f000.png
+shady_m-purple/walk_tors_nowep_ang1_f000.png
+shady_m-purple/walk_tors_weplt_ang1_f000.png
 shady_m-purple/walk_legs_ang1_f001.png
 shady_m-purple/walk_tors_nowep_ang1_f001.png
 shady_m-purple/walk_tors_weplt_ang1_f001.png
@@ -2219,7 +2219,7 @@ shady_m-purple/running_ang3_f002.png
 shady_m-purple/running_ang3_f003.png
 shady_m-purple/running_ang3_f004.png
 shady_m-purple/running_ang3_f005.png
-shady_m-purple/running_ang4_f020.png
+shady_m-purple/running_ang4_f000.png
 shady_m-purple/running_ang4_f001.png
 shady_m-purple/running_ang4_f002.png
 shady_m-purple/running_ang4_f003.png

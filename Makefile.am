@@ -72,9 +72,13 @@ include $(srcdir)/sprites-fontb6-0.am
 include $(srcdir)/sprites-fontb6-1.am
 include $(srcdir)/sprites-fontb7-0.am
 include $(srcdir)/sprites-fontb7-1.am
+include $(srcdir)/sprites-fontb11-0.am
+include $(srcdir)/sprites-fontb12-0.am
 
 fontb0_DATA = $(fontb6_0_files) $(fontb6_1_files) \
-  $(fontb7_0_files) $(fontb7_1_files)
+  $(fontb7_0_files) $(fontb7_1_files) \
+  $(fontb11_0_files) \
+  $(fontb12_0_files)
 fontb0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
 include $(srcdir)/sprites-wepicon0-3.am

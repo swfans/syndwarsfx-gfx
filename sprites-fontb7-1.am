@@ -46,7 +46,3 @@ font_bulky_corpo-10-shd-dkblue/%.png: font_bulky_corpo-10-shd-white/%.png
         -channel B -evaluate multiply 0.86 \
         +channel \
         -colorspace RGB "png32:$@"
-
-
-
-#	$(MAGICK_CONVERT) \( "$<" +level 0,79% \) 

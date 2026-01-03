@@ -70,8 +70,10 @@ fontc0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
 include $(srcdir)/sprites-fontb6-0.am
 include $(srcdir)/sprites-fontb6-1.am
+include $(srcdir)/sprites-fontb7-0.am
 
-fontb0_DATA = $(fontb6_0_files) $(fontb6_1_files)
+fontb0_DATA = $(fontb6_0_files) $(fontb6_1_files) \
+  $(fontb7_0_files)
 fontb0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
 include $(srcdir)/sprites-wepicon0-3.am

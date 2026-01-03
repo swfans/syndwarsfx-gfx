@@ -62,24 +62,20 @@ include $(srcdir)/sprites-fontc2-0.am
 include $(srcdir)/sprites-fontc2-1.am
 include $(srcdir)/sprites-fontc2-3.am
 include $(srcdir)/sprites-fontc2-7.am
+include $(srcdir)/sprites-fontc6-0.am
+include $(srcdir)/sprites-fontc6-1.am
+include $(srcdir)/sprites-fontc7-0.am
+include $(srcdir)/sprites-fontc7-1.am
+include $(srcdir)/sprites-fontc11-0.am
+include $(srcdir)/sprites-fontc12-0.am
 
 fontc0_DATA = $(fontc0_0_files) $(fontc0_1_files) $(fontc0_3_files) $(fontc0_7_files) \
   $(fontc1_0_files) $(fontc1_2_files) \
-  $(fontc2_0_files) $(fontc2_1_files) $(fontc2_3_files) $(fontc2_7_files)
+  $(fontc2_0_files) $(fontc2_1_files) $(fontc2_3_files) $(fontc2_7_files) \
+  $(fontc7_0_files) $(fontc7_1_files) \
+  $(fontc11_0_files) \
+  $(fontc12_0_files)
 fontc0dir = $(prefix)/$(PARENT_PACKAGE)/data
-
-include $(srcdir)/sprites-fontb6-0.am
-include $(srcdir)/sprites-fontb6-1.am
-include $(srcdir)/sprites-fontb7-0.am
-include $(srcdir)/sprites-fontb7-1.am
-include $(srcdir)/sprites-fontb11-0.am
-include $(srcdir)/sprites-fontb12-0.am
-
-fontb0_DATA = $(fontb6_0_files) $(fontb6_1_files) \
-  $(fontb7_0_files) $(fontb7_1_files) \
-  $(fontb11_0_files) \
-  $(fontb12_0_files)
-fontb0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
 include $(srcdir)/sprites-wepicon0-3.am
 

@@ -1,8 +1,8 @@
 # *****************************************************************************
 #  Graphics assets generation for SyndWarsFX.
 # *****************************************************************************
-#  @file sprites-fontb11-0.am
-#      Automake rules neccessary to build `fontb11-0` mission font sprites.
+#  @file sprites-fontc11-0.am
+#      Automake rules neccessary to build `fontc11-0` mission font sprites.
 #      Font b6 - norm_corpo white.
 #      Detail 1 - 10 px height.
 #  @author   Tomasz Lis
@@ -13,10 +13,10 @@
 #      (at your option) any later version.
 # *****************************************************************************
 
-fontb11_0_files = data/fontb11-0.dat data/fontb11-0.tab
+fontc11_0_files = data/fontc11-0.dat data/fontc11-0.tab
 
 # List of font letters which can be colorized
-fontb11_0_chars = \
+fontc11_0_chars = \
   0021 0022 0023 0024 0025 0026 0027 0028 0029 002a 002b 002c 002d 002e 002f \
   0030 0031 0032 0033 0034 0035 0036 0037 0038 0039 003a 003b 003c 003d 003e 003f \
   0040 0041 0042 0043 0044 0045 0046 0047 0048 0049 004a 004b 004c 004d 004e 004f \
@@ -27,20 +27,20 @@ fontb11_0_chars = \
   00d1 00d2 00d3 00d6 00d9 00da 00dc 00df \
   0104 0106 0118 0141 0143 015a 0179 017b 2018 2019
 # List of non-letters or other sprites to pass without colorization
-fontb11_0_charnames_nomod = \
+fontc11_0_charnames_nomod = \
   empty char_u0020
-fontb11_0_sprites_gen = \
-  $(foreach num,$(fontb11_0_chars),font_norm_corpo-5-shd-white/char_u$(num).png)
-fontb11_0_sprites_cp = \
-  $(foreach name,$(fontb11_0_charnames_nomod),$(top_srcdir)/font_norm_corpo-5-white/$(name).png)
+fontc11_0_sprites_gen = \
+  $(foreach num,$(fontc11_0_chars),font_norm_corpo-5-shd-white/char_u$(num).png)
+fontc11_0_sprites_cp = \
+  $(foreach name,$(fontc11_0_charnames_nomod),$(top_srcdir)/font_norm_corpo-5-white/$(name).png)
 
-data/fontb11-0.tab: data/fontb11-0.dat
+data/fontc11-0.tab: data/fontc11-0.dat
 
-data/fontb11-0.dat: font_norm_corpo-5-shd-white/filelist-fontb11-0.txt $(top_srcdir)/data/engine-std.pal $(fontb11_0_sprites_gen)
+data/fontc11-0.dat: font_norm_corpo-5-shd-white/filelist-fontc11-0.txt $(top_srcdir)/data/engine-std.pal $(fontc11_0_sprites_gen)
 
-font_norm_corpo-5-shd-white/filelist-fontb11-0.txt: $(top_srcdir)/font_norm_corpo-5-white/filelist-fontb11-0.txt
+font_norm_corpo-5-shd-white/filelist-fontc11-0.txt: $(top_srcdir)/font_norm_corpo-5-white/filelist-fontc11-0.txt
 	$(MKDIR_P) "$(@D)"
-	cp -p -t "$(@D)" $(fontb11_0_sprites_cp)
+	cp -p -t "$(@D)" $(fontc11_0_sprites_cp)
 	cp -p "$<" "$@"
 
 # Use ImageMagick to generate shaded white sprites from the plain white ones

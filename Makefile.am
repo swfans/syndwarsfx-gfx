@@ -63,10 +63,16 @@ include $(srcdir)/sprites-fontc2-1.am
 include $(srcdir)/sprites-fontc2-3.am
 include $(srcdir)/sprites-fontc2-7.am
 
-font0_DATA = $(fontc0_0_files) $(fontc0_1_files) $(fontc0_3_files) $(fontc0_7_files) \
+fontc0_DATA = $(fontc0_0_files) $(fontc0_1_files) $(fontc0_3_files) $(fontc0_7_files) \
   $(fontc1_0_files) $(fontc1_2_files) \
   $(fontc2_0_files) $(fontc2_1_files) $(fontc2_3_files) $(fontc2_7_files)
-font0dir = $(prefix)/$(PARENT_PACKAGE)/data
+fontc0dir = $(prefix)/$(PARENT_PACKAGE)/data
+
+include $(srcdir)/sprites-fontb6-0.am
+include $(srcdir)/sprites-fontb6-1.am
+
+fontb0_DATA = $(fontb6_0_files) $(fontb6_1_files)
+fontb0dir = $(prefix)/$(PARENT_PACKAGE)/data
 
 include $(srcdir)/sprites-wepicon0-3.am
 
@@ -216,7 +222,7 @@ docs_DATA = README.md gfx_config.h
 docsdir = $(prefix)/$(PARENT_PACKAGE)
 
 EXTRA_DIST = \
- gfxani docs mouse0 pointr0 font0 pop0 mspr0 \
+ gfxani docs mouse0 pointr0 fontc0 fontb0 pop0 mspr0 \
  eng_icons0 fre_icons0 ger_icons0 ita_icons0 pol_icons0 spa_icons0 swe_icons0 \
  eqwepmod0 cybermod0 campaign0
 

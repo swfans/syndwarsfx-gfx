@@ -3,7 +3,7 @@
 # *****************************************************************************
 #  @file sprites-fontc1-0.am
 #      Automake rules neccessary to build `fontc1-0` menu font sprites.
-#      Font 1 - font_sharp_cult ltblue 40% bigger.
+#      Font c1 - font_sharp_cult ltblue 40% bigger.
 #      Detail 0 - 7 px height.
 #  @author   Tomasz Lis
 #  @par  Copying and copyrights:

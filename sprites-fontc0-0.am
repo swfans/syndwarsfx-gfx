@@ -3,7 +3,7 @@
 # *****************************************************************************
 #  @file sprites-fontc0-0.am
 #      Automake rules neccessary to build `fontc0-0` menu font sprites.
-#      Font 0 - font_sharp_cult ltblue.
+#      Font c0 - font_sharp_cult ltblue.
 #      Detail 0 - 5 px height.
 #  @author   Tomasz Lis
 #  @par  Copying and copyrights:

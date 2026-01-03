@@ -1,0 +1,51 @@
+# *****************************************************************************
+#  Graphics assets generation for SyndWarsFX.
+# *****************************************************************************
+#  @file sprites-fontb6-0.am
+#      Automake rules neccessary to build `fontb6-0` mission font sprites.
+#      Font b6 - bulky_corpo white.
+#      Detail 1 - 10 px height.
+#  @author   Tomasz Lis
+#  @par  Copying and copyrights:
+#      This program is free software; you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation; either version 2 of the License, or
+#      (at your option) any later version.
+# *****************************************************************************
+
+fontb6_0_files = data/fontb6-0.dat data/fontb6-0.tab
+
+# List of font letters which can be colorized
+fontb6_0_chars = \
+  0041 0042 0043 0044 0045 0046 0047 0048 0049 004a 004b 004c 004d 004e 004f \
+  0050 0051 0052 0053 0054 0055 0056 0057 0058 0059 005a
+# List of non-letters or other sprites to pass without colorization
+fontb6_0_charnames_nomod = \
+  empty char_u0020
+fontb6_0_sprites_gen = \
+  $(foreach num,$(fontb6_0_chars),font_bulky_corpo-5-shd-white/char_u$(num).png)
+fontb6_0_sprites_cp = \
+  $(foreach name,$(fontb6_0_charnames_nomod),$(top_srcdir)/font_bulky_corpo-5-white/$(name).png)
+
+data/fontb6-0.tab: data/fontb6-0.dat
+
+data/fontb6-0.dat: font_bulky_corpo-5-shd-white/filelist-fontb6-0.txt $(top_srcdir)/data/engine-std.pal $(fontb6_0_sprites_gen)
+
+font_bulky_corpo-5-shd-white/filelist-fontb6-0.txt: $(top_srcdir)/font_bulky_corpo-5-white/filelist-fontb6-0.txt
+	$(MKDIR_P) "$(@D)"
+	cp -p -t "$(@D)" $(fontb6_0_sprites_cp)
+	cp -p "$<" "$@"
+
+# Use ImageMagick to generate shaded white sprites from the plain white ones
+font_bulky_corpo-5-shd-white/%.png: $(top_srcdir)/font_bulky_corpo-5-white/%.png
+	$(MKDIR_P) "$(@D)"
+	$(MAGICK_CONVERT) "$<" \
+        "$<" -gravity Center -geometry +0+1 -composite \
+        "$<" -gravity Center -geometry +1+1 -composite \
+        -colorspace RGB \
+        -channel R -evaluate multiply 0.53 \
+        -channel G -evaluate multiply 0.53 \
+        -channel B -evaluate multiply 0.53 \
+        +channel \
+        "$<" -gravity Center -geometry +0+0 -composite \
+        -colorspace RGB "png32:$@"

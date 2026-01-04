@@ -3,7 +3,7 @@
 # *****************************************************************************
 #  @file sprites-fontc12-0.am
 #      Automake rules neccessary to build `fontc12-0` mission font sprites.
-#      Font b7 - norm_corpo dark blue.
+#      Font b7 - norm_corpo light brown.
 #      Detail 1 - 10 px height.
 #  @author   Tomasz Lis
 #  @par  Copying and copyrights:
@@ -30,15 +30,15 @@ fontc12_0_chars = \
 fontc12_0_charnames_nomod = \
   empty char_u0020
 fontc12_0_sprites_gen = \
-  $(foreach num,$(fontc12_0_chars),font_norm_corpo-5-shd-dkblue/char_u$(num).png)
+  $(foreach num,$(fontc12_0_chars),font_norm_corpo-5-shd-ltbrown/char_u$(num).png)
 fontc12_0_sprites_cp = \
   $(foreach name,$(fontc12_0_charnames_nomod),$(top_srcdir)/font_norm_corpo-5-white/$(name).png)
 
 data/fontc12-0.tab: data/fontc12-0.dat
 
-data/fontc12-0.dat: font_norm_corpo-5-shd-dkblue/filelist-fontc12-0.txt $(top_srcdir)/data/engine-std.pal $(fontc12_0_sprites_gen)
+data/fontc12-0.dat: font_norm_corpo-5-shd-ltbrown/filelist-fontc12-0.txt $(top_srcdir)/data/engine-std.pal $(fontc12_0_sprites_gen)
 
-font_norm_corpo-5-shd-dkblue/filelist-fontc12-0.txt: $(top_srcdir)/font_norm_corpo-5-white/filelist-fontc11-0.txt
+font_norm_corpo-5-shd-ltbrown/filelist-fontc12-0.txt: $(top_srcdir)/font_norm_corpo-5-white/filelist-fontc11-0.txt
 	$(MKDIR_P) "$(@D)"
 	cp -p -t "$(@D)" $(fontc12_0_sprites_cp)
 	cp -p "$<" "$@"
@@ -46,12 +46,12 @@ font_norm_corpo-5-shd-dkblue/filelist-fontc12-0.txt: $(top_srcdir)/font_norm_cor
 # Use ImageMagick to generate blue sprites from previously made white shaded ones
 # 1. First use `level` to make lack and white sprite,
 # 2. `level` single channels to achieve front and shadow colors
-font_norm_corpo-5-shd-dkblue/%.png: font_norm_corpo-5-shd-white/%.png
+font_norm_corpo-5-shd-ltbrown/%.png: font_norm_corpo-5-shd-white/%.png
 	$(MKDIR_P) "$(@D)"
 	$(MAGICK_CONVERT) "$<" -colorspace RGB \
         -channel RGB -level 30%,90% \
-        -channel R +level 78%,17% \
-        -channel G +level 70%,10% \
-        -channel B +level 99%,31% \
+        -channel R +level 5%,75% \
+        -channel G +level 26%,17% \
+        -channel B +level 5%,17%% \
         +channel \
         -colorspace RGB "png32:$@"

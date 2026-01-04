@@ -72,6 +72,7 @@ include $(srcdir)/sprites-fontc12-0.am
 fontc0_DATA = $(fontc0_0_files) $(fontc0_1_files) $(fontc0_3_files) $(fontc0_7_files) \
   $(fontc1_0_files) $(fontc1_2_files) \
   $(fontc2_0_files) $(fontc2_1_files) $(fontc2_3_files) $(fontc2_7_files) \
+  $(fontc6_0_files) $(fontc6_1_files) \
   $(fontc7_0_files) $(fontc7_1_files) \
   $(fontc11_0_files) \
   $(fontc12_0_files)

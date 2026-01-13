@@ -1,10 +1,10 @@
 # *****************************************************************************
 #  Graphics assets generation for SyndWarsFX.
 # *****************************************************************************
-#  @file sprites-fontc11-0.am
-#      Automake rules neccessary to build `fontc11-0` mission font sprites.
-#      Font b6 - norm_corpo white.
-#      Detail 1 - 10 px height.
+#  @file sprites-fontc2-31.am
+#      Automake rules neccessary to build `fontc2-31` menu font sprites.
+#      Font c2 - font_sharp_cult ltteal.
+#      Detail 31 - 160 px height.
 #  @author   Tomasz Lis
 #  @par  Copying and copyrights:
 #      This program is free software; you can redistribute it and/or modify
@@ -13,10 +13,10 @@
 #      (at your option) any later version.
 # *****************************************************************************
 
-fontc11_0_files = data/fontc11-0.dat data/fontc11-0.tab
+fontc2_31_files = data/fontc2-31.dat data/fontc2-31.tab
 
 # List of font letters which can be colorized
-fontc11_0_chars = \
+fontc2_31_chars = \
   0021 0022 0023 0024 0025 0026 0027 0028 0029 002a 002b 002c 002d 002e 002f \
   0030 0031 0032 0033 0034 0035 0036 0037 0038 0039 003a 003b 003c 003d 003e 003f \
   0040 0041 0042 0043 0044 0045 0046 0047 0048 0049 004a 004b 004c 004d 004e 004f \
@@ -31,32 +31,27 @@ fontc11_0_chars = \
   0104 0105 0106 0107 0118 0119 0141 0142 0143 0144 015a 015b 0179 017a 017b 017c \
   2018 2019
 # List of non-letters or other sprites to pass without colorization
-fontc11_0_charnames_nomod = \
+fontc2_31_charnames_nomod = \
   empty char_u0020
-fontc11_0_sprites_gen = \
-  $(foreach num,$(fontc11_0_chars),font_norm_corpo-5-shd-white/char_u$(num).png)
-fontc11_0_sprites_cp = \
-  $(foreach name,$(fontc11_0_charnames_nomod),$(top_srcdir)/font_norm_corpo-5-white/$(name).png)
+fontc2_31_sprites_gen = \
+  $(foreach num,$(fontc2_31_chars),font_sharp_cult-160-ltteal/char_u$(num).png)
+fontc2_31_sprites_cp = \
+  $(foreach name,$(fontc2_31_charnames_nomod),$(top_srcdir)/font_sharp_cult-160-white/$(name).png)
 
-data/fontc11-0.tab: data/fontc11-0.dat
+data/fontc2-31.tab: data/fontc2-31.dat
 
-data/fontc11-0.dat: font_norm_corpo-5-shd-white/filelist-fontc11-0.txt $(top_srcdir)/data/engine-std.pal $(fontc11_0_sprites_gen)
+data/fontc2-31.dat: font_sharp_cult-160-ltteal/filelist-fontc2-31.txt $(top_srcdir)/data/feproj-std.pal $(fontc2_31_sprites_gen)
 
-font_norm_corpo-5-shd-white/filelist-fontc11-0.txt: $(top_srcdir)/font_norm_corpo-5-white/filelist-fontc11-0.txt
+font_sharp_cult-160-ltteal/filelist-fontc2-31.txt: $(top_srcdir)/font_sharp_cult-160-white/filelist-fontc0-31.txt
 	$(MKDIR_P) "$(@D)"
-	cp -p -t "$(@D)" $(fontc11_0_sprites_cp)
+	cp -p -t "$(@D)" $(fontc2_31_sprites_cp)
 	cp -p "$<" "$@"
 
-# Use ImageMagick to generate shaded white sprites from the plain white ones
-font_norm_corpo-5-shd-white/%.png: $(top_srcdir)/font_norm_corpo-5-white/%.png
+# Use ImageMagick to generate light teal sprites from the white ones
+font_sharp_cult-160-ltteal/%.png: $(top_srcdir)/font_sharp_cult-160-white/%.png
 	$(MKDIR_P) "$(@D)"
-	$(MAGICK_CONVERT) "$<" \
-        "$<" -gravity Center -geometry +0+1 -composite \
-        "$<" -gravity Center -geometry +1+1 -composite \
-        -colorspace RGB \
-        -channel R -evaluate multiply 0.53 \
-        -channel G -evaluate multiply 0.53 \
-        -channel B -evaluate multiply 0.53 \
-        +channel \
-        "$<" -gravity Center -geometry +0+0 -composite \
-        -colorspace RGB "png32:$@"
+	$(MAGICK_CONVERT) "$<" -colorspace RGB \
+        -channel R -evaluate multiply 0.00 \
+        -channel G -evaluate multiply 0.99 \
+        -channel B -evaluate multiply 0.99 \
+        +channel -colorspace RGB "$@"

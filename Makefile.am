@@ -59,6 +59,7 @@ include $(srcdir)/sprites-fontc0-3.am
 include $(srcdir)/sprites-fontc0-7.am
 include $(srcdir)/sprites-fontc0-15.am
 include $(srcdir)/sprites-fontc0-19.am
+include $(srcdir)/sprites-fontc0-23.am
 include $(srcdir)/sprites-fontc0-31.am
 include $(srcdir)/sprites-fontc1-0.am
 include $(srcdir)/sprites-fontc1-2.am
@@ -69,6 +70,7 @@ include $(srcdir)/sprites-fontc2-3.am
 include $(srcdir)/sprites-fontc2-7.am
 include $(srcdir)/sprites-fontc2-15.am
 include $(srcdir)/sprites-fontc2-19.am
+include $(srcdir)/sprites-fontc2-23.am
 include $(srcdir)/sprites-fontc2-31.am
 include $(srcdir)/sprites-fontc6-0.am
 include $(srcdir)/sprites-fontc6-1.am
@@ -77,9 +79,9 @@ include $(srcdir)/sprites-fontc7-1.am
 include $(srcdir)/sprites-fontc11-0.am
 include $(srcdir)/sprites-fontc12-0.am
 
-fontc0_DATA = $(fontc0_0_files) $(fontc0_1_files) $(fontc0_2_files) $(fontc0_3_files) $(fontc0_7_files) $(fontc0_15_files) $(fontc0_19_files) $(fontc0_31_files) \
+fontc0_DATA = $(fontc0_0_files) $(fontc0_1_files) $(fontc0_2_files) $(fontc0_3_files) $(fontc0_7_files) $(fontc0_15_files) $(fontc0_19_files) $(fontc0_23_files) $(fontc0_31_files) \
   $(fontc1_0_files) $(fontc1_2_files) \
-  $(fontc2_0_files) $(fontc2_1_files) $(fontc2_2_files) $(fontc2_3_files) $(fontc2_7_files) $(fontc2_15_files) $(fontc2_19_files) $(fontc2_31_files) \
+  $(fontc2_0_files) $(fontc2_1_files) $(fontc2_2_files) $(fontc2_3_files) $(fontc2_7_files) $(fontc2_15_files) $(fontc2_19_files) $(fontc2_23_files) $(fontc2_31_files) \
   $(fontc6_0_files) $(fontc6_1_files) \
   $(fontc7_0_files) $(fontc7_1_files) \
   $(fontc11_0_files) \

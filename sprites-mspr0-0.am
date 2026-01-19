@@ -351,7 +351,7 @@ mspr0_mercen_m_sprites_walk_tors_nowep = \
   $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,mercen_m-black/walk_tors_nowep_ang$(ang)_f$(frm)))
 
 mspr0_mercen_m_sprites_walk_tors_weplt = \
-  $(foreach ang,0 1 2 3,$(foreach frm,000 001 002 003 004 005,mercen_m-black/walk_tors_weplt_ang$(ang)_f$(frm)))
+  $(foreach ang,0 1 2 3 4,$(foreach frm,000 001 002 003 004 005,mercen_m-black/walk_tors_weplt_ang$(ang)_f$(frm)))
 
 mspr0_mercen_m_sprites = \
   ${mspr0_mercen_m_sprites_bloody} \
@@ -655,7 +655,7 @@ mspr0_plants_sprites = \
   $(foreach frm,675 676 686 687 692 697 703 708 709 710 711 717 718 719 720 721 723 724 725 726 727 731,plants/pic0$(frm))
 
 mspr0_smoke_clouds_sprites = \
-  $(foreach frm,782 783 784 785 786 787 788 789 790,smoke_clouds/pic0$(frm))
+  $(foreach frm,772 773 774 775 776 782 783 784 785 786 787 788 789 790,smoke_clouds/pic0$(frm))
 
 mspr0_target_frame_sprites = \
   $(foreach frm,967 968 969 970 971 972 973 974 975 976 977 978 979 980 981 982 983 984 985 986 987 988 989 990 991 992 993 994,target_frame/pic0$(frm))
